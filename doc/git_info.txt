@@ -1,0 +1,26 @@
+Helpful git info:
+http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging
+url above has the best breakdown, but here are the basics
+
+check the commit log:
+git log
+
+check current workspace status
+git status
+
+To blow away everything:
+git pull
+// make changes
+git commit -am "message here"
+git push
+
+To do a good, simple change:
+$ git branch newBranchName
+$ git checkout newBranchName
+
+// make your changes, don't forget -a in next line
+$ git commit -a -m "message describing your changes"
+$ git checkout master
+$ git pull
+$ git merge newBranchName
+$ git push
