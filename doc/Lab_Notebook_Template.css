@@ -1,0 +1,96 @@
+/* DO NOT CHANGE THIS FILE!! */
+
+div#navbar {
+	position: absolute;
+	top: 75;
+	left: 15;
+	width: 9em;
+}
+div#navbar p {
+	margin: 0;
+	padding: 1em;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+	background: #000000;
+}
+
+/* <MSIE Hack> */
+@media screen {
+	div#navbar {
+		position: fixed;
+	}
+	* html {
+		overflow-y: hidden;
+	}
+	* html body {
+		overflow-y: auto;
+		height: 100%;
+		padding: 0 1em 0 14em;
+		font-size: 100%;
+	}
+	* html div#navbar {
+		position: absolute;
+	}
+}
+/* </MSIE Hack> */
+
+p.title {
+	text-align: center;
+}
+p.entry {
+	padding: 1em 1em 1em 1em;
+	text-align: left;
+	font-weight: normal;
+	font-size: 12px;
+	font-family: "courier new", "courier";
+	color: #FFFFFF;
+	border: #FFFFFF 1px solid;
+	width: 650;
+}
+p.summary {
+	padding: 1em 1em 1em 1em;
+	text-align: left;
+        font-weight: normal;
+        font-size: 14px;
+        color: #000000;
+	font-family: "courier new", "courier";
+        background-color: #FFFFFF;
+	width: 650;
+}
+body {
+	padding: 10 10 10 175;
+	width: 650;
+	text-align: center;
+	font-weight: normal; 
+	font-size: 16px; 
+	color: #FFFFFF; 
+	font-family: "courier new", "courier";
+	background-color: #000000;
+}
+hr {
+	color: #FFFFFF;
+}
+a:link {
+	font-weight: bold; 
+	color: #4040FF; 
+	font-family: "courier new", "courier";
+	text-decoration: none;
+}
+a:visited {
+	font-weight: bold; 
+	color: #4040FF; 
+	font-family: "courier new", "courier";
+	text-decoration: none;
+}
+a:hover {
+	font-weight: bold; 
+	color: #999999; 
+	font-family: "courier new", "courier";
+	text-decoration: none;
+}
+a:active {
+	font-weight: bold; 
+	color: #4040FF; 
+	font-family: "courier new", "courier";
+	text-decoration: none;
+}
