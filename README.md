@@ -1,10 +1,11 @@
 ECE477
 ======
 Folder Structure:
+
 doc - all documentation
 
 src - all souce code, divided by purpose and platform
-    - webpage and individual notebooks have been moved to src
+    - team webpage and individual notebooks 
 
 bin - build files, executables
 
