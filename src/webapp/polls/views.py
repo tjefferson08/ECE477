@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
+import requests
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -42,3 +43,10 @@ def vote(request, poll_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+
+def call(search_string):
+    tinysong_api_key = "da4d9bf5ee352d1f99eef3b73a8601cf"
+    tinysong_url = "http://www.tinysong.com/s/"
+    api_params = { 'key':tinysong_api_key, 'format':'json', 'limit':10 }
+    r = requests.get(tinysong_url + search_string.replace(' ', '+'), params=api_params)
+    print r.text
