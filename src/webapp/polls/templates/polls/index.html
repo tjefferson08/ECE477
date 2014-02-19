@@ -9,3 +9,9 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<!-- let's make a button to poll tinysong API with a hardcoded search term -->
+<form action="{% url 'polls:searchSong'  %}" method="post">
+{% csrf_token %}
+<input type="submit" value="Search" />
+</form>

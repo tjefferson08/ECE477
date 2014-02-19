@@ -44,9 +44,11 @@ def vote(request, poll_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 
-def call(search_string):
+def searchSong(request):
+    search_string = "I just had sex"
     tinysong_api_key = "da4d9bf5ee352d1f99eef3b73a8601cf"
     tinysong_url = "http://www.tinysong.com/s/"
     api_params = { 'key':tinysong_api_key, 'format':'json', 'limit':10 }
     r = requests.get(tinysong_url + search_string.replace(' ', '+'), params=api_params)
-    print r.text
+    print r
+    return HttpResponseRedirect('http://www.google.com')
