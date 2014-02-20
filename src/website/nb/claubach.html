@@ -15,11 +15,11 @@
 
     <h3 id="week01">Week 01</h3>
 
-    <p class="entry"><b>January 15, 2014 (1.5 hour)</b>:<br>Met as a team and discussed and started writing the preliminary project proposal.</p>
+    <p class="entry"><b>January 15, 2014 (1.5 hour)</b>:<br>Met as a team to discuss and start writing the preliminary project proposal.</p>
 
     <p class="entry"><b>January 16, 2014 (1 hour)</b>:<br>Finished editing and writing the preliminary project proposal. Mostly did the research on already existing products out.</p>
 
-   <p class="entry"><b>January 18, 2014 (2 hour)</b>:<br>Helped design and put together the website. Mostly the layout and graphics of what the site will look like</p>
+   <p class="entry"><b>January 18, 2014 (2 hour)</b>:<br>Helped design and put together the website. Mostly the layout and graphics of what the site will look like.</p>
 
     <p class="summary"><b>WEEK 01 SUMMARY</b><br>
                        <u>Accomplishments</u>: Put together the website and finished the preliminary project proposal.<br>
@@ -83,11 +83,12 @@ Option 10:
 Using a 6" diameter pipe.  You could drill holes in the exterior. You could put it 
 On rollers. The rollers, could have a motor attached and the lights could go in the middle. <br><br>
 
-    <p class="entry"><b>February 6, 2014 (1.5 hour)</b>:<br>Met as a team to complete hw 3. <br> Finalized a design that we wanted for the external system. <br>
+    <p class="entry"><b>February 6, 2014 (1.5 hour)</b>:<br>Met as a team to complete hw 3. <br> Finalized a design that we wanted for the external system. With the design, we determined that we will need to 3D print a part in order to mount the disco ball on the motor. Many major components were selected including using an LED driver to help with controlling the 3 phase LEDS. A picture of the initial design is pictured below:
+     <img src="../images/claubach/initialdesign.png" alt="screenshot1" height="500px" width="500px"><br><br>
     </p>
 
     <p class="summary"><b>WEEK 04 SUMMARY</b><br>
-                       <u>Accomplishments</u>: Settled on design idea for the project as well as finished hw 3. <br>
+                       <u>Accomplishments</u>: Settled on design idea for the project as well as finished hw 3.  <br>
                        <u>Weekly Work Total</u>:  3.5 hours<br>
                        <u>Project Work Total</u>:  10.5 hours</p>
                        
@@ -101,11 +102,16 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     <img src="../images/claubach/design2.png" alt="screenshot1" height="500px" width="500px"><br><br>
     <img src="../images/claubach/design3.png" alt="screenshot1" height="500px" width="500px"><br><br>
     <img src="../images/claubach/design4.png" alt="screenshot1" height="500px" width="500px"><br><br>
-    <img src="../images/claubach/design5.png" alt="screenshot1" height="500px" width="500px"><br></p>
+    <img src="../images/claubach/design5.png" alt="screenshot1" height="500px" width="500px"><br><br>
+    <img src="../images/claubach/footprint.png" alt="screenshot1" height="500px" width="500px"><br>	
+    </p>
+   
     
     </p>
     
-    <p class="entry"><b>February 13, 2014 (6 hours)</b>:<br>Figured out how everything is going to work together, so basically configured a basic schematic. <br>
+    <p class="entry"><b>February 13, 2014 (6 hours)</b>:<br>Figured out how everything is going to work together, so basically configured a basic schematic. Most of the parts were switched and changed at this point. The motor that was originally selected was too powerful and too big for the design, so we decreased the size and power to  a simplier stepper motor. Due to the microcontroller needed 3.3V, the Raspberry Pi needing 5V, and the motor needing 12V one of the biggest problems was faced was how to get that all supplied to the parts correcty including using a 12V power supply. The schematic is drawn below:<br>
+     <img src="../images/claubach/schematic1.png" alt="screenshot1" height="500px" width="500px"><br><br>
+     <img src="../images/claubach/schematic2.png" alt="screenshot1" height="500px" width="500px"><br><br>
     </p>
     
     <p class="entry"><b>February 12, 2014 (1 hour)</b>:<br>Completed hw 4. <br>
@@ -118,6 +124,10 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
                        
     
     <h3 id="week06">Week 06</h3>
+    
+    <p class="entry"><b>February 18, 2014 (2 hour)</b>:<br>Started drawing up the schematic layout on eagle. Had to create parts for the LED driver, Microcontroller, LED, and the voltage regulator. <br></p>
+    
+    <p class="entry"><b>February 19, 2014 (3 hour)</b>:<br>Met as a team in lab and got feedback on the schematic I drew up. Originally, I was using a LM7805 and a capacitor to drop the voltage from 12V to 5V and then a voltage regulator to drop the voltage from 5V to 3.3V. However, the transistor would cause a lot of heat consumption, so the 12V to 5V will now be regulated by a switch mode with a heat sink. And the 5V to 3.3V will be regulated by a LDO.The schematic continued to be worked on getting most of the resistors and capacitors selected. <br></p>
 
     <p class="summary"><b>WEEK 06 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
