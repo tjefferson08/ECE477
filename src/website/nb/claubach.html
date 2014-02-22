@@ -127,8 +127,15 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <p class="entry"><b>February 18, 2014 (2 hour)</b>:<br>Started drawing up the schematic layout on eagle. Had to create parts for the LED driver, Microcontroller, LED, and the voltage regulator. <br></p>
     
-    <p class="entry"><b>February 19, 2014 (3 hour)</b>:<br>Met as a team in lab and got feedback on the schematic I drew up. Originally, I was using a LM7805 and a capacitor to drop the voltage from 12V to 5V and then a voltage regulator to drop the voltage from 5V to 3.3V. However, the transistor would cause a lot of heat consumption, so the 12V to 5V will now be regulated by a switch mode with a heat sink. And the 5V to 3.3V will be regulated by a LDO.The schematic continued to be worked on getting most of the resistors and capacitors selected. <br></p>
+    <p class="entry"><b>February 19, 2014 (3 hour)</b>:<br>Met as a team in lab and got feedback on the schematic I drew up. Originally, I was using a LM7805 and a capacitor to drop the voltage from 12V to 5V and then a voltage regulator to drop the voltage from 5V to 3.3V. However, the transistor would cause a lot of heat consumption, so the 12V to 5V will now be regulated by a switch mode with a heat sink..The schematic continued to be worked on getting most of the resistors and capacitors selected. <br></p>
 
+    <p class="entry"><b>February 20, 2014 (6 hour)</b>:<br>Drew up and added the parts to the eagle schematic. Had to draw up the microcontroller, LED drivers, LEDS, and 2 voltage regulators. By drawing these, I had to finish figuring out the rest of the circuitry. </p>
+    
+    <p class="entry"><b>February 21,  2014 (6 hour)</b>:<br>Finished figuring out the pins and circuitry. Then drew up all the circuitry to the right pins in which the LED driver was to i/o pins and i2c pins. The rpi was connected by sdi,sdo,sclk and also had to be connected by audio to a analog pin. The motor was connected to PWM ports. The LED driver had to be connected to the SDI,SDO,SCLK as well, so a chip select was enabled since the micro is running everything it will have to switch between talking to the raspberry pi and the LCD.
+    <img src="../images/claubach/design1.png" alt="screenshot1" height="500px" width="500px"><br><br>	
+    	
+    </p>
+    
     <p class="summary"><b>WEEK 06 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
                        <u>Weekly Work Total</u>:  hours<br>
