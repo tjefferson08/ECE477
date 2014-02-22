@@ -111,7 +111,7 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <p class="entry"><b>February 13, 2014 (6 hours)</b>:<br>Figured out how everything is going to work together, so basically configured a basic schematic. Most of the parts were switched and changed at this point. The motor that was originally selected was too powerful and too big for the design, so we decreased the size and power to  a simplier stepper motor. Due to the microcontroller needed 3.3V, the Raspberry Pi needing 5V, and the motor needing 12V one of the biggest problems was faced was how to get that all supplied to the parts correcty including using a 12V power supply. The schematic is drawn below:<br>
      <img src="../images/claubach/schematic1.png" alt="screenshot1" height="500px" width="500px"><br><br>
-     <img src="../images/claubach/schematic2.png" alt="screenshot1" height="500px" width="500px"><br><br>
+     <img src="../images/claubach/schematic2.jpeg" alt="screenshot1" height="500px" width="500px"><br><br>
     </p>
     
     <p class="entry"><b>February 12, 2014 (1 hour)</b>:<br>Completed hw 4. <br>
@@ -131,15 +131,18 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
 
     <p class="entry"><b>February 20, 2014 (6 hour)</b>:<br>Drew up and added the parts to the eagle schematic. Had to draw up the microcontroller, LED drivers, LEDS, and 2 voltage regulators. By drawing these, I had to finish figuring out the rest of the circuitry. </p>
     
-    <p class="entry"><b>February 21,  2014 (6 hour)</b>:<br>Finished figuring out the pins and circuitry. Then drew up all the circuitry to the right pins in which the LED driver was to i/o pins and i2c pins. The rpi was connected by sdi,sdo,sclk and also had to be connected by audio to a analog pin. The motor was connected to PWM ports. The LED driver had to be connected to the SDI,SDO,SCLK as well, so a chip select was enabled since the micro is running everything it will have to switch between talking to the raspberry pi and the LCD.
-    <img src="../images/claubach/design1.png" alt="screenshot1" height="500px" width="500px"><br><br>	
+    <p class="entry"><b>February 21,  2014 (8 hour)</b>:<br>Finished figuring out the pins and circuitry. Then drew up all the circuitry to the right pins in which the LED driver was to i/o pins and i2c pins. The rpi was connected by sdi,sdo,sclk and also had to be connected by audio to a analog pin. The motor was connected to PWM ports. The LED driver had to be connected to the SDI,SDO,SCLK as well, so a chip select was enabled since the micro is running everything it will have to switch between talking to the raspberry pi and the LCD.<br>
+    External parts to PCB board schematic: <br>
+    <img src="../images/claubach/externalschematic.png" alt="screenshot1" height="500px" width="500px"><br><br>	
+    PCB board schematic: <br>
+    <img src="../images/claubach/pcbschematic.png" alt="screenshot1" height="500px" width="500px"><br><br>	
     	
     </p>
     
     <p class="summary"><b>WEEK 06 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: Figured out the rest of the parts of the project. Also, figured out the pins and how to draw everything up and drew up the schematic on eagle.<br>
+                       <u>Weekly Work Total</u>: 19 hours<br>
+                       <u>Project Work Total</u>: 41 hours</p>
 
 
     <h3 id="week07">Week 07</h3>
