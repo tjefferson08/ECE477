@@ -37,6 +37,7 @@
       <u>Project Work Total</u>: 5 hours<br>
     </p>
                        
+    <h3 id="week02">Week 02</h3>
     <p class="entry"><b>January 19, 2014 (1 hour)</b>:<br>Got on team account, put all team webpage materials under 
       version control.
       The repo was then reorganized and a bash script was authored to aid in staging/testing website changes in the 
@@ -82,6 +83,7 @@
       <u>Project Work Total</u>: 11 hours<br>
     </p>
 
+    <h3 id="week03">Week 03</h3>
     <p class="entry"><b>January 26, 2014 (2 hours)</b>:</br>
       Finished up 
       <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 5</a> and 
@@ -128,6 +130,7 @@
       <u>Project Work Total</u>: 19 hours<br>
     </p>
 
+    <h3 id="week04">Week 04</h3>    
     <p class="entry"><b>February 6, 2014 (1.5 hours)</b>:<br>
       Team meeting was held to complete homework 3. Part selection was accomplished (preliminary status),
       and the majority of the assignment was completed.
@@ -143,6 +146,7 @@
       <u>Project Work Total</u>: 21.5 hours<br>
     </p>
 
+    <h3 id="week05">Week 05</h3>    
     <p class="entry"><b>February 12, 2014 (2 hours)</b>:<br>
       Team meeting was held in lab for mandatory lab #5. Component selection feedback was received, and some 
       progress was made in part selection, especially in the previously lacking power supply and regulation
@@ -170,6 +174,7 @@
       <u>Project Work Total</u>: 25 hours<br>
     </p>
 
+    <h3 id="week06">Week 06</h3>    
     <p class="entry"><b>February 18, 2014 (1.5 hours)</b>:<br>
       A Django refresher from tutorials linked above was undertaken. A small modification of the existing webapp
       was made: there is now a basic Search button on the main page:
@@ -179,12 +184,43 @@
       <a href="../images/jefferst/2014-02-18-search-button-02.png">
 	<img src="../images/jefferst/2014-02-18-search-button-02.png" alt="screenshot1" height="200px" width="200px">
       </a> 
-
       <br>
-      
       which performs a hard-coded call to tinysong API. This is a
       step closer to actually displaying search results in a meaningful manner. 
     </p>
+
+    <p class="entry"><b>February 19, 2014 (2.5 hours)</b>:<br>
+      Labratory attendance, as usual, was mandatory, and the focus was on schematic progress and/or issues. The
+      discussion was led primarily by Courtney, who then assembled a list of outstanding concerns for later 
+      resolution with course staff. The hardware narrative components were largely decided, and some division
+      of labor was devised. Clarification on some peripheral responsibilities for the design was an additional 
+      conversation topic. 
+    </p>
+
+    <p class="entry"><b>February 21, 2014 (2 hours)</b>:<br>
+      A team meeting was held to aid Sophie in completion of the hardware narrative report. An individual contribution 
+      of the block diagram and design decisions was made. Microcontroller port assignments were the largest set of
+      decisions to be made. Some physical/connection topics were discussed with respect to schematic completion. It 
+      was tentativel decided that all necessary Raspberry Pi pins, control panel (pushbutton) pins, LCD pins, and motor
+      pins would probably go to connectors on the PCB, since all aforementioned components will reside at specific
+      location in the package (external to PCB, internal to packaging).
+    </p>
+
+    <p class="entry"><b>February 22, 2014 (2 hours)</b>:<br>
+      A more thorough setup by Matt of the Raspberry Pi workstation was facilitated. Access to the github repository
+      was one initial accomplishment, as well as the acquiring of pre-built SPI python wrappers from 
+      <a href="http://www.100randomtasks.com/simple-spi-on-raspberry-pi">100randomtasks.com</a>. <br>
+      A preliminary visual inspection of the waveforms from the Raspberry Pi was promising, although a more scientific
+      inspection will take place once it is more apparent how to operate some features on the MSO-X 4024A mixed-signal
+      oscilloscope. <br>
+      One unfortunate discovery came in the knowledge that the Raspberry Pi SPI harware does not support slave mode.
+      See page 8 of the Raspberry PI CPU 
+      <a href="http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">datasheet</a>.
+      This factor will play a part in refactoring the communication design and could potentially require a slight
+      schematic modification. It is natural at this stage to develop SPI (slave) TX code on the PIC eval kit in order
+      to communicate with (probably) functional SPI TX/RX code on the Raspberry Pi. 
+    </p>
+    
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
