@@ -206,7 +206,7 @@
       location in the package (external to PCB, internal to packaging).
     </p>
 
-    <p class="entry"><b>February 22, 2014 (2 hours)</b>:<br>
+    <p class="entry"><b>February 22, 2014 (4 hours)</b>:<br>
       A more thorough setup by Matt of the Raspberry Pi workstation was facilitated. Access to the github repository
       was one initial accomplishment, as well as the acquiring of pre-built SPI python wrappers from 
       <a href="http://www.100randomtasks.com/simple-spi-on-raspberry-pi">100randomtasks.com</a>. <br>
@@ -218,7 +218,13 @@
       <a href="http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">datasheet</a>.
       This factor will play a part in refactoring the communication design and could potentially require a slight
       schematic modification. It is natural at this stage to develop SPI (slave) TX code on the PIC eval kit in order
-      to communicate with (probably) functional SPI TX/RX code on the Raspberry Pi. 
+      to communicate with (probably) functional SPI TX/RX code on the Raspberry Pi.<br><br>
+      SPI investigation on the micro side was begun, and the initial plan of attaching SPI1 as
+      master to SPI2 as a slave was undertaken.
+      Unfortunately, somewhere in the inclusion of the SPI.h lib file and building, an error occurred in the build
+      settings. At the moment, building and programming the micro is not functional. Instead, a good goal might be 
+      one of the following: strive for some meaningul progress on the Django webapp or seek to modify the clock
+      rate of Rpi SPI transmission. The next entry will likely detail efforts in one of those two categories.
     </p>
     
 
