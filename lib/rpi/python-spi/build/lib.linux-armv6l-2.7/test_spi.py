@@ -1,8 +1,9 @@
-import os, sys
-lib_path = os.path.abspath('../../lib/rpi/python-spi/build/lib.linux-armv6l-2.7')
-sys.path.append(lib_path)
+#import os, sys
+#lib_path = os.path.abspath('../../lib/rpi/python-spi/build/lib.linux-armv6l-2.7')
+#sys.path.append(lib_path)
 
-import spidev
+#
+#import spidev
 import time
 
 
