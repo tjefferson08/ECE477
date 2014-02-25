@@ -100,11 +100,11 @@
 
     <p class="entry"><b>February 21, 2014 (3 hours)</b>:<br>Completed homework 5. Now there is a basic concept of how information will travel through all different parts. </p> <br>
 
-    <p class="entry"><b>February 22, 2014 (3 hours)</b>:<br>Began working on SPI on the microcontroller. There are many examples online utilizing the LCD on the development board. These examples utilized the spi.h library but used different microcontrollers than the PIC18F87J11 that the Every1 DJ is using. Therefore, all the examples had to be re-written to utilize the correct port pins for the PIC18F87J11. About one hour was spent trying to get the premade code to work, but the LCD was displaying values that did not correspond to the written code. This may have been from previous designs loaded onto the board, and the newly written code was not being loaded correctly. <br>
-After this mishap, a new direction was sought. It was decided to try and get the SPI working by tying the two SPI ports together on the microcontroller. This meant having the output of SPI1 as an input to SPI2. The following port assignments were used: <br>
-RC3 (SCLK1) à RD6 (SCLK2)
-RC4 (SPI_IN1) àRD4 (SPI_OUT2)
-RC5 (SPI_OUT1) àRD5 (SPI_IN2)<br>
+    <p class="entry"><b>February 22, 2014 (3 hours)</b>:<br>Began working on SPI on the microcontroller. There are many examples online utilizing the LCD on the development board. These examples utilized the spi.h library but used different microcontrollers than the PIC18F87J11 that the Every1 DJ is using. Therefore, all the examples had to be re-written to utilize the correct port pins for the PIC18F87J11. About one hour was spent trying to get the premade code to work, but the LCD was displaying values that did not correspond to the written code. This may have been from previous designs loaded onto the board, and the newly written code was not being loaded correctly. <br> <br>
+After this mishap, a new direction was sought. It was decided to try and get the SPI working by tying the two SPI ports together on the microcontroller. This meant having the output of SPI1 as an input to SPI2. The following port assignments were used: <br> <br>
+RC3 (SCLK1) <--> RD6 (SCLK2) <br>
+RC4 (SPI_IN1) <--> (SPI_OUT2) <br>
+RC5 (SPI_OUT1) <--> (SPI_IN2)<br><br>
 The code to send data across these ports was written, again utilizing the spi.h library. While attempting to load the design onto the development board, there were a lot of issues with the driver and updates to the driver. Until the driver setup is fixed, the code cannot be loaded onto the board. This served as a stopping point for the day after much frustration with trying to get the driver software to operate correctly. More work will be done in the next few days to try and get the driver working correctly.</p> <br>
 
 
@@ -115,8 +115,8 @@ The code to send data across these ports was written, again utilizing the spi.h 
 
     <h3 id="week01">Week 07</h3>
 
-    <p class="entry"><b>February 24, 2014 (2 hour)</b>:<br>More work was done to try and get SPI working on both the microcontroller and the Raspberry Pi. The driver issues were fixed by another team member before arrival. The first task was trying to get the microcontroller and the Raspberry Pi talking through SPI. An attempt was made to print out the values being sent to the Raspberry Pi, but it seemed that random variables were being read by the Raspberry Pi. This brought our focus onto SPI on the Raspberry Pi, which seemed to malfunctioning. <br>
-A new focus was brought on, and debugging of SPI on the Raspberry Pi was started. The SPI input, output and clock were all hooked up to the oscilloscope to verify that data was being sent correctly. While zooming in to each of the signals, it seemed that garbage values were being shown on the input and output lines. This lends to the fact that random variables were being read by the Raspberry Pi from earlier. Changes in the code utilizing the spi library were made but, it seemed that whatever code changes were made, the oscilloscope readings never changed. <br>
+    <p class="entry"><b>February 24, 2014 (2 hour)</b>:<br>More work was done to try and get SPI working on both the microcontroller and the Raspberry Pi. The driver issues were fixed by another team member before arrival. The first task was trying to get the microcontroller and the Raspberry Pi talking through SPI. An attempt was made to print out the values being sent to the Raspberry Pi, but it seemed that random variables were being read by the Raspberry Pi. This brought our focus onto SPI on the Raspberry Pi, which seemed to malfunctioning. <br> <br>
+A new focus was brought on, and debugging of SPI on the Raspberry Pi was started. The SPI input, output and clock were all hooked up to the oscilloscope to verify that data was being sent correctly. While zooming in to each of the signals, it seemed that garbage values were being shown on the input and output lines. This lends to the fact that random variables were being read by the Raspberry Pi from earlier. Changes in the code utilizing the spi library were made but, it seemed that whatever code changes were made, the oscilloscope readings never changed. <br> <br>
 Further work must be done to ensure SPI works on both the microcontroller and the Raspberry Pi. This is a rather frustrating step, but will prove invaluable once complete. All interfaces, except for one, utilizes SPI. Therefore, this is a top priority for all group members.  </p>
 
     <p class="summary"><b>WEEK 07 SUMMARY</b><br>
