@@ -119,10 +119,13 @@ The code to send data across these ports was written, again utilizing the spi.h 
 A new focus was brought on, and debugging of SPI on the Raspberry Pi was started. The SPI input, output and clock were all hooked up to the oscilloscope to verify that data was being sent correctly. While zooming in to each of the signals, it seemed that garbage values were being shown on the input and output lines. This lends to the fact that random variables were being read by the Raspberry Pi from earlier. Changes in the code utilizing the spi library were made but, it seemed that whatever code changes were made, the oscilloscope readings never changed. <br> <br>
 Further work must be done to ensure SPI works on both the microcontroller and the Raspberry Pi. This is a rather frustrating step, but will prove invaluable once complete. All interfaces, except for one, utilizes SPI. Therefore, this is a top priority for all group members.  </p>
 
+    <p class="entry"><b>February 25, 2014 (3 hour)</b>:<br> Debugged the Raspberry Pi SPI from yesterday. Instead of using the python example online from yesterday, a new c example was found. This new code tied the SPI in to the SPI out on the Raspberry Pi. Sucessful completion of data transfer occured (picture). 
+<br><br>
+After successful completion of SPI on the Raspberry Pi, debugging between the Raspberry Pi and the microcontroller was done. The Raspberry Pi has to be set as the master to the microcontroller, because this is the only setting that is allowed on the Raspberry Pi. A successful transfer of data from the Raspberry Pi to the microcontroller was done. (picture) </p>
     <p class="summary"><b>WEEK 07 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>: 2<br>
-                       <u>Project Work Total</u>: 35.5</p>
+                       <u>Weekly Work Total</u>: 5<br>
+                       <u>Project Work Total</u>: 38.5</p>
 
 
 
