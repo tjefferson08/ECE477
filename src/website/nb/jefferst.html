@@ -170,6 +170,7 @@
 
     <p class="summary"><b>WEEK 05 SUMMARY</b>
       <u>Accomplishments</u>: Homework 4 - Packaging Constraints<br>
+      Micro eval board obtained and programmed
       <u>Weekly Work Total</u>: 3.5 hours<br>
       <u>Project Work Total</u>: 25 hours<br>
     </p>
@@ -228,36 +229,95 @@
     </p>
     
     <p class="summary"><b>WEEK 06 SUMMARY</b>
-      <u>Accomplishments</u>: Homework 5 - Hardware Narrative<br>
+      <u>Accomplishments</u>: Homework 5 - Hardware Narrative
+      First inspection of Rpi serial waveforms<br>
       <u>Weekly Work Total</u>: 10 hours<br>
       <u>Project Work Total</u>: 35 hours<br>
     </p>
 
     <h3 id="week07">Week 07</h3>    
     <p class="entry"><b>February 24, 2014 (3 hours)</b>:<br>
-      SPI successful out from micro, scoped (img here)
-      Overcame a while loop stuck in a lib function, we just wrote our own listening code
-      More problems with the damn IDE toolchain
-      Soldered a prototyping connector to connect micro jumper port and Rpi header pins
-      Updated notebook (logception)
-      Rpi SPI out not good yet
+      Matt successfully navigated the maze of drivers and compilers to get the MPLab IDE up and running again. 
+      A small plastic header was sacrificed and leads were soldered on to allow for scoping and interconnection
+      of Raspberry Pi SPI signals. The ambitious experiment 
+      of micro -> Rpi transmission was set up, whcih looked something like this:<br>
+      <a href="../images/jefferst/2014-02-25-serial-comm-ckt.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-comm-ckt.jpg" alt="serial comm" height="200px" width="200px">
+      </a> <br>
+      Before scoping anything, some software debugging was necessary. The MPLab spi library partially worked, but the 
+      ReadSPI() function was loopinf infinitely. Replacing this function call with a regular IFG (interrupt flag) poll
+      solved this looping issue. Although library dodumentation was unsurprisingly nonexistent, it is
+      assumed that the library must have been for a slightly different device family.
+      Logic analyzer probes were placed on SCLK, SIMO, and MOSI, but the only observable results were noisy, meaningless signals.
+      Scoping each device's output separately determined that the Raspberry Pi clock and SPI lines were the culprits.
     </p>
 
     <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br>
-      SPI out from rpi working, switched to different SPI lib.
-      Got multi-byte transmission from Rpi to Micro, working on returning
-      Determined that switching between master and slave on micro will be necessary (LCD and RPI)
-      
-      
+      Since the Rpi SPI was not operating correctly, a quick search was performed for alternatives for SPI
+      driving code. The python example was abandoned, and a C programming example was discovered (linked within) from the following
+      blog <a href="http://www.brianhensley.net/2012/07/getting-spi-working-on-raspberry-pi.html">tutorial</a>.<br>
+      At this point, Rpi SPI was scoped alone; SUCCESS! See the code and initial results here:<br>
+      <a href="../images/jefferst/2014-02-25-serial-rpi.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-rpi.jpg" alt="rpi" height="200px" width="200px">
+      </a> 
+      <a href="../images/jefferst/2014-02-25-rpi-serial-code.jpg">
+	<img src="../images/jefferst/2014-02-25-rpi-serial-code.jpg" alt="code" height="200px" width="200px">
+      </a> <br>
+      Some additional code was authored to display (on the microcontroller) multi-byte transmissions from the Rpi.
+      In addition, clock frequencies were matched to facilitate what will eventually be bidirectional communication.
+      See evidence of frequency (62.5KHz) matching here:<br>
+      <a href="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg">
+	<img src="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg" alt="code" height="200px" width="200px">
+      </a> <br>
+      This experiment was successful! (Multiple transmissions, one way: Rpi -> micro)
+      It was briefly noted that since Rpi SPI peripherals are all master-mode hardware, a switching
+      protocol must be developed in software on the micro side so that it may
+      operate in Master or Slave mode as appropriate to each SPI peripheral (Rpi, LCD).
     </p>
 
-    <p class="entry"><b>February 26, 2014 (3 hours)</b>:<br>
-      streaming api discussion, acquiring API key from grooveshark
-      backup plan: dl youtube vid, rip out audio, play from disk
-      audio splitting - split straight from rpi, half to micro, half to packaging mount point
-      homework 6 - wrote a bit
-
+    <p class="entry"><b>February 26, 2014 (4 hours)</b>:<br>
+      Mandatory Lab was held. Descussion centered around streaming API selection and different options. Tinysong
+      (the current metadata API) returns a link to Grooveshark flash music player, but that will not suffice for 
+      Rpi streaming due to system incompatibilites. Grooveshark's streaming API would be the best option, but
+      it is unclear whether API key access will be granted. Should the Grooveshark API prove inaccessible, 
+      two main alternatives methods were selected, in order of team preference:<br>
+      - Anonymizing Grooveshark API calls with TOR to allow for previously issued keys to be reused<br>
+      - Downloading youtube videos, ripping out audio on the fly, and playing from disk
     </p>
+
+    <p class="entry"><b>February 28, 2014 (8 hours)</b>:<br>
+      Today's session resulted in the completion of the initial PCB layout and the submission of homework 6 (PCB Layout).
+      From the existing layout, many changes were made. Among the highlights are:<br>
+      - Switching from BJT motor control circuitry to the <a href="http://www.ti.com/lit/ds/symlink/l293d.pdf">L239D Motor Driver</a> IC<br>
+      - Reassigning several incorrect pin assignments from the microcontroller to the LED driver<br>
+      - Changing to a 6-pin RJ-11 connector and routing programming pins correctly<br>
+      - Routing power and ground to microcontoller bypass capacitors<br>
+      - Creating all power and ground planes<br>
+      The report for homework #6 was completed in parallel to the PCB layout activities.
+      See a first-revision PCB layout here:<br>
+      <a href="../images/jefferst/2014-03-01-PCB-layout.png">
+	<img src="../images/jefferst/2014-03-01-PCB-layout.png" alt="block" height="200px" width="200px">
+      </a> <br>
+    </p>
+
+    <p class="entry"><b>March 1, 2014 (3 hours)</b>:<br>
+      A brief team meeting was held today to divide Design Review presentation subtasks.
+      An update to the system bloack diagram was made, as seen here:<br>
+      <a href="../images/jefferst/system-block-diagram.jpg">
+	<img src="../images/jefferst/system-block-diagram.jpg" alt="block" height="200px" width="200px">
+      </a> <br>
+      A large notebook update was completed here!
+      Fixed a permissions error on the team website, watch permissions on image upload.
+    </p>
+
+    <p class="summary"><b>WEEK 07 SUMMARY</b>
+      <u>Accomplishments</u>: Homework 6 - PCB Layout<br>
+      Meaningful communication one-way on SPI<br>
+      PCB Layout<br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
     <h3 id="week08">Week 08</h3>    
     <h3 id="week09">Week 09</h3>    
     <h3 id="week10">Week 10</h3>    
