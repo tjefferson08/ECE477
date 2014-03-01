@@ -149,6 +149,15 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <p class="entry"><b>February 24, 2014 (1 hour)</b>:<br>Started the PCB footprint by places all the parts on the board in a manner that you can see the wires connecting.</p>
     
+    <p class="entry"><b>February 25, 2014 (5 hours)</b>:<br>Re-did the layouts of the LED driver, micro, and both voltage regulators so they were to size. We even took the part and layed it out on the sheet to make sure that they were the correct dimensions. While we did this, we realized that the the leads on the the layout had to be a little bit longer than specificied to make it easier for later on when we have to solder the parts onto the LED driver. Another thing that was accomplished was the values of the resistors were calculated in order to drop 5V down to 3.3V of the MAX856CSA. I also changed the power to drop 12V to 5V to a more genaric part of a LM2675 because that was what I discussed would be the best regulator with the great power being dissipated in the circuit. Added LED flashing to see the "heartbeat" of the microcontroller to make sure the I/O pins are still working. An RJ11 connector was added to the programming pins to allow the micro to be programmed. </p>
+    
+    <p class="entry"><b>February 26, 2014 (2 hours)</b>:<br>Kept placing and grouping parts on the PCB board layout. These items were grouped to allow for the least amount of crossing of wires and the orientation of where everything is being mounted externally that will be connected to PCB board. Once, that was finished the traces were simply layed out. <br>
+    	    <img src="../images/claubach/tracestart.jpg" alt="screenshot1" height="500px" width="500px"><br><br>	
+    </p>
+    
+    <p class="entry"><b>February 27, 2014 (4 hours)</b>:<br>Kept going with PCB layout and traces. Had to keep analog and digital ground seperate from each other until combined at the very end for the power supply. Followed Sparkfun's library for specifications on the PCB layout, so they are able to design it at the fabrcication shop correctly. Also, I changed the MAX856CSA to a LM1117 since the MAX856CSA was a step-up regulator when we needed a low dropout regulator which was the LM 1117.<br>
+        <img src="../images/claubach/LM1117.jpg" alt="screenshot1" height="500px" width="500px"><br><br></p>
+    
     <p class="summary"><b>WEEK 07 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
                        <u>Weekly Work Total</u>:  hours<br>
