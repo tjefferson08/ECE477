@@ -119,17 +119,49 @@ The code to send data across these ports was written, again utilizing the spi.h 
 A new focus was brought on, and debugging of SPI on the Raspberry Pi was started. The SPI input, output and clock were all hooked up to the oscilloscope to verify that data was being sent correctly. While zooming in to each of the signals, it seemed that garbage values were being shown on the input and output lines. This lends to the fact that random variables were being read by the Raspberry Pi from earlier. Changes in the code utilizing the spi library were made but, it seemed that whatever code changes were made, the oscilloscope readings never changed. <br> <br>
 Further work must be done to ensure SPI works on both the microcontroller and the Raspberry Pi. This is a rather frustrating step, but will prove invaluable once complete. All interfaces, except for one, utilizes SPI. Therefore, this is a top priority for all group members.  </p>
 
-    <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br> Debugged the Raspberry Pi SPI from yesterday. Instead of using the python example online from yesterday, a new c example was found. This new code tied the SPI in to the SPI out on the Raspberry Pi. Sucessful completion of data transfer occured (picture). 
+    <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br> Debugged the Raspberry Pi SPI from yesterday. Instead of using the python example online from yesterday, a new c example was found. This new code tied the SPI in to the SPI out on the Raspberry Pi. Sucessful completion of data transfer occured as documented below. <br>
+
+<a href="../images/spouliqu/RPI_SPI_Code.jpg">
+	<img src="../images/spouliqu/RPI_SPI_Code.jpg" alt="rpi" height="500px" width="500px">
+      </a>
+
+<br>
+
+<a href="../images/spouliqu/RPI_SPI.jpg">
+	<img src="../images/spouliqu/RPI_SPI.jpg" alt="rpi" height="500px" width="500px">
+      </a>
+
 <br><br>
-After successful completion of SPI on the Raspberry Pi, debugging between the Raspberry Pi and the microcontroller was done. The Raspberry Pi has to be set as the master to the microcontroller, because this is the only setting that is allowed on the Raspberry Pi. A successful transfer of data from the Raspberry Pi to the microcontroller was done. (picture) </p>
+After successful completion of SPI on the Raspberry Pi, debugging between the Raspberry Pi and the microcontroller was done. The Raspberry Pi has to be set as the master to the microcontroller, because this is the only setting that is allowed on the Raspberry Pi. A successful transfer of data from the Raspberry Pi to the microcontroller was done. Pictured below shows a frequncy of 62.5 KHz matching. <br>
+
+<a href="../images/spouliqu/SPI_Freq.jpg">
+	<img src="../images/spouliqu/SPI_Freq.jpg" alt="rpi" height="500px" width="500px">
+      </a>
+<br>
+ </p>
 
     <p class="entry"><b>February 26, 2014 (6 hours)</b>:<br> Created parts on Eagle including, LED driver, PIC microcontroller, voltage regualtor and voltage converter. Made sure the lengths, widths and pad size/placements were correct by placing the physical parts on a printed version of our design. Had to adjust pad lengths by ~.2mm for most of the parts so that soldering will be easier in the future. <br><br>
 
-After all parts were created, grouping of all 'like' parts was done for the PCB layout. It is important to group 'like' parts together (ex: power, audio filtering, LED devices, etc.) so that routing is made easier. </p>
+After all parts were created, grouping of all 'like' parts was done for the PCB layout. It is important to group 'like' parts together (ex: power, audio filtering, LED devices, etc.) so that routing is made easier. 
+<br>
 
-    <p class="entry"><b>February 27, 2014 (2 hours)</b>:<br> Completed part placements on the PCB in Eagle. This proved to be rather difficult to try and minimize wire crossings. Also made sure that all 'like' parts were placed together, including the power circuitry, audio circuitry, LED circuitry, etc.</p>
+<a href="../images/spouliqu/Schematic.jpg">
+	<img src="../images/spouliqu/Schematic.jpg" alt="rpi" height="500px" width="500px">
+      </a>
 
-    <p class="entry"><b>February 28, 2014 (4 hours)</b>:<br> Continued to use traces to connect parts on the PCB. Made sure to use only 45 degree angles and not cross any wires. To avoid crossed wires, holes were used to trace on the bottom side of the PCB. <br><br>
+</p>
+
+    <p class="entry"><b>February 27, 2014 (2 hours)</b>:<br> Completed part placements on the PCB in Eagle. This proved to be rather difficult to try and minimize wire crossings. Also made sure that all 'like' parts were placed together, including the power circuitry, audio circuitry, LED circuitry, etc. </p>
+
+    <p class="entry"><b>February 28, 2014 (4 hours)</b>:<br> Continued to use traces to connect parts on the PCB. Made sure to use only 45 degree angles and not cross any wires. To avoid crossed wires, holes were used to trace on the bottom side of the PCB. 
+<br>
+
+<a href="../images/spouliqu/Schematic_layout_traces.jpg">
+	<img src="../images/spouliqu/Schematic_layout_traces.jpg" alt="rpi" height="500px" width="500px">
+      </a>
+
+
+<br><br>
     Used this time to also research a different approach to driving the motor. Instead of building a driving circuit, research into a motor driver chip was done. This would eliminate errors on the designing and selection of resistors and BJT's. The <a id="document_link" href="http://www.ti.com/lit/ds/symlink/l293d.pdf"> L293D Quadruple Half-H Driver </a> was found linked on the motor page on SparkFun. This driver works for a bipolar stepper motor, and can regulate motor direction and speed.</p>
 
     <p class="entry"><b>March 1, 2014 (3 hours)</b>:<br> During the first hour of this work time, updates to the team website were done. Homeworks were added in pdf format, as well as all datasheet and part documentation. It is important to have an updated website so that anyone viewing the webpage can be updated on the status of the Every1 DJ project. <br> <br>
