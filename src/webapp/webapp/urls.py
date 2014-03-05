@@ -4,6 +4,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^polls/', include('polls.urls', namespace="polls")),
+                       url(r'^songs/', include('songs.urls', namespace="songs")),
                        url(r'^admin/', include(admin.site.urls)),
                        )
