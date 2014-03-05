@@ -13,5 +13,6 @@
 <!-- let's make a button to poll tinysong API with a hardcoded search term -->
 <form action="{% url 'polls:searchSong'  %}" method="post">
 {% csrf_token %}
+<input type="text" name="title"/>
 <input type="submit" value="Search" />
 </form>
