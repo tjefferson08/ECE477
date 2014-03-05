@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'songs/style.css' %}" />
+{% if latest_song_list %}
+    <ul>
+    {% for poll in latest_song_list %}
+        <li><a href="{% url 'songs:detail' poll.id %}">{{ songs.question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No songs are available.</p>
+{% endif %}
+
+<!-- let's make a button to poll tinysong API with a hardcoded search term -->
+<form action="{% url 'polls:searchSong'  %}" method="post">
+{% csrf_token %}
+<input type="text" name="title"/>
+<input type="submit" value="Search" />
+</form>
