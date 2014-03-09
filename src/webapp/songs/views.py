@@ -50,8 +50,6 @@ def searchSong(request):
     tinysong_url = "http://www.tinysong.com/s/"
     api_params = { 'key':tinysong_api_key, 'format':'json', 'limit':10 }
     r = requests.get(tinysong_url + search_string.replace(' ', '+'), params=api_params)
-    print r.url
-    print r.text
-    print r.encoding
-    return render(request, 'songs/searchResults.html')
+    context = {'tiny_json':r.json()}
+    return render(request, 'songs/searchResults.html', context)
 #    return HttpResponse(r.text)
