@@ -3,6 +3,13 @@
 <ul>
   {% for song in tiny_json %}
   <li>
+    <form action="{% url 'songs:vote' song.SongID %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="title" value="{{song.SongName}}"/>
+      <input type="hidden" name="artist" value="{{song.ArtistName}}"/>
+      <input type="hidden" name="album" value="{{song.AlbumName}}"/>
+      <input type="submit" value="vote"/>
+    </form>
     <ul>
       <li>
 	{{ song.SongName }}

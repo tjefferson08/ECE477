@@ -23,18 +23,29 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Song
     template_name = 'songs/results.html'
-    def get_queryset(self):
-        return Song.objects.order_by('title')
+    context_object_name = "song"
 
-def vote(request, poll_id):
-    p = get_object_or_404(Song, pk=poll_id)
-    p.votes += 1
+def vote(request,song_id):
+    print "song id ", song_id
+    print "post data:"
+    print request.POST['title']
+    print request.POST['artist']
+    print request.POST['album']
+    try:
+        p = Song.objects.get(pk=song_id)
+    except Song.DoesNotExist:
+        p = Song(id_code=song_id,
+                 title=request.POST['title'],
+                 artist=request.POST['artist'],
+                 album=request.POST['album'],
+                 votes=0)
+    p.votes += 1;
     p.save()
 
     # Always return an HttpResponseRedirect after successfully dealing
     # with POST data. This prevents data from being posted twice if a
     # user hits the Back button.
-    return HttpResponseRedirect(reverse('songs:results', args=(p.id,)))
+    return HttpResponseRedirect(reverse('songs:results', args=(p.id_code,)))
 
 # we call this function by a button press on index.html
 def searchSong(request):
@@ -52,4 +63,4 @@ def searchSong(request):
     r = requests.get(tinysong_url + search_string.replace(' ', '+'), params=api_params)
     context = {'tiny_json':r.json()}
     return render(request, 'songs/searchResults.html', context)
-#    return HttpResponse(r.text)
+

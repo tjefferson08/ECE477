@@ -3,7 +3,7 @@
 {% if latest_song_list %}
     <ul>
     {% for song in latest_song_list %}
-        <li><a href="{% url 'songs:detail' song.id %}">{{ song.question }}</a></li>
+        <li>song.title</li>
     {% endfor %}
     </ul>
 {% else %}

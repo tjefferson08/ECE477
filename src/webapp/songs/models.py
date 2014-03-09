@@ -4,7 +4,7 @@ import datetime
 
 # Create your models here.
 class Song(models.Model):
-    id_code = models.IntegerField()
+    id_code = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
     album = models.CharField(max_length=200)
