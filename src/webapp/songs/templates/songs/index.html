@@ -3,7 +3,7 @@
 {% if latest_song_list %}
     <ul>
     {% for song in latest_song_list %}
-        <li>song.title</li>
+        <li>{{song.title}} : {{ song.votes }} votes</li>
     {% endfor %}
     </ul>
 {% else %}

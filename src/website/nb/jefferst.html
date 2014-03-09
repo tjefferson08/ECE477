@@ -361,6 +361,9 @@ n<html>
       i need more data to pass from the vote button - title, artist, etc
       two main ways - a hidden field in the form or a "session" variable, I'll choose hidden fields
       - got the data through, but something gets lost in the middle, only the first title word goes through
+      - GOT IT. code was fine for a while, but I needed to flush the DB to get the old single-word entries out
+       since I already had code to only put new DB records in if ID wasn't already in DB (didn't overwrite the
+       old entry on new vote, which is actually desired behavior)
     </p>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b>
