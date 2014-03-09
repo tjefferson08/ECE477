@@ -323,7 +323,6 @@ n<html>
     <p class="entry"><b>March 2, 2014 (1.5 hours)</b>:<br>
       Design review slides and presentation prep
     </p>
-    
 
     <p class="entry"><b>March 3, 2014 (3 hours)</b>:<br>
       filled rx buffer, but now reading and writing at the same time is hard
@@ -352,7 +351,7 @@ n<html>
       - they're real damn bright
     </p>
 
-    <p class="entry"><b>March 7, 2014 (2 hours)</b>:<br>
+    <p class="entry"><b>March 8, 2014 (3 hours)</b>:<br>
       Webapp - got results meaningfully displayed, added dead vote button, solution was
       passing a context variable to be rendered in the template, the exact variable from which we
       will build a DB record
@@ -367,13 +366,37 @@ n<html>
     </p>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b>
-      <u>Accomplishments</u>: <br>
+      <u>Accomplishments</u>: 
+      Webapp's most important data transfer was designed<br>
+      Prepared for and delivered design review presentation<br>
+      SPI bidirectional<br>
+      Verified sufficient current and brightness for LEDs<br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
     <h3 id="week09">Week 09</h3>    
-
+    <p class="entry"><b>March 9, 2014 (2 hours)</b>:<br>
+      - changed index landing page to sort on votes rather than title
+      - getting a little tricky to navigate the app, so I added a home link on results page
+      - current use case is look at top 5 (let's move to top ten), search, vote, view results, then go back to home
+      - need to add vote option on front page
+      - used pluralize keyword on index page to auto-swap between vote and votes
+      - added buttons homepage, need to add vote -1 functionality, right now they both do +1 and it looks horrendous
+      - moving stuff around, putting in a table for alignment/spacing on front page
+      - some super basic css is in there, but I need to apply it for relevant items, get some IDs in there to
+        differentiate between li tags on different pages
+      - something to keep in mind - don't try to print out POST data that's not there (maybe I should divide up vote fcn)
+      - some initial testing and monkey clicking shows that I should probably account for songs with the same titles, maybe
+      simply by providing more information on the home page
+      - timeout for vote spamming?
+      - added vote down functionality, with another hidden POST element that pipes to vote() function/view
+      - error when switching WIFI networks on my virtual machine. watch out for that in the future
+      - tested voting, can't go negative, looks good for now
+      - now i got a response from ane external request by implementing a simple headless view, but I don't
+        know exactly what text will be most useful here, it has to be straight string data
+      - right now, I'll just leave it as ISO string data rep of the song title
+    </p>
     <p class="summary"><b>WEEK 09 SUMMARY</b>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
