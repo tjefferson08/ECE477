@@ -376,7 +376,7 @@ n<html>
     </p>
 
     <h3 id="week09">Week 09</h3>    
-    <p class="entry"><b>March 9, 2014 (2 hours)</b>:<br>
+    <p class="entry"><b>March 9, 2014 (6 hours)</b>:<br>
       - changed index landing page to sort on votes rather than title
       - getting a little tricky to navigate the app, so I added a home link on results page
       - current use case is look at top 5 (let's move to top ten), search, vote, view results, then go back to home
@@ -399,6 +399,13 @@ n<html>
       - researched deploying the webapp on the Rpi, found two good candidates 
       <a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?t=7208&p=403771">here</a> and
       <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">here</a>
+      - more today - LCD stuff with matt. we got rid of some erroneous parallel setup command sequences and stuck to 
+        purely serial commands, now we're getting more meaningful results, got a checkerboard to display, but it 
+        looks like we're manipulating memory really manually, not exactly what we want. 
+      - researched and selected an 8x8 bit font to use in SPI LCD character transmission (yes, every letter)
+      - we did A and printed it AAAAAAAH - picture
+      - problem was not enough current and never resetting page and column positions after ram clear/checkerboard
+      - bug in initial vote now
     </p>
     <p class="summary"><b>WEEK 09 SUMMARY</b>
       <u>Accomplishments</u>: <br>
