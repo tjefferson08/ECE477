@@ -1,0 +1,9 @@
+python/*.pyc
+python/*.log
+python/*.ini
+dist/build/*
+dist/files/*
+dist/debian/*.deb
+dist/debian/data/usr/lib/groove-dl/*.py
+dist/groove.py
+dist/gui.py
