@@ -212,7 +212,16 @@ Added a lot of parts to the DigiKey cart to order after design review evaluation
       </a>
 </p>
 
-    <p class="entry"><b>March 8, 2014 (4 hours)</b>:<br> Started looking into SPI on the LCD. </p>
+    <p class="entry"><b>March 8, 2014 (4 hours)</b>:<br> Started looking into SPI on the LCD. A helper file is given by the manufacturer, but no explanation of the file is given. There is also not much documentation regarding the LCD. This made it extremely difficult to debug and figure out how to setup the LCD. Once all the functions were added to the project, the initialization sequence given in the spec sheet was written (as seen below). 
+
+<br> The LCD was wired to the microcontroller to begin testing. When run the first couple of times nothing on the LCD lit up or was displayed. To debug an oscilloscope was used to make sure all the signals connecting to the LCD were set correctly. This ended our debugging for the day. 
+
+<br><br>
+<a href="../images/spouliqu/LCDCode.jpg">
+	<img src="../images/spouliqu/LCDCode.jpg" alt="LCDCode" height="500px" width="500px">
+      </a>
+
+</p>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b><br>
                        <u>Accomplishments</u>: Got a lot of great feedback from the Design Review presentation. Used this feedback to make changes to the PCB. Hopefully these will be the lasts of our revisions before final submission.<br>
