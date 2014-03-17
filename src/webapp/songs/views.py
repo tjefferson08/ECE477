@@ -78,6 +78,10 @@ def searchSong(request):
     return render(request, 'songs/searchResults.html', context)
 
 # get a req for next song(s), reply with top 5 song IDs
+# request will come from rpi
 def provideNextSong(request): 
-    return HttpResponse(Song.objects.order_by('-votes')[0], content_type = "text/plain")
+    codes = []
+    for song in Song.objects.order_by('-votes')[:5]: # we build a list of tinysong IDs for top 5
+        codes += [str(song.id_code)]
+    return HttpResponse(','.join(codes) , content_type = "text/plain")
     

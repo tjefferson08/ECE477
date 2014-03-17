@@ -213,7 +213,8 @@ if __name__ == "__main__":
     for curID in inputtedIDs:
         songid=eval(curID)-1
         addSongsToQueue(s[songid], queueID) #Add the song to the queue
-        print "Retrieving stream key.."
+        print "Retrieving stream key for song with id: ", s[songid]["SongID"]
+        
         stream = getStreamKeyFromSongIDs(s[songid]["SongID"]) #Get the StreamKey for the selected song
         for k,v in stream.iteritems():
             stream=v
