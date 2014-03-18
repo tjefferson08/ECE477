@@ -424,7 +424,8 @@ n<html>
       - could potentially deploy using google's app engine, but we might need to work aroung the python requests lib (won't be installed)
       - the IDs from groove.py and tinysong appear to line up, so I can probably skip the user portion of groove.py and just use the back end
       - modified the django 'api' to respond with the top 5 current songIds, comma delimited
-      - 
+      - added a small layer of security, a GET data check in order to request next song
+      - added a bag of sorts to eliminate re-downloading of songs by groove.py, working well so far
     </p>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b>
