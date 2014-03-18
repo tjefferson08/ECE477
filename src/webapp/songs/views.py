@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from songs.models import Song
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
@@ -80,6 +80,11 @@ def searchSong(request):
 # get a req for next song(s), reply with top 5 song IDs
 # request will come from rpi
 def provideNextSong(request): 
+    if 'key' in request.GET:
+        if request.GET['key'] != "team2":
+            raise Http404
+    else:
+        raise Http404
     codes = []
     for song in Song.objects.order_by('-votes')[:5]: # we build a list of tinysong IDs for top 5
         codes += [str(song.id_code)]
