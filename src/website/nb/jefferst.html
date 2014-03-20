@@ -408,8 +408,16 @@ n<html>
       - bug in initial vote now
     </p>
 
-    <p class="entry"><b>March 9, 2014 (6 hours)</b>:<br>
+    <p class="entry"><b>March 12, 2014 (1.5 hours)</b>:<br>
       I forget what day, but I found groove.py and it's very helpful, although we're violating GS TOS, probs
+      Comm. with Brown from prev year (mention this or no?)
+    </p>
+
+    <p class="entry"><b>March 21, 2014 (3 hours)</b>:<br>
+      showed mostly-functional webapp to group members, good feedback/reception
+      still needs CSS to beautify, but I'm still adding functionality
+      briefly assisted in getting PCB finalized and checked off, but mostly Matt and Court
+
     </p>
 
     <p class="summary"><b>WEEK 09 SUMMARY</b>
@@ -427,10 +435,22 @@ n<html>
       - added a small layer of security, a GET data check in order to request next song
       - added a bag of sorts to eliminate re-downloading of songs by groove.py, working well so far
     </p>
-    <p class="entry"><b>March 18, 2014 (3 hours)</b>:<br>
+
+    <p class="entry"><b>March 19, 2014 (1.5 hours)</b>:<br>
       - researched deployment strategies, Google app engine looks like a good one, so I created a project to play with
       - google tutorial <a href="https://developers.google.com/appengine/docs/python/cloud-sql/django">here</a>
+      - google's SQL instance is NOT FREE, so we have two evident other options: 
+           1) work with django-nonrel to sit totally on top of google app engine, less integration, more project setup
+           <a href="django-nonrel.org">nonrel</a>
+           2) try to get django and nginx and IP forwarding figured out on the rpi itself (slightly more favorable)
+	   <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a>
+    </p>
+
+    <p class="entry"><b>March 20, 2014 ( hours)</b>:<br>
+      - modifying groove.py to be much more autonomous and headless, need to add playback functionality, maybe with mpg123 unix lib
+      - tweaked requestNext api call to include 'pull' arg (GET) depending on whether we immediately need a new song or not
       - 
+
     </p>
     <p class="summary"><b>WEEK 10 SUMMARY</b>
       <u>Accomplishments</u>: <br>

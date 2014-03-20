@@ -80,13 +80,24 @@ def searchSong(request):
 # get a req for next song(s), reply with top 5 song IDs
 # request will come from rpi
 def provideNextSong(request): 
+
+    # a simple layer of authentication, need key=team2 in GET
     if 'key' in request.GET:
         if request.GET['key'] != "team2":
             raise Http404
     else:
         raise Http404
+
+    # assemble top 5 song IDs (need string data)
     codes = []
     for song in Song.objects.order_by('-votes')[:5]: # we build a list of tinysong IDs for top 5
         codes += [str(song.id_code)]
+
+    # if we're doing a 'pull' (meaning we are about to play the song)
+    # then kill votes down to 0 for top song
+    if 'pull' in request.GET:
+        if request.GET['pull'] == "True":
+            Song.objects.order_by('-votes')[0].votes = 0
+
     return HttpResponse(','.join(codes) , content_type = "text/plain")
     

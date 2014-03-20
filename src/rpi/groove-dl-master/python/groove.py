@@ -13,10 +13,8 @@ import threading
 import requests
 if sys.version_info[1] >= 6:  import json
 else: import simplejson as json
-
 _useragent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5"
 _token = None
-
 webappURL = "http://127.0.0.1:8000/songs/requestNext/"
 URL = "grooveshark.com" #The base URL of Grooveshark
 htmlclient = ('htmlshark', '20130520', 'nuggetsOfBaller', {"User-Agent":_useragent, "Content-Type":"application/json", "Accept-Encoding":"gzip"}) #Contains all the information posted with the htmlshark client
@@ -38,9 +36,7 @@ h["uuid"] = str.upper(str(uuid.uuid4()))
 
 #The string that is shown when the program loads
 entrystring = \
-"""A Grooveshark song downloader in python
-by George Stephanos <gaf.stephanos@gmail.com>
-"""
+"""Welcome"""
 
 #Generate a token from the method and the secret string (which changes once in a while)
 def prepToken(method, secret):
@@ -186,6 +182,21 @@ def markSongDownloadedEx(streamServer, songID, streamKey):
     conn.request("POST", "/more.php?" + p["method"], json.JSONEncoder().encode(p), jsqueue[3])
     return json.JSONDecoder().decode(gzip.GzipFile(fileobj=(StringIO.StringIO(conn.getresponse().read()))).read())["result"]
 
+# we'll call this function both for dl/buffering purposes
+# as well as for a "next song" request
+def getTopFive(pull="False"):
+
+    # let's do a request to the webapp's 'API'
+    try:
+        r = requests.get(webappURL, params={'key':'team2', 'pull':pull})
+    except:
+        print "Error: unable to perform API request (exception occurred)"
+        return []
+    if r.status_code != 200:
+        print "Error: communication with webapp API was unsuccessful"
+        return []
+    return r.text.split(',')
+
 if __name__ == "__main__":
     getToken() #Get a static token
 
@@ -197,16 +208,9 @@ if __name__ == "__main__":
         if mp3.endswith(".mp3"):
             downloads[mp3.split('.')[0]] = True
 
-    # let's do a request to the webapp's 'API'
-    r = requests.get(webappURL, params={'key':'team2'})
-    if r.status_code != 200:
-        print "Error: communication with webapp API was unsuccessful"
-        exit()
-    songIdList = r.text.split(',')
-
+    songIdList = getTopFive()
     queueID = getQueueID()
     for currId in songIdList:
-        print downloads
         if currId in downloads:
             continue
         addSongsToQueue(currId, queueID) #Add the song to the queue
