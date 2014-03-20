@@ -120,12 +120,6 @@ def getStreamKeyFromSongIDs(id):
 #Add a song to the browser queue, used to imitate a browser
 def addSongsToQueue(songId, songQueueID, source = "user"):    
     queueObj = {}
-
-# used to pass in a song object, now we'll try just a songID
-#    queueObj["songID"] = songObj["SongID"]
-# trying to use JUST the songID, but we can easily change back and add this feature if we want    
-#    queueObj["artistID"] = songObj["ArtistID"]
-    
     queueObj["songID"] = songId
     queueObj["source"] = source
     queueObj["songQueueSongID"] = 1
@@ -193,27 +187,7 @@ def markSongDownloadedEx(streamServer, songID, streamKey):
     return json.JSONDecoder().decode(gzip.GzipFile(fileobj=(StringIO.StringIO(conn.getresponse().read()))).read())["result"]
 
 if __name__ == "__main__":
-    #if len(sys.argv) < 2: #Check if we were passed any parameters
-     #   import gui
-      #  gui.main() #Open the gui
-       # exit() #Close the command line
-#    print entrystring #Print the welcome message
-#    print "Initializing..."
     getToken() #Get a static token
-#    i = ' '.join(sys.argv[1:]) #Get the search parameter
-#    i = raw_input("Search: ") #Same as above, if you uncomment this, and comment the first 4 lines this can be run entirely from the command line.
-#    print "Searching for '%s'..." % i
-#    m = 0
-#    s = getResultsFromSearch(i) #Get the result from the search
-#    l = [('%s: "%s" by "%s" (%s)' % (str(m+1), l["SongName"], l["ArtistName"], l["AlbumName"])) for m,l in enumerate(s[:10])] #Iterate over the 10 first returned items, and produce descriptive strings.
-#    if l == []: #If the result was empty print a message and exit
-#        print "No results found"
-#        exit()
-#    else:
-#        print '\n'.join(l) #Print the results
-#    songid = raw_input("Enter the Song IDs you wish to download (separated with commas) or (q) to exit: ")
-#    if songid == "" or songid == "q": exit() #Exit if choice is empty or q
-#    inputtedIDs=songid.split(',')
 
     # init an empty BAG so we don't re-download anything
     downloads = {}
@@ -230,17 +204,14 @@ if __name__ == "__main__":
         exit()
     songIdList = r.text.split(',')
 
-    #songid = eval(songid)-1 #Turn it into an int and subtract one to fit it into the list index
     queueID = getQueueID()
     for currId in songIdList:
-#        songid=eval(currId)-1
         print downloads
         if currId in downloads:
             continue
         addSongsToQueue(currId, queueID) #Add the song to the queue
 
         print "Retrieving stream key for song with id: ", currId
-#        stream = getStreamKeyFromSongIDs(s[songid]["SongID"]) #Get the StreamKey for the selected song
         stream = getStreamKeyFromSongIDs(currId) #Get the StreamKey for the selected song
 
         for k,v in stream.iteritems():
@@ -248,11 +219,8 @@ if __name__ == "__main__":
         if stream == []:
             print "Failed"
             exit()
-#        cmd = 'wget --post-data=streamKey=%s -O "%s - %s.mp3" "http://%s/stream.php"' % (stream["streamKey"], s[songid]["ArtistName"], s[songid]["SongName"], stream["ip"]) #Run wget to download the song
         cmd = 'wget --post-data=streamKey=%s -O "%s.mp3" "http://%s/stream.php"' % (stream["streamKey"], currId, stream["ip"]) #Run wget to download the song
         p = subprocess.Popen(cmd, shell=True)
-
-#        markTimer = threading.Timer(30 + random.randint(0,5), markStreamKeyOver30Seconds, [s[songid]["SongID"], str(queueID), stream["ip"], stream["streamKey"]]) #Starts a timer that reports the song as being played for over 30-35 seconds. May not be needed.
 
         #Starts a timer that reports the song as being played for over 30-35 seconds. May not be needed.
         markTimer = threading.Timer(30 + random.randint(0,5), markStreamKeyOver30Seconds, [currId, str(queueID), stream["ip"], stream["streamKey"]]) 
@@ -260,13 +228,11 @@ if __name__ == "__main__":
         try:
             p.wait() #Wait for wget to finish
         except KeyboardInterrupt: #If we are interrupted by the user
-#            os.remove('%s - %s.mp3' % (s[songid]["ArtistName"], s[songid]["SongName"])) #Delete the song
             os.remove('%s.mp3' % (currId)) #Delete the song
             print "\nDownload cancelled. File deleted."
         markTimer.cancel()
-        print "Marking song as completed"
 
-#        markSongDownloadedEx(stream["ip"], s[songid]["SongID"], stream["streamKey"]) #This is the important part, hopefully this will stop grooveshark from banning us.
+        print "Marking song as completed"
         markSongDownloadedEx(stream["ip"], currId, stream["streamKey"]) #This is the important part, hopefully this will stop grooveshark from banning us.
 
         # now we have the file, so don't re-download
