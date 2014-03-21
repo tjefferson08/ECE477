@@ -96,7 +96,7 @@ def provideNextSong(request):
     # if we're doing a 'pull' (meaning we are about to play the song)
     # then kill votes down to 0 for top song
     if 'pull' in request.GET:
-        if request.GET['pull'] == "True":
+        if request.GET['pull'] == "True": # this is probably a little bit bad practice (GET doing modification)
             s = Song.objects.order_by('-votes')[0]
             print "resetting votes for song ", s.title
             s.votes = 0
