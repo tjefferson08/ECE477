@@ -176,8 +176,114 @@ void sendLetter(char letter){
     charBUF[3] = 0x09;
     charBUF[4] = 0x06;
     break;
+  case 'Q':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'R':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'S':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'P':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'T':
+    charBUF[0] = 0x40;
+    charBUF[1] = 0x40;
+    charBUF[2] = 0x7f;
+    charBUF[3] = 0x40;
+    charBUF[4] = 0x40;
+    break;
+  case 'U':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'V':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'W':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'X':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'Y':
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case 'Z':
+    charBUF[0] = 0x;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case ',': // ????
+    charBUF[0] = 0x7f;
+    charBUF[1] = 0x09;
+    charBUF[2] = 0x09;
+    charBUF[3] = 0x09;
+    charBUF[4] = 0x06;
+    break;
+  case '!':
+    charBUF[0] = 0x00;
+    charBUF[1] = 0x00;
+    charBUF[2] = 0x7d;
+    charBUF[3] = 0x00;
+    charBUF[4] = 0x00;
+    break;
+  case '-':
+    charBUF[0] = 0x00;
+    charBUF[1] = 0x10;
+    charBUF[2] = 0x10;
+    charBUF[3] = 0x10;
+    charBUF[4] = 0x00;
+    break;
+  case ' ':
+    charBUF[0] = 0x00;
+    charBUF[1] = 0x00;
+    charBUF[2] = 0x00;
+    charBUF[3] = 0x00;
+    charBUF[4] = 0x00;
+    break;
 
     // still need qrstuvqxyz
+
   // i think this will be a square?
   default:
     charBUF[0] = 0x7f;
