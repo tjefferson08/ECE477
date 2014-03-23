@@ -149,28 +149,184 @@
       The focus of today's work session was once again to communicate between the microcontroller and the Raspberry Pi using SPI. 
       After confirming that the Raspberry Pi must be the master in the SPI master slave interface, a successful array of data was sent
       from the raspberry pi to the microcontroller and stored in a buffer. The signals were viewed using a logic analyzer to confirm the correct
-      clock rate (62.5MHz) and the data being sent. 
+      clock rate (62.5MHz) and the data being sent. <br>
+      The setup that was used to test SPI communications:
+      <br>
+      <a href="../images/jefferst/2014-02-25-serial-comm-ckt.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-comm-ckt.jpg" alt="serial comm" height="200px" width="200px">
+      </a> <br>      
+      
 
-    <p class="summary"><b>WEEK 07 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
-                       
+  <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br>
+      Since the Rpi SPI was not operating correctly, a quick search was performed for alternatives for SPI
+      driving code. The python example was abandoned, and a C programming example was discovered (linked within) from the following
+      blog <a href="http://www.brianhensley.net/2012/07/getting-spi-working-on-raspberry-pi.html">tutorial</a>.<br>
+      At this point, Rpi SPI was scoped alone; SUCCESS! See the code and initial results here:<br>
+      <a href="../images/jefferst/2014-02-25-serial-rpi.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-rpi.jpg" alt="rpi" height="200px" width="200px">
+      </a> 
+      <a href="../images/jefferst/2014-02-25-rpi-serial-code.jpg">
+	<img src="../images/jefferst/2014-02-25-rpi-serial-code.jpg" alt="code" height="200px" width="200px">
+      </a> <br>
+      Some additional code was authored to display (on the microcontroller) multi-byte transmissions from the Rpi.
+      In addition, clock frequencies were matched to facilitate what will eventually be bidirectional communication.
+      See evidence of frequency (62.5KHz) matching here:<br>
+      <a href="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg">
+	<img src="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg" alt="code" height="200px" width="200px">
+      </a> <br>
+      This experiment was successful! (Multiple transmissions, one way: Rpi -> micro)
+      It was briefly noted that since Rpi SPI peripherals are all master-mode hardware, a switching
+      protocol must be developed in software on the micro side so that it may
+      operate in Master or Slave mode as appropriate to each SPI peripheral (Rpi, LCD).
+    </p>
+
+    <p class="entry"><b>February 26, 2014 (4 hours)</b>:<br>
+      Mandatory Lab was held. Descussion centered around streaming API selection and different options. Tinysong
+      (the current metadata API) returns a link to Grooveshark flash music player, but that will not suffice for 
+      Rpi streaming due to system incompatibilites. Grooveshark's streaming API would be the best option, but
+      it is unclear whether API key access will be granted. Should the Grooveshark API prove inaccessible, 
+      two main alternatives methods were selected, in order of team preference:<br>
+      - Anonymizing Grooveshark API calls with TOR to allow for previously issued keys to be reused<br>
+      - Downloading youtube videos, ripping out audio on the fly, and playing from disk
+    </p>
+
+    <p class="entry"><b>February 27, 2014 (6 hours)</b>:<br>
+      Upon inspection of the existing PCB layout, it was determined that all of the different voltages (3.3V, 5V, 12V) were connected together in the schematic and the PCB board. 
+      This turned out to be a huge fix since nearly every power and ground trace need to be re-routed. The trace widths were changed for all power and 
+      ground signals since previously they had all been set to 12 mil which is much to small for the amount of current required. It was discovered that 
+      we had no connector for the power supply so the appropriate 3.5mm female connector was found in eagle and added to the layout. <br>
+      The PCB board at the conclusion of the days work: <br>
+      <a href="../images/mmcmunig/PCB_2_27.JPG">
+	<img src="../images/mmcmunig/PCB_2_27.JPG" alt="block" height="200px" width="200px">      
+    </p>
+
+    <p class="entry"><b>February 28, 2014 (8 hours)</b>:<br>
+      Today's session resulted in the completion of the initial PCB layout and the submission of homework 6 (PCB Layout).
+      From the existing layout, many changes were made. Among the highlights are:<br>
+      - Switching from BJT motor control circuitry to the <a href="http://www.ti.com/lit/ds/symlink/l293d.pdf">L239D Motor Driver</a> IC<br>
+      - Reassigning several incorrect pin assignments from the microcontroller to the LED driver<br>
+      - Changing to a 6-pin RJ-11 connector and routing programming pins correctly<br>
+      - Routing power and ground to microcontoller bypass capacitors<br>
+      - Creating all power and ground planes<br>
+      The report for homework #6 was completed in parallel to the PCB layout activities.
+      See a first-revision PCB layout here:<br>
+      <a href="../images/jefferst/2014-03-01-PCB-layout.png">
+	<img src="../images/jefferst/2014-03-01-PCB-layout.png" alt="block" height="200px" width="200px">
+      </a> <br>
+    </p>
+
+    <p class="entry"><b>March 1, 2014 (1 hours)</b>:<br>
+      A brief team meeting was held today to divide Design Review presentation subtasks.
+    </p>
+
+    <p class="summary"><b>WEEK 07 SUMMARY</b>
+      <u>Accomplishments</u>: Homework 6 - PCB Layout<br>
+      Meaningful communication one-way on SPI<br>
+      PCB Layout<br>
+      <u>Weekly Work Total</u>: 29 hours<br> 34.5
+      <u>Project Work Total</u>: 63.5 hours<br>
+    </p>
+
+    <h3 id="week08">Week 08</h3>    
+
+    <p class="entry"><b>March 2, 2014 (1.5 hours)</b>:<br>
+      Design review slides and presentation prep
+    </p>
+    
+
+    <p class="entry"><b>March 3, 2014 (7 hours)</b>:<br>
+      filled rx buffer, but now reading and writing at the same time is hard
+      concurrency of SPI and streaming/web code will be an issue
+      successfully have bidirectional SPI, now trying to get meaningful operation (simulate real spi messages)
+      no way to distinguish bt Rx and Tx at interrupt level
+      presenation practice
+      reworked schematic
+      - put 0 ohm res bt agnd and gnd
+      - added series resistors on LED driver
+      - RJ-11 con - used MPlab reference for pin connections
+      - sought replacement for power supply - current requirements
+      
+      4 hours
+      Made part for power supply, added to pcb board
+      routed all new signals/parts
+      increased trace lengths for power and ground. 
+    </p>
+
+    <p class="entry"><b>March 4, 2014 (2 hours)</b>:<br>
+      Design review practice and team meeting to discuss feedback from course staff and peers. 
+    </p>
+
+    <p class="entry"><b>March 5, 2014 (3 hours)</b>:<br>
+      Updated PCB board with parts and connections that changed as a result of the design review. The ground plane that had
+      been created was not named appropriately and therefore was not actually connected to ground. This was fixed as well as adding 
+      rank to different planes in order to avoid overlapping. 
+    </p>
+    
+    <p class="entry"><b>March 6, 2014 (3 hours)</b>:<br>
+      Power components continue to change as we find new requirements that had previously been overlooked. The footprint of the bulk capacitors were
+      much too small
+      Audio drivers were installed on the Raspberry Pi. A few settings such as output volume and output device were modified. The audio originally
+      is set to output from HDMI and this was changed to analog output. A wav file was downloaded and successfully played on powered speakers.
+      When the oscilloscope was set up to view the output on headphone wires nothing but noise was heard. 
+    </p>
+                      
+    <p class="entry"><b>March 8, 2014 (1 hours)</b>:<br>
+      Went in with Courtney to discuss a few concerns with Joe. The audio amplifier design was modified in order to regulate the negative feedback.
+      The footprint of a few power components (capacitor and inductor) were determined to be too small and will need to be changed.
+    </p>  
+
+    <p class="entry"><b>March 8, 2014 (2.5 hours)</b>:<br>
+      Set up test circuit for LCD testing. Online documentation on the NHD-2.23-12832UCB3 is limited but some source
+      code was found that provided the initialization sequence necessary to turn the LCD on and send data. 
+    </p>  
     
     <h3 id="week08">Week 08</h3>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Weekly Work Total</u>: 19 hours<br>
+                       <u>Project Work Total</u>: 82.5 hours</p>
 
 
     <h3 id="week09">Week 09</h3>
 
+    <p class="entry"><b>March 9, 2014 (5 hours)</b>:<br>
+      Worked on getting LCD to turn on and display anything. Was able to briefly get some random pixels to light
+      up but even this stopped working. Each command was analyzed using the oscilloscope and appear to be sent correctly
+      and in the right order. Later in the day the LCD was successfully initialized and data was displayed.
+    </p>
+    
+    <p class="entry"><b>March 11, 2014 (5 hours)</b>:<br>
+      The schematic was updated with the final power and audio circuitry components. The component changes included
+      using one stepper voltage regulator for 12V to 5V and one LDO for 5V to 3.3V. All of the bulk capacitors had been
+      changed to correctly match the part footprint. The diodes were changed to surface mount. <br>
+      Once these parts had been finalized on the schematic the board routing began. The layout of the voltage regulator
+      followed the data sheet recommendation as closely as possible. The audio circuitry was kept compact and separate
+      from the other components due to it having and anlog ground. The trace widths for power and ground were kept wide to 
+      avoid overheating with the high current requirements. Vias were added to connect the ground plans on the top and 
+      bottom. 
+    </p>
+
+    <p class="entry"><b>March 12, 2014 (2 hours)</b>:<br>
+      During lab the current status of the PCB board and schematic were discussed with the course staff. Overall the results
+      were positive. A few small changes were made including removing acute angles and adding a hole for a stabilizing piece
+      on the underside of the dc power jack.  
+    </p>
+    
+    <p class="entry"><b>March 13, 2014 (1 hours)</b>:<br>
+      Submitted board to the online check. There was an issue of a hole being too close to the ground plane. This issue
+      was resolved and resubmitted through the online checker.   
+    </p>
+    
+    <p class="entry"><b>March 14, 2014 (0.5 hours)</b>:<br>
+      Went to the lab to finish the required checkoffs before submitting the PCB design. This included sending the course
+      staff a .zip file of all the pcb files and board dimensions.
+    </p>
+    
     <p class="summary"><b>WEEK 09 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Weekly Work Total</u>: 13.5 hours<br>
+                       <u>Project Work Total</u>: 96  hours</p>
                        
                        
     <h3 id="week10">Week 10</h3>
