@@ -157,35 +157,57 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <p class="entry"><b>February 27, 2014 (4 hours)</b>:<br>Kept going with PCB layout and traces. Had to keep analog and digital ground seperate from each other until combined at the very end for the power supply. Followed Sparkfun's library for specifications on the PCB layout, so they are able to design it at the fabrcication shop correctly. Also, I changed the MAX856CSA to a LM1117 since the MAX856CSA was a step-up regulator when we needed a low dropout regulator which was the LM 1117.<br>
         <img src="../images/claubach/LM1117.JPG" alt="screenshot1" height="500px" width="500px"><br><br></p>
+        
+    <p class="entry"><b>March 1, 2014 (1 hour)</b>:Met briefly to break up powerpoint slides up to figure out what each person was going to talk about.<br>.</p>
     
     <p class="summary"><b>WEEK 07 SUMMARY</b><br>
                        <u>Accomplishments</u>: Changed parts around on the PCB board including dimensions of the LED driver, Microcontroller, and both the voltage converters. Circuitry was improved and looked over by team. Started PCB layout of the traces. <br>
-                       <u>Weekly Work Total</u>:  12 hours<br>
-                       <u>Project Work Total</u>: 61 hours</p>
+                       <u>Weekly Work Total</u>:  13 hours<br>
+                       <u>Project Work Total</u>: 62 hours</p>
                        
     
     <h3 id="week08">Week 08</h3>
+    
+    <p class="entry"><b>March 2, 2014 (2 hour)</b>:Started building the slides for the presentation. Broke up the presentation even more. I was in charge of talking about the mechanical design and the schematic. <br>.</p>
+    
+    <p class="entry"><b>March 3, 2014 (2 hour)</b>: Finished building the slides for the presentation. Made a couple changes to our schematic including changing a 0 ohm resistor to connect gnd and agnd together because those have to stay seperate until the very end. <br>.</p>
+    
+    <p class="entry"><b>March 4, 2014 (4 hour)</b>: We practiced our design review together. Made a couple changes to our powerpoint because we were missing key points. After design review, we corrected a few things including adding a resistor to the heartbeat LED, made mounting holes on PCB board, fixed board lines so they were straight, and changed the inductor and capacitor so they would match the parts we had in stock.<br>.</p>
+    
+    <p class="entry"><b>March 6, 2014 (2 hour)</b>: Started researching into voltage regulators for power circuit. Currently our power circuit was not going to work since we need to output of at least 3 A in order for the LEDs to work and the current voltage regulators only outputed 1.5 A.<br>.</p>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: Succesful presentated our progress at design review and started to fix the feedback we received. <br>
+                       <u>Weekly Work Total</u>:  10 hours<br>
+                       <u>Project Work Total</u>: 72 hours</p>
 
 
     <h3 id="week09">Week 09</h3>
+    
+    <p class="entry"><b>March 10, 2014 (5 hour)</b>: Discussed the need for logic level translators. This is because the LED driver runs on 5V, but we needed a 3.3V logic supply. After thinking about our options, we realized that we could sink the LEDs and have the supply voltage of 5 V to LEDs and 3.3V to LEd driver so that the logic would work and also that we would only have to use 1 switch mode regulator to power enough current to the system. We then thought that the motor would need a voltage regulator because of the needed logic voltage and ultimately we decided that we would not need one because the voltage we were going to supply would allow the motor to realize if it was running high or low. Ultimately, the power circuit was changed. We used a switch mode regualtor of a LM2596s from 12V to 5V to maintain the current needed to power the LEDs. Because we changed that the LEDs were going to be powered at 5V not 3.3V, we could use a LM1117 to drop the voltage from 5V to 3.3V which is recommended because many problems occur with a switch mode regualtor.  <br>.</p>
+    
+    <p class="entry"><b>March 11, 2014 (7 hour)</b>: Met with Meyer and we discussed various things with the schematic. The audio circuit needed to be changed since I had two envelope detectors, only one was needed. Since we did not have all the parts the test it, a 10K potentiometer was added just in case we need it to help us to make the audio circuit to work. Even thought the motor driver would work with the logic voltage of 3.3V, a voltage translator from 3.3V to 5V was included to be safe. For the LEDs, the schematic does not need to change, but the anodes of the LEDs will connect to power and as for the LED driver when you drive it low LEDs will turn off. For the LM 2596s, the capactiors and inductors need to be exactly what the data sheet says and that proved to be difficult since some of the parts that fit it would not be in stock at the store. But it was ultimately figured out and the schematic was finished.<br>.</p>
+    
+    <p class="entry"><b>March 12, 2014 (1 hour)</b>: Met as a team to make sure the schematic looked good and if anything else needed to change, but nothing was needed besides an inductor had to change because it was not in stock online.<br>.</p>
+    
+    <p class="entry"><b>March 13, 2014 (3 hour)</b>: Some more parts came in and checked that with the PCB print out. Some parts needed to change to fit, but for the most part everything fit. A bill of materials was printed out and all items were collected from parts store and if they were not in parts store they were ordered, so all parts should be here besides the 3D part. <br>.</p>
+    
+    <p class="entry"><b>March 14, 2014 (1 hour)</b>: PCB was submitted and I was named the main contact for it if there was anything wrong with it. The PCB ended up being 4.94 inches by 3.75 inches. <br>.</p>
 
     <p class="summary"><b>WEEK 09 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: Schematic was completed and PCB was ordered. <br>
+                       <u>Weekly Work Total</u>:  17 hours<br>
+                       <u>Project Work Total</u>: 89 hours</p>
                        
                        
     <h3 id="week10">Week 10</h3>
+    
+    <p class="entry"><b>March 23, 2014 (2 hour)</b>: Started drawing the 3D part for the mechanical design of connectign motor to the disco ball. <br>.</p>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: Started drawing the 3D part on Catia. <br>
+                       <u>Weekly Work Total</u>:  2 hours<br>
+                       <u>Project Work Total</u>: 91 hours</p>
                        
     
     <h3 id="week11">Week 11</h3>
