@@ -209,7 +209,7 @@ if __name__ == "__main__":
         if mp3.endswith(".mp3"):
             downloads[mp3.split('.')[0]] = True
 
-    cmd2 = "mpg123 1096619.mp3"
+    cmd2 = "mpg123 22981552.mp3"
     p2 = subprocess.Popen(cmd2, shell=True)
 
     # loop which refreshes every X seconds to re-dl
@@ -240,7 +240,7 @@ if __name__ == "__main__":
                 markTimer = threading.Timer(30 + random.randint(0,5), markStreamKeyOver30Seconds, [currId, str(queueID), stream["ip"], stream["streamKey"]]) 
                 markTimer.start()
                 try:
-                    p.wait() #Wait for wget to finish
+                    p1.wait() #Wait for wget to finishr
                 except KeyboardInterrupt: #If we are interrupted by the user
                     os.remove('%s.mp3' % (currId)) #Delete the song
                     print "\nDownload cancelled. File deleted."
@@ -252,6 +252,6 @@ if __name__ == "__main__":
                 # now we have the file, so don't re-download
                 downloads[currId] = True
             
-        time.sleep(10)
+        time.sleep(5)
         #Natural Exit
         
