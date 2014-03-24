@@ -209,8 +209,9 @@ if __name__ == "__main__":
         if mp3.endswith(".mp3"):
             downloads[mp3.split('.')[0]] = True
 
-    cmd2 = "mpg123 22981552.mp3"
-    p2 = subprocess.Popen(cmd2, shell=True)
+
+    p2 = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=None, stderr=None)
+    p2.stdin.write("load test.mp3\n")
 
     # loop which refreshes every X seconds to re-dl
     refreshing = True
@@ -252,6 +253,9 @@ if __name__ == "__main__":
                 # now we have the file, so don't re-download
                 downloads[currId] = True
             
+        print "about to sleep"
+        p2.stdin.write("pause\n")
         time.sleep(5)
+        
         #Natural Exit
         
