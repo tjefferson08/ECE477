@@ -14,6 +14,12 @@ import threading
 import requests
 if sys.version_info[1] >= 6:  import json
 else: import simplejson as json
+try:
+    from subprocess import DEVNULL # py3k
+except ImportError:
+    import os
+    DEVNULL = open(os.devnull, 'wb')
+
 _useragent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5"
 _token = None
 webappURL = "http://127.0.0.1:8000/songs/requestNext/"
@@ -210,7 +216,7 @@ if __name__ == "__main__":
             downloads[mp3.split('.')[0]] = True
 
 
-    p2 = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=None, stderr=None)
+    p2 = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=None)
     p2.stdin.write("load test.mp3\n")
 
     # loop which refreshes every X seconds to re-dl
@@ -241,7 +247,7 @@ if __name__ == "__main__":
                 markTimer = threading.Timer(30 + random.randint(0,5), markStreamKeyOver30Seconds, [currId, str(queueID), stream["ip"], stream["streamKey"]]) 
                 markTimer.start()
                 try:
-                    p1.wait() #Wait for wget to finishr
+                    p1.wait() #Wait for wget to finish, this can take a little while
                 except KeyboardInterrupt: #If we are interrupted by the user
                     os.remove('%s.mp3' % (currId)) #Delete the song
                     print "\nDownload cancelled. File deleted."
