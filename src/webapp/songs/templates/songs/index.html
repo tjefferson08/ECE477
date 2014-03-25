@@ -1,33 +1,29 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'songs/style.css' %}" />
 {% if latest_song_list %}
-<ul>
-  {% for song in latest_song_list %}
-  <li>
-    <table>
-      <tr valign="bottom">
-	<td>
-	  {{song.title}} : {{ song.votes }} vote{{ song.votes|pluralize }}
-	</td>
-	<td>
-	  <form action="{% url 'songs:vote' song.id_code %}" method="post">
-	    {% csrf_token %}
-	    <input type="hidden" name="vote_up" value="True"/>
-	    <input type="submit" value="+1"/>
-	  </form>
-	</td>
-	<td>
-	  <form action="{% url 'songs:vote' song.id_code %}" method="post">
-	    {% csrf_token %}
-	    <input type="hidden" name="vote_up" value="False"/>
-	    <input type="submit" value="-1"/>
-	  </form>
-	</td>
-      </tr>
-    </table>
-  </li>
-  {% endfor %}
-</ul>
+{% for song in latest_song_list %}
+<table width="30%">
+  <tr>
+    <td width="60%">
+      {{song.title}} : {{ song.votes }} vote{{ song.votes|pluralize }}
+    </td>
+    <td>
+      <form action="{% url 'songs:vote' song.id_code %}" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="vote_up" value="True"/>
+	<input type="submit" value="+1"/>
+      </form>
+    </td>
+    <td>
+      <form action="{% url 'songs:vote' song.id_code %}" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="vote_up" value="False"/>
+	<input type="submit" value="-1"/>
+      </form>
+    </td>
+  </tr>
+</table>
+{% endfor %}
 {% else %}
 <p>No songs are available.</p>
 {% endif %}

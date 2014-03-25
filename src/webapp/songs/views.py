@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from songs.models import Song
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
@@ -78,6 +78,29 @@ def searchSong(request):
     return render(request, 'songs/searchResults.html', context)
 
 # get a req for next song(s), reply with top 5 song IDs
+# request will come from rpi
 def provideNextSong(request): 
-    return HttpResponse(Song.objects.order_by('-votes')[0], content_type = "text/plain")
+
+    # a simple layer of authentication, need key=team2 in GET
+    if 'key' in request.GET:
+        if request.GET['key'] != "team2":
+            raise Http404
+    else:
+        raise Http404
+
+    # assemble top 5 song IDs (need string data)
+    codes = []
+    for song in Song.objects.order_by('-votes')[:5]: # we build a list of tinysong IDs for top 5
+        codes += [str(song.id_code)]
+
+    # if we're doing a 'pull' (meaning we are about to play the song)
+    # then kill votes down to 0 for top song
+    if 'pull' in request.GET:
+        if request.GET['pull'] == "True": # this is probably a little bit bad practice (GET doing modification)
+            s = Song.objects.order_by('-votes')[0]
+            print "resetting votes for song ", s.title
+            s.votes = 0
+            s.save()
+            
+    return HttpResponse(','.join(codes) , content_type = "text/plain")
     

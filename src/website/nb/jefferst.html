@@ -407,13 +407,56 @@ n<html>
       - problem was not enough current and never resetting page and column positions after ram clear/checkerboard
       - bug in initial vote now
     </p>
+
+    <p class="entry"><b>March 12, 2014 (1.5 hours)</b>:<br>
+      I forget what day, but I found groove.py and it's very helpful, although we're violating GS TOS, probs
+      Comm. with Brown from prev year (mention this or no?)
+    </p>
+
+    <p class="entry"><b>March 21, 2014 (3 hours)</b>:<br>
+      showed mostly-functional webapp to group members, good feedback/reception
+      still needs CSS to beautify, but I'm still adding functionality
+      briefly assisted in getting PCB finalized and checked off, but mostly Matt and Court
+
+    </p>
+
     <p class="summary"><b>WEEK 09 SUMMARY</b>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
-    <h3 id="week10">Week 10</h3>    
+    <h3 id="week10">Week 10: Spring Break</h3>    
+    <p class="entry"><b>March 17, 2014 (3 hours)</b>:<br>
+      - need to do some startup webapp stuff to check for the correct libraries like pthon requests
+      - could potentially deploy using google's app engine, but we might need to work aroung the python requests lib (won't be installed)
+      - the IDs from groove.py and tinysong appear to line up, so I can probably skip the user portion of groove.py and just use the back end
+      - modified the django 'api' to respond with the top 5 current songIds, comma delimited
+      - added a small layer of security, a GET data check in order to request next song
+      - added a bag of sorts to eliminate re-downloading of songs by groove.py, working well so far
+    </p>
+
+    <p class="entry"><b>March 19, 2014 (1.5 hours)</b>:<br>
+      - researched deployment strategies, Google app engine looks like a good one, so I created a project to play with
+      - google tutorial <a href="https://developers.google.com/appengine/docs/python/cloud-sql/django">here</a>
+      - google's SQL instance is NOT FREE, so we have two evident other options: 
+           1) work with django-nonrel to sit totally on top of google app engine, less integration, more project setup
+           <a href="django-nonrel.org">nonrel</a>
+           2) try to get django and nginx and IP forwarding figured out on the rpi itself (slightly more favorable)
+	   <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a>
+    </p>
+
+    <p class="entry"><b>March 20, 2014 (3 hours)</b>:<br>
+      - modifying groove.py to be much more autonomous and headless, need to add playback functionality, maybe with mpg123 unix lib
+      - tweaked requestNext api call to include 'pull' arg (GET) depending on whether we immediately need a new song or not
+      - tested mpg123 for mp3 playback on rpi - works!
+
+    </p>
+
+    <p class="entry"><b>March 21, 2014 ( hours)</b>:<br>
+      - added bitmapped letters thru p for lcd (micro code)
+      - incorporated a second subprocess call to provide music playback, harcoded, while doing requests every 10 seconds
+    </p>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b>
       <u>Accomplishments</u>: <br>
@@ -423,6 +466,24 @@ n<html>
 
     <h3 id="week11">Week 11</h3>    
 
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
+      reconvened with team, caught up on spring break work
+      agenda and list of crap to do yet
+      discussed SPI request/response protocol
+      peer evaluations
+      NOTEBOOK NEXT SUNDAY
+    </p>
+
+    <p class="entry"><b>March 23, 2014 (4 hours)</b>:<br>
+      spi talking bidirectional again, got ISR to fire
+      linked spi and LCD calls (picture would be nice)
+      
+      got multiprocess playback working in a simple way
+       - switched to -R interface for mpg123
+       - was getting a terminal setting error message, using -R changes interaction pattern
+      determined that rpi deployment of webapp will probably be sufficient after testing preformance
+      
+    </p>
     <p class="summary"><b>WEEK 11 SUMMARY</b>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>

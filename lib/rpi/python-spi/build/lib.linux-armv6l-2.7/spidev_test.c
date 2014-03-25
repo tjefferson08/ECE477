@@ -22,6 +22,7 @@
 #include <linux/spi/spidev.h>
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+#define MAX_TX_SIZE (64)
 
 static void pabort(const char *s)
 {
@@ -32,41 +33,36 @@ static void pabort(const char *s)
 static const char *device = "/dev/spidev0.1";
 static uint8_t mode;
 static uint8_t bits = 8;
-static uint32_t speed = 500000;
+static uint32_t speed = 62500;
 static uint16_t delay;
+static uint8_t sendData[MAX_TX_SIZE];
 
-static void transfer(int fd)
-{
+static int transfer(int fd, uint8_t txData[], int txLen) {
 	int ret;
-	uint8_t tx[] = {
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0x40, 0x00, 0x00, 0x00, 0x00, 0x95,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-		0xDE, 0xAD, 0xBE, 0xEF, 0xBA, 0xAD,
-		0xF0, 0x0D,
-	};
-	uint8_t rx[ARRAY_SIZE(tx)] = {0, };
+	uint8_t rx[1];
 	struct spi_ioc_transfer tr = {
-		.tx_buf = (unsigned long)tx,
-		.rx_buf = (unsigned long)rx,
-		.len = ARRAY_SIZE(tx),
-		.delay_usecs = delay,
-		.speed_hz = speed,
-		.bits_per_word = bits,
+	  .tx_buf = (unsigned long)txData,
+	  .rx_buf = (unsigned long)rx,
+	  .len = txLen,
+	  .delay_usecs = delay,
+	  .speed_hz = speed,
+	  .bits_per_word = bits,
 	};
 
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
 	if (ret < 1)
 		pabort("can't send spi message");
 
-	for (ret = 0; ret < ARRAY_SIZE(tx); ret++) {
+	printf("\nTX BUF******************** \n");
+	for (ret = 0; ret < txLen; ret++) {
 		if (!(ret % 6))
 			puts("");
-		printf("%.2X ", rx[ret]);
+		printf("%.2X ", txData[ret]);
 	}
-	puts("");
+	printf("rx: %d\n", rx[0]);
+	// check rx packets for diffent commands
+	if (rx[0] == 1) return 1;
+	else return 0;
 }
 
 static void print_usage(const char *prog)
@@ -158,7 +154,6 @@ int main(int argc, char *argv[])
 {
 	int ret = 0;
 	int fd;
-
 	parse_opts(argc, argv);
 
 	fd = open(device, O_RDWR);
@@ -202,8 +197,24 @@ int main(int argc, char *argv[])
 	printf("bits per word: %d\n", bits);
 	printf("max speed: %d Hz (%d KHz)\n", speed, speed/1000);
 
-	transfer(fd);
+	uint8_t txData[1];
+	txData[0] = 0xAA;
+	int temp;
+	int count = 0;
+       	while (1) { 
+	  count++;
+	  temp = transfer(fd, txData, 1);
+	  printf("%d: temp is: %d\n",count, temp);
+	  if (temp) {
+	    printf("found a special command\n");
+	    break;
+	    	  }
+	  else {
+	    printf("NOTHING\n");
+	  }
+	  
 
+      	}
 	close(fd);
 
 	return ret;
