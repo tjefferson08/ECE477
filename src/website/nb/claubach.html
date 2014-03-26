@@ -186,7 +186,8 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <p class="entry"><b>March 10, 2014 (5 hour)</b>: Discussed the need for logic level translators. This is because the LED driver runs on 5V, but we needed a 3.3V logic supply. After thinking about our options, we realized that we could sink the LEDs and have the supply voltage of 5 V to LEDs and 3.3V to LEd driver so that the logic would work and also that we would only have to use 1 switch mode regulator to power enough current to the system. We then thought that the motor would need a voltage regulator because of the needed logic voltage and ultimately we decided that we would not need one because the voltage we were going to supply would allow the motor to realize if it was running high or low. Ultimately, the power circuit was changed. We used a switch mode regualtor of a LM2596s from 12V to 5V to maintain the current needed to power the LEDs. Because we changed that the LEDs were going to be powered at 5V not 3.3V, we could use a LM1117 to drop the voltage from 5V to 3.3V which is recommended because many problems occur with a switch mode regualtor.  <br></p>
     
-    <p class="entry"><b>March 11, 2014 (7 hour)</b>: Met with Meyer and we discussed various things with the schematic. The audio circuit needed to be changed since I had two envelope detectors, only one was needed. Since we did not have all the parts the test it, a 10K potentiometer was added just in case we need it to help us to make the audio circuit to work. Even thought the motor driver would work with the logic voltage of 3.3V, a voltage translator from 3.3V to 5V was included to be safe. For the LEDs, the schematic does not need to change, but the anodes of the LEDs will connect to power and as for the LED driver when you drive it low LEDs will turn off. For the LM 2596s, the capactiors and inductors need to be exactly what the data sheet says and that proved to be difficult since some of the parts that fit it would not be in stock at the store. But it was ultimately figured out and the schematic was finished.<br></p>
+    <p class="entry"><b>March 11, 2014 (7 hour)</b>: Met with Meyer and we discussed various things with the schematic. The audio circuit needed to be changed since I had two envelope detectors, only one was needed. Since we did not have all the parts the test it, a 10K potentiometer was added just in case we need it to help us to make the audio circuit to work. Even thought the motor driver would work with the logic voltage of 3.3V, a voltage translator from 3.3V to 5V was included to be safe. For the LEDs, the schematic does not need to change, but the anodes of the LEDs will connect to power and as for the LED driver when you drive it low LEDs will turn off. For the LM 2596s, the capactiors and inductors need to be exactly what the data sheet says and that proved to be difficult since some of the parts that fit it would not be in stock at the store. But it was ultimately figured out and the schematic was finished:<br>
+    <img src="../images/claubach/schematic-final.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
     
     <p class="entry"><b>March 12, 2014 (1 hour)</b>: Met as a team to make sure the schematic looked good and if anything else needed to change, but nothing was needed besides an inductor had to change because it was not in stock online.<br></p>
     
@@ -211,7 +212,12 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <h3 id="week11">Week 11</h3>
     
-    <p class="entry"><b>March 23, 2014 (2 hour)</b>: Started drawing the 3D part for the mechanical design of connectign motor to the disco ball and met as a team to figure out the plan for rest of semester. I still have mechanical design, circuit testing, and soldering to do. <br></p>
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>: Started drawing the 3D part for the mechanical design of connectign motor to the disco ball and met as a team to figure out the plan for rest of semester. I still have mechanical design, circuit testing, and soldering to do. <br></p>
+
+    <p class="entry"><b>March 24, 2014 (3.5 hours)</b>: Designed the 3D part. Put parts on the PCB printout and the tri-state voltage and the LM1117 do not fit. However, where the parts were placed there is plenty of room to solder wires to connect the components. Finally, the audio circuit prototype was built: <br>
+        <img src="../images/claubach/audio-circuit.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
+	
+    </p>
 
     <p class="summary"><b>WEEK 11 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
