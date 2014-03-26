@@ -215,7 +215,6 @@ if __name__ == "__main__":
         if mp3.endswith(".mp3"):
             downloads[mp3.split('.')[0]] = True
 
-
     p2 = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=None)
     p2.stdin.write("load test.mp3\n")
 
