@@ -261,6 +261,7 @@ if __name__ == "__main__":
             
         print "about to sleep"
         p2.stdin.write("pause\n")
+        print subprocess.check_output(["./a.out"])
         time.sleep(5)
         
         #Natural Exit
