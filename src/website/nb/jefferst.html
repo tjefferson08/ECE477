@@ -440,134 +440,165 @@ n<html>
       a more tedious task than initially expected.
       An 8x8 pixel characted format was selected and a LCDWrite function was written which takes a string
       argument. The string is then looped over, and each char is decoded in a 26-case switch statement:<br/>
-      
-      
-      - we did A and printed it AAAAAAAH - picture
-      - problem was not enough current and never resetting page and column positions after ram clear/checkerboard
-      - bug in initial vote now
+      <a href="../images/mmcmunig/3_9_LCD_AHH.JPG">
+	<img src="../images/mmcmunig/3_9_LCD_AHH.JPG" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
     </p>
 
     <p class="entry"><b>March 12, 2014 (1.5 hours)</b>:<br>
-      I forget what day, but I found groove.py and it's very helpful, although we're violating GS TOS, probs
-      Comm. with Brown from prev year (mention this or no?)
+      After some online research, a grooveshark downloading python script was 
+      <a href="https://github.com/jacktheripper51/groove-dl">discovered</a>. Although 
+      the initial plan was to stream the song live, the downloading app moved very quickly, so
+      it will serve for the interim, if not the final revision. 
     </p>
 
-    <p class="entry"><b>March 21, 2014 (3 hours)</b>:<br>
-      showed mostly-functional webapp to group members, good feedback/reception
-      still needs CSS to beautify, but I'm still adding functionality
-      briefly assisted in getting PCB finalized and checked off, but mostly Matt and Court
-
+    <p class="entry"><b>March 14, 2014 (3 hours)</b>:<br>
+      Briefly assisted in getting PCB finalized and checked off, but this task was 
+      primarily accomplished by Matt and Courtney. The webapp prototype was demo'ed
+      to team members with very positive reception. 
     </p>
 
     <p class="summary"><b>WEEK 09 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      Finalized PCB<br/>
+      Webapp API implemented<br/>
+      Webapp homepage significantly improved<br/>
+      <u>Weekly Work Total</u>: 10.5 hours<br>
+      <u>Project Work Total</u>: 82 hours<br>
     </p>
 
     <h3 id="week10">Week 10: Spring Break</h3>    
     <p class="entry"><b>March 17, 2014 (3 hours)</b>:<br>
-      - need to do some startup webapp stuff to check for the correct libraries like pthon requests
-      - could potentially deploy using google's app engine, but we might need to work aroung the python requests lib (won't be installed)
-      - the IDs from groove.py and tinysong appear to line up, so I can probably skip the user portion of groove.py and just use the back end
-      - modified the django 'api' to respond with the top 5 current songIds, comma delimited
-      - added a small layer of security, a GET data check in order to request next song
-      - added a bag of sorts to eliminate re-downloading of songs by groove.py, working well so far
+      Modified groove.py to only run in non-GUI mode. The current django 'API' was modified to 
+      respond with top 5 song IDs, comma delimited. These will be read by groove.py and downloaded
+      in a process separate from playback control. <br/><br/>
+      A small security check was added in the form of a simple GET check on a url parameter.
+      To call the api, simply visit url http://*/songs/requestNext?key=team2.
+      A 'bag' was implemented to ensure that song IDs were checked with songs on disk to prevent
+      redundant downloading. The bag is simply a python dictionary with key=songID and value=True.
     </p>
 
     <p class="entry"><b>March 19, 2014 (1.5 hours)</b>:<br>
-      - researched deployment strategies, Google app engine looks like a good one, so I created a project to play with
-      - google tutorial <a href="https://developers.google.com/appengine/docs/python/cloud-sql/django">here</a>
-      - google's SQL instance is NOT FREE, so we have two evident other options: 
-           1) work with django-nonrel to sit totally on top of google app engine, less integration, more project setup
-           <a href="django-nonrel.org">nonrel</a>
+      Research into webapp deployment was carried out, and two methods appeared to be good candidates.<br/>
+      Google app engine - google tutorial <a href="https://developers.google.com/appengine/docs/python/cloud-sql/django">here</a>
+      Google's SQL instance is NOT FREE, so we have two evident other options: <br>
+           1) work with django-nonrel to sit totally on top of google app engine, more project setup
+           <a href="django-nonrel.org">nonrel</a><br/>
            2) try to get django and nginx and IP forwarding figured out on the rpi itself (slightly more favorable)
-	   <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a>
+	   <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a><br/>
     </p>
 
     <p class="entry"><b>March 20, 2014 (3 hours)</b>:<br>
-      - modifying groove.py to be much more autonomous and headless, need to add playback functionality, maybe with mpg123 unix lib
-      - tweaked requestNext api call to include 'pull' arg (GET) depending on whether we immediately need a new song or not
-      - tested mpg123 for mp3 playback on rpi - works!
-
+      Groove.py was significantly modified to periodically request and download songs.
+      The Django webapp API was modified to allow for resetting of #1 song to zero votes (once its playback begins).
+      In any case, the API provides the top 5 song IDs, comma delimited, as before.
+      Playback with mpg123 utility on Rpi command line was tested, and worked very well. This will be called from
+      a python subprocess object to allow for simultaneous downloading and playback.
     </p>
 
-    <p class="entry"><b>March 21, 2014 ( hours)</b>:<br>
-      - added bitmapped letters thru p for lcd (micro code)
-      - incorporated a second subprocess call to provide music playback, harcoded, while doing requests every 10 seconds
+    <p class="entry"><b>March 21, 2014 (2 hours)</b>:<br>
+      LCD letters A-P were added for LCDWrite function.
+      Groove.py was modified again to perform hardcoded playback concurrently with webapp requests and song downloading.
+      No performance issues were onbserved.
     </p>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      <u>Weekly Work Total</u>: 9.5 hours<br>
+      <u>Project Work Total</u>: 91.5 hours<br>
     </p>
 
     <h3 id="week11">Week 11</h3>    
-
     <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
-      reconvened with team, caught up on spring break work
-      agenda and list of crap to do yet
-      discussed SPI request/response protocol
-      peer evaluations
-      NOTEBOOK NEXT SUNDAY
+      The entire team met to be updated on spring break progress. An agenda was created to 
+      prioritize remaining work. Some discussion of SPI command/response protocol showed 
+      that Rpi will need to be able to pause SPI pulses to allow the micro to control the clock
+      for LCD communication. Peer evaluations were completed.
     </p>
 
     <p class="entry"><b>March 23, 2014 (4 hours)</b>:<br>
-      spi talking bidirectional again, got ISR to fire
-      linked spi and LCD calls (picture would be nice)
-      
-      got multiprocess playback working in a simple way
-       - switched to -R interface for mpg123
-       - was getting a terminal setting error message, using -R changes interaction pattern
-      determined that rpi deployment of webapp will probably be sufficient after testing preformance
-      
+      Spi bidirectional communication with Rpi was re-verified and tied to the SPI ISR.
+      Groove.py was modified again to allow for subprocess communication. The mpg123
+      utility is now opened in -R remote mode to allow for commands like play, load,
+      and many more. This will allow all the playback funcitonality the project will need.
+      After installind django on the Rpi and running groove.py in tandem, no performance
+      issues were observed, so the decision was made to pursue deploying the webapp locally
+      on the Rpi rather than Google App engine.
     </p>
-    <p class="entry"><b>March 25, 2014 ( hours)</b>:<br>
-      wrote and called a dummy a.out to prove that I could, and I can check its output too,
-      this will probabl be how we interact with the spi c file on the rpi
-      wget is blocking other threads, switch to process? multiprocess???????????
-      worked on homework 9 with matt
+
+    <p class="entry"><b>March 25, 2014 (4 hours)</b>:<br>
+      A dummy c file was written and compiled on the Rpi. The a.out file was then called
+      from groove.py to prove the concept of calling the C-compiled spi handler and 
+      monitoring its stdout. This works as expected, via either the subprocess.check_output call
+      or the subprocess.stdout.readline() call. 
+      It's been noted that the downloading thread blocks any other calls until the wget utility
+      has exited. This will prove to be acceptable, because the periodic requesting of the top 5
+      is not particularly important if a song is downloading. However, playback and SPI
+      monitoring will be put into a separate process, because timing is much more important
+      to those pieces of functionality. 
     </p>
 
     <p class="entry"><b>March 26, 2014 (6.5 hours)</b>:<br>
-      - MAN LAB 11
-      meyer's confirmation on audio beat detection ciruictry
-      2 parts don't fit - both can be ordered in appropriate packages/footprints
-      writing report #9, discovered I2C pins are not correctly routed
-      also may have discovered a Vss/Vdd swap on pins 31/32
-      we might need a new board
-      outlined software operation in a flowchart
+      The microcontroller's software operation top-level design and diagram was carried out:<br/>
+      <a href="../images/jefferst/sw_diagram.png">
+	<img src="../images/jefferst/sw_diagram.png" alt="block" height="200px" width="200px">
+      </a><br/>
+      Mandatory lab session #11 was held. Two parts were determined to have been ordered in the
+      wrong package, wo the correct devices were ordered promptly. <br/>
 
-      audio prototyping, trying to get an oscope image
-      got a meaningul signal out of the front part of the audio circuit, but the output pin didn't look so good
+      Two glaring errors in the PCB routing were discovered while working on homework 9 - software 
+      narrative. The I2C pins were routed to the incorrect ports and there is a Vdd/Vss mix-up on 
+      adjacent pins. Adjustment strategies will be discussed as board assembly progresses.
+
+      Audio sampling prototyping was begun. A meaningful waveform was scoped from the middle of the circuit, but
+      a connection error ruined the actual output waveform. A protoboard for the audio circuit will be 
+      obtained to ensure that a wiring error is not the culprit.
     </p>
 
     <p class="entry"><b>March 28, 2014 (2 hours)</b>:<br>
-      researched motor chip and operation
-      wrote motor and ADC sections for hw 9
+      Stepper motor control and PWM research was carried out in order to complete homework #9. It is tentatively
+      determined that all four PWM modules will be used in full-bridge mode to power the motor driver IC.
+      Homework 9 was completed.
     </p>
 
     <p class="entry"><b>March 29, 2014 (2 hours)</b>:<br>
-      - further multithreading rpi python code
-      - pushing downloader loop into multiprocess appears to have rendered it ineffective
-      - mpg123 does NOT exit after a song is played (once we open it with R flag, that is)
-      - mpg123 in silent mode will still give me text output on return from a song, which is
-        GREAT! I'll use that to skip tracks naturally
-      - successfully carved out the downloader loop into its own process - python multiprocessing module
-      - divided out actual downloading portion so it can be called from both processes
-      
-    </p>
-    <p class="entry"><b>March 30, 2014 (2 hours)</b>:<br>
-      I2C basic send, pic in dropbox
-      SPI problem on LCD when rpi connected
-      started ACD code
+      Groove.py was further modified to encapsulate requesting/downloading into its own
+      process. It is launched at the beginning of main() and left alone for the duration of
+      the software's operation. 
+      A pipe to the output of the mpg123 playback process was constructed to both allow for
+      metadata retrieval and for playback modification. It was determined that the end of a song
+      will be easily detectable with a subprocess.stdout.readline() call, since the output
+      of the utility in -R mode is very easy to split and decode.
+
+      The actual downloading code portion was put into its own function in order that it
+      can be called from either process. This was done to allow for the case that a song
+      shoots up into the top 5 before the periodic downloader can download it. This would cause
+      a delay in playback, but it would be minimial and is necessary to ensure that the 
+      device functions correctly.
     </p>
 
     <p class="summary"><b>WEEK 11 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      Playback interface designed<br/>
+      Downloader as a separate process</br>
+      PCB errors identified<br/>
+      <u>Weekly Work Total</u>: 20.5 hours<br>
+      <u>Project Work Total</u>: 112 hours<br>
+    </p>
+
+    <p class="entry"><b>March 30, 2014 (4 hours)</b>:<br>
+      I2C functionality was prototyped with the micro in master mode. After a start condition
+      is sent, the micro sends an address and then a data byte. See the waveform here:<br/>
+      <a href="../images/jefferst/2014-03-30-i2c.jpg">
+	<img src="../images/jefferst/2014-03-30-i2c.jpg" alt="block" height="200px" width="200px">
+      </a><br/>
+      A very strange issue occurs when the SPI pins are connected both to the Rpi and to the LCD 
+      (with the micro in between). The waveforms of the SPI outputs pulse in the right order and
+      with the right timing characteristics, but the waves fail to be held high for any significant
+      period. The results appears to be a correctly-timed glitch sequence. Additional input will be 
+      sought from course staff.<br/>
+      ADC prototyping was begun. A single sample was taken on pin RF1, but ADC results registers fail
+      to collect meaningful data.
     </p>
 
     <h3 id="week12">Week 12</h3>    
