@@ -222,6 +222,7 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     <p class="entry"><b>March 26, 2014 (4 hours)</b>: Two parts (LM1117 and the logic level translator was the wrong package), so we found the correct packages and ordered the new parts. I also worked on the audio circuit. With the audio circuit, we have something wrong with the soldering joints of the op-amp so we were going to need to get a protoboard to solder it to. Finally, the 3D part was fixed because the cylinder was too thin and would never hold on the motor shaft.<br></p> <img src="../images/claubach/3D_part_final.jpg" alt="screenshot1" height="500px" width="500px"><br></p><br></p>
     
     <p class="entry"><b>March 27, 2014 (4.5 hours)</b>: Found a protoboard and soldered the LM264 to the proto board, PCB came in, and figured out we made a mistake on the tracing. The I2C pins are not connected to the right ports on the micro and the VDD and VSS were switched when connecting to power and ground. To fix these issues we are going to have to break the trace and fly wire. With the I2C pins we will fly wire from the resistors and the VDD and VSS we will go from the via. <br></p>
+    <img src="../images/claubach/PCB.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
     
     <p class="entry"><b>March 28, 2014 (3.5 hours)</b>: Submitted the request for a 3D printed part. Went back to debugging the audio circuit in which the op amp would work occasionaly but could not get the diode to work. Still needs lots more work on audio circuit. I also searched how to do the motor code on the microcontroller to control the speeds of the motor and it will be done by sending a pulse wave of a square wave on the 4 wires wires all once at a time and the frequency of sending pulses controlls the speed and the driver these are sent to our programmed with logic pins that will determine direction of movement or if moving at all and then all this data is sent to the 4 wires of the motor. <br></p>
     
@@ -231,9 +232,9 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     </p>
 
     <p class="summary"><b>WEEK 11 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: Submitted 3D part to be printed and is done, just needs to be cleaned and got the power circuit to work and soldered onto board. <br>
+                       <u>Weekly Work Total</u>:  21.5 hours<br>
+                       <u>Project Work Total</u>: 110.5 hours</p>
                        
                       
     <h3 id="week12">Week 12</h3>
