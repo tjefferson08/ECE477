@@ -356,19 +356,30 @@
 
     <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
      	A team meeting was held to review our current progress and to assign tasks going forward. Once the
-     	managerial work was complete the SPI 
-      reconvened with team, caught up on spring break work
-      agenda and list of crap to do yet
-      discussed SPI request/response protocol
-      peer evaluations
-      NOTEBOOK NEXT SUNDAY
+     	managerial work was complete the commands sent between the Raspberry Pi and microcontroller via SPI 
+     	were established. The Raspberry Pi will send a heartbeat message every 100ms(?). When a push button
+     	microcontroller is pressed requesting a new song the microcontroller will load a Next Song Request character
+     	into its SPI buffer. When the Raspberry Pi receives this special command character it will load the 
+     	song meta data into its buffer to be send on the next 100ms transmission. The microcontroller will be expecting
+     	the song data this time and will load the song name, artist, album, and year into global variables. These
+     	global variables will be used to populate the LCD.		     	
     </p>
 
-    <p class="entry"><b>March 14, 2014 (5 hours)</b>:<br>
-      The focus of today's time spent in lab was understanding the ADC and PWM modules. 
+    <p class="entry"><b>March 24, 2014 (3 hours)</b>:<br>
+      spi talking bidirectional again, got ISR to fire
+      linked spi and LCD calls (picture would be nice)
+      
+      determined that rpi deployment of webapp will probably be sufficient after testing preformance      
     </p>
 
-
+    <p class="entry"><b>March 25, 2014 (4 hours)</b>:<br>
+      Identifying registers necessary for enabling peripherals and interrupts.       
+    </p>
+    
+    <p class="entry"><b>March 25, 2014 (4 hours)</b>:<br>
+      Identifying registers necessary for enabling peripherals and interrupts.       
+    </p>
+    
     <p class="entry"><b>March 29, 2014 (6 hours)</b>:<br>
       Today's accomplishments were very disappointing for the amount of time spent. The goal of today was
       to finish up SPI testing and move on to I2C communication between the microcontroller and the LED driver.
