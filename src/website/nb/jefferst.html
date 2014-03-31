@@ -124,7 +124,7 @@ n<html>
       The team will need an SD reader/writer in order to boot an OS on the Rpi.
     </p>
 
-    <p class="summary"><b>WEEK 03 SUMMARY</b>
+    <p class="summary"><b>WEEK 03 SUMMARY</b><br/>
       <u>Accomplishments</u>: Homework 2 - PCB tutorial<br>
       <u>Weekly Work Total</u>:8 hours<br>
       <u>Project Work Total</u>: 19 hours<br>
@@ -140,7 +140,7 @@ n<html>
       Completed homework 3 and submitted to 477 portal.
     </p>
 
-    <p class="summary"><b>WEEK 04 SUMMARY</b>
+    <p class="summary"><b>WEEK 04 SUMMARY</b><br/>
       <u>Accomplishments</u>: Homework 3 - Design Constraint Analysis<br>
       <u>Weekly Work Total</u>: 2.5 hours<br>
       <u>Project Work Total</u>: 21.5 hours<br>
@@ -168,7 +168,7 @@ n<html>
       further integration efforts will continue in the near future.
     </p>
 
-    <p class="summary"><b>WEEK 05 SUMMARY</b>
+    <p class="summary"><b>WEEK 05 SUMMARY</b><br/>
       <u>Accomplishments</u>: Homework 4 - Packaging Constraints<br>
       Micro eval board obtained and programmed
       <u>Weekly Work Total</u>: 3.5 hours<br>
@@ -228,7 +228,7 @@ n<html>
       rate of Rpi SPI transmission. The next entry will likely detail efforts in one of those two categories.
     </p>
     
-    <p class="summary"><b>WEEK 06 SUMMARY</b>
+    <p class="summary"><b>WEEK 06 SUMMARY</b><br/>
       <u>Accomplishments</u>: Homework 5 - Hardware Narrative
       First inspection of Rpi serial waveforms<br>
       <u>Weekly Work Total</u>: 10 hours<br>
@@ -302,7 +302,7 @@ n<html>
 
     <p class="entry"><b>March 1, 2014 (3 hours)</b>:<br>
       A brief team meeting was held today to divide Design Review presentation subtasks.
-      An update to the system bloack diagram was made, as seen here:<br>
+      An update to the system block diagram was made, as seen here:<br>
       <a href="../images/jefferst/system-block-diagram.jpg">
 	<img src="../images/jefferst/system-block-diagram.jpg" alt="block" height="200px" width="200px">
       </a> <br>
@@ -310,8 +310,8 @@ n<html>
       Fixed a permissions error on the team website, watch permissions on image upload.
     </p>
 
-    <p class="summary"><b>WEEK 07 SUMMARY</b>
-      <u>Accomplishments</u>: Homework 6 - PCB Layout<br>
+    <p class="summary"><b>WEEK 07 SUMMARY</b><br/>
+      <u>Accomplishments</u>:<br> Homework 6 - PCB Layout<br>
       Meaningful communication one-way on SPI<br>
       PCB Layout<br>
       <u>Weekly Work Total</u>: 21 hours<br>
@@ -321,88 +321,127 @@ n<html>
     <h3 id="week08">Week 08</h3>    
 
     <p class="entry"><b>March 2, 2014 (1.5 hours)</b>:<br>
-      Design review slides and presentation prep
+      A short team meeting was help to assign roles for the design review presentation.
     </p>
 
     <p class="entry"><b>March 3, 2014 (3 hours)</b>:<br>
-      filled rx buffer, but now reading and writing at the same time is hard
-      concurrency of SPI and streaming/web code will be an issue
-      successfully have bidirectional SPI, now trying to get meaningful operation (simulate real spi messages)
-      no way to distinguish bt Rx and Tx at interrupt level
-      presenation practice
-      reworked schematic
-      - put 0 ohm res bt agnd and gnd
-      - added series resistors on LED driver
-      - RJ-11 con - used MPlab reference for pin connections
-      - sought replacement for power supply - current requirements
+      Further development of SPI communication between the Rapsberry Pi and the microcontroller was undertaken. 
+      After modifying the spi code module on the Rasperry pi to adjust clock frequency, successful receipt on 
+      the micro side was observed. However, it was not immediately transparent when each device would
+      be receiving or transmitting, due to the granularity of control on the Raspberry Pi being limited
+      to a single function call which performs both reading and writing on the SPI bus. Adding a few 
+      more SPI interactions on the microcrontroller side with different TX data yielded more obvious 
+      insight as to the timing between the two components. <br/><br/>
+      A brief session of practice and presentation outlining was held.<br/><br/>
+
+      Some schematic rework was performed to prepare fully for the design review.<br/>
+      - A 0 Ohm resistor was added between the analog and digital grounds to 
+        allow for separate testing on the PCB<br/>
+      - A series resistor was added for each LED header pin to limit current<br/>
+      - An RJ-11 connector was added for programming using the MPlab reference for pin connections<br/>
+      - A new power supply was selected due to incorrect current calculations<br/>
     </p>
 
     <p class="entry"><b>March 4, 2014 (2 hours)</b>:<br>
-      Design review practice
+      A brief session was held for further design review practice with the updated schematic.
     </p>
 
-    <p class="entry"><b>March 5, 2014 (2 hours)</b>:<br>
-      Reworking schematic
-      Webapp - got search terms connected, a single search box
-      - changed all names and models to match needs rather than tutorial
-      - need screenshot, describe model name changes and mechanism removal
-      - LED prototyping to match current requirements, prototyping with power supply
-      - 2.2 V drop across blue LED - 100ma limit on PS
-      - they're real damn bright
+    <p class="entry"><b>March 5, 2014 (6 hours)</b>:<br>
+      A modification to the webapp was made in order to connect the text in the search box
+      to the actualy search terms of the API call. This was accomplished by adding POST
+      data to the form with an input tag, then using Django's POST dictionary object to
+      retrieve it on the button press event: <br>
+      <a href="../images/jefferst/2014-03-31-search-term.png">
+	<img src="../images/jefferst/2014-03-31-search-term.png" alt="block">
+      </a> <br><br/>
+      The Django database model was updated from the tutorial version to specifically
+      match the Every1 DJ project needs. All urls and directories were switched from the
+      polls naming convention to songs.<br/>
+      <a href="../images/jefferst/2014-03-31-django-model.png">
+	<img src="../images/jefferst/2014-03-31-django-model.png" alt="block">
+      </a> <br/><br/>
+      
+      Prototyping with the LEDs was begun in order to get an idea of the current and
+      voltage characteristics. The power supply was used with 3.3V supply and 
+      100mA current limit, since this is the espected characteristic of the power
+      delivery circuitry on the PCB. Thankfully, the LEDs were extremely bright 
+      even on the relatively low current setting. See the setup and results here:<br/>
+      <a href="../images/spouliqu/RedLED.jpg">
+	<img src="../images/spouliqu/RedLED.jpg" alt="block" height="200px" width="200px">
+      </a> 
+      <a href="../images/spouliqu/BlueLED.jpg">
+	<img src="../images/spouliqu/BlueLED.jpg" alt="block" height="200px" width="200px">
+      </a> 
+      <a href="../images/spouliqu/GreenLED.jpg">
+	<img src="../images/spouliqu/GreenLED.jpg" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
     </p>
 
     <p class="entry"><b>March 8, 2014 (3 hours)</b>:<br>
-      Webapp - got results meaningfully displayed, added dead vote button, solution was
-      passing a context variable to be rendered in the template, the exact variable from which we
-      will build a DB record
-      - connected vote button to a new django view, need to un-hardcode url param
-      - button spits "not in db" if song not in DB yet, need to create new entry inthis case, but
-      i need more data to pass from the vote button - title, artist, etc
-      two main ways - a hidden field in the form or a "session" variable, I'll choose hidden fields
-      - got the data through, but something gets lost in the middle, only the first title word goes through
-      - GOT IT. code was fine for a while, but I needed to flush the DB to get the old single-word entries out
-       since I already had code to only put new DB records in if ID wasn't already in DB (didn't overwrite the
-       old entry on new vote, which is actually desired behavior)
+      Results display wasy modified to meaningully display the search results. This
+      was accomplished by adding a context variable to the Results View, which 
+      passed along the Song object to be rendered by the results.html template.
+      See the formatted results display here: <br/>
+      <a href="../images/jefferst/2014-03-08-search-with-text-input.png">
+	<img src="../images/jefferst/2014-03-08-search-with-text-input.png" alt="block" height="200px" width="200px">
+      </a>
+      <a href="../images/jefferst/2014-03-08-search-result-with-vote.png">
+	<img src="../images/jefferst/2014-03-08-search-result-with-vote.png" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+      A vote button was added on the results page and connected to its own view. The button is hard-coded
+      to a specific song for testing, and text dumps 'not in db' if the song ID isn't yet in the DB.
+      This will be the case for adding a new DB entry, but it's not relevant until additional data
+      can be passed from the vote button. Currently, all we can get is the song ID, but we need
+      artist, etc.
+      Some research shows two popular ways of passing extra data on a single button press. One is the use of 
+      Django 'session variables'. The second, simpler way is to add 'hidden' input fields to the form. 
+      This was successfully acheived once a bug was worked out. It is important to notice that when testing,
+      using the same song ID with different metadata will NOT overwrite the current DB entry, which is
+      actually correct functionality. See the hidden input fields here:<br/>
+      <a href="../images/jefferst/2014-03-09-hidden-fields.png">
+	<img src="../images/jefferst/2014-03-09-hidden-fields.png" alt="block">
+      </a>
     </p>
 
-    <p class="summary"><b>WEEK 08 SUMMARY</b>
-      <u>Accomplishments</u>: 
+    <p class="summary"><b>WEEK 08 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br/>
       Webapp's most important data transfer was designed<br>
       Prepared for and delivered design review presentation<br>
       SPI bidirectional<br>
       Verified sufficient current and brightness for LEDs<br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      <u>Weekly Work Total</u>: 15.5 hours<br>
+      <u>Project Work Total</u>: 71.5 hours<br>
     </p>
 
     <h3 id="week09">Week 09</h3>    
     <p class="entry"><b>March 9, 2014 (6 hours)</b>:<br>
-      - changed index landing page to sort on votes rather than title
-      - getting a little tricky to navigate the app, so I added a home link on results page
-      - current use case is look at top 5 (let's move to top ten), search, vote, view results, then go back to home
-      - need to add vote option on front page
-      - used pluralize keyword on index page to auto-swap between vote and votes
-      - added buttons homepage, need to add vote -1 functionality, right now they both do +1 and it looks horrendous
-      - moving stuff around, putting in a table for alignment/spacing on front page
-      - some super basic css is in there, but I need to apply it for relevant items, get some IDs in there to
-        differentiate between li tags on different pages
-      - something to keep in mind - don't try to print out POST data that's not there (maybe I should divide up vote fcn)
-      - some initial testing and monkey clicking shows that I should probably account for songs with the same titles, maybe
-      simply by providing more information on the home page
-      - timeout for vote spamming?
-      - added vote down functionality, with another hidden POST element that pipes to vote() function/view
-      - error when switching WIFI networks on my virtual machine. watch out for that in the future
-      - tested voting, can't go negative, looks good for now
-      - now i got a response from ane external request by implementing a simple headless view, but I don't
-        know exactly what text will be most useful here, it has to be straight string data
-      - right now, I'll just leave it as ISO string data rep of the song title (HttpResponse object limitations)
-      - researched deploying the webapp on the Rpi, found two good candidates 
+      The webapp homepage was modified to display top 3 results in the database, sorted descending on title field.<br/>
+      <a href="../images/jefferst/2014-03-09-home-display-songspng">
+	<img src="../images/jefferst/2014-03-09-home-display-songs.png" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+      A home link was added to the song details page to facilitate navigation. The app's current use case is look 
+      at top 5 or 10 (moving to 10), search, vote, view results, then go back to home. To further streamline usage, voting buttons 
+      (both up and down) were added to the top 10 song listings. The top 10 display was corrected to sort descending on votes.
+      See the formatted result here:<br/>
+      <a href="../images/jefferst/2014-03-09-page-vote-buttons-sorted.png">
+	<img src="../images/jefferst/2014-03-09-homepage-vote-buttons-sorted.png" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+      Voting down functionality was connected to -1 button with another hidden POST element. Voting was
+      ensured to never push votes below 0. <br/><br/>
+      Basic API functionality was acheived by implementing a 'headless' view which serves only to handle
+      requests, not render any page. The response is currently the song title in ISO string form, 
+      but it will likely move to the song ID code in string form. <br/><br/>
+      Research for webapp deployment on the Rpi was carried out, the following candidates were discovered
       <a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?t=7208&p=403771">here</a> and
       <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">here</a>
-      - more today - LCD stuff with matt. we got rid of some erroneous parallel setup command sequences and stuck to 
-        purely serial commands, now we're getting more meaningful results, got a checkerboard to display, but it 
-        looks like we're manipulating memory really manually, not exactly what we want. 
-      - researched and selected an 8x8 bit font to use in SPI LCD character transmission (yes, every letter)
+      <br/><br/>
+      LCD development was undertaken. A checkerboard function was tested from an online source. It performed
+      as expected, although the interface forces the user to interact on a pixel level, which creates
+      a more tedious task than initially expected.
+      An 8x8 pixel characted format was selected and a LCDWrite function was written which takes a string
+      argument. The string is then looped over, and each char is decoded in a 26-case switch statement:<br/>
+      
+      
       - we did A and printed it AAAAAAAH - picture
       - problem was not enough current and never resetting page and column positions after ram clear/checkerboard
       - bug in initial vote now
@@ -420,7 +459,7 @@ n<html>
 
     </p>
 
-    <p class="summary"><b>WEEK 09 SUMMARY</b>
+    <p class="summary"><b>WEEK 09 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
@@ -458,7 +497,7 @@ n<html>
       - incorporated a second subprocess call to provide music playback, harcoded, while doing requests every 10 seconds
     </p>
 
-    <p class="summary"><b>WEEK 10 SUMMARY</b>
+    <p class="summary"><b>WEEK 10 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
@@ -491,14 +530,48 @@ n<html>
       worked on homework 9 with matt
     </p>
 
-    <p class="summary"><b>WEEK 11 SUMMARY</b>
+    <p class="entry"><b>March 26, 2014 (6.5 hours)</b>:<br>
+      - MAN LAB 11
+      meyer's confirmation on audio beat detection ciruictry
+      2 parts don't fit - both can be ordered in appropriate packages/footprints
+      writing report #9, discovered I2C pins are not correctly routed
+      also may have discovered a Vss/Vdd swap on pins 31/32
+      we might need a new board
+      outlined software operation in a flowchart
+
+      audio prototyping, trying to get an oscope image
+      got a meaningul signal out of the front part of the audio circuit, but the output pin didn't look so good
+    </p>
+
+    <p class="entry"><b>March 28, 2014 (2 hours)</b>:<br>
+      researched motor chip and operation
+      wrote motor and ADC sections for hw 9
+    </p>
+
+    <p class="entry"><b>March 29, 2014 (2 hours)</b>:<br>
+      - further multithreading rpi python code
+      - pushing downloader loop into multiprocess appears to have rendered it ineffective
+      - mpg123 does NOT exit after a song is played (once we open it with R flag, that is)
+      - mpg123 in silent mode will still give me text output on return from a song, which is
+        GREAT! I'll use that to skip tracks naturally
+      - successfully carved out the downloader loop into its own process - python multiprocessing module
+      - divided out actual downloading portion so it can be called from both processes
+      
+    </p>
+    <p class="entry"><b>March 30, 2014 (2 hours)</b>:<br>
+      I2C basic send, pic in dropbox
+      SPI problem on LCD when rpi connected
+      started ACD code
+    </p>
+
+    <p class="summary"><b>WEEK 11 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
     <h3 id="week12">Week 12</h3>    
-    <p class="summary"><b>WEEK 12 SUMMARY</b>
+    <p class="summary"><b>WEEK 12 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
@@ -507,28 +580,28 @@ n<html>
 
 
     <h3 id="week13">Week 13</h3>    
-    <p class="summary"><b>WEEK 13 SUMMARY</b>
+    <p class="summary"><b>WEEK 13 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
     <h3 id="week14">Week 14</h3>    
-    <p class="summary"><b>WEEK 14 SUMMARY</b>
+    <p class="summary"><b>WEEK 14 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
     <h3 id="week15">Week 15</h3>    
-    <p class="summary"><b>WEEK 15 SUMMARY</b>
+    <p class="summary"><b>WEEK 15 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
     <h3 id="week16">Week 16</h3>    
-    <p class="summary"><b>WEEK 16 SUMMARY</b>
+    <p class="summary"><b>WEEK 16 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
