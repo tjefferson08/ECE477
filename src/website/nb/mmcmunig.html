@@ -249,7 +249,10 @@
       4 hours
       Made part for power supply, added to pcb board
       routed all new signals/parts
-      increased trace lengths for power and ground. 
+      increased trace lengths for power and ground. <br>
+    	<a href="../images/mmcmunig/3_3_PCB.JPG">
+		<img src="../images/mmcmunig/3_3_PCB.JPG" alt="block" height="200px" width="200px">
+      
     </p>
 
     <p class="entry"><b>March 4, 2014 (2 hours)</b>:<br>
@@ -264,13 +267,13 @@
     
     <p class="entry"><b>March 6, 2014 (3 hours)</b>:<br>
       Power components continue to change as we find new requirements that had previously been overlooked. The footprint of the bulk capacitors were
-      much too small
+      much too small.
       Audio drivers were installed on the Raspberry Pi. A few settings such as output volume and output device were modified. The audio originally
       is set to output from HDMI and this was changed to analog output. A wav file was downloaded and successfully played on powered speakers.
       When the oscilloscope was set up to view the output on headphone wires nothing but noise was heard. 
     </p>
                       
-    <p class="entry"><b>March 8, 2014 (1 hours)</b>:<br>
+    <p class="entry"><b>March 7, 2014 (1 hours)</b>:<br>
       Went in with Courtney to discuss a few concerns with Joe. The audio amplifier design was modified in order to regulate the negative feedback.
       The footprint of a few power components (capacitor and inductor) were determined to be too small and will need to be changed.
     </p>  
@@ -291,9 +294,17 @@
     <h3 id="week09">Week 09</h3>
 
     <p class="entry"><b>March 9, 2014 (5 hours)</b>:<br>
-      Worked on getting LCD to turn on and display anything. Was able to briefly get some random pixels to light
-      up but even this stopped working. Each command was analyzed using the oscilloscope and appear to be sent correctly
-      and in the right order. Later in the day the LCD was successfully initialized and data was displayed.
+      Worked on getting LCD to turn on and display anything.Each command was analyzed using the oscilloscope 
+      and appeared to be sent correctly and in the right order. Was able to briefly get some random pixels to light
+      up but even this stopped working. <br>
+    	<a href="../images/mmcmunig/3_9_LCD_ON.JPG">
+		<img src="../images/mmcmunig/3_9_LCD_ON.JPG" alt="block" height="200px" width="200px"> <br>
+	  It was discovered that the reason the screen lit up once earlier in the day but had appeared
+      'off' since then was due to the entire RAM space in the LCD being initialized to 0. When the LCDwrite module tried to
+      write a character the starting column and row were not reset to 0, but were instead at the very end of the RAM space 
+      (not visible on the LCD). Once this was fixed the LCD was successfully initialized and data was displayed. <br>
+        <a href="../images/mmcmunig/3_9_LCD_AHH.JPG">
+		<img src="../images/mmcmunig/3_9_LCD_AHH.JPG" alt="block" height="200px" width="200px"> <br>
     </p>
     
     <p class="entry"><b>March 11, 2014 (5 hours)</b>:<br>
@@ -314,17 +325,21 @@
     </p>
     
     <p class="entry"><b>March 13, 2014 (1 hours)</b>:<br>
-      Submitted board to the online check. There was an issue of a hole being too close to the ground plane. This issue
-      was resolved and resubmitted through the online checker.   
+      The board was submitted to the online check. There was an issue of a hole being too close to the ground plane. This issue
+      was resolved and resubmitted through the online checker. Success! <br>
+    <a href="../images/mmcmunig/3_13_PCB_No_Issues.JPG">
+	<img src="../images/mmcmunig/3_13_PCB_No_Issues.JPG" alt="block" height="200px" width="200px">
+      </a> <br>
+      
     </p>
     
     <p class="entry"><b>March 14, 2014 (0.5 hours)</b>:<br>
       Went to the lab to finish the required checkoffs before submitting the PCB design. This included sending the course
-      staff a .zip file of all the pcb files and board dimensions.
+      staff a .zip file of all the pcb files and board dimensions. The board should arrive the week after spring break.
     </p>
     
     <p class="summary"><b>WEEK 09 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: The LCD was correctly initialized and displaying letters. Also the PCB board was completed and submitted for fabrication. <br>
                        <u>Weekly Work Total</u>: 13.5 hours<br>
                        <u>Project Work Total</u>: 96  hours</p>
                        
@@ -332,19 +347,57 @@
     <h3 id="week10">Week 10</h3>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: No work was completed this work due to Spring Break.<br>
                        <u>Weekly Work Total</u>:  hours<br>
                        <u>Project Work Total</u>:  hours</p>
                        
     
     <h3 id="week11">Week 11</h3>
 
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
+     	A team meeting was held to review our current progress and to assign tasks going forward. Once the
+     	managerial work was complete the SPI 
+      reconvened with team, caught up on spring break work
+      agenda and list of crap to do yet
+      discussed SPI request/response protocol
+      peer evaluations
+      NOTEBOOK NEXT SUNDAY
+    </p>
+
+    <p class="entry"><b>March 14, 2014 (5 hours)</b>:<br>
+      The focus of today's time spent in lab was understanding the ADC and PWM modules. 
+    </p>
+
+
+    <p class="entry"><b>March 29, 2014 (6 hours)</b>:<br>
+      Today's accomplishments were very disappointing for the amount of time spent. The goal of today was
+      to finish up SPI testing and move on to I2C communication between the microcontroller and the LED driver.
+      Once the test circuit was set up even simple communication between the Raspberry Pi and microcontroller were
+      no longer working. After spending a great deal of time debugging it was determined that the oscilloscope 
+      connecters were causing the signals to be tied high. It was not determined why this was the cause
+      but once the connector was switched the communication was close to the expected output. It was also
+      discovered that the ribbon cable made for our Raspberry Pi serial connectors had 1 pin that was not operating 
+      correctly. Once these issues were dealt with the SPI communication was finally working again. However, the
+      LCD was not operating as expected anymore. After unsuccessfully debugging the LCD connections I2C sample code
+      was written but not tested yet. 
+ 	</p>
+	
     <p class="summary"><b>WEEK 11 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
                        <u>Weekly Work Total</u>:  hours<br>
                        <u>Project Work Total</u>:  hours</p>
                        
-                      
+    <p class="entry"><b>March 30, 2014 (3 hours)</b>:<br>
+      After yesterday's disappointing testing today was more productive. The reason for the LCD not working
+      as expected was discovered to be 'noise' from the Raspberry Pi connections. Since all SPI share a clock
+      this is a serious issue. Once the Raspberry Pi connector was unplugged the LCD was once again turing on and
+      displaying characters. The LCD function was enhanced to allow strings as arguments from main. I2C communicaiton
+      was tested today and after addressing a few issues was successful. The primary issue for I2C was having to clear
+      the interrupt flag in software since it was not done in hardware like many other interrupts. Finally the ADC module
+      was written and tested. After reviewing the datasheet thoroughly the results of the A/D conversion does not seem to be
+      completely accurate. 
+ 	</p>      
+      
     <h3 id="week12">Week 12</h3>
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
