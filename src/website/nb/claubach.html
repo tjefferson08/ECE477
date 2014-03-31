@@ -219,15 +219,15 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
         
     <p class="entry"><b>March 25, 2014 (1 hour)</b>: Drew on the enclosure of where we want to drill things out for the LCD, motor, and pushbuttons to be places. I also worked on the CAD drawing of our 3D part. <br></p>
     
-    <p class="entry"><b>March 26, 2014 (4 hours)</b>: Two parts (LM1117 and the logic level translator was the wrong package), so we found the correct packages and ordered the new parts. I also worked on the audio circuit. With the audio circuit, we have something wrong with the soldering joints of the op-amp so we were going to need to get a protoboard to solder it to. Finally, the 3D part was fixed because the cylinder was too thin and would never hold on the motor shaft.<br></p> <img src="../images/claubach/3D_part_final.jpg" alt="screenshot1" height="500px" width="500px"><br></p><br></p>
+    <p class="entry"><b>March 26, 2014 (4 hours)</b>: Two parts (LM1117 and the logic level translator was the wrong package), so we found the correct packages and ordered the new parts. I also worked on the audio circuit. With the audio circuit, we have something wrong with the soldering joints of the op-amp so we were going to need to get a protoboard to solder it to. Finally, the 3D part was fixed because the cylinder was too thin and would never hold on the motor shaft.<br> <img src="../images/claubach/3D_part_final.jpg" alt="screenshot1" height="500px" width="500px"><br></p><br></p>
     
-    <p class="entry"><b>March 27, 2014 (4.5 hours)</b>: Found a protoboard and soldered the LM264 to the proto board, PCB came in, and figured out we made a mistake on the tracing. The I2C pins are not connected to the right ports on the micro and the VDD and VSS were switched when connecting to power and ground. To fix these issues we are going to have to break the trace and fly wire. With the I2C pins we will fly wire from the resistors and the VDD and VSS we will go from the via. <br></p>
+    <p class="entry"><b>March 27, 2014 (4.5 hours)</b>: Found a protoboard and soldered the LM264 to the proto board, PCB came in, and figured out we made a mistake on the tracing. The I2C pins are not connected to the right ports on the micro and the VDD and VSS were switched when connecting to power and ground. To fix these issues we are going to have to break the trace and fly wire. With the I2C pins we will fly wire from the resistors and the VDD and VSS we will go from the via. <br>
     <img src="../images/claubach/PCB.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
     
-    <p class="entry"><b>March 28, 2014 (3.5 hours)</b>: Submitted the request for a 3D printed part. Went back to debugging the audio circuit in which the op amp would work occasionaly but could not get the diode to work. Still needs lots more work on audio circuit. I also searched how to do the motor code on the microcontroller to control the speeds of the motor and it will be done by sending a pulse wave of a square wave on the 4 wires wires all once at a time and the frequency of sending pulses controlls the speed and the driver these are sent to our programmed with logic pins that will determine direction of movement or if moving at all and then all this data is sent to the 4 wires of the motor. <br></p>
+    <p class="entry"><b>March 28, 2014 (3.5 hours)</b>: Submitted the request for a 3D printed part. Went back to debugging the audio circuit in which the op amp would work occasionaly but could not get the diode to work. Still needs lots more work on audio circuit. I also searched how to do the motor code on the microcontroller to control the speeds of the motor and it will be done by sending a pulse wave of a square wave on the 4 wires wires all once at a time and the frequency of sending pulses controlls the speed and the driver these are sent to our programmed with logic pins that will determine direction of movement or if moving at all and then all this data is sent to the 4 wires of the motor. <br>
     
     <p class="entry"><b>March 29, 2014 (3 hours)</b>: Soldered the power circuit with the 12V to 5V voltage regulator and tested it overnight and it works with a constant 5.02999 V output. Waiting on the LDO to come in so I can finish the power circuit. Also, learned how the webapp is being built and will start doing the CSS for the webapp. <br></p>
-    <img src="../images/claubach/power-circuit.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
+    <img src="../images/claubach/3Dpart_installed.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
 
     </p>
 
@@ -238,6 +238,9 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
                        
                       
     <h3 id="week12">Week 12</h3>
+    
+    <p class="entry"><b>March 29, 2014 (3 hours)</b>: Still debugging audio circuit. The double amplifier is not working and the diode is not working. The diode is not working due to such amplitude so we are trying to get a higher gain. Also, the 3D part was picked up and cleaned off and installed on the motor. <br><img src="../images/claubach/power-circuit.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
+
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
