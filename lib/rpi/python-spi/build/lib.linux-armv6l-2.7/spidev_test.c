@@ -37,13 +37,18 @@ static uint32_t speed = 62500;
 static uint16_t delay;
 static uint8_t sendData[MAX_TX_SIZE];
 
-static int transfer(int fd, uint8_t txData[], int txLen) {
+static int transfer(int fd) {
 	int ret;
-	uint8_t rx[1];
+	uint8_t tx [] = {0x00, 0x01, 0x02,
+			 0x03, 0x04, 0x05, 0x06, 0x07,
+			 0x08, 0x09, 0x0a, 0x0b, 0x0c};
+	printf("Array Size tx: %d\n\n", ARRAY_SIZE(tx));
+	uint8_t rx[ARRAY_SIZE(tx)]= {0, };
+	printf("Array Size: %d\n\n", ARRAY_SIZE(tx));
 	struct spi_ioc_transfer tr = {
-	  .tx_buf = (unsigned long)txData,
+	  .tx_buf = (unsigned long)tx,
 	  .rx_buf = (unsigned long)rx,
-	  .len = txLen,
+	  .len = ARRAY_SIZE(tx),
 	  .delay_usecs = delay,
 	  .speed_hz = speed,
 	  .bits_per_word = bits,
@@ -54,10 +59,10 @@ static int transfer(int fd, uint8_t txData[], int txLen) {
 		pabort("can't send spi message");
 
 	printf("\nTX BUF******************** \n");
-	for (ret = 0; ret < txLen; ret++) {
+	for (ret = 0; ret < ARRAY_SIZE(tx); ret++) {
 		if (!(ret % 6))
 			puts("");
-		printf("%.2X ", txData[ret]);
+		printf("%.2X ", tx[ret]);
 	}
 	printf("rx: %d\n", rx[0]);
 	// check rx packets for diffent commands
@@ -201,7 +206,8 @@ int main(int argc, char *argv[])
 	txData[0] = 0xAA;
 	int temp;
 	int count = 0;
-       	while (1) { 
+	temp = transfer(fd);
+/*       	while (1) { 
 	  count++;
 	  temp = transfer(fd, txData, 1);
 	  printf("%d: temp is: %d\n",count, temp);
@@ -212,9 +218,7 @@ int main(int argc, char *argv[])
 	  else {
 	    printf("NOTHING\n");
 	  }
-	  
-
-      	}
+      	} */
 	close(fd);
 
 	return ret;
