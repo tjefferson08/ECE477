@@ -1,11 +1,11 @@
-n<html>
-<head>
-  <title>Travis Jefferson's Lab Notebook</title>
-  <link rel="stylesheet" type="text/css" 
-	href="https://engineering.purdue.edu/ece477/MessageBoard/Lab_Notebook_Template.css" media="screen">
+<html>
+  <head>
+    <title>Travis Jefferson's Lab Notebook</title>
+    <link rel="stylesheet" type="text/css" 
+	  href="https://engineering.purdue.edu/ece477/MessageBoard/Lab_Notebook_Template.css" media="screen">
 
-</head>
-<body>
+  </head>
+  <body>
     <h1>Travis Jefferson's Lab Notebook</h1>
 
     <h3 id="week01">Week 01</h3>
@@ -36,7 +36,7 @@ n<html>
       <u>Weekly Work Total</u>: 5 hours<br>
       <u>Project Work Total</u>: 5 hours<br>
     </p>
-                       
+    
     <h3 id="week02">Week 02</h3>
     <p class="entry"><b>January 19, 2014 (1 hour)</b>:<br>Got on team account, put all team webpage materials under 
       version control.
@@ -50,7 +50,7 @@ n<html>
     <p class="entry"><b>January 22, 2014 (1.5 hours)</b>:
       <br> Finished Django tutorial
       <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 2</a>
-       and committed to repo. Step 2 focused on the Django-generated admin pages for each specific application
+      and committed to repo. Step 2 focused on the Django-generated admin pages for each specific application
       runing on a site. So far, it will likely be sufficient to run a single app to power the project's needs.
       At the end, the step 2 tutorial previewed the template with which the user can modify the way in which the 
       python-powered content is displayed in HTML/CSS. This feature is the focus of step 3.
@@ -59,7 +59,7 @@ n<html>
     <p class="entry"><b>January 22, 2014 (1.5 hours)</b>:
       <br> Completed Django tutorial 
       <a href="https://docs.djangoproject.com/en/1.6/intro/tutorial03/">step 3</a>
-       and committed to repo. Switched mid-tutorial to the latest Django tutorial version (1.6); that's also what
+      and committed to repo. Switched mid-tutorial to the latest Django tutorial version (1.6); that's also what
       is installed on the development machines. Began some simple view authoring and intro to the Django template
       language. Brainstorming was briefly undertaken as to a potential data model for the song selection/sorting
       as well as storage. Atomic data element will probably be a song, with multiple attributes and views.
@@ -68,7 +68,7 @@ n<html>
     <p class="entry"><b>January 22, 2014 (1 hour)</b>:
       <br> Finished Django tutorial
       <a href="https://docs.djangoproject.com/en/1.6/intro/tutorial04/">step 4</a>
-       and committed to repo. Step 4 included a form to calculate voting on polls, as well 
+      and committed to repo. Step 4 included a form to calculate voting on polls, as well 
       as a switch from distinct and hardcoded to generic, flexible templates.
     </p>
 
@@ -96,7 +96,7 @@ n<html>
       in a Grooveshark (or similar) API call and integrating with the Django database handling will be a big
       milestone for this project. The voting/selection algorithm should be rather simple.
     </p>
-   
+    
     <p class="entry"><b>January 27, 2014 (1 hour)</b>:</br>
       Began homework 2 (PCB exercise). Investigation into API candidates for music search and selection was
       begun. One candidate looks great: <a href="http://www.tinysong.com/api">Tinysong</a>.
@@ -336,7 +336,7 @@ n<html>
 
       Some schematic rework was performed to prepare fully for the design review.<br/>
       - A 0 Ohm resistor was added between the analog and digital grounds to 
-        allow for separate testing on the PCB<br/>
+      allow for separate testing on the PCB<br/>
       - A series resistor was added for each LED header pin to limit current<br/>
       - An RJ-11 connector was added for programming using the MPlab reference for pin connections<br/>
       - A new power supply was selected due to incorrect current calculations<br/>
@@ -482,10 +482,10 @@ n<html>
       Research into webapp deployment was carried out, and two methods appeared to be good candidates.<br/>
       Google app engine - google tutorial <a href="https://developers.google.com/appengine/docs/python/cloud-sql/django">here</a>
       Google's SQL instance is NOT FREE, so we have two evident other options: <br>
-           1) work with django-nonrel to sit totally on top of google app engine, more project setup
-           <a href="django-nonrel.org">nonrel</a><br/>
-           2) try to get django and nginx and IP forwarding figured out on the rpi itself (slightly more favorable)
-	   <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a><br/>
+      1) work with django-nonrel to sit totally on top of google app engine, more project setup
+      <a href="django-nonrel.org">nonrel</a><br/>
+      2) try to get django and nginx and IP forwarding figured out on the rpi itself (slightly more favorable)
+      <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a><br/>
     </p>
 
     <p class="entry"><b>March 20, 2014 (3 hours)</b>:<br>
@@ -586,6 +586,8 @@ n<html>
       <u>Project Work Total</u>: 112 hours<br>
     </p>
 
+    <h3 id="week12">Week 12</h3>    
+
     <p class="entry"><b>March 30, 2014 (4 hours)</b>:<br>
       I2C functionality was prototyped with the micro in master mode. After a start condition
       is sent, the micro sends an address and then a data byte. See the waveform here:<br/>
@@ -601,71 +603,98 @@ n<html>
       to collect meaningful data.
     </p>
 
-    <h3 id="week12">Week 12</h3>    
-    <p class="summary"><b>WEEK 12 SUMMARY</b><br/>
-      <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+    <p class="entry"><b>March 31, 2014 ( hours)</b>:<br>
+      prototype I2C, got up to data sending correctly and in correct order, fixed reset at the end
+    </p> 
+
+    <p class="entry"><b>April 1, 2014 ( hours)</b>:<br>
+      layout and schematic updated with i2c fixed and vcc/vss
+      went ant talked to george?
     </p>
 
-
-
-    <h3 id="week13">Week 13</h3>    
-    <p class="summary"><b>WEEK 13 SUMMARY</b><br/>
-      <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+    <p class="entry"><b>April 2, 2014 ( hours)</b>:<br>
+      MAN LAB
+      Got i2c and lcd working, cleaned up code and got write function going gud
+      Audio - meyer came and shit was still real broke
     </p>
 
-    <h3 id="week14">Week 14</h3>    
-    <p class="summary"><b>WEEK 14 SUMMARY</b><br/>
-      <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+    <p class="entry"><b>April 3, 2014 ( hours)</b>:<br>
+      more audio, got meyer's OK to use a header on the final product
+      courtney pulled the envelope detector, signal looks a lot better
     </p>
 
-    <h3 id="week15">Week 15</h3>    
-    <p class="summary"><b>WEEK 15 SUMMARY</b><br/>
-      <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+    <p class="entry"><b>April 4, 2014 ( hours)</b>:<br>
+      finalized pcb changes and submitted board to be ordered with the 402 board order, hopefully it's free!
     </p>
 
-    <h3 id="week16">Week 16</h3>    
-    <p class="summary"><b>WEEK 16 SUMMARY</b><br/>
-      <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+    <p class="entry"><b>April 5, 2014 ( hours)</b>:<br>
+      unsoldered header, cleaned up station, started setting up rpi for external ip access
     </p>
+
+<p class="summary"><b>WEEK 12 SUMMARY</b><br/>
+  <u>Accomplishments</u>: <br>
+  <u>Weekly Work Total</u>: 21 hours<br>
+  <u>Project Work Total</u>: 56 hours<br>
+</p>
+
+
+
+<h3 id="week13">Week 13</h3>    
+<p class="summary"><b>WEEK 13 SUMMARY</b><br/>
+  <u>Accomplishments</u>: <br>
+  <u>Weekly Work Total</u>: 21 hours<br>
+  <u>Project Work Total</u>: 56 hours<br>
+</p>
+
+<h3 id="week14">Week 14</h3>    
+<p class="summary"><b>WEEK 14 SUMMARY</b><br/>
+  <u>Accomplishments</u>: <br>
+  <u>Weekly Work Total</u>: 21 hours<br>
+  <u>Project Work Total</u>: 56 hours<br>
+</p>
+
+<h3 id="week15">Week 15</h3>    
+<p class="summary"><b>WEEK 15 SUMMARY</b><br/>
+  <u>Accomplishments</u>: <br>
+  <u>Weekly Work Total</u>: 21 hours<br>
+  <u>Project Work Total</u>: 56 hours<br>
+</p>
+
+<h3 id="week16">Week 16</h3>    
+<p class="summary"><b>WEEK 16 SUMMARY</b><br/>
+  <u>Accomplishments</u>: <br>
+  <u>Weekly Work Total</u>: 21 hours<br>
+  <u>Project Work Total</u>: 56 hours<br>
+</p>
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	END OF NOTEBOOK SECTION, BEGIN NAVBAR.  Do not change anything beyond this point.
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
--->
-  <div id="navbar">
-    <p>
-      <b>DIRECTORY</b><br><br>
-      <a href="#week01">Week 01</a><br>
-      <a href="#week02">Week 02</a><br>
-      <a href="#week03">Week 03</a><br>
-      <a href="#week04">Week 04</a><br>
-      <a href="#week05">Week 05</a><br>
-      <a href="#week06">Week 06</a><br>
-      <a href="#week07">Week 07</a><br>
-      <a href="#week08">Week 08</a><br>
-      <a href="#week09">Week 09</a><br>
-      <a href="#week10">Week 10</a><br>
-      <a href="#week11">Week 11</a><br>
-      <a href="#week12">Week 12</a><br>
-      <a href="#week13">Week 13</a><br>
-      <a href="#week14">Week 14</a><br>
-      <a href="#week15">Week 15</a><br>
-      <a href="#week16">Week 16</a><br>
-    </p>
-  </div>
+     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	  END OF NOTEBOOK SECTION, BEGIN NAVBAR.  Do not change anything beyond this point.
+	  <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	       <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		 -->
+	       <div id="navbar">
+		 <p>
+		   <b>DIRECTORY</b><br><br>
+		   <a href="#week01">Week 01</a><br>
+		   <a href="#week02">Week 02</a><br>
+		   <a href="#week03">Week 03</a><br>
+		   <a href="#week04">Week 04</a><br>
+		   <a href="#week05">Week 05</a><br>
+		   <a href="#week06">Week 06</a><br>
+		   <a href="#week07">Week 07</a><br>
+		   <a href="#week08">Week 08</a><br>
+		   <a href="#week09">Week 09</a><br>
+		   <a href="#week10">Week 10</a><br>
+		   <a href="#week11">Week 11</a><br>
+		   <a href="#week12">Week 12</a><br>
+		   <a href="#week13">Week 13</a><br>
+		   <a href="#week14">Week 14</a><br>
+		   <a href="#week15">Week 15</a><br>
+		   <a href="#week16">Week 16</a><br>
+		 </p>
+	       </div>
 </body>
 </html>
 
