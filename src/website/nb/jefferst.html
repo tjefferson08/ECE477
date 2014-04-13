@@ -637,7 +637,7 @@
       <u>Project Work Total</u>: 56 hours<br>
     </p>
 
-    <h3 id="week12">Week 13</h3>    
+    <h3 id="week13">Week 13</h3>    
     <p class="entry"><b>April 7, 2014 ( hours)</b>:<br>
       setting registers for I2C LED controller
       Group dimming and frequency control, no auto-inc, no pattern control, yet
@@ -648,8 +648,26 @@
       can't use PWM full bridge mode because we have a random collection of ECCP pins pulled out
       We have: ECCP2 B, ECCP3 C, ECCP3 B, ECCP1C, which is horrible
       we will flywire to ECCP3 A and ECCP3 D
+
+      soldered the crap out of the LED protoboard and LED package itself
     </p>
 
+    <p class="entry"><b>April 8, 2014 ( hours)</b>:<br>
+      fixed LED driver protoboard, soldered motor protoboard
+      prototyping I2C - getting data on scope but no response from driver chip
+      period of I2C is 2 us (500 MHz), slowed down to 10KHz to be in range of Driver
+      LED is on, but super super dim, weird
+    </p>
+
+    <p class="entry"><b>April 8, 2014 ( hours)</b>:<br>
+      we had nacking problems from Driver chip, but now everything gets acked
+      no changes in output
+      pull up resistors were modified (and supply voltage, temporarily) to get a fully high
+      I2c logic signal - I actually think that won't work
+      There appears to be a potential problem with failure to meet voltage minimums for high state,
+      except address bytes are read correctly, so it can't be a threshold issue
+      
+    </p>
 
     <p class="summary"><b>WEEK 13 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
