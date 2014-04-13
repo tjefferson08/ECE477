@@ -330,6 +330,17 @@ This time was also used to finish up I2C communication between the microcontroll
 
     <p class="entry"><b>April 7, 2014 (2 hours)</b>:<br> Worked on soldering the LED driver and the LED's for testing purposes. Also had to order a new LDO because a 2.5V LDO was ordered instead of a 3.3V. Found a 3.3V LDO on eBay, which hopefully will arrive this week. </p>
 
+    <p class="entry"><b>April 8, 2014 (2 hours)</b>:<br> </p>
+
+    <p class="entry"><b>April 9, 2014 (3.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the i2c protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. It was found after digging into the datasheet and online examples that the reset sequence being implemented was not correct. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
+
+<br><br>
+<a href="../images/spouliqu/LEDDriverSetup1.jpg">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="500px">
+      </a>
+
+</p>
+
     <p class="summary"><b>WEEK 13 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
                        <u>Weekly Work Total</u>: <br>
