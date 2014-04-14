@@ -12,9 +12,11 @@ import subprocess
 import gzip
 import threading
 import requests
+from array import array
 from multiprocessing import Process
 if sys.version_info[1] >= 6:  import json
 else: import simplejson as json
+from subprocess import Popen, PIPE, check_output, check_call
 try:
     from subprocess import DEVNULL # py3k
 except ImportError:
@@ -220,7 +222,7 @@ def downloadSong(songID):
 
         # Run wget to download the song
         cmd1 = 'wget --post-data=streamKey=%s -O "%s.mp3" "http://%s/stream.php"' % (stream["streamKey"], songID, stream["ip"]) 
-        p1 = subprocess.Popen(cmd1, shell=True)
+        p1 = Popen(cmd1, shell=True)
         
         #Starts a timer that reports the song as being played for over 30-35 seconds. May not be needed.
         markTimer = threading.Timer(30 + random.randint(0,5), markStreamKeyOver30Seconds, [songID, str(queueID), stream["ip"], stream["streamKey"]]) 
@@ -256,14 +258,14 @@ def downloader():
         print songIdList
         for currId in songIdList:
             if currId in downloads: # skip, don't redownload
-                print "skipping ", currId
+#                print "skipping ", currId
                 continue
             downloadSong(currId)
 
             # mark as downloaded in the bag
             downloads[currId] = True
 
-        print "about to sleep"
+        print "downloader about to sleep"
         time.sleep(5)
 
 if __name__ == "__main__":
@@ -273,7 +275,7 @@ if __name__ == "__main__":
     dl.start()
 
     # start up playback process
-    playback = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=None)
+    playback = Popen(['mpg123', '-R'], shell=False, stdin=PIPE, stdout=PIPE, stderr=None)
 
     # get top song and DL it if need be
     topFive = getTopFive()
@@ -284,12 +286,45 @@ if __name__ == "__main__":
     if topFive[0] not in downloads:
         downloadSong(topFive[0])
 
-    # load top song in paused state
+    # load top song in paused state and get metadata
     playback.stdin.write("lp " + topFive[0] + ".mp3\n")
-    
-    if os.path.isfile("spi_comm"):
-        print subprocess.check_output(["./spi_comm"])
+    if (playback.stdout.readline().split()[0] == "@R"):
+        print("lp success")
     else:
-        print "Cannot call spi_comm"
+        print "lp failed"
+    
+    # read in 3 'dead' lines
+    print playback.stdout.readline()
+    print playback.stdout.readline()
+    print playback.stdout.readline()
+
+    # get title, artist, album, year
+    title = playback.stdout.readline().split(':')[1].strip()
+    print title
+    artist = playback.stdout.readline().split(':')[1].strip()
+    print artist
+    album = playback.stdout.readline().split(':')[1].strip()
+    print album
+    year = playback.stdout.readline().split(':')[1].strip()
+    print year
+
+    # pack strings into char arrays
+    titleArray = array('c', title)
+    print titleArray
+    artistArray = array('c', artist)
+    print artistArray
+    albumArray = array('c', album)
+    print albumArray
+    yearArray = array('c', year)
+    print yearArray
+
+    # main loop to check both SPI and playback
+    while True:
+        if os.path.isfile("spi_comm"):
+            print check_call(["./spi_comm"])
+        else:
+            print "Cannot call spi_comm"
+        time.sleep(1)
+
 #Natural Exit
         
