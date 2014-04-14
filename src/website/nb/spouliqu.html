@@ -330,7 +330,7 @@ This time was also used to finish up I2C communication between the microcontroll
 
     <p class="entry"><b>April 7, 2014 (2 hours)</b>:<br> Worked on soldering the LED driver and the LED's for testing purposes. Also had to order a new LDO because a 2.5V LDO was ordered instead of a 3.3V. Found a 3.3V LDO on eBay, which hopefully will arrive this week. </p>
 
-    <p class="entry"><b>April 8, 2014 (2 hours)</b>:<br> </p>
+    <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br> Began prototyping with the LED driver. There was no response from the LED at first, so each individual I2C signal was scoped at the input of the LED driver. Once all correction were made to these signals, the LED dimly lit up. It was barely visible that the LED was turning on. The other issue that needed to be addressed was the period of the I2C signal. The period was 500MHz but needed to be slowed down to around 10KHz so that the LED driver could respond to the signals.</p>
 
     <p class="entry"><b>April 9, 2014 (3.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the i2c protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. It was found after digging into the datasheet and online examples that the reset sequence being implemented was not correct. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
 
@@ -341,10 +341,41 @@ This time was also used to finish up I2C communication between the microcontroll
 
 </p>
 
+<p class="entry"><b>April 9, 2014 (3 hours)</b>:<br> Worked on debugging of I2C on the LED's. It seemed that instead of receiving acks, the driver was nacking. This was changed by making sure all grounds were connected from the microcontroller to the LED driver. Still no changes seen in the output of the LED driver. Perhaps there are problems with the soldering job. This testing will continue when the LED driver is soldered to the PCB, to ensure all connections are correct.</p>
+
+<p class="entry"><b>April 10, 2014 (4 hours)</b>:<br> Worked on wiring the motor driver. The origional design for motor control did not include a PLD, which the team now thinks is necessary. A PLD was obtained from the parts room, and a programmer. The PLD code was completed using a truth table to toggle the four outputs to make the motor spin. This worked correctly, as the motor spun at variable speens depending on how quickly the toggles occured. <br>
+
+We then discussed with Joe about using a PLD when it wasn't currently on the PCB. He suggested that instead of a PLD, an interrupt triggered truth table could be used. This way, no fly wiring would need to be done to attach a PLD and all code could sit on the microcontroller. This was completed and the motor spins at variable speeds depending on how quickly the truth table gets set. Below is a video of the motor spinning with enough torque to spin the disco ball. 
+
+<br><br>
+<a href="../images/spouliqu/MotorDriverSetup1.jpg">
+	<img src="../images/spouliqu/MotorDriverSetup1.jpg" alt="LEDDriver" height="500px" width="500px">
+      </a>
+<br><br>
+<video width="320" height="240" controls>
+  <source src="../images/spouliqu/MotorSpinning.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</p>
+
+<p class="entry"><b>April 11, 2014 (3 hours)</b>:<br> Began working on interrupt driven push buttons. All signals were set for the INTCON, INTCON2 registers. The pushbutton was going low when pressed, as seen on the oscillocscope, but the interrupts did not seem to be registering in software. All signals seemd to be set correctly. More debugging will begin on Sunday.</p>
+
     <p class="summary"><b>WEEK 13 SUMMARY</b><br>
+                       <u>Accomplishments</u>: Completed design for the motor control and push buttons. It seems that allour parts are working, except the LED driver, and just need to be connected together. <br>
+                       <u>Weekly Work Total</u>: 18.5<br>
+                       <u>Project Work Total</u>: 128</p>
+
+  <h3 id="week14">Week 14</h3>
+
+    <p class="entry"><b>April 13, 2014 (4 hours)</b>:<br> Continued working on the interrupt driven push buttons. The code written would increment a counter every time the push button was pressed. Because this counter wasn't being used anywhere else in the program, the compiler optimized the counter value out. This is why it 'seemed' like the interrupt was not working correctly, but in actuality it was! <br>
+
+After the pushbutton sample code was complete, I began working on setting up the communication peripherals between the microcontroller and the Raspberry Pi. The Raspberry Pi will be sending song metadata to the microcontroller via SPI. This means that the micrcontroller needs to be interrupt driven and collect the correct metadata into the correct variables. This way, the song name, artist, album and year will be updated correctly and can be displayed on the LCD.</p>
+
+    <p class="summary"><b>WEEK 14 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
                        <u>Weekly Work Total</u>: <br>
-                       <u>Project Work Total</u>: 109.5</p>
+                       <u>Project Work Total</u>: 128</p>
+
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
