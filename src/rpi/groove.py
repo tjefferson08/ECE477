@@ -308,6 +308,8 @@ if __name__ == "__main__":
     print album
     year = playback.stdout.readline().split(':')[1].strip()
     print year
+    genre = playback.stdout.readline().split(':')[1].strip()
+    print genre
 
     # pack strings into char arrays
     titleArray = array('c')
@@ -338,6 +340,23 @@ if __name__ == "__main__":
         else:
             yearArray.append(' ')
     print yearArray
+    genreArray = array('c')
+    for i in range(0, SPI_SIZE):
+        if (i < len(genre)):
+            genreArray.append(genre[i])
+        else:
+            genreArray.append(' ')
+    print genreArray
+
+    # 'silent' output
+    playback.stdin.write("silence\n")
+    print playback.stdout.readline()
+    print playback.stdout.readline()
+
+    # PLAY!
+    playback.stdin.write("p\n")
+    print playback.stdout.readline()
+    print playback.stdout.readline()
 
     # main loop to check both SPI and playback
     while True:
@@ -345,6 +364,9 @@ if __name__ == "__main__":
             print check_call(["./spi_comm"])
         else:
             print "Cannot call spi_comm"
+        if (playback.stdout.readline()):
+            print "got something!"
+        
         time.sleep(1)
 
 #Natural Exit
