@@ -267,11 +267,24 @@ def downloader():
         time.sleep(5)
 
 if __name__ == "__main__":
+
+    # start downloading process
     dl = Process(target=downloader)
     dl.start()
-    p2 = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=None)
-    p2.stdin.write("load test.mp3\n")
-    p2.stdin.write("pause\n")
+
+    # start up playback process
+    playback = subprocess.Popen(['mpg123', '-R'], shell=False, stdin=subprocess.PIPE, stdout=DEVNULL, stderr=None)
+
+    # get top song and DL it if need be
+    topFive = getTopFive()
+    downloads = {}
+    for mp3 in os.listdir("."):
+        if mp3.endswith(".mp3"):
+            downloads[mp3.split('.')[0]] = True
+    if topFive[0] not in downloads:
+        downloadSong(topFive[0])
+    playback.stdin.write("load " + topFive[0] + ".mp3\n")
+
 # print subprocess.check_output(["./a.out"])
 
         
