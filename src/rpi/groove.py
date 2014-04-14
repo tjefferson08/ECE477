@@ -27,6 +27,7 @@ _useragent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like
 _token = None
 webappURL = "http://127.0.0.1:8000/songs/requestNext/"
 URL = "grooveshark.com" #The base URL of Grooveshark
+SPI_SIZE = 20
 htmlclient = ('htmlshark', '20130520', 'nuggetsOfBaller', {"User-Agent":_useragent, "Content-Type":"application/json", "Accept-Encoding":"gzip"}) #Contains all the information posted with the htmlshark client
 jsqueue = ['jsqueue', '20130520', 'chickenFingers']
 jsqueue.append({"User-Agent":_useragent, "Referer": 'http://%s/JSQueue.swf?%s' % (URL, jsqueue[1]), "Accept-Encoding":"gzip", "Content-Type":"application/json"}) #Contains all the information specific to jsqueue
@@ -309,13 +310,33 @@ if __name__ == "__main__":
     print year
 
     # pack strings into char arrays
-    titleArray = array('c', title)
+    titleArray = array('c')
+    for i in range(0, SPI_SIZE):
+        if (i < len(title)):
+            titleArray.append(title[i])
+        else:
+            titleArray.append(' ')
     print titleArray
-    artistArray = array('c', artist)
+    artistArray = array('c')
+    for i in range(0, SPI_SIZE):
+        if (i < len(artist)):
+            artistArray.append(artist[i])
+        else:
+            artistArray.append(' ')
     print artistArray
-    albumArray = array('c', album)
+    albumArray = array('c')
+    for i in range(0, SPI_SIZE):
+        if (i < len(album)):
+            albumArray.append(album[i])
+        else:
+            albumArray.append(' ')
     print albumArray
-    yearArray = array('c', year)
+    yearArray = array('c')
+    for i in range(0, SPI_SIZE):
+        if (i < len(year)):
+            yearArray.append(year[i])
+        else:
+            yearArray.append(' ')
     print yearArray
 
     # main loop to check both SPI and playback
