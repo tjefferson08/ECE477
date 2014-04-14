@@ -24,6 +24,7 @@ except ImportError:
 _useragent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5"
 _token = None
 webappURL = "http://127.0.0.1:8000/songs/requestNext/"
+SPI_EXEC = "spi_comm"
 URL = "grooveshark.com" #The base URL of Grooveshark
 htmlclient = ('htmlshark', '20130520', 'nuggetsOfBaller', {"User-Agent":_useragent, "Content-Type":"application/json", "Accept-Encoding":"gzip"}) #Contains all the information posted with the htmlshark client
 jsqueue = ['jsqueue', '20130520', 'chickenFingers']
@@ -283,10 +284,13 @@ if __name__ == "__main__":
             downloads[mp3.split('.')[0]] = True
     if topFive[0] not in downloads:
         downloadSong(topFive[0])
-    playback.stdin.write("load " + topFive[0] + ".mp3\n")
 
-# print subprocess.check_output(["./a.out"])
-
-        
-        #Natural Exit
+    # load top song in paused state
+    playback.stdin.write("lp " + topFive[0] + ".mp3\n")
+    
+    if os.path.isfile(SPI_EXEC):
+        print subprocess.check_output([SPI_EXEC])
+    else:
+        print "Cannot call " + SPI_EXEC
+#Natural Exit
         
