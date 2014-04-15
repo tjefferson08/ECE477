@@ -193,6 +193,8 @@ def markSongDownloadedEx(streamServer, songID, streamKey):
     conn.request("POST", "/more.php?" + p["method"], json.JSONEncoder().encode(p), jsqueue[3])
     return json.JSONDecoder().decode(gzip.GzipFile(fileobj=(StringIO.StringIO(conn.getresponse().read()))).read())["result"]
 
+# TRAVIS'S ORIGINAL CODE ******************************************************************
+
 # we'll call this function both for dl/buffering purposes
 # as well as for a "next song" request
 def getTopFive(pull="False"):
@@ -238,9 +240,6 @@ def downloadSong(songID):
         print "Marking song as completed"
         markSongDownloadedEx(stream["ip"], songID, stream["streamKey"]) #This is the important part, hopefully this will stop grooveshark from banning us.
 
-
-
-
 def downloader():
 
     # init an empty BAG so we don't re-download anything
@@ -269,6 +268,7 @@ def downloader():
         print "downloader about to sleep"
         time.sleep(5)
 
+# MAIN ******************************************************************
 if __name__ == "__main__":
 
     # start downloading process
@@ -298,6 +298,7 @@ if __name__ == "__main__":
     print playback.stdout.readline()
     print playback.stdout.readline()
     print playback.stdout.readline()
+    print "read dead lines"
 
     # get title, artist, album, year
     title = playback.stdout.readline().split(':')[1].strip()
@@ -347,7 +348,8 @@ if __name__ == "__main__":
         else:
             genreArray.append(' ')
     print genreArray
-
+    print "got metadata"
+    
     # 'silent' output
     playback.stdin.write("silence\n")
     print playback.stdout.readline()
@@ -366,7 +368,6 @@ if __name__ == "__main__":
             print "Cannot call spi_comm"
         if (playback.stdout.readline()):
             print "got something!"
-        
         time.sleep(1)
 
 #Natural Exit
