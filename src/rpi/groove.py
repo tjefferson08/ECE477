@@ -12,6 +12,7 @@ import subprocess
 import gzip
 import threading
 import requests
+import re
 from array import array
 from multiprocessing import Process
 if sys.version_info[1] >= 6:  import json
@@ -288,66 +289,53 @@ if __name__ == "__main__":
         downloadSong(topFive[0])
 
     # load top song in paused state and get metadata
-    playback.stdin.write("lp " + topFive[0] + ".mp3\n")
+    playback.stdin.write("lp " + topFive[3] + ".mp3\n")
     if (playback.stdout.readline().split()[0] == "@R"):
         print("lp success")
     else:
         print "lp failed"
     
-    # read in 3 'dead' lines
-    print playback.stdout.readline()
-    print playback.stdout.readline()
-    print playback.stdout.readline()
-    print "read dead lines"
-
+    
     # get title, artist, album, year
-    title = playback.stdout.readline().split(':')[1].strip()
-    print title
-    artist = playback.stdout.readline().split(':')[1].strip()
-    print artist
-    album = playback.stdout.readline().split(':')[1].strip()
-    print album
-    year = playback.stdout.readline().split(':')[1].strip()
-    print year
-    genre = playback.stdout.readline().split(':')[1].strip()
-    print genre
+    title, artist, album, year, genre = "", "", "", "", ""
+    temp = playback.stdout.readline()
+    while (not re.match('@P 1', temp)):
+    	if (re.search('ID3v2.title', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		title += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.artist', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		artist += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.album', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		album += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.year', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		year += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.genre', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		genre += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	temp = playback.stdout.readline()
 
-    # pack strings into char arrays
-    titleArray = array('c')
-    for i in range(0, SPI_SIZE):
-        if (i < len(title)):
-            titleArray.append(title[i])
-        else:
-            titleArray.append(' ')
-    print titleArray
-    artistArray = array('c')
-    for i in range(0, SPI_SIZE):
-        if (i < len(artist)):
-            artistArray.append(artist[i])
-        else:
-            artistArray.append(' ')
-    print artistArray
-    albumArray = array('c')
-    for i in range(0, SPI_SIZE):
-        if (i < len(album)):
-            albumArray.append(album[i])
-        else:
-            albumArray.append(' ')
-    print albumArray
-    yearArray = array('c')
-    for i in range(0, SPI_SIZE):
-        if (i < len(year)):
-            yearArray.append(year[i])
-        else:
-            yearArray.append(' ')
-    print yearArray
-    genreArray = array('c')
-    for i in range(0, SPI_SIZE):
-        if (i < len(genre)):
-            genreArray.append(genre[i])
-        else:
-            genreArray.append(' ')
-    print genreArray
+
+
+    # append spaces to strings
+    
+    for i in range(len(title), SPI_SIZE):
+        title += " "
+    print title + "end"
+    for i in range(len(artist), SPI_SIZE):
+       	artist += " "
+    print artist + "end"
+    for i in range(len(album), SPI_SIZE):
+        album += " "
+    print album + "end"
+    for i in range(len(year), SPI_SIZE):
+        year += " "
+    print year + "end"
+    for i in range(len(genre), SPI_SIZE):
+        genre += " "
+    print genre + "end"
     print "got metadata"
     
     # 'silent' output
