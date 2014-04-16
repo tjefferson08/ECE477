@@ -1,0 +1,752 @@
+<html>
+  <head>
+    <title>Travis Jefferson's Lab Notebook</title>
+    <link rel="stylesheet" type="text/css" 
+	  href="https://engineering.purdue.edu/ece477/MessageBoard/Lab_Notebook_Template.css" media="screen">
+
+  </head>
+  <body>
+    <h1>Travis Jefferson's Lab Notebook</h1>
+
+    <h3 id="week01">Week 01</h3>
+
+    <p class="entry"><b>January 14, 2014 (1 hour)</b>:
+      <br>Initialized github repo with stubs for directories and blank
+      notebook templates.
+    </p>
+
+    <p class="entry"><b>January 15, 2014 (1 hour)</b>:
+      <br>Began a Django web application tutorial, put it under version
+      control 
+      (<a href="https://docs.djangoproject.com/en/1.4/intro/tutorial01/">step 1</a>) 
+    </p>
+    
+    <p class="entry"><b>January 15, 2014 (2 hours)</b>:
+      <br>Met as a team after class to finish writing preliminary
+      project proposal.
+    </p>
+    
+    <p class="entry"><b>January 16, 2014 (1 hour)</b>:
+      <br>Continued working through Django tutorial 
+      (<a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 2</a>)
+    </p>
+    
+    <p class="summary"><b>WEEK 01 SUMMARY</b><br>
+      <u>Accomplishments</u>: Submitted preliminary project proposal.<br>
+      <u>Weekly Work Total</u>: 5 hours<br>
+      <u>Project Work Total</u>: 5 hours<br>
+    </p>
+    
+    <h3 id="week02">Week 02</h3>
+    <p class="entry"><b>January 19, 2014 (1 hour)</b>:<br>Got on team account, put all team webpage materials under 
+      version control.
+      The repo was then reorganized and a bash script was authored to aid in staging/testing website changes in the 
+      repo, then exporting them to the live hosting environment. More work will probably be involved when the same
+      task is undertaken for the webapp's resources. A thought: it might be the case that the limited hosting 
+      feature
+      set provided by ECN will not be sufficient for the functionality required from the Every1 DJ webapp
+    </p>                    
+    
+    <p class="entry"><b>January 22, 2014 (1.5 hours)</b>:
+      <br> Finished Django tutorial
+      <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 2</a>
+      and committed to repo. Step 2 focused on the Django-generated admin pages for each specific application
+      runing on a site. So far, it will likely be sufficient to run a single app to power the project's needs.
+      At the end, the step 2 tutorial previewed the template with which the user can modify the way in which the 
+      python-powered content is displayed in HTML/CSS. This feature is the focus of step 3.
+    </p>
+    
+    <p class="entry"><b>January 22, 2014 (1.5 hours)</b>:
+      <br> Completed Django tutorial 
+      <a href="https://docs.djangoproject.com/en/1.6/intro/tutorial03/">step 3</a>
+      and committed to repo. Switched mid-tutorial to the latest Django tutorial version (1.6); that's also what
+      is installed on the development machines. Began some simple view authoring and intro to the Django template
+      language. Brainstorming was briefly undertaken as to a potential data model for the song selection/sorting
+      as well as storage. Atomic data element will probably be a song, with multiple attributes and views.
+    </p>
+
+    <p class="entry"><b>January 22, 2014 (1 hour)</b>:
+      <br> Finished Django tutorial
+      <a href="https://docs.djangoproject.com/en/1.6/intro/tutorial04/">step 4</a>
+      and committed to repo. Step 4 included a form to calculate voting on polls, as well 
+      as a switch from distinct and hardcoded to generic, flexible templates.
+    </p>
+
+    <p class="entry"><b>January 26, 2014 (1 hour)</b>:<br>
+      Worked with Courney to finish the final proposal and do a rough schedule estimate. As the project progresses,
+      it will be important to ensure that derivation from the previous year's DJ project remains at a minimum.
+    </p>
+
+    <p class="summary"><b>WEEK 02 SUMMARY</b><br>
+      <u>Accomplishments</u>: Submitted final project proposal.<br>
+      <u>Weekly Work Total</u>: 6 hours<br>
+      <u>Project Work Total</u>: 11 hours<br>
+    </p>
+
+    <h3 id="week03">Week 03</h3>
+    <p class="entry"><b>January 26, 2014 (2 hours)</b>:</br>
+      Finished up 
+      <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 5</a> and 
+      <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 6</a>.
+      The "prototype" looks like this upon completion of step 6: <br>
+      <a href="../images/jefferst/2014-01-26-webapp-tutorial.png">
+	<img src="../images/jefferst/2014-01-26-webapp-tutorial.png" alt="screenshot1" height="200px" width="200px">
+      </a> <br>
+      It's ugly, but it's powered by Django, and that's a start. It has become fairly evident that hard-coding
+      in a Grooveshark (or similar) API call and integrating with the Django database handling will be a big
+      milestone for this project. The voting/selection algorithm should be rather simple.
+    </p>
+    
+    <p class="entry"><b>January 27, 2014 (1 hour)</b>:</br>
+      Began homework 2 (PCB exercise). Investigation into API candidates for music search and selection was
+      begun. One candidate looks great: <a href="http://www.tinysong.com/api">Tinysong</a>.
+      It's an appealing choice because it's simple (only 3 methods) and supports the functionality
+      required for the device. A separate API would be necessary to get things like album art or other image
+      materials (Tinysong appears to be text info only, hence the name).
+    </p>
+
+    <p class="entry"><b>January 28, 2014 (1.5 hours)</b>:<br>
+      The first testing of the tinysong API was initiated. The code was inserted into the Django tutorial app
+      and tested from the Django shell. The results look like this:<br>
+      <a href="../images/jefferst/2014-01-28-tinysong-api-call.png">
+	<img src="../images/jefferst/2014-01-28-tinysong-api-call.png" alt="screenshot2" height="200px" width="200px">
+      </a> <br>
+    </p>
+
+    <p class="entry"><b>January 29, 2014 (2.5 hours)</b>:<br>
+      Attended lab with teammates. Refactoring of PSSC criteria was accomplished, and the PSSC's were
+      informallly accepted. A Raspberry Pi was ordered and should arrive by Friday. Homework 2 (PCB tutorial)
+      was completed, although singoff by the TA was not.
+    </p>
+
+    <p class="entry"><b>January 31, 2014 (1 hour)</b>:<br>
+      Raspberry pi and accessories were delivered. Some time was spend assembling Rpi and collecting documentation. 
+      The team will need an SD reader/writer in order to boot an OS on the Rpi.
+    </p>
+
+    <p class="summary"><b>WEEK 03 SUMMARY</b><br/>
+      <u>Accomplishments</u>: Homework 2 - PCB tutorial<br>
+      <u>Weekly Work Total</u>:8 hours<br>
+      <u>Project Work Total</u>: 19 hours<br>
+    </p>
+
+    <h3 id="week04">Week 04</h3>    
+    <p class="entry"><b>February 6, 2014 (1.5 hours)</b>:<br>
+      Team meeting was held to complete homework 3. Part selection was accomplished (preliminary status),
+      and the majority of the assignment was completed.
+    </p>
+
+    <p class="entry"><b>February 7, 2014 (1 hour)</b>:<br>
+      Completed homework 3 and submitted to 477 portal.
+    </p>
+
+    <p class="summary"><b>WEEK 04 SUMMARY</b><br/>
+      <u>Accomplishments</u>: Homework 3 - Design Constraint Analysis<br>
+      <u>Weekly Work Total</u>: 2.5 hours<br>
+      <u>Project Work Total</u>: 21.5 hours<br>
+    </p>
+
+    <h3 id="week05">Week 05</h3>    
+    <p class="entry"><b>February 12, 2014 (2 hours)</b>:<br>
+      Team meeting was held in lab for mandatory lab #5. Component selection feedback was received, and some 
+      progress was made in part selection, especially in the previously lacking power supply and regulation
+      components. It was determined that the power supply voltage should be higher than that which is required
+      of the RaspberryPi (5V), so a 6.5V power supply was selected. In addition, it was decided that voltage 
+      regulators would be included for both the Raspberry Pi and digital circuitry supplies. Another discussion
+      centered around options for LED driving devices. A FET device and a constant current driver were the
+      two discussed options, and a working FET-controlled LED design was supplied by George.
+      Last, the workload for HW 4 was divided, with tha majority falling to Courtney, our resident packaging
+      and mechanical design specialist. 
+    </p>
+
+    <p class="entry"><b>February 15, 2014 (1.5 hours)</b>:<br>
+      Revision of homework 4 was completed prior to its submission by Courtney. After completion of the
+      revision, some initial integration effort was begun. Tool acquisition and some cabling were begun with the
+      intent to start programming the microcontroller with its MPLAB IDE and evaluation kit. The first microcontroller
+      task will focus on the 3-wire serial peripheral in order to communicate with the serial port on the Raspberry
+      Pi. A quick setback came in the form of a missing power supply for the evaluation kit. Joe promptly supplied one,
+      further integration efforts will continue in the near future.
+    </p>
+
+    <p class="summary"><b>WEEK 05 SUMMARY</b><br/>
+      <u>Accomplishments</u>: Homework 4 - Packaging Constraints<br>
+      Micro eval board obtained and programmed
+      <u>Weekly Work Total</u>: 3.5 hours<br>
+      <u>Project Work Total</u>: 25 hours<br>
+    </p>
+
+    <h3 id="week06">Week 06</h3>    
+    <p class="entry"><b>February 18, 2014 (1.5 hours)</b>:<br>
+      A Django refresher from tutorials linked above was undertaken. A small modification of the existing webapp
+      was made: there is now a basic Search button on the main page:
+      <a href="../images/jefferst/2014-02-18-search-button-01.png">
+	<img src="../images/jefferst/2014-02-18-search-button-01.png" alt="screenshot1" height="200px" width="200px">
+      </a> 
+      <a href="../images/jefferst/2014-02-18-search-button-02.png">
+	<img src="../images/jefferst/2014-02-18-search-button-02.png" alt="screenshot1" height="200px" width="200px">
+      </a> 
+      <br>
+      which performs a hard-coded call to tinysong API. This is a
+      step closer to actually displaying search results in a meaningful manner. 
+    </p>
+
+    <p class="entry"><b>February 19, 2014 (2.5 hours)</b>:<br>
+      Labratory attendance, as usual, was mandatory, and the focus was on schematic progress and/or issues. The
+      discussion was led primarily by Courtney, who then assembled a list of outstanding concerns for later 
+      resolution with course staff. The hardware narrative components were largely decided, and some division
+      of labor was devised. Clarification on some peripheral responsibilities for the design was an additional 
+      conversation topic. 
+    </p>
+
+    <p class="entry"><b>February 21, 2014 (2 hours)</b>:<br>
+      A team meeting was held to aid Sophie in completion of the hardware narrative report. An individual contribution 
+      of the block diagram and design decisions was made. Microcontroller port assignments were the largest set of
+      decisions to be made. Some physical/connection topics were discussed with respect to schematic completion. It 
+      was tentativel decided that all necessary Raspberry Pi pins, control panel (pushbutton) pins, LCD pins, and motor
+      pins would probably go to connectors on the PCB, since all aforementioned components will reside at specific
+      location in the package (external to PCB, internal to packaging).
+    </p>
+
+    <p class="entry"><b>February 22, 2014 (4 hours)</b>:<br>
+      A more thorough setup by Matt of the Raspberry Pi workstation was facilitated. Access to the github repository
+      was one initial accomplishment, as well as the acquiring of pre-built SPI python wrappers from 
+      <a href="http://www.100randomtasks.com/simple-spi-on-raspberry-pi">100randomtasks.com</a>. <br>
+      A preliminary visual inspection of the waveforms from the Raspberry Pi was promising, although a more scientific
+      inspection will take place once it is more apparent how to operate some features on the MSO-X 4024A mixed-signal
+      oscilloscope. <br>
+      One unfortunate discovery came in the knowledge that the Raspberry Pi SPI harware does not support slave mode.
+      See page 8 of the Raspberry PI CPU 
+      <a href="http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">datasheet</a>.
+      This factor will play a part in refactoring the communication design and could potentially require a slight
+      schematic modification. It is natural at this stage to develop SPI (slave) TX code on the PIC eval kit in order
+      to communicate with (probably) functional SPI TX/RX code on the Raspberry Pi.<br><br>
+      SPI investigation on the micro side was begun, and the initial plan of attaching SPI1 as
+      master to SPI2 as a slave was undertaken.
+      Unfortunately, somewhere in the inclusion of the SPI.h lib file and building, an error occurred in the build
+      settings. At the moment, building and programming the micro is not functional. Instead, a good goal might be 
+      one of the following: strive for some meaningul progress on the Django webapp or seek to modify the clock
+      rate of Rpi SPI transmission. The next entry will likely detail efforts in one of those two categories.
+    </p>
+    
+    <p class="summary"><b>WEEK 06 SUMMARY</b><br/>
+      <u>Accomplishments</u>: Homework 5 - Hardware Narrative
+      First inspection of Rpi serial waveforms<br>
+      <u>Weekly Work Total</u>: 10 hours<br>
+      <u>Project Work Total</u>: 35 hours<br>
+    </p>
+
+    <h3 id="week07">Week 07</h3>    
+    <p class="entry"><b>February 24, 2014 (3 hours)</b>:<br>
+      Matt successfully navigated the maze of drivers and compilers to get the MPLab IDE up and running again. 
+      A small plastic header was sacrificed and leads were soldered on to allow for scoping and interconnection
+      of Raspberry Pi SPI signals. The ambitious experiment 
+      of micro -> Rpi transmission was set up, whcih looked something like this:<br>
+      <a href="../images/jefferst/2014-02-25-serial-comm-ckt.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-comm-ckt.jpg" alt="serial comm" height="200px" width="200px">
+      </a> <br>
+      Before scoping anything, some software debugging was necessary. The MPLab spi library partially worked, but the 
+      ReadSPI() function was loopinf infinitely. Replacing this function call with a regular IFG (interrupt flag) poll
+      solved this looping issue. Although library dodumentation was unsurprisingly nonexistent, it is
+      assumed that the library must have been for a slightly different device family.
+      Logic analyzer probes were placed on SCLK, SIMO, and MOSI, but the only observable results were noisy, meaningless signals.
+      Scoping each device's output separately determined that the Raspberry Pi clock and SPI lines were the culprits.
+    </p>
+
+    <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br>
+      Since the Rpi SPI was not operating correctly, a quick search was performed for alternatives for SPI
+      driving code. The python example was abandoned, and a C programming example was discovered (linked within) from the following
+      blog <a href="http://www.brianhensley.net/2012/07/getting-spi-working-on-raspberry-pi.html">tutorial</a>.<br>
+      At this point, Rpi SPI was scoped alone; SUCCESS! See the code and initial results here:<br>
+      <a href="../images/jefferst/2014-02-25-serial-rpi.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-rpi.jpg" alt="rpi" height="200px" width="200px">
+      </a> 
+      <a href="../images/jefferst/2014-02-25-rpi-serial-code.jpg">
+	<img src="../images/jefferst/2014-02-25-rpi-serial-code.jpg" alt="code" height="200px" width="200px">
+      </a> <br>
+      Some additional code was authored to display (on the microcontroller) multi-byte transmissions from the Rpi.
+      In addition, clock frequencies were matched to facilitate what will eventually be bidirectional communication.
+      See evidence of frequency (62.5KHz) matching here:<br>
+      <a href="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg">
+	<img src="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg" alt="code" height="200px" width="200px">
+      </a> <br>
+      This experiment was successful! (Multiple transmissions, one way: Rpi -> micro)
+      It was briefly noted that since Rpi SPI peripherals are all master-mode hardware, a switching
+      protocol must be developed in software on the micro side so that it may
+      operate in Master or Slave mode as appropriate to each SPI peripheral (Rpi, LCD).
+    </p>
+
+    <p class="entry"><b>February 26, 2014 (4 hours)</b>:<br>
+      Mandatory Lab was held. Descussion centered around streaming API selection and different options. Tinysong
+      (the current metadata API) returns a link to Grooveshark flash music player, but that will not suffice for 
+      Rpi streaming due to system incompatibilites. Grooveshark's streaming API would be the best option, but
+      it is unclear whether API key access will be granted. Should the Grooveshark API prove inaccessible, 
+      two main alternatives methods were selected, in order of team preference:<br>
+      - Anonymizing Grooveshark API calls with TOR to allow for previously issued keys to be reused<br>
+      - Downloading youtube videos, ripping out audio on the fly, and playing from disk
+    </p>
+
+    <p class="entry"><b>February 28, 2014 (8 hours)</b>:<br>
+      Today's session resulted in the completion of the initial PCB layout and the submission of homework 6 (PCB Layout).
+      From the existing layout, many changes were made. Among the highlights are:<br>
+      - Switching from BJT motor control circuitry to the <a href="http://www.ti.com/lit/ds/symlink/l293d.pdf">L239D Motor Driver</a> IC<br>
+      - Reassigning several incorrect pin assignments from the microcontroller to the LED driver<br>
+      - Changing to a 6-pin RJ-11 connector and routing programming pins correctly<br>
+      - Routing power and ground to microcontoller bypass capacitors<br>
+      - Creating all power and ground planes<br>
+      The report for homework #6 was completed in parallel to the PCB layout activities.
+      See a first-revision PCB layout here:<br>
+      <a href="../images/jefferst/2014-03-01-PCB-layout.png">
+	<img src="../images/jefferst/2014-03-01-PCB-layout.png" alt="block" height="200px" width="200px">
+      </a> <br>
+    </p>
+
+    <p class="entry"><b>March 1, 2014 (3 hours)</b>:<br>
+      A brief team meeting was held today to divide Design Review presentation subtasks.
+      An update to the system block diagram was made, as seen here:<br>
+      <a href="../images/jefferst/system-block-diagram.jpg">
+	<img src="../images/jefferst/system-block-diagram.jpg" alt="block" height="200px" width="200px">
+      </a> <br>
+      A large notebook update was completed here!
+      Fixed a permissions error on the team website, watch permissions on image upload.
+    </p>
+
+    <p class="summary"><b>WEEK 07 SUMMARY</b><br/>
+      <u>Accomplishments</u>:<br> Homework 6 - PCB Layout<br>
+      Meaningful communication one-way on SPI<br>
+      PCB Layout<br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
+    <h3 id="week08">Week 08</h3>    
+
+    <p class="entry"><b>March 2, 2014 (1.5 hours)</b>:<br>
+      A short team meeting was help to assign roles for the design review presentation.
+    </p>
+
+    <p class="entry"><b>March 3, 2014 (3 hours)</b>:<br>
+      Further development of SPI communication between the Rapsberry Pi and the microcontroller was undertaken. 
+      After modifying the spi code module on the Rasperry pi to adjust clock frequency, successful receipt on 
+      the micro side was observed. However, it was not immediately transparent when each device would
+      be receiving or transmitting, due to the granularity of control on the Raspberry Pi being limited
+      to a single function call which performs both reading and writing on the SPI bus. Adding a few 
+      more SPI interactions on the microcrontroller side with different TX data yielded more obvious 
+      insight as to the timing between the two components. <br/><br/>
+      A brief session of practice and presentation outlining was held.<br/><br/>
+
+      Some schematic rework was performed to prepare fully for the design review.<br/>
+      - A 0 Ohm resistor was added between the analog and digital grounds to 
+      allow for separate testing on the PCB<br/>
+      - A series resistor was added for each LED header pin to limit current<br/>
+      - An RJ-11 connector was added for programming using the MPlab reference for pin connections<br/>
+      - A new power supply was selected due to incorrect current calculations<br/>
+    </p>
+
+    <p class="entry"><b>March 4, 2014 (2 hours)</b>:<br>
+      A brief session was held for further design review practice with the updated schematic.
+    </p>
+
+    <p class="entry"><b>March 5, 2014 (6 hours)</b>:<br>
+      A modification to the webapp was made in order to connect the text in the search box
+      to the actualy search terms of the API call. This was accomplished by adding POST
+      data to the form with an input tag, then using Django's POST dictionary object to
+      retrieve it on the button press event: <br>
+      <a href="../images/jefferst/2014-03-31-search-term.png">
+	<img src="../images/jefferst/2014-03-31-search-term.png" alt="block">
+      </a> <br><br/>
+      The Django database model was updated from the tutorial version to specifically
+      match the Every1 DJ project needs. All urls and directories were switched from the
+      polls naming convention to songs.<br/>
+      <a href="../images/jefferst/2014-03-31-django-model.png">
+	<img src="../images/jefferst/2014-03-31-django-model.png" alt="block">
+      </a> <br/><br/>
+      
+      Prototyping with the LEDs was begun in order to get an idea of the current and
+      voltage characteristics. The power supply was used with 3.3V supply and 
+      100mA current limit, since this is the espected characteristic of the power
+      delivery circuitry on the PCB. Thankfully, the LEDs were extremely bright 
+      even on the relatively low current setting. See the setup and results here:<br/>
+      <a href="../images/spouliqu/RedLED.jpg">
+	<img src="../images/spouliqu/RedLED.jpg" alt="block" height="200px" width="200px">
+      </a> 
+      <a href="../images/spouliqu/BlueLED.jpg">
+	<img src="../images/spouliqu/BlueLED.jpg" alt="block" height="200px" width="200px">
+      </a> 
+      <a href="../images/spouliqu/GreenLED.jpg">
+	<img src="../images/spouliqu/GreenLED.jpg" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+    </p>
+
+    <p class="entry"><b>March 8, 2014 (3 hours)</b>:<br>
+      Results display wasy modified to meaningully display the search results. This
+      was accomplished by adding a context variable to the Results View, which 
+      passed along the Song object to be rendered by the results.html template.
+      See the formatted results display here: <br/>
+      <a href="../images/jefferst/2014-03-08-search-with-text-input.png">
+	<img src="../images/jefferst/2014-03-08-search-with-text-input.png" alt="block" height="200px" width="200px">
+      </a>
+      <a href="../images/jefferst/2014-03-08-search-result-with-vote.png">
+	<img src="../images/jefferst/2014-03-08-search-result-with-vote.png" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+      A vote button was added on the results page and connected to its own view. The button is hard-coded
+      to a specific song for testing, and text dumps 'not in db' if the song ID isn't yet in the DB.
+      This will be the case for adding a new DB entry, but it's not relevant until additional data
+      can be passed from the vote button. Currently, all we can get is the song ID, but we need
+      artist, etc.
+      Some research shows two popular ways of passing extra data on a single button press. One is the use of 
+      Django 'session variables'. The second, simpler way is to add 'hidden' input fields to the form. 
+      This was successfully acheived once a bug was worked out. It is important to notice that when testing,
+      using the same song ID with different metadata will NOT overwrite the current DB entry, which is
+      actually correct functionality. See the hidden input fields here:<br/>
+      <a href="../images/jefferst/2014-03-09-hidden-fields.png">
+	<img src="../images/jefferst/2014-03-09-hidden-fields.png" alt="block">
+      </a>
+    </p>
+
+    <p class="summary"><b>WEEK 08 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br/>
+      Webapp's most important data transfer was designed<br>
+      Prepared for and delivered design review presentation<br>
+      SPI bidirectional<br>
+      Verified sufficient current and brightness for LEDs<br>
+      <u>Weekly Work Total</u>: 15.5 hours<br>
+      <u>Project Work Total</u>: 71.5 hours<br>
+    </p>
+
+    <h3 id="week09">Week 09</h3>    
+    <p class="entry"><b>March 9, 2014 (6 hours)</b>:<br>
+      The webapp homepage was modified to display top 3 results in the database, sorted descending on title field.<br/>
+      <a href="../images/jefferst/2014-03-09-home-display-songspng">
+	<img src="../images/jefferst/2014-03-09-home-display-songs.png" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+      A home link was added to the song details page to facilitate navigation. The app's current use case is look 
+      at top 5 or 10 (moving to 10), search, vote, view results, then go back to home. To further streamline usage, voting buttons 
+      (both up and down) were added to the top 10 song listings. The top 10 display was corrected to sort descending on votes.
+      See the formatted result here:<br/>
+      <a href="../images/jefferst/2014-03-09-page-vote-buttons-sorted.png">
+	<img src="../images/jefferst/2014-03-09-homepage-vote-buttons-sorted.png" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+      Voting down functionality was connected to -1 button with another hidden POST element. Voting was
+      ensured to never push votes below 0. <br/><br/>
+      Basic API functionality was acheived by implementing a 'headless' view which serves only to handle
+      requests, not render any page. The response is currently the song title in ISO string form, 
+      but it will likely move to the song ID code in string form. <br/><br/>
+      Research for webapp deployment on the Rpi was carried out, the following candidates were discovered
+      <a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?t=7208&p=403771">here</a> and
+      <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">here</a>
+      <br/><br/>
+      LCD development was undertaken. A checkerboard function was tested from an online source. It performed
+      as expected, although the interface forces the user to interact on a pixel level, which creates
+      a more tedious task than initially expected.
+      An 8x8 pixel characted format was selected and a LCDWrite function was written which takes a string
+      argument. The string is then looped over, and each char is decoded in a 26-case switch statement:<br/>
+      <a href="../images/mmcmunig/3_9_LCD_AHH.JPG">
+	<img src="../images/mmcmunig/3_9_LCD_AHH.JPG" alt="block" height="200px" width="200px">
+      </a> <br/><br/>
+    </p>
+
+    <p class="entry"><b>March 12, 2014 (1.5 hours)</b>:<br>
+      After some online research, a grooveshark downloading python script was 
+      <a href="https://github.com/jacktheripper51/groove-dl">discovered</a>. Although 
+      the initial plan was to stream the song live, the downloading app moved very quickly, so
+      it will serve for the interim, if not the final revision. 
+    </p>
+
+    <p class="entry"><b>March 14, 2014 (3 hours)</b>:<br>
+      Briefly assisted in getting PCB finalized and checked off, but this task was 
+      primarily accomplished by Matt and Courtney. The webapp prototype was demo'ed
+      to team members with very positive reception. 
+    </p>
+
+    <p class="summary"><b>WEEK 09 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      Finalized PCB<br/>
+      Webapp API implemented<br/>
+      Webapp homepage significantly improved<br/>
+      <u>Weekly Work Total</u>: 10.5 hours<br>
+      <u>Project Work Total</u>: 82 hours<br>
+    </p>
+
+    <h3 id="week10">Week 10: Spring Break</h3>    
+    <p class="entry"><b>March 17, 2014 (3 hours)</b>:<br>
+      Modified groove.py to only run in non-GUI mode. The current django 'API' was modified to 
+      respond with top 5 song IDs, comma delimited. These will be read by groove.py and downloaded
+      in a process separate from playback control. <br/><br/>
+      A small security check was added in the form of a simple GET check on a url parameter.
+      To call the api, simply visit url http://*/songs/requestNext?key=team2.
+      A 'bag' was implemented to ensure that song IDs were checked with songs on disk to prevent
+      redundant downloading. The bag is simply a python dictionary with key=songID and value=True.
+    </p>
+
+    <p class="entry"><b>March 19, 2014 (1.5 hours)</b>:<br>
+      Research into webapp deployment was carried out, and two methods appeared to be good candidates.<br/>
+      Google app engine - google tutorial <a href="https://developers.google.com/appengine/docs/python/cloud-sql/django">here</a>
+      Google's SQL instance is NOT FREE, so we have two evident other options: <br>
+      1) work with django-nonrel to sit totally on top of google app engine, more project setup
+      <a href="django-nonrel.org">nonrel</a><br/>
+      2) try to get django and nginx and IP forwarding figured out on the rpi itself (slightly more favorable)
+      <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">custom</a><br/>
+    </p>
+
+    <p class="entry"><b>March 20, 2014 (3 hours)</b>:<br>
+      Groove.py was significantly modified to periodically request and download songs.
+      The Django webapp API was modified to allow for resetting of #1 song to zero votes (once its playback begins).
+      In any case, the API provides the top 5 song IDs, comma delimited, as before.
+      Playback with mpg123 utility on Rpi command line was tested, and worked very well. This will be called from
+      a python subprocess object to allow for simultaneous downloading and playback.
+    </p>
+
+    <p class="entry"><b>March 21, 2014 (2 hours)</b>:<br>
+      LCD letters A-P were added for LCDWrite function.
+      Groove.py was modified again to perform hardcoded playback concurrently with webapp requests and song downloading.
+      No performance issues were onbserved.
+    </p>
+
+    <p class="summary"><b>WEEK 10 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      <u>Weekly Work Total</u>: 9.5 hours<br>
+      <u>Project Work Total</u>: 91.5 hours<br>
+    </p>
+
+    <h3 id="week11">Week 11</h3>    
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
+      The entire team met to be updated on spring break progress. An agenda was created to 
+      prioritize remaining work. Some discussion of SPI command/response protocol showed 
+      that Rpi will need to be able to pause SPI pulses to allow the micro to control the clock
+      for LCD communication. Peer evaluations were completed.
+    </p>
+
+    <p class="entry"><b>March 23, 2014 (4 hours)</b>:<br>
+      Spi bidirectional communication with Rpi was re-verified and tied to the SPI ISR.
+      Groove.py was modified again to allow for subprocess communication. The mpg123
+      utility is now opened in -R remote mode to allow for commands like play, load,
+      and many more. This will allow all the playback funcitonality the project will need.
+      After installind django on the Rpi and running groove.py in tandem, no performance
+      issues were observed, so the decision was made to pursue deploying the webapp locally
+      on the Rpi rather than Google App engine.
+    </p>
+
+    <p class="entry"><b>March 25, 2014 (4 hours)</b>:<br>
+      A dummy c file was written and compiled on the Rpi. The a.out file was then called
+      from groove.py to prove the concept of calling the C-compiled spi handler and 
+      monitoring its stdout. This works as expected, via either the subprocess.check_output call
+      or the subprocess.stdout.readline() call. 
+      It's been noted that the downloading thread blocks any other calls until the wget utility
+      has exited. This will prove to be acceptable, because the periodic requesting of the top 5
+      is not particularly important if a song is downloading. However, playback and SPI
+      monitoring will be put into a separate process, because timing is much more important
+      to those pieces of functionality. 
+    </p>
+
+    <p class="entry"><b>March 26, 2014 (6.5 hours)</b>:<br>
+      The microcontroller's software operation top-level design and diagram was carried out:<br/>
+      <a href="../images/jefferst/sw_diagram.png">
+	<img src="../images/jefferst/sw_diagram.png" alt="block" height="200px" width="200px">
+      </a><br/>
+      Mandatory lab session #11 was held. Two parts were determined to have been ordered in the
+      wrong package, wo the correct devices were ordered promptly. <br/>
+
+      Two glaring errors in the PCB routing were discovered while working on homework 9 - software 
+      narrative. The I2C pins were routed to the incorrect ports and there is a Vdd/Vss mix-up on 
+      adjacent pins. Adjustment strategies will be discussed as board assembly progresses.
+
+      Audio sampling prototyping was begun. A meaningful waveform was scoped from the middle of the circuit, but
+      a connection error ruined the actual output waveform. A protoboard for the audio circuit will be 
+      obtained to ensure that a wiring error is not the culprit.
+    </p>
+
+    <p class="entry"><b>March 28, 2014 (2 hours)</b>:<br>
+      Stepper motor control and PWM research was carried out in order to complete homework #9. It is tentatively
+      determined that all four PWM modules will be used in full-bridge mode to power the motor driver IC.
+      Homework 9 was completed.
+    </p>
+
+    <p class="entry"><b>March 29, 2014 (2 hours)</b>:<br>
+      Groove.py was further modified to encapsulate requesting/downloading into its own
+      process. It is launched at the beginning of main() and left alone for the duration of
+      the software's operation. 
+      A pipe to the output of the mpg123 playback process was constructed to both allow for
+      metadata retrieval and for playback modification. It was determined that the end of a song
+      will be easily detectable with a subprocess.stdout.readline() call, since the output
+      of the utility in -R mode is very easy to split and decode.
+
+      The actual downloading code portion was put into its own function in order that it
+      can be called from either process. This was done to allow for the case that a song
+      shoots up into the top 5 before the periodic downloader can download it. This would cause
+      a delay in playback, but it would be minimial and is necessary to ensure that the 
+      device functions correctly.
+    </p>
+
+    <p class="summary"><b>WEEK 11 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      Playback interface designed<br/>
+      Downloader as a separate process</br>
+      PCB errors identified<br/>
+      <u>Weekly Work Total</u>: 20.5 hours<br>
+      <u>Project Work Total</u>: 112 hours<br>
+    </p>
+
+    <h3 id="week12">Week 12</h3>    
+
+    <p class="entry"><b>March 30, 2014 (4 hours)</b>:<br>
+      I2C functionality was prototyped with the micro in master mode. After a start condition
+      is sent, the micro sends an address and then a data byte. See the waveform here:<br/>
+      <a href="../images/jefferst/2014-03-30-i2c.jpg">
+	<img src="../images/jefferst/2014-03-30-i2c.jpg" alt="block" height="200px" width="200px">
+      </a><br/>
+      A very strange issue occurs when the SPI pins are connected both to the Rpi and to the LCD 
+      (with the micro in between). The waveforms of the SPI outputs pulse in the right order and
+      with the right timing characteristics, but the waves fail to be held high for any significant
+      period. The results appears to be a correctly-timed glitch sequence. Additional input will be 
+      sought from course staff.<br/>
+      ADC prototyping was begun. A single sample was taken on pin RF1, but ADC results registers fail
+      to collect meaningful data.
+    </p>
+
+    <p class="entry"><b>March 31, 2014 ( hours)</b>:<br>
+      prototype I2C, got up to data sending correctly and in correct order, fixed reset at the end
+    </p> 
+
+    <p class="entry"><b>April 1, 2014 ( hours)</b>:<br>
+      layout and schematic updated with i2c fixed and vcc/vss
+      went ant talked to george?
+    </p>
+
+    <p class="entry"><b>April 2, 2014 ( hours)</b>:<br>
+      MAN LAB
+      Got i2c and lcd working, cleaned up code and got write function going gud
+      Audio - meyer came and shit was still real broke
+    </p>
+
+    <p class="entry"><b>April 3, 2014 ( hours)</b>:<br>
+      more audio, got meyer's OK to use a header on the final product
+      courtney pulled the envelope detector, signal looks a lot better
+    </p>
+
+    <p class="entry"><b>April 4, 2014 ( hours)</b>:<br>
+      finalized pcb changes and submitted board to be ordered with the 402 board order, hopefully it's free!
+    </p>
+
+    <p class="entry"><b>April 5, 2014 ( hours)</b>:<br>
+      unsoldered header, cleaned up station, started setting up rpi for external ip access
+    </p>
+
+    <p class="summary"><b>WEEK 12 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
+    <h3 id="week13">Week 13</h3>    
+    <p class="entry"><b>April 7, 2014 ( hours)</b>:<br>
+      setting registers for I2C LED controller
+      Group dimming and frequency control, no auto-inc, no pattern control, yet
+      Output enable registers, ignoring subaddresses
+      can't test LED driver
+
+      motor registers - enhanced PWM mode, full bridge output
+      can't use PWM full bridge mode because we have a random collection of ECCP pins pulled out
+      We have: ECCP2 B, ECCP3 C, ECCP3 B, ECCP1C, which is horrible
+      we will flywire to ECCP3 A and ECCP3 D
+
+      soldered the crap out of the LED protoboard and LED package itself
+    </p>
+
+    <p class="entry"><b>April 8, 2014 ( hours)</b>:<br>
+      fixed LED driver protoboard, soldered motor protoboard
+      prototyping I2C - getting data on scope but no response from driver chip
+      period of I2C is 2 us (500 MHz), slowed down to 10KHz to be in range of Driver
+      LED is on, but super super dim, weird
+    </p>
+
+    <p class="entry"><b>April 8, 2014 ( hours)</b>:<br>
+      we had nacking problems from Driver chip, but now everything gets acked
+      no changes in output
+      pull up resistors were modified (and supply voltage, temporarily) to get a fully high
+      I2c logic signal - I actually think that won't work
+      There appears to be a potential problem with failure to meet voltage minimums for high state,
+      except address bytes are read correctly, so it can't be a threshold issue
+    </p>
+
+    <p class="entry"><b>April 9, 2014 ( hours)</b>:<br>
+      man lab - debugged I2C and got acks from chip, no results ended up assuming
+      that we have a connection issue, so we might just put it on the board
+    </p>
+
+    <p class="entry"><b>April 10, 2014 ( hours)</b>:<br>
+      motor work
+      programmed gal device
+      switched to eeprom table, just toggling inputs on TIM interrupt
+    </p>
+
+    <p class="summary"><b>WEEK 13 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
+    <h3 id="week14">Week 14</h3>    
+    <p class="entry"><b>April 13, 2014 ( hours)</b>:<br>
+      pushbuttons are being weird, but the problem ight be in the mplab debugger.
+      code does not appear to be executing correctly in the debugger. I'm very confused
+      it was doing the right thing all along, just jumping to a weird location, thinking
+      that it shouls be servicing the ISR. lame
+    </p>
+
+    <p class="entry"><b>April 13, 2014 ( hours)</b>:<br>
+      debugged an SPI issue, data type mismatch (stupid)
+      cleaned up groove.py, added functionality that was lost at a different commit
+      metadata is stripped from groove, now we will start integrating with SPI exec
+    </p>
+
+    <p class="summary"><b>WEEK 14 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
+    <h3 id="week15">Week 15</h3>    
+    <p class="summary"><b>WEEK 15 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
+    <h3 id="week16">Week 16</h3>    
+    <p class="summary"><b>WEEK 16 SUMMARY</b><br/>
+      <u>Accomplishments</u>: <br>
+      <u>Weekly Work Total</u>: 21 hours<br>
+      <u>Project Work Total</u>: 56 hours<br>
+    </p>
+
+
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	      END OF NOTEBOOK SECTION, BEGIN NAVBAR.  Do not change anything beyond this point.
+	      <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		   <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		     -->
+		   <div id="navbar">
+		     <p>
+		       <b>DIRECTORY</b><br><br>
+		       <a href="#week01">Week 01</a><br>
+		       <a href="#week02">Week 02</a><br>
+		       <a href="#week03">Week 03</a><br>
+		       <a href="#week04">Week 04</a><br>
+		       <a href="#week05">Week 05</a><br>
+		       <a href="#week06">Week 06</a><br>
+		       <a href="#week07">Week 07</a><br>
+		       <a href="#week08">Week 08</a><br>
+		       <a href="#week09">Week 09</a><br>
+		       <a href="#week10">Week 10</a><br>
+		       <a href="#week11">Week 11</a><br>
+		       <a href="#week12">Week 12</a><br>
+		       <a href="#week13">Week 13</a><br>
+		       <a href="#week14">Week 14</a><br>
+		       <a href="#week15">Week 15</a><br>
+		       <a href="#week16">Week 16</a><br>
+		     </p>
+		   </div>
+  </body>
+</html>
+
