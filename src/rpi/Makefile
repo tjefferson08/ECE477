@@ -3,7 +3,7 @@ all: 	project
 help: 	info	
 info:
 	@echo "ECE477 - Every1 DJ"
-	@echo "Just run 'make'"
+	@echo "Just run 'make'"	
 
 clean:
 	rm -rf spi_comm
