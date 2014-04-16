@@ -291,13 +291,15 @@ if __name__ == "__main__":
     # load top song in paused state and get metadata
     playback.stdin.write("lp " + topFive[3] + ".mp3\n")
     if (playback.stdout.readline().split()[0] == "@R"):
-        print("lp success")
+        print("lp success\n")
     else:
-        print "lp failed"
+        print "lp failed\n"
     
     
     # get title, artist, album, year
+    # only take first 20 chars of each
     title, artist, album, year, genre = "", "", "", "", ""
+    spaceString = "                    "
     temp = playback.stdout.readline()
     while (not re.match('@P 1', temp)):
     	if (re.search('ID3v2.title', temp)):
@@ -318,44 +320,39 @@ if __name__ == "__main__":
     	temp = playback.stdout.readline()
 
 
-
     # append spaces to strings
-    
-    for i in range(len(title), SPI_SIZE):
-        title += " "
+    title += spaceString[:(SPI_SIZE-len(title))]
     print title + "end"
-    for i in range(len(artist), SPI_SIZE):
-       	artist += " "
+    artist += spaceString[:(SPI_SIZE-len(artist))]
     print artist + "end"
-    for i in range(len(album), SPI_SIZE):
-        album += " "
+    album += spaceString[:(SPI_SIZE-len(album))]
     print album + "end"
-    for i in range(len(year), SPI_SIZE):
-        year += " "
+    year += spaceString[:(SPI_SIZE-len(year))]
     print year + "end"
-    for i in range(len(genre), SPI_SIZE):
-        genre += " "
+    genre += spaceString[:(SPI_SIZE-len(genre))]
     print genre + "end"
-    print "got metadata"
+    
+    print "\ngot metadata"
     
     # 'silent' output
     playback.stdin.write("silence\n")
     print playback.stdout.readline()
-    print playback.stdout.readline()
+    #print playback.stdout.readline()
 
     # PLAY!
     playback.stdin.write("p\n")
     print playback.stdout.readline()
-    print playback.stdout.readline()
+    #print playback.stdout.readline()
 
     # main loop to check both SPI and playback
     while True:
         if os.path.isfile("spi_comm"):
-            print check_call(["./spi_comm"])
+			print "SPI COMM!"
+			print check_call(["./spi_comm", "song", "artist", "album", "year"])
         else:
             print "Cannot call spi_comm"
-        if (playback.stdout.readline()):
-            print "got something!"
+       # if (playback.stdout.readline()):
+       #     print "got something!"
         time.sleep(1)
 
 #Natural Exit
