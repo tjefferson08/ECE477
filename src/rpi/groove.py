@@ -348,7 +348,7 @@ if __name__ == "__main__":
     while True:
         if os.path.isfile("spi_comm"):
 			print "SPI COMM!"
-			print check_call(["./spi_comm", song, artist, album, year])
+			print check_call(["./spi_comm", title, artist, album, year])
         else:
             print "Cannot call spi_comm"
        # if (playback.stdout.readline()):
