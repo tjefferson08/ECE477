@@ -270,6 +270,66 @@ def downloader():
         print "downloader about to sleep"
         time.sleep(5)
 
+def getMetadata(playback_process):
+
+    # load top song in paused state and get metadata
+    playback_process.stdin.write("lp " + topFive[1] + ".mp3\n")
+    if (playback_process.stdout.readline().split()[0] == "@R"):
+        print("lp success\n")
+    else:
+        print "lp failed\n"
+    
+    
+    # get title, artist, album, year
+    # only take first 20 chars of each
+    title, artist, album, year, genre = "", "", "", "", ""
+    spaceString = "                    "
+    temp = playback_process.stdout.readline()
+    while (not re.match('@P 1', temp)):
+    	if (re.search('ID3v2.title', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		title += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.artist', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		artist += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.album', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		album += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.year', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		year += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	if (re.search('ID3v2.genre', temp)):
+    		splitTemp = temp.split(':')[1].strip()
+    		genre += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+    	temp = playback_process.stdout.readline()
+
+
+    # append spaces to strings
+    title += spaceString[:(SPI_SIZE-len(title))]
+    print title + "end"
+    artist += spaceString[:(SPI_SIZE-len(artist))]
+    print artist + "end"
+    album += spaceString[:(SPI_SIZE-len(album))]
+    print album + "end"
+    year += spaceString[:(SPI_SIZE-len(year))]
+    print year + "end"
+    genre += spaceString[:(SPI_SIZE-len(genre))]
+    print genre + "end"
+    
+    print "\ngot metadata"
+    
+    # 'silent' output
+    playback_process.stdin.write("silence\n")
+    print playback_process.stdout.readline()
+
+    # PLAY!
+    playback_process.stdin.write("p\n")
+    print playback_process.stdout.readline()
+
+    return title, artist, album, year, genre
+
+    
+
 # MAIN ******************************************************************
 if __name__ == "__main__":
 
@@ -289,76 +349,22 @@ if __name__ == "__main__":
     if topFive[0] not in downloads:
         downloadSong(topFive[0])
 
-    # load top song in paused state and get metadata
-    playback.stdin.write("lp " + topFive[1] + ".mp3\n")
-    if (playback.stdout.readline().split()[0] == "@R"):
-        print("lp success\n")
-    else:
-        print "lp failed\n"
-    
-    
-    # get title, artist, album, year
-    # only take first 20 chars of each
-    title, artist, album, year, genre = "", "", "", "", ""
-    spaceString = "                    "
-    temp = playback.stdout.readline()
-    while (not re.match('@P 1', temp)):
-    	if (re.search('ID3v2.title', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		title += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
-    	if (re.search('ID3v2.artist', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		artist += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
-    	if (re.search('ID3v2.album', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		album += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
-    	if (re.search('ID3v2.year', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		year += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
-    	if (re.search('ID3v2.genre', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		genre += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
-    	temp = playback.stdout.readline()
-
-
-    # append spaces to strings
-    title += spaceString[:(SPI_SIZE-len(title))]
-    print title + "end"
-    artist += spaceString[:(SPI_SIZE-len(artist))]
-    print artist + "end"
-    album += spaceString[:(SPI_SIZE-len(album))]
-    print album + "end"
-    year += spaceString[:(SPI_SIZE-len(year))]
-    print year + "end"
-    genre += spaceString[:(SPI_SIZE-len(genre))]
-    print genre + "end"
-    
-    print "\ngot metadata"
-    
-    # 'silent' output
-    playback.stdin.write("silence\n")
-    print playback.stdout.readline()
-    #print playback.stdout.readline()
-
-    # PLAY!
-    playback.stdin.write("p\n")
-    print playback.stdout.readline()
-    #print playback.stdout.readline()
+    # get top song metadata
+    title, artist, album, year, genre = getMetadata(playback)
 
     # main loop to check both SPI and playback
-	
     while True:
         if os.path.isfile("spi_comm"):
 			
-			#SPI_COMM will return 1 when a new song is requested
-			try :
-				check_call(["./spi_comm"])
-			except :
-				sleep(0.5)
-				check_call(["./spi_comm", title, artist, album, year])
-			else:
-				print "Successful Call"
-			sleep(0.5)
+            #SPI_COMM will return 1 when a new song is requested
+            try :
+                check_call(["./spi_comm"])
+            except :
+                sleep(0.5)
+                check_call(["./spi_comm", title, artist, album, year])
+            else:
+                print "Successful Call"
+                sleep(0.5)
         else:
             print "Cannot call spi_comm"
        # if (playback.stdout.readline()):
