@@ -158,7 +158,7 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     <p class="entry"><b>February 27, 2014 (4 hours)</b>:<br>Kept going with PCB layout and traces. Had to keep analog and digital ground seperate from each other until combined at the very end for the power supply. Followed Sparkfun's library for specifications on the PCB layout, so they are able to design it at the fabrcication shop correctly. Also, I changed the MAX856CSA to a LM1117 since the MAX856CSA was a step-up regulator when we needed a low dropout regulator which was the LM 1117.<br>
         <img src="../images/claubach/LM1117.JPG" alt="screenshot1" height="500px" width="500px"><br><br></p>
         
-    <p class="entry"><b>March 1, 2014 (1 hour)</b>:Met briefly to break up powerpoint slides up to figure out what each person was going to talk about.<br>.</p>
+    <p class="entry"><b>March 1, 2014 (1 hour)</b>:Met briefly to break up powerpoint slides up to figure out what each person was going to talk about.<br></p>
     
     <p class="summary"><b>WEEK 07 SUMMARY</b><br>
                        <u>Accomplishments</u>: Changed parts around on the PCB board including dimensions of the LED driver, Microcontroller, and both the voltage converters. Circuitry was improved and looked over by team. Started PCB layout of the traces. <br>
@@ -168,13 +168,13 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <h3 id="week08">Week 08</h3>
     
-    <p class="entry"><b>March 2, 2014 (2 hour)</b>:Started building the slides for the presentation. Broke up the presentation even more. I was in charge of talking about the mechanical design and the schematic. <br>.</p>
+    <p class="entry"><b>March 2, 2014 (2 hour)</b>:Started building the slides for the presentation. Broke up the presentation even more. I was in charge of talking about the mechanical design and the schematic. <br></p>
     
-    <p class="entry"><b>March 3, 2014 (2 hour)</b>: Finished building the slides for the presentation. Made a couple changes to our schematic including changing a 0 ohm resistor to connect gnd and agnd together because those have to stay seperate until the very end. <br>.</p>
+    <p class="entry"><b>March 3, 2014 (2 hour)</b>: Finished building the slides for the presentation. Made a couple changes to our schematic including changing a 0 ohm resistor to connect gnd and agnd together because those have to stay seperate until the very end. Schematic that was finally presented:<br> <img src="../images/claubach/Schematic-design review" alt="screenshot1" height="500px" width="500px"><br><br></p>
     
-    <p class="entry"><b>March 4, 2014 (4 hour)</b>: We practiced our design review together. Made a couple changes to our powerpoint because we were missing key points. After design review, we corrected a few things including adding a resistor to the heartbeat LED, made mounting holes on PCB board, fixed board lines so they were straight, and changed the inductor and capacitor so they would match the parts we had in stock.<br>.</p>
+    <p class="entry"><b>March 4, 2014 (4 hour)</b>: We practiced our design review together. Made a couple changes to our powerpoint because we were missing key points. After design review, we corrected a few things including adding a resistor to the heartbeat LED, made mounting holes on PCB board, fixed board lines so they were straight, and changed the inductor and capacitor so they would match the parts we had in stock.<br></p>
     
-    <p class="entry"><b>March 6, 2014 (2 hour)</b>: Started researching into voltage regulators for power circuit. Currently our power circuit was not going to work since we need to output of at least 3 A in order for the LEDs to work and the current voltage regulators only outputed 1.5 A.<br>.</p>
+    <p class="entry"><b>March 6, 2014 (2 hour)</b>: Started researching into voltage regulators for power circuit. Currently our power circuit was not going to work since we need to output of at least 3 A in order for the LEDs to work and the current voltage regulators only outputed 1.5 A.<br></p>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b><br>
                        <u>Accomplishments</u>: Succesful presentated our progress at design review and started to fix the feedback we received. <br>
@@ -184,15 +184,16 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
 
     <h3 id="week09">Week 09</h3>
     
-    <p class="entry"><b>March 10, 2014 (5 hour)</b>: Discussed the need for logic level translators. This is because the LED driver runs on 5V, but we needed a 3.3V logic supply. After thinking about our options, we realized that we could sink the LEDs and have the supply voltage of 5 V to LEDs and 3.3V to LEd driver so that the logic would work and also that we would only have to use 1 switch mode regulator to power enough current to the system. We then thought that the motor would need a voltage regulator because of the needed logic voltage and ultimately we decided that we would not need one because the voltage we were going to supply would allow the motor to realize if it was running high or low. Ultimately, the power circuit was changed. We used a switch mode regualtor of a LM2596s from 12V to 5V to maintain the current needed to power the LEDs. Because we changed that the LEDs were going to be powered at 5V not 3.3V, we could use a LM1117 to drop the voltage from 5V to 3.3V which is recommended because many problems occur with a switch mode regualtor.  <br>.</p>
+    <p class="entry"><b>March 10, 2014 (5 hour)</b>: Discussed the need for logic level translators. This is because the LED driver runs on 5V, but we needed a 3.3V logic supply. After thinking about our options, we realized that we could sink the LEDs and have the supply voltage of 5 V to LEDs and 3.3V to LEd driver so that the logic would work and also that we would only have to use 1 switch mode regulator to power enough current to the system. We then thought that the motor would need a voltage regulator because of the needed logic voltage and ultimately we decided that we would not need one because the voltage we were going to supply would allow the motor to realize if it was running high or low. Ultimately, the power circuit was changed. We used a switch mode regualtor of a LM2596s from 12V to 5V to maintain the current needed to power the LEDs. Because we changed that the LEDs were going to be powered at 5V not 3.3V, we could use a LM1117 to drop the voltage from 5V to 3.3V which is recommended because many problems occur with a switch mode regualtor.  <br></p>
     
-    <p class="entry"><b>March 11, 2014 (7 hour)</b>: Met with Meyer and we discussed various things with the schematic. The audio circuit needed to be changed since I had two envelope detectors, only one was needed. Since we did not have all the parts the test it, a 10K potentiometer was added just in case we need it to help us to make the audio circuit to work. Even thought the motor driver would work with the logic voltage of 3.3V, a voltage translator from 3.3V to 5V was included to be safe. For the LEDs, the schematic does not need to change, but the anodes of the LEDs will connect to power and as for the LED driver when you drive it low LEDs will turn off. For the LM 2596s, the capactiors and inductors need to be exactly what the data sheet says and that proved to be difficult since some of the parts that fit it would not be in stock at the store. But it was ultimately figured out and the schematic was finished.<br>.</p>
+    <p class="entry"><b>March 11, 2014 (7 hour)</b>: Met with Meyer and we discussed various things with the schematic. The audio circuit needed to be changed since I had two envelope detectors, only one was needed. Since we did not have all the parts the test it, a 10K potentiometer was added just in case we need it to help us to make the audio circuit to work. Even thought the motor driver would work with the logic voltage of 3.3V, a voltage translator from 3.3V to 5V was included to be safe. For the LEDs, the schematic does not need to change, but the anodes of the LEDs will connect to power and as for the LED driver when you drive it low LEDs will turn off. For the LM 2596s, the capactiors and inductors need to be exactly what the data sheet says and that proved to be difficult since some of the parts that fit it would not be in stock at the store. But it was ultimately figured out and the schematic was finished:<br>
+    <img src="../images/claubach/schematic-final.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
     
-    <p class="entry"><b>March 12, 2014 (1 hour)</b>: Met as a team to make sure the schematic looked good and if anything else needed to change, but nothing was needed besides an inductor had to change because it was not in stock online.<br>.</p>
+    <p class="entry"><b>March 12, 2014 (1 hour)</b>: Met as a team to make sure the schematic looked good and if anything else needed to change, but nothing was needed besides an inductor had to change because it was not in stock online.<br></p>
     
-    <p class="entry"><b>March 13, 2014 (3 hour)</b>: Some more parts came in and checked that with the PCB print out. Some parts needed to change to fit, but for the most part everything fit. A bill of materials was printed out and all items were collected from parts store and if they were not in parts store they were ordered, so all parts should be here besides the 3D part. <br>.</p>
+    <p class="entry"><b>March 13, 2014 (3 hour)</b>: Some more parts came in and checked that with the PCB print out. Some parts needed to change to fit, but for the most part everything fit. A bill of materials was printed out and all items were collected from parts store and if they were not in parts store they were ordered, so all parts should be here besides the 3D part. <br></p>
     
-    <p class="entry"><b>March 14, 2014 (1 hour)</b>: PCB was submitted and I was named the main contact for it if there was anything wrong with it. The PCB ended up being 4.94 inches by 3.75 inches. <br>.</p>
+    <p class="entry"><b>March 14, 2014 (1 hour)</b>: PCB was submitted and I was named the main contact for it if there was anything wrong with it. The PCB ended up being 4.94 inches by 3.75 inches. <br></p>
 
     <p class="summary"><b>WEEK 09 SUMMARY</b><br>
                        <u>Accomplishments</u>: Schematic was completed and PCB was ordered. <br>
@@ -211,15 +212,37 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     
     <h3 id="week11">Week 11</h3>
     
-    <p class="entry"><b>March 23, 2014 (2 hour)</b>: Started drawing the 3D part for the mechanical design of connectign motor to the disco ball and met as a team to figure out the plan for rest of semester. I still have mechanical design, circuit testing, and soldering to do. <br>.</p>
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>: Started drawing the 3D part for the mechanical design of connectign motor to the disco ball and met as a team to figure out the plan for rest of semester. I still have mechanical design, circuit testing, and soldering to do. <br></p>
+
+    <p class="entry"><b>March 24, 2014 (3.5 hours)</b>: Designed the 3D part. Put parts on the PCB printout and the tri-state voltage and the LM1117 do not fit. However, where the parts were placed there is plenty of room to solder wires to connect the components. Finally, the audio circuit prototype was built: <br>
+        <img src="../images/claubach/audio-circuit.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
+        
+    <p class="entry"><b>March 25, 2014 (1 hour)</b>: Drew on the enclosure of where we want to drill things out for the LCD, motor, and pushbuttons to be places. I also worked on the CAD drawing of our 3D part. <br></p>
+    
+    <p class="entry"><b>March 26, 2014 (4 hours)</b>: Two parts (LM1117 and the logic level translator was the wrong package), so we found the correct packages and ordered the new parts. I also worked on the audio circuit. With the audio circuit, we have something wrong with the soldering joints of the op-amp so we were going to need to get a protoboard to solder it to. Finally, the 3D part was fixed because the cylinder was too thin and would never hold on the motor shaft.<br> <img src="../images/claubach/3D_part_final.jpg" alt="screenshot1" height="500px" width="500px"><br></p><br></p>
+    
+    <p class="entry"><b>March 27, 2014 (4.5 hours)</b>: Found a protoboard and soldered the LM264 to the proto board, PCB came in, and figured out we made a mistake on the tracing. The I2C pins are not connected to the right ports on the micro and the VDD and VSS were switched when connecting to power and ground. To fix these issues we are going to have to break the trace and fly wire. With the I2C pins we will fly wire from the resistors and the VDD and VSS we will go from the via. <br>
+    <img src="../images/claubach/PCB.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
+    
+    <p class="entry"><b>March 28, 2014 (3.5 hours)</b>: Submitted the request for a 3D printed part. Went back to debugging the audio circuit in which the op amp would work occasionaly but could not get the diode to work. Still needs lots more work on audio circuit. I also searched how to do the motor code on the microcontroller to control the speeds of the motor and it will be done by sending a pulse wave of a square wave on the 4 wires wires all once at a time and the frequency of sending pulses controlls the speed and the driver these are sent to our programmed with logic pins that will determine direction of movement or if moving at all and then all this data is sent to the 4 wires of the motor. <br>
+    
+    <p class="entry"><b>March 29, 2014 (3 hours)</b>: Soldered the power circuit with the 12V to 5V voltage regulator and tested it overnight and it works with a constant 5.02999 V output. Waiting on the LDO to come in so I can finish the power circuit. Also, learned how the webapp is being built and will start doing the CSS for the webapp. <br>
+    <img src="../images/claubach/power-circuit.jpg" alt="screenshot1" height="500px" width="500px"><br></p>
+
+    </p>
 
     <p class="summary"><b>WEEK 11 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: Submitted 3D part to be printed and is done, just needs to be cleaned and got the power circuit to work and soldered onto board. <br>
+                       <u>Weekly Work Total</u>:  21.5 hours<br>
+                       <u>Project Work Total</u>: 110.5 hours</p>
                        
                       
     <h3 id="week12">Week 12</h3>
+    
+    <p class="entry"><b>March 31, 2014 (4.5 hours)</b>: Still debugging audio circuit. The double amplifier and the diode is not working. The diode is not working due to such a small amplitude gain of .135 V so we are trying to get a higher gain. Also, the 3D part was picked up and cleaned off and installed on the motor. <br><img src="../images/claubach/3Dpart_installed.jpg" alt="screenshot1" height="500px" width="500px"><br> Finally got the audio circuit to work. The initial resistor had to be tied to ground and the envelope detector the resistor needed to be in parallel with the capacitor. This gave a voltage range from 0 to about 1.2V of the signal from the audio. The new circuit and the output signal is depicted below. <br>
+    	<img src="../images/claubach/newaudiocircuit.jpg" alt="screenshot1" height="500px" width="500px"><br><img src="../images/claubach/audiosignal.jpg" alt="screenshot1" height="500px" width="500px"><br>
+    </p>
+
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>

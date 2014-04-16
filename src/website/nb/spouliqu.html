@@ -212,14 +212,169 @@ Added a lot of parts to the DigiKey cart to order after design review evaluation
       </a>
 </p>
 
-    <p class="entry"><b>March 8, 2014 (4 hours)</b>:<br> Started looking into SPI on the LCD. </p>
+    <p class="entry"><b>March 8, 2014 (4 hours)</b>:<br> Started looking into SPI on the LCD. A helper file is given by the manufacturer, but no explanation of the file is given. There is also not much documentation regarding the LCD. This made it extremely difficult to debug and figure out how to setup the LCD. Once all the functions were added to the project, the initialization sequence given in the spec sheet was written (as seen below). 
+
+<br> The LCD was wired to the microcontroller to begin testing. When run the first couple of times nothing on the LCD lit up or was displayed. To debug an oscilloscope was used to make sure all the signals connecting to the LCD were set correctly. This ended our debugging for the day. 
+
+<br><br>
+<a href="../images/spouliqu/LCDCode.jpg">
+	<img src="../images/spouliqu/LCDCode.jpg" alt="LCDCode" height="500px" width="500px">
+      </a>
+
+</p>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b><br>
                        <u>Accomplishments</u>: Got a lot of great feedback from the Design Review presentation. Used this feedback to make changes to the PCB. Hopefully these will be the lasts of our revisions before final submission.<br>
                        <u>Weekly Work Total</u>: 17<br>
                        <u>Project Work Total</u>: 70.5</p>
 
+    <h3 id="week09">Week 09</h3>
 
+    <p class="entry"><b>March 10, 2014 (2 hours)</b>:<br> Ran into a questionable problem on the PCB. The LED drivers runs on 5V with a 3.3V logic supply. There was discussion about using a logic level translator to correct this issue. Instead, according to the data sheet, the LED's can be sunk making the LED supply voltage 5V and the LED driver voltage 3.3V. 
+
+<br><br>
+<a href="../images/spouliqu/LEDDriver.png">
+	<img src="../images/spouliqu/LEDDriver.png" alt="LEDDriver" height="500px" width="500px">
+      </a>
+</p>
+
+    <p class="entry"><b>March 11, 2014 (3 hours)</b>:<br> The power circuitry on the schematic was changed slightly. This includes using a stepper voltage regulator to take 12V down to 5V. An LDO is used to take 5V down to 3.3V. All the diodes were also canged to surface mount diodes. Once these changes were made, all parts were placed on the board and routing began.</p>
+
+    <p class="entry"><b>March 12, 2014 (3 hours)</b>:<br> The final parts order was placed for all capacitors, inductors and diodes. One inductor on the PCB was out of stock online so a new inductor with similar characterisitcs was researched. Discussed the status of the PCB with the course staff and made a few minor changes based on the discussion. </p>
+
+    <p class="entry"><b>March 13, 2014 (3 hours)</b>:<br> Did a one by one print out of the final PCB and placed all available parts on the board for sizing purposes. All of the bulk capacitors needed to be changed to correctly match the given footprints. Below is a picture of the finalized PCB with all available parts placed to fit.
+
+<br><br>
+<a href="../images/spouliqu/LCDCode.jpg">
+	<img src="../images/spouliqu/PartsLayout.jpg" alt="Parts" height="500px" width="500px">
+      </a>
+
+<br><br>
+<a href="../images/spouliqu/LCDCode.jpg">
+	<img src="../images/spouliqu/PartsLayout2.jpg" alt="Parts" height="500px" width="500px">
+      </a>
+</p>
+
+    <p class="summary"><b>WEEK 09 SUMMARY</b><br>
+                       <u>Accomplishments</u>: Completed PCB design and got design reviewed by multiple TA's. The PCB was submitted to the manufacturer for development.<br>
+                       <u>Weekly Work Total</u>: 9 <br>
+                       <u>Project Work Total</u>: 79.5</p>
+
+
+    <h3 id="week10">Week 10</h3>
+
+    <p class="summary"><b>WEEK 10 SUMMARY</b><br>
+                       <u>Accomplishments</u>: No accomplishments made this week due to Spring Break and being out of town. Will resume work when back. <br>
+                       <u>Weekly Work Total</u>: 0 <br>
+                       <u>Project Work Total</u>: 79.5</p>
+
+    <h3 id="week11">Week 11</h3>
+
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br> Met as a team to go over goals for the weeks and the schemdule for the rest of the semester. After, a little SPI work was continued for the RaspberryPi and microcontroller communication. </p>
+
+    <p class="entry"><b>March 24, 2014 (3 hours)</b>:<br> Continued work on the LCD by attempting to trigger an SPI command sent from the RaspberryPi to the microcontroller to display data on the LCD. While attempting to configure this setup, a few problems arose. When scoping the clock signals for the Raspberry Pi and the microcontroller, a lot of noise was present even when both devices were not running. With some advice from the TA's, all grounds must be tied together. Had to go to the parts store to get a new header for the RaspberryPi, and will resume with the new setup tomorrow. </p>
+
+    <p class="entry"><b>March 25, 2014 (2 hours)</b>:<br> Completed writing all ASCII characters for the lcd. This proved to be easy but time consuming because each individual character had to be written into as a 5x7 array. Still need to test whether the characters appear nicely on the lcd. Also began setup for the new Raspberry Pi and microcontroller configuration with the ribbon cable. </p>
+
+    <p class="entry"><b>March 26, 2014 (3 hours)</b>:<br> After receving parts over Spring Break, it came to the teams attention that two parts do not fit on the PCB. The 74LVCR425 logic level translator and the LM1117 LDO were both ordered with the incorrect footprints. Research was done to find a manufacturer that sells the footprints needed in small quantities. This time was also used to discuss the solution to incorrect pin assignments on the PCB. This will either have to be solved by manually rerouting the device or a new PCB may need to be ordered. <br>
+The audio circuit was also built and tested. Due to the fact that most of the parts are surface mount, wires were soldered to each pin. The op-amps did not seem to be working when connecting the audio circuit to the oscilloscope. Further digging found that the soldering may have been the cause of the broken op-amp. A work around will be to obtain a breakout board from the course staff to have the surface mounted op-amp be a through hole. </p>
+
+    <p class="entry"><b>March 28, 2014 (3 hours)</b>:<br> Worked on completing the homework that was due this week. Discussed the possibility of using a GAL device for motor control, but was decided that the applications were already built into our PIC microcontroller.</p>
+
+    <p class="entry"><b>March 29, 2014 (6 hours)</b>:<br> Worked on getting I^2C working on the microcontroller but no signal was able to be seen on the oscilloscope. A new task in developing the SPI communication between the Raspberry Pi and the microcontroller was done after a few hours debugging the I^2C communication with no luck. Worked on getting the ribbon cable to respond, but the oscilloscope was showing all signals as active low. Thought it might be the ribbon cable that was the issue, so a header that was hand soldered was created. Testing with the new header proved to have no impact on the active low signals. After debugging for quite a while, we decided to switch out the cable on the oscilloscope. Once changed, everything seem to work as normal. This proved to be a very frustrating day and countless hours were spent debugging this cable issue. </p>
+
+
+
+    <p class="summary"><b>WEEK 11 SUMMARY</b><br>
+                       <u>Accomplishments</u>: Started to populate the PCB with the power circuit. Ran the power circuit over night and it still works!<br>
+                       <u>Weekly Work Total</u>: 19<br>
+                       <u>Project Work Total</u>: 98.5</p>
+
+    <h3 id="week12">Week 12</h3>
+
+    <p class="entry"><b>March 30, 2014 (3 hours)</b>:<br> Began research on possible patent infringement for the Every1 DJ product. Found two patents that could be considered within infringement rights. Delved into the claim language and abstracts for multiple patents to decide whether licenses would need to be obtained if the Every1 DJ product went into manufacturing.</p>
+
+    <p class="entry"><b>March 31, 2014 (2 hours)</b>:<br> Completed Homework 10: Legal Analysis. This homework focused on patent liability. It was found that the Every1 DJ product could possible infringe on multiple patents. But luckily, our product will not be manufactured and sold so no licenses need to be purchased from the patent holders at this time. </p>
+
+    <p class="entry"><b>April 2, 2014 (4 hours)</b>:<br> Met for mandatory lab this morning, and spoke with the TA's about getting a new PCB because the current PCB has a few misconnected ports and there are a lot of issues with the audio circuit. It was decided that continuation on fly-wiring the current board would be done while an updated board was processed. After this decision was made, the new audio circuit was physically tested. There were a lot of issues with the amplification, and the envelope detector was outputting a very choppy signal that would be hard for beat detection to work with. More audio circuit testing will resume tomorrow. 
+<br>
+This time was also used to finish up I2C communication between the microcontroller and the LCD. Testing was finished on the LCD and below is a final look at some of the letters being displayed. 
+
+<br><br>
+<a href="../images/spouliqu/LCD.jpg">
+	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="500px" width="500px">
+      </a>
+</p>
+
+    <p class="entry"><b>April 3, 2014 (2 hours)</b>:<br> After a lot of work with Professor Meyer and a few other TA's, the amplification of the sound was working correctly. The envelope detector was still showing a very choopy signal. When testing the circuit, we looked at the signal after the op-amp and it looked like below. These spikes in the graph show all the beats and depending on the resistor value, a more or less sensitive detection can be used. As a team, it was decided that we would use this circuit along with a header on the PCB in case the circuit needs to be changed off board. 
+
+<br><br>
+<a href="../images/spouliqu/Audio.jpg">
+	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="500px" width="500px">
+      </a>
+
+<br><br>
+<a href="../images/spouliqu/AudioCircuit.jpg">
+	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="500px" width="500px">
+      </a>
+
+
+</p>
+
+    <p class="summary"><b>WEEK 12 SUMMARY</b><br>
+                       <u>Accomplishments</u>: Completed communication between the microcontroller and LCD. Also completed the new PCB design and sent it off for manufacturing.<br>
+                       <u>Weekly Work Total</u>: 11<br>
+                       <u>Project Work Total</u>: 109.5</p>
+
+    <h3 id="week13">Week 13</h3>
+
+    <p class="entry"><b>April 7, 2014 (2 hours)</b>:<br> Worked on soldering the LED driver and the LED's for testing purposes. Also had to order a new LDO because a 2.5V LDO was ordered instead of a 3.3V. Found a 3.3V LDO on eBay, which hopefully will arrive this week. </p>
+
+    <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br> Began prototyping with the LED driver. There was no response from the LED at first, so each individual I2C signal was scoped at the input of the LED driver. Once all correction were made to these signals, the LED dimly lit up. It was barely visible that the LED was turning on. The other issue that needed to be addressed was the period of the I2C signal. The period was 500MHz but needed to be slowed down to around 10KHz so that the LED driver could respond to the signals.</p>
+
+    <p class="entry"><b>April 9, 2014 (3.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the i2c protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. It was found after digging into the datasheet and online examples that the reset sequence being implemented was not correct. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
+
+<br><br>
+<a href="../images/spouliqu/LEDDriverSetup1.jpg">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="500px">
+      </a>
+
+</p>
+
+<p class="entry"><b>April 9, 2014 (3 hours)</b>:<br> Worked on debugging of I2C on the LED's. It seemed that instead of receiving acks, the driver was nacking. This was changed by making sure all grounds were connected from the microcontroller to the LED driver. Still no changes seen in the output of the LED driver. Perhaps there are problems with the soldering job. This testing will continue when the LED driver is soldered to the PCB, to ensure all connections are correct.</p>
+
+<p class="entry"><b>April 10, 2014 (4 hours)</b>:<br> Worked on wiring the motor driver. The origional design for motor control did not include a PLD, which the team now thinks is necessary. A PLD was obtained from the parts room, and a programmer. The PLD code was completed using a truth table to toggle the four outputs to make the motor spin. This worked correctly, as the motor spun at variable speens depending on how quickly the toggles occured. <br>
+
+We then discussed with Joe about using a PLD when it wasn't currently on the PCB. He suggested that instead of a PLD, an interrupt triggered truth table could be used. This way, no fly wiring would need to be done to attach a PLD and all code could sit on the microcontroller. This was completed and the motor spins at variable speeds depending on how quickly the truth table gets set. Below is a video of the motor spinning with enough torque to spin the disco ball. 
+
+<br><br>
+<a href="../images/spouliqu/MotorDriverSetup.jpg">
+	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="500px">
+      </a>
+<br><br>
+<video width="320" height="240" controls>
+  <source src="../images/spouliqu/MotorSpinning.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</p>
+
+<p class="entry"><b>April 11, 2014 (3 hours)</b>:<br> Began working on interrupt driven push buttons. All signals were set for the INTCON, INTCON2 registers. The pushbutton was going low when pressed, as seen on the oscillocscope, but the interrupts did not seem to be registering in software. All signals seemd to be set correctly. More debugging will begin on Sunday.</p>
+
+    <p class="summary"><b>WEEK 13 SUMMARY</b><br>
+                       <u>Accomplishments</u>: Completed design for the motor control and push buttons. It seems that allour parts are working, except the LED driver, and just need to be connected together. <br>
+                       <u>Weekly Work Total</u>: 18.5<br>
+                       <u>Project Work Total</u>: 128</p>
+
+  <h3 id="week14">Week 14</h3>
+
+    <p class="entry"><b>April 13, 2014 (4 hours)</b>:<br> Continued working on the interrupt driven push buttons. The code written would increment a counter every time the push button was pressed. Because this counter wasn't being used anywhere else in the program, the compiler optimized the counter value out. This is why it 'seemed' like the interrupt was not working correctly, but in actuality it was! <br>
+
+After the pushbutton sample code was complete, I began working on setting up the communication peripherals between the microcontroller and the Raspberry Pi. The Raspberry Pi will be sending song metadata to the microcontroller via SPI. This means that the micrcontroller needs to be interrupt driven and collect the correct metadata into the correct variables. This way, the song name, artist, album and year will be updated correctly and can be displayed on the LCD.</p>
+
+    <p class="summary"><b>WEEK 14 SUMMARY</b><br>
+                       <u>Accomplishments</u>: <br>
+                       <u>Weekly Work Total</u>: <br>
+                       <u>Project Work Total</u>: 128</p>
 
 
 

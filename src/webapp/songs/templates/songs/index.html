@@ -2,9 +2,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'songs/style.css' %}" />
 {% if latest_song_list %}
 {% for song in latest_song_list %}
-<table width="30%">
+<table width="40%">
   <tr>
-    <td width="60%">
+    <td width="80%">
       {{song.title}} : {{ song.votes }} vote{{ song.votes|pluralize }}
     </td>
     <td>

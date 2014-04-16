@@ -109,7 +109,7 @@
         </a> <br>
     </p>
 
-	<p class="entry"><b>February 19, 2014 (2 hours)</b>:<br>
+	<p class="entry"><b>February 20, 2014 (2 hours)</b>:<br>
 	  Continued to work on Homework 5, hardware narrative. This included research on the communication data rates available between the microcontroller
 	  and other components such as <a href="http://raspberrypi.stackexchange.com/questions/699/what-spi-frequencies-does-raspberry-pi-support">Raspberry Pi</a>
 	   and the <a href="http://www.nxp.com/documents/data_sheet/PCA9626.pdf">LED Driver</a>. 
@@ -125,14 +125,15 @@
       It was discovered that Grooveshark is pretty strict on their licensing laws:
       <a href="http://developers.grooveshark.com/tuts/streaming">Grooveshark Streaming</a>. and an API key was requested. <br>
     
-    <p class="entry"><b>February 22, 2014 (2 hours)</b>:<br>
+    <p class="entry"><b>February 23, 2014 (2 hours)</b>:<br>
       The Raspberry Pi was set up at the team station for our first test of the SPI ports. After once again struggling
       with the wifi adapter for the RaspberryPi an ethernet connection was established and the github repository was
       successfully cloned on the rpi. Using the SPI python walkthrough provided by  <a href="http://www.100randomtasks.com/simple-spi-on-raspberry-pi">100randomtasks.com</a>
       the serial ports showed some activity. No specific values were successfully read or written but that is the next goal.
 
     <p class="summary"><b>WEEK 06 SUMMARY</b><br>
-                       <u>Accomplishments</u>: Homework 5 completed and Raspberry Pi SPI is talking<br>
+                       <u>Accomplishments</u>: Raspberry Pi SPI has some output<br>
+                       Schematic was completed for Homework 5<br>
                        <u>Weekly Work Total</u>: 12.5 hours<br>
                        <u>Project Work Total</u>: 34.5 hours</p>
 
@@ -140,54 +141,35 @@
     <h3 id="week07">Week 07</h3>
 
     <p class="entry"><b>February 24, 2014 (4 hours)</b>:<br>
-      SPI successful, scoped (img here)
-      Overcame a while loop stuck in a lib function, we just wrote our own listening code
-      More problems with the damn IDE toolchain
-      Soldered a prototyping connector to connect micro jumper port and Rpi header pins
-
-    <p class="entry"><b>February 24, 2014 (3 hours)</b>:<br>
+    	After overcoming more problems with the MPLAB IDE software the SPI communication was tested using
+    	predefined SPI write and read functions. When this was unsuccessful the functions were abandoned and
+    	new code was written to manually check the SPI flags and fill the SPI buffer. <br>
+        A header was soldered for the Raspberry Pi SPI pins in order to easily connect them to the PIC
+        development board pins.  </p>
+        
+    <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br>
       The focus of today's work session was once again to communicate between the microcontroller and the Raspberry Pi using SPI. 
       After confirming that the Raspberry Pi must be the master in the SPI master slave interface, a successful array of data was sent
       from the raspberry pi to the microcontroller and stored in a buffer. The signals were viewed using a logic analyzer to confirm the correct
       clock rate (62.5MHz) and the data being sent. <br>
+            <a href="../images/jefferst/2014-02-25-serial-rpi.jpg">
+	<img src="../images/jefferst/2014-02-25-serial-rpi.jpg" alt="rpi" height="200px" width="200px">
+      </a>  <br>
       The setup that was used to test SPI communications:
       <br>
       <a href="../images/jefferst/2014-02-25-serial-comm-ckt.jpg">
 	<img src="../images/jefferst/2014-02-25-serial-comm-ckt.jpg" alt="serial comm" height="200px" width="200px">
       </a> <br>      
-      
-
-  <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br>
-      Since the Rpi SPI was not operating correctly, a quick search was performed for alternatives for SPI
-      driving code. The python example was abandoned, and a C programming example was discovered (linked within) from the following
-      blog <a href="http://www.brianhensley.net/2012/07/getting-spi-working-on-raspberry-pi.html">tutorial</a>.<br>
-      At this point, Rpi SPI was scoped alone; SUCCESS! See the code and initial results here:<br>
-      <a href="../images/jefferst/2014-02-25-serial-rpi.jpg">
-	<img src="../images/jefferst/2014-02-25-serial-rpi.jpg" alt="rpi" height="200px" width="200px">
-      </a> 
-      <a href="../images/jefferst/2014-02-25-rpi-serial-code.jpg">
-	<img src="../images/jefferst/2014-02-25-rpi-serial-code.jpg" alt="code" height="200px" width="200px">
-      </a> <br>
-      Some additional code was authored to display (on the microcontroller) multi-byte transmissions from the Rpi.
-      In addition, clock frequencies were matched to facilitate what will eventually be bidirectional communication.
-      See evidence of frequency (62.5KHz) matching here:<br>
-      <a href="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg">
-	<img src="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg" alt="code" height="200px" width="200px">
-      </a> <br>
-      This experiment was successful! (Multiple transmissions, one way: Rpi -> micro)
-      It was briefly noted that since Rpi SPI peripherals are all master-mode hardware, a switching
-      protocol must be developed in software on the micro side so that it may
-      operate in Master or Slave mode as appropriate to each SPI peripheral (Rpi, LCD).
     </p>
 
+
     <p class="entry"><b>February 26, 2014 (4 hours)</b>:<br>
-      Mandatory Lab was held. Descussion centered around streaming API selection and different options. Tinysong
-      (the current metadata API) returns a link to Grooveshark flash music player, but that will not suffice for 
-      Rpi streaming due to system incompatibilites. Grooveshark's streaming API would be the best option, but
-      it is unclear whether API key access will be granted. Should the Grooveshark API prove inaccessible, 
-      two main alternatives methods were selected, in order of team preference:<br>
-      - Anonymizing Grooveshark API calls with TOR to allow for previously issued keys to be reused<br>
-      - Downloading youtube videos, ripping out audio on the fly, and playing from disk
+      The lab discussion was concerned with audio streaming and API selection. Grooveshark's streaming
+      API appears to be the best option however a session key is required by Grooveshark and it has
+      been weeks without a reply from them. Other options were explored in the event that we are not
+      able to use Grooveshark. These other options included paying for a spotify account in order to 
+      use their streaming API, for downloading video's from youtube and using the audio from them. The latter
+      is not preferred.  
     </p>
 
     <p class="entry"><b>February 27, 2014 (6 hours)</b>:<br>
@@ -197,19 +179,18 @@
       we had no connector for the power supply so the appropriate 3.5mm female connector was found in eagle and added to the layout. <br>
       The PCB board at the conclusion of the days work: <br>
       <a href="../images/mmcmunig/PCB_2_27.JPG">
-	<img src="../images/mmcmunig/PCB_2_27.JPG" alt="block" height="200px" width="200px">      
+	<img src="../images/mmcmunig/PCB_2_27.JPG" alt="block" height="200px" width="200px">   </a> <br>   
     </p>
 
     <p class="entry"><b>February 28, 2014 (8 hours)</b>:<br>
-      Today's session resulted in the completion of the initial PCB layout and the submission of homework 6 (PCB Layout).
-      From the existing layout, many changes were made. Among the highlights are:<br>
-      - Switching from BJT motor control circuitry to the <a href="http://www.ti.com/lit/ds/symlink/l293d.pdf">L239D Motor Driver</a> IC<br>
-      - Reassigning several incorrect pin assignments from the microcontroller to the LED driver<br>
-      - Changing to a 6-pin RJ-11 connector and routing programming pins correctly<br>
-      - Routing power and ground to microcontoller bypass capacitors<br>
-      - Creating all power and ground planes<br>
-      The report for homework #6 was completed in parallel to the PCB layout activities.
-      See a first-revision PCB layout here:<br>
+    	The goal of today was to complete the initial PCB layout required for Homework 06. In order to 
+    	complete the board the BJT circuitry for the motor control was replaced by a 
+    	<a href="http://www.ti.com/lit/ds/symlink/l293d.pdf">L239D Motor Driver</a>. The RJ-11 connector
+    	needed to be connected to the programming pins of the microcontroller. Power and ground planes were
+    	added to the board. Separate analog and digital ground planes were create in order to keep the signals
+    	divided except for a single point. Finally power and ground pins needed to be routed to the existing 
+    	bypass capacitors. 
+      	The initial version of the PCB layout can be viewed below:<br>
       <a href="../images/jefferst/2014-03-01-PCB-layout.png">
 	<img src="../images/jefferst/2014-03-01-PCB-layout.png" alt="block" height="200px" width="200px">
       </a> <br>
@@ -220,36 +201,43 @@
     </p>
 
     <p class="summary"><b>WEEK 07 SUMMARY</b>
-      <u>Accomplishments</u>: Homework 6 - PCB Layout<br>
-      Meaningful communication one-way on SPI<br>
-      PCB Layout<br>
+      <u>Accomplishments</u>:
+      Meaningful communication from Raspberry Pi to microcontroller<br>
+      PCB layout draft completed<br>
       <u>Weekly Work Total</u>: 29 hours<br> 34.5
       <u>Project Work Total</u>: 63.5 hours<br>
     </p>
 
+
+
+
+
     <h3 id="week08">Week 08</h3>    
 
     <p class="entry"><b>March 2, 2014 (1.5 hours)</b>:<br>
-      Design review slides and presentation prep
+      Design review slides and presentation preparation. 
     </p>
     
-
     <p class="entry"><b>March 3, 2014 (7 hours)</b>:<br>
-      filled rx buffer, but now reading and writing at the same time is hard
-      concurrency of SPI and streaming/web code will be an issue
-      successfully have bidirectional SPI, now trying to get meaningful operation (simulate real spi messages)
-      no way to distinguish bt Rx and Tx at interrupt level
-      presenation practice
-      reworked schematic
-      - put 0 ohm res bt agnd and gnd
-      - added series resistors on LED driver
-      - RJ-11 con - used MPlab reference for pin connections
-      - sought replacement for power supply - current requirements
+    	Last week data was successfully sent from the Raspberry Pi to the microcontroller via SPI.
+    	Today the focus was to send data bidirectionally. After gaining a better understanding of the SPI
+    	peripheral it was determined the SPI was being opened in the wrong mode. Once this was changed
+    	there was a successful transfer of data to and from the microcontroller. It was also discovered that
+    	the microcontroller uses the same buffer for sending and receiving SPI data.  
+    	<br>
+  		After the successful SPI transmission the focus was shifted to the schematic and pcb board. A 0 Ohm
+		resistor was added between analog and digital ground. This allows the ground to stay separated during testing
+		then joined together. Current limiting resistors were added between the LED driver and each of the LED header
+		ins. The MPlab reference sheet was used to correctly connect the RJ-11 connector which will be used to program
+		the microcontroller. A new power supply connector was created and added to the pcb board.
+		<br>
+		All of the parts that had been modified in the schematic were re-routed in the board. The power and ground
+		trace widths were increased wherever possible. <br>
+		Below was the state of the board at the completion of the night: <br>
+    	<a href="../images/mmcmunig/3_3_PCB.JPG">
+		<img src="../images/mmcmunig/3_3_PCB.JPG" alt="block" height="200px" width="200px">
+		</a> <br>
       
-      4 hours
-      Made part for power supply, added to pcb board
-      routed all new signals/parts
-      increased trace lengths for power and ground. 
     </p>
 
     <p class="entry"><b>March 4, 2014 (2 hours)</b>:<br>
@@ -259,31 +247,61 @@
     <p class="entry"><b>March 5, 2014 (3 hours)</b>:<br>
       Updated PCB board with parts and connections that changed as a result of the design review. The ground plane that had
       been created was not named appropriately and therefore was not actually connected to ground. This was fixed as well as adding 
-      rank to different planes in order to avoid overlapping. 
+      rank to different planes in order to avoid overlapping.  <br>
+      
+      An LED was tested using a 5V input in order to determine if 100mA current would be enough for the 
+      red, green, and blue LEDs. Using a piece of paper as eye protection the results were successful! 
+    <br>
+<a  href="../images/spouliqu/RedLED.jpg">
+	<img src="../images/spouliqu/RedLED.jpg" alt="Red" height="200px" width="200px">
+      </a>
+<br><br>
+<a href="../images/spouliqu/GreenLED.jpg">
+	<img src="../images/spouliqu/GreenLED.jpg" alt="Green" height="200px" width="200px">
+      </a>
+<br><br>
+<a href="../images/spouliqu/BlueLED.jpg">
+	<img src="../images/spouliqu/BlueLED.jpg" alt="Blue" height="200px" width="200px">
+      </a>
+</p>
+
+ 
+      
     </p>
     
     <p class="entry"><b>March 6, 2014 (3 hours)</b>:<br>
       Power components continue to change as we find new requirements that had previously been overlooked. The footprint of the bulk capacitors were
-      much too small
+      much too small. <br>
       Audio drivers were installed on the Raspberry Pi. A few settings such as output volume and output device were modified. The audio originally
       is set to output from HDMI and this was changed to analog output. A wav file was downloaded and successfully played on powered speakers.
       When the oscilloscope was set up to view the output on headphone wires nothing but noise was heard. 
     </p>
                       
-    <p class="entry"><b>March 8, 2014 (1 hours)</b>:<br>
+    <p class="entry"><b>March 7, 2014 (1 hours)</b>:<br>
       Went in with Courtney to discuss a few concerns with Joe. The audio amplifier design was modified in order to regulate the negative feedback.
       The footprint of a few power components (capacitor and inductor) were determined to be too small and will need to be changed.
     </p>  
 
     <p class="entry"><b>March 8, 2014 (2.5 hours)</b>:<br>
-      Set up test circuit for LCD testing. Online documentation on the NHD-2.23-12832UCB3 is limited but some source
-      code was found that provided the initialization sequence necessary to turn the LCD on and send data. 
+      A test circuit was set up for initializing the LCD. Online documentation on the NHD-2.23-12832UCB3 is limited but the 
+      data sheet did provide the initialization sequence necessary to turn the LCD on. 
+      <br>
+<a href="../images/spouliqu/LCDCode.jpg">
+	<img src="../images/spouliqu/LCDCode.jpg" alt="LCDCode" height="200px" width="200px">
+      </a>
+      After searching for open source code available online
+      <a href="http://allaboutee.com/2013/01/26/pic18-explorer-board-lcd-spi-example-code/">Source Code</a>
+       was found that provided a sample program to turn the LCD on and send data. Even after reading this the LCD was still
+       not successfully turned on. </p>
+
     </p>  
     
     <h3 id="week08">Week 08</h3>
 
     <p class="summary"><b>WEEK 08 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: LEDs were successfully tested at 5V 100mA<br>
+                       SPI data was sent bidirectionally between Raspberry Pi and Microcontroller<br>
+                       PCB board and schematic were updated as a result of design review<br>
                        <u>Weekly Work Total</u>: 19 hours<br>
                        <u>Project Work Total</u>: 82.5 hours</p>
 
@@ -291,9 +309,17 @@
     <h3 id="week09">Week 09</h3>
 
     <p class="entry"><b>March 9, 2014 (5 hours)</b>:<br>
-      Worked on getting LCD to turn on and display anything. Was able to briefly get some random pixels to light
-      up but even this stopped working. Each command was analyzed using the oscilloscope and appear to be sent correctly
-      and in the right order. Later in the day the LCD was successfully initialized and data was displayed.
+      Worked on getting LCD to turn on and display anything.Each command was analyzed using the oscilloscope 
+      and appeared to be sent correctly and in the right order. Was able to briefly get some random pixels to light
+      up but even this stopped working. <br>
+    	<a href="../images/mmcmunig/3_9_LCD_ON.JPG">
+		<img src="../images/mmcmunig/3_9_LCD_ON.JPG" alt="block" height="200px" width="200px">  </a> <br>
+	  It was discovered that the reason the screen lit up once earlier in the day but had appeared
+      'off' since then was due to the entire RAM space in the LCD being initialized to 0. When the LCDwrite module tried to
+      write a character the starting column and row were not reset to 0, but were instead at the very end of the RAM space 
+      (not visible on the LCD). Once this was fixed the LCD was successfully initialized and data was displayed. <br>
+        <a href="../images/mmcmunig/3_9_LCD_AHH.JPG">
+		<img src="../images/mmcmunig/3_9_LCD_AHH.JPG" alt="block" height="200px" width="200px"> </a> <br>
     </p>
     
     <p class="entry"><b>March 11, 2014 (5 hours)</b>:<br>
@@ -314,17 +340,22 @@
     </p>
     
     <p class="entry"><b>March 13, 2014 (1 hours)</b>:<br>
-      Submitted board to the online check. There was an issue of a hole being too close to the ground plane. This issue
-      was resolved and resubmitted through the online checker.   
+      The board was submitted to the online checker. There was only one issue of a hole being too close to the ground plane. This issue
+      was resolved and resubmitted through the online checker. Success! <br>
+    <a href="../images/mmcmunig/3_13_PCB_No_Issues.JPG">
+	<img src="../images/mmcmunig/3_13_PCB_No_Issues.JPG" alt="block" height="200px" width="200px">
+      </a> <br>
+      
     </p>
     
     <p class="entry"><b>March 14, 2014 (0.5 hours)</b>:<br>
       Went to the lab to finish the required checkoffs before submitting the PCB design. This included sending the course
-      staff a .zip file of all the pcb files and board dimensions.
+      staff a .zip file of all the pcb files and board dimensions. The board should arrive the week after spring break.
     </p>
     
     <p class="summary"><b>WEEK 09 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: The LCD was correctly initialized and displaying letters<br>
+                        PCB board was completed and submitted for fabrication. <br>
                        <u>Weekly Work Total</u>: 13.5 hours<br>
                        <u>Project Work Total</u>: 96  hours</p>
                        
@@ -332,19 +363,100 @@
     <h3 id="week10">Week 10</h3>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: No work was completed this work due to Spring Break.<br>
+                       <u>Weekly Work Total</u>: 0 hours<br>
+                       <u>Project Work Total</u>: 96 hours</p>
                        
     
     <h3 id="week11">Week 11</h3>
 
+    <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
+     	A team meeting was held to review our current progress and to assign tasks going forward. Once the
+     	managerial work was complete the commands sent between the Raspberry Pi and microcontroller via SPI 
+     	were established. The Raspberry Pi will send a heartbeat message every 100ms(?). When a push button
+     	microcontroller is pressed requesting a new song the microcontroller will load a Next Song Request character
+     	into its SPI buffer. When the Raspberry Pi receives this special command character it will load the 
+     	song meta data into its buffer to be send on the next 100ms transmission. The microcontroller will be expecting
+     	the song data this time and will load the song name, artist, album, and year into global variables. These
+     	global variables will be used to populate the LCD.		     	
+    </p>
+
+    <p class="entry"><b>March 24, 2014 (3 hours)</b>:<br>
+    	The SPI testing circuit was reconstructed. Once bidirectional communication was confirmed
+    	the correct interrupt registers were initialized in order to have the SPI communication fire the 
+    	Interrupt Service Routine (ISR). Inside this ISR the LCD initialization module was called. The LCD
+    	was not successfully turned on from this call.    
+    </p>
+
+    <p class="entry"><b>March 25, 2014 (4 hours)</b>:<br>
+      The focus for today was to identify all of the registers necessary for the peripheral
+      initializations. These peripherals include SPI, I2C, PWM, ADC, Timer, and Push Buttons. 
+      The register bits were also identified for the necessary interrupts and flags. <br>  
+      <a href="../images/mmcmunig/03_25_Registers.png">
+	<img src="../images/mmcmunig/03_25_Registers.png" alt="block" height="200px" width="200px">
+      </a> <br>   
+    </p>
+        
+    <p class="entry"><b>March 26, 2014 (6.5 hours)</b>:<br>
+      Today Meyer confirmed that our audio beat detection circuity appeared to be correct. This is where the
+      good news ended as multiple pins were discovered to be routed incorrectly. The I2C clock and data pins were
+      connected to general I/O pins instead of the specified locations. It was also discovered that Vss/Vdd were
+      swapped in one location. After discussing the news with the team it was determined the pins could be manually
+      re-routed and a new board might not be necessary.
+      <br> 
+      More bad news came when two different parts that were shipped during spring break did not match their 
+      footprint on the PCB board. The correct version of the parts will need to be researched and ordered ASAP. 
+    </p>
+    
+    <p class="entry"><b>March 27, 2014 (2 hours)</b>:<br>
+		Continued working on adding content to the including expanding upon the register initializations and giving
+		more details about how each of the peripherals behave and interact. 
+	</p>
+    
+    <p class="entry"><b>March 28, 2014 (5 hours)</b>:<br>
+      Work on the software narrative continued. Much of today was spent getting a better understanding of the ADC and PWM
+      peripherals for our PIC18. Four PWM modules will be used in full-bridge mode to power the motor driver IC. The ADC module
+      will sample the audio out from the Raspberry Pi a certain number of times and return the total over the time giving a value
+      representing beats per minute. 
+    </p>
+    
+    <p class="entry"><b>March 29, 2014 (6 hours)</b>:<br>
+      Today's accomplishments were very disappointing for the amount of time spent. The goal of today was
+      to finish up SPI testing and move on to I2C communication between the microcontroller and the LED driver.
+      Once the test circuit was set up even simple communication between the Raspberry Pi and microcontroller were
+      no longer working. After spending a great deal of time debugging it was determined that the oscilloscope 
+      connecters were causing the signals to be tied high. It was not determined why this was the cause
+      but once the connector was switched the communication was close to the expected output. It was also
+      discovered that the ribbon cable made for our Raspberry Pi serial connectors had 1 pin that was not operating 
+      correctly. Once these issues were dealt with the SPI communication was finally working again. However, the
+      LCD was not operating as expected anymore. After unsuccessfully debugging the LCD connections I2C sample code
+      was written but not tested yet. 
+ 	</p>
+	
     <p class="summary"><b>WEEK 11 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
-                       <u>Project Work Total</u>:  hours</p>
+                       <u>Accomplishments</u>: SPI Bidirectional communication confirmed <br>
+                       Necessary registers for peripheral and interrupts were determined<br>
+                       I2C initialization and test code written<br>
+                       <u>Weekly Work Total</u>: 22.5 hours<br>
+                       <u>Project Work Total</u>:118.5 hours</p>
                        
-                      
+    <p class="entry"><b>March 30, 2014 (3 hours)</b>:<br>
+      After yesterday's disappointing testing today was more productive. The reason for the LCD not working
+      as expected was discovered to be 'noise' from the Raspberry Pi connections. Since all SPI share a clock
+      this is a serious issue. Once the Raspberry Pi connector was unplugged the LCD was once again turing on and
+      displaying characters. The LCD function was enhanced to allow strings as arguments from main. I2C communicaiton
+      was tested today and after addressing a few issues was successful. The primary issue for I2C was having to clear
+      the interrupt flag in software since it was not done in hardware like many other interrupts. <br>
+    	<a href="../images/jefferst/2014-03-30-i2c.jpg">
+		<img src="../images/jefferst/2014-03-30-i2c.jpg" alt="block" height="200px" width="200px">
+      </a> <br>
+      Finally the ADC module was written and tested. After reviewing the datasheet thoroughly the results of the 
+      A/D conversion do not seem to be completely accurate. <br>
+        <a href="../images/mmcmunig/3_30_ADC.png">
+		<img src="../images/mmcmunig/3_30_ADC.png" alt="block" height="200px" width="200px">
+		</a> <br>
+ 	</p>      
+      
     <h3 id="week12">Week 12</h3>
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
