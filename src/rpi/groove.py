@@ -273,7 +273,7 @@ def downloader():
 def getMetadata(playback_process):
 
     # load top song in paused state and get metadata
-    playback_process.stdin.write("lp " + topFive[1] + ".mp3\n")
+    playback_process.stdin.write("lp " + topFive[0] + ".mp3\n")
     if (playback_process.stdout.readline().split()[0] == "@R"):
         print("lp success\n")
     else:
@@ -340,12 +340,18 @@ if __name__ == "__main__":
     # start up playback process
     playback = Popen(['mpg123', '-R'], shell=False, stdin=PIPE, stdout=PIPE, stderr=None)
 
-
+    songPlaying = 0
 
     # main loop to check both SPI and playback
     while True:
         if not os.path.isfile("spi_comm"):
             print "Cannot call spi_comm"
+
+        if songPlaying:
+            songEnd = playback.stdout.read(1)
+            if songEnd[0] == '@':
+                print "song ended"
+            
 			
         #SPI_COMM will return 1 when a new song is requested
         try :
@@ -367,18 +373,25 @@ if __name__ == "__main__":
                 for mp3 in os.listdir("."):
                     if mp3.endswith(".mp3"):
                         downloads[mp3.split('.')[0]] = True
-                    if topFive[0] not in downloads:
-                        downloadSong(topFive[0])
+                if topFive[0] not in downloads:
+                    downloadSong(topFive[0])
                     
                 # get top song metadata
                 title, artist, album, year, genre = getMetadata(playback)
 
                 sleep(0.1) # sleep a tiny bit just in case micro needs
                 check_call(["./spi_comm", title, artist, album, year])
+                getTopFive(True)
+
+                songPlaying = 1
+                print "songplaying: ", songPlaying
+
 
             # play/pause
             elif cpe.returncode == 3:
                 playback.stdin.write("p\n")
+                songPlaying ^= 1
+                print "songplaying: ", songPlaying
                 playback.stdout.readline()
             else:
                 print "Successful Call"
