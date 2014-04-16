@@ -13,6 +13,7 @@ import gzip
 import threading
 import requests
 import re
+from time import sleep
 from array import array
 from multiprocessing import Process
 if sys.version_info[1] >= 6:  import json
@@ -289,7 +290,7 @@ if __name__ == "__main__":
         downloadSong(topFive[0])
 
     # load top song in paused state and get metadata
-    playback.stdin.write("lp " + topFive[3] + ".mp3\n")
+    playback.stdin.write("lp " + topFive[1] + ".mp3\n")
     if (playback.stdout.readline().split()[0] == "@R"):
         print("lp success\n")
     else:
@@ -345,10 +346,19 @@ if __name__ == "__main__":
     #print playback.stdout.readline()
 
     # main loop to check both SPI and playback
+	
     while True:
         if os.path.isfile("spi_comm"):
-			print "SPI COMM!"
-			print check_call(["./spi_comm", title, artist, album, year])
+			
+			#SPI_COMM will return 1 when a new song is requested
+			try :
+				check_call(["./spi_comm"])
+			except :
+				sleep(0.5)
+				check_call(["./spi_comm", title, artist, album, year])
+			else:
+				print "Successful Call"
+			sleep(0.5)
         else:
             print "Cannot call spi_comm"
        # if (playback.stdout.readline()):

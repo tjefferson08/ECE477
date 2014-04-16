@@ -99,7 +99,7 @@ int transferCmd(int fd, char *data) {
 		printf("tx: %.2X \n", txData[ret]);
 	}
 	printf("rx: %d\n", rx[0]);
-	if (rx[0] == 1) return 1;
+	if (rx[0] == 2) return 1;
 	else return 0;
   
 }
@@ -164,22 +164,23 @@ int main(int argc, char **argv)
       mData[0] = 0xBB;
       int temp;
       int count = 0;
+	  int nextSong = 0;
       if (hb) {
-	temp = transferCmd(fd, hbData);
+		nextSong = transferCmd(fd, hbData);		
       }
       else {
        	temp = transferCmd(fd, mData);
-	//Send song title
-	temp = transferData(fd, argv[1]);
-	//Send artist
+		//Send song title
+		temp = transferData(fd, argv[1]);
+		//Send artist
         printf("\nfinished song!\n");
-	temp = transferData(fd, argv[2]);
+		temp = transferData(fd, argv[2]);
         printf("\nfinished artist!\n");
-	//Send album
-	temp = transferData(fd, argv[3]);
+		//Send album
+		temp = transferData(fd, argv[3]);
         printf("\nfinished album!\n");
-	//Send year
-	temp = transferData(fd, argv[4]);
+		//Send year
+		temp = transferData(fd, argv[4]);
         printf("\nfinished year!\n");
       }
       /*       	while (1) { 
@@ -195,6 +196,5 @@ int main(int argc, char **argv)
 		}
 		} */
       close(fd);
-
-      return ret;
+      return nextSong;
 }
