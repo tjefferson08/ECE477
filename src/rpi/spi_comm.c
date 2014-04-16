@@ -99,9 +99,9 @@ int transferCmd(int fd, char *data) {
 		printf("tx: %.2X \n", txData[ret]);
 	}
 	printf("rx: %d\n", rx[0]);
-	if (rx[0] == 2) return 1;
-	else return 1;
-  
+	
+	// return codes: 1 is HB, 2 is nextSong, 3 is play/pause, 4 is micro wakeup
+	return rx[0];
 }
 
 int main(int argc, char **argv)

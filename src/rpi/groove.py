@@ -340,37 +340,49 @@ if __name__ == "__main__":
     # start up playback process
     playback = Popen(['mpg123', '-R'], shell=False, stdin=PIPE, stdout=PIPE, stderr=None)
 
-    # get top song and DL it if need be
-    topFive = getTopFive()
-    downloads = {}
-    for mp3 in os.listdir("."):
-        if mp3.endswith(".mp3"):
-            downloads[mp3.split('.')[0]] = True
-    if topFive[0] not in downloads:
-        downloadSong(topFive[0])
 
-    # get top song metadata
-    title, artist, album, year, genre = getMetadata(playback)
 
     # main loop to check both SPI and playback
     while True:
-        if os.path.isfile("spi_comm"):
+        if not os.path.isfile("spi_comm"):
+            print "Cannot call spi_comm"
 			
-            #SPI_COMM will return 1 when a new song is requested
-            try :
-                check_call(["./spi_comm"])
-            except CalledProcessError as cpe:
-                sleep(0.5)
-                print "Return code ", cpe.returncode
-                check_call(["./spi_comm", title, artist, album, year])
+        #SPI_COMM will return 1 when a new song is requested
+        try :
+            check_call(["./spi_comm"])
+        except CalledProcessError as cpe:
+            sleep(0.5)
+            print "Return code ", cpe.returncode
+
+            # Heartbeat
+            if cpe.returncode == 1:
+                pass
+
+            # next song
+            elif cpe.returncode == 2:
                 
+                # get top song and DL it if need be
+                topFive = getTopFive()
+                downloads = {}
+                for mp3 in os.listdir("."):
+                    if mp3.endswith(".mp3"):
+                        downloads[mp3.split('.')[0]] = True
+                    if topFive[0] not in downloads:
+                        downloadSong(topFive[0])
+                    
+                # get top song metadata
+                title, artist, album, year, genre = getMetadata(playback)
+
+                sleep(0.1) # sleep a tiny bit just in case micro needs
+                check_call(["./spi_comm", title, artist, album, year])
+
+            # play/pause
+            elif cpe.returncode == 3:
+                playback.stdin.write("p\n")
+                playback.stdout.readline()
             else:
                 print "Successful Call"
                 sleep(0.5)
-        else:
-            print "Cannot call spi_comm"
-       # if (playback.stdout.readline()):
-       #     print "got something!"
         time.sleep(1)
 
 #Natural Exit
