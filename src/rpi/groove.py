@@ -18,7 +18,7 @@ from array import array
 from multiprocessing import Process
 if sys.version_info[1] >= 6:  import json
 else: import simplejson as json
-from subprocess import Popen, PIPE, check_output, check_call
+from subprocess import Popen, PIPE, check_output, check_call, CalledProcessError
 try:
     from subprocess import DEVNULL # py3k
 except ImportError:
@@ -359,9 +359,11 @@ if __name__ == "__main__":
             #SPI_COMM will return 1 when a new song is requested
             try :
                 check_call(["./spi_comm"])
-            except :
+            except CalledProcessError as cpe:
                 sleep(0.5)
+                print "Return code ", cpe.returncode
                 check_call(["./spi_comm", title, artist, album, year])
+                
             else:
                 print "Successful Call"
                 sleep(0.5)

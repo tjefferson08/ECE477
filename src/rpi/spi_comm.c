@@ -100,7 +100,7 @@ int transferCmd(int fd, char *data) {
 	}
 	printf("rx: %d\n", rx[0]);
 	if (rx[0] == 2) return 1;
-	else return 0;
+	else return 1;
   
 }
 
