@@ -66,7 +66,6 @@ def searchSong(request):
     # default search, if request left empty
     if not search_string:
         search_string = "Never gonna give you up"
-    print search_string
 
     # api concatenation and call, response stored in r, json passed to
     # template in context var

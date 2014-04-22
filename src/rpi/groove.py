@@ -27,7 +27,7 @@ except ImportError:
 
 _useragent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5"
 _token = None
-webappURL = "http://127.0.0.1:8000/songs/requestNext/"
+webappURL = "http://128.46.74.201:8000/songs/requestNext/"
 URL = "grooveshark.com" #The base URL of Grooveshark
 SPI_SIZE = 20
 htmlclient = ('htmlshark', '20130520', 'nuggetsOfBaller', {"User-Agent":_useragent, "Content-Type":"application/json", "Accept-Encoding":"gzip"}) #Contains all the information posted with the htmlshark client
@@ -342,16 +342,32 @@ if __name__ == "__main__":
 
     songPlaying = 0
 
-    # main loop to check both SPI and playback
+    # main loop to check both SPI and playback (song may have ended naturally)
     while True:
         if not os.path.isfile("spi_comm"):
             print "Cannot call spi_comm"
-
         if songPlaying:
+
+            # natural end of a song
             songEnd = playback.stdout.read(1)
             if songEnd[0] == '@':
-                print "song ended"
-            
+                
+                # get top song and DL it if need be
+                topFive = getTopFive()
+                downloads = {}
+                for mp3 in os.listdir("."):
+                    if mp3.endswith(".mp3"):
+                        downloads[mp3.split('.')[0]] = True
+                if topFive[0] not in downloads:
+                    downloadSong(topFive[0])
+                    
+                # get top song metadata
+                title, artist, album, year, genre = getMetadata(playback)
+
+                sleep(0.1) # sleep a tiny bit just in case micro needs
+                check_call(["./spi_comm", title, artist, album, year])
+                getTopFive(True) # reset top song's vote (small race condition here)
+                songPlaying = 1
 			
         #SPI_COMM will return 1 when a new song is requested
         try :
@@ -381,11 +397,8 @@ if __name__ == "__main__":
 
                 sleep(0.1) # sleep a tiny bit just in case micro needs
                 check_call(["./spi_comm", title, artist, album, year])
-                getTopFive(True)
-
+                getTopFive(True) # reset top song's votes (race condition)
                 songPlaying = 1
-                print "songplaying: ", songPlaying
-
 
             # play/pause
             elif cpe.returncode == 3:
