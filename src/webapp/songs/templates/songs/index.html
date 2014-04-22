@@ -1,36 +1,40 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'songs/style.css' %}" />
+
 {% if latest_song_list %}
+<ul>
+  <li>
+    <div id="search">
+      <!-- here's the search box -->
+      <form action="{% url 'songs:searchSong'  %}" method="post">
+	{% csrf_token %}
+	<input id="searchBox" type="text" name="title" size="50" height="100px"/>
+	<input id="searchButton" type="submit" value="Search" />
+      </form>
+    </div>
+  </li>
+
 {% for song in latest_song_list %}
-<table width="40%">
-  <tr>
-    <td width="80%">
-      {{song.title}} : {{ song.votes }} vote{{ song.votes|pluralize }}
-    </td>
-    <td>
+  <li>
+    <div id="song"> {{song.title}} : {{ song.votes }} vote{{ song.votes|pluralize }}</div>
+    <div id="button">
       <form action="{% url 'songs:vote' song.id_code %}" method="post">
 	{% csrf_token %}
 	<input type="hidden" name="vote_up" value="True"/>
 	<input type="submit" value="+1"/>
       </form>
-    </td>
-    <td>
+    </div>
+    <div id="button">
       <form action="{% url 'songs:vote' song.id_code %}" method="post">
 	{% csrf_token %}
 	<input type="hidden" name="vote_up" value="False"/>
 	<input type="submit" value="-1"/>
       </form>
-    </td>
-  </tr>
-</table>
-{% endfor %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
 {% else %}
 <p>No songs are available.</p>
 {% endif %}
 
-<!-- let's make a button to poll tinysong API with a hardcoded search term -->
-<form action="{% url 'songs:searchSong'  %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="title"/>
-  <input type="submit" value="Search" />
-</form>

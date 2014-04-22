@@ -1,9 +1,31 @@
-li {
-   
+ul {
+    list-style-type: none;
+    padding-bottom:20px;
 }
 form {
-    display:inline
+    display:inline;
 }
 body {
-	
+    background-color:#b0e0e6; /* powder blue */
+}
+#song {
+    width:600px;
+    height:100px;
+    float:left;
+    font-size:36px
+}
+#button {
+    float:left;
+}
+#search {
+    padding-bottom:40px;
+}
+#searchBox {
+    float:left;
+    width: 590px;
+    height:50px;
+}
+#searchButton {
+    width:100px;
+    height:50px;
 }
