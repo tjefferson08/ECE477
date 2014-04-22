@@ -302,7 +302,7 @@ This time was also used to finish up I2C communication between the microcontroll
 
 <br><br>
 <a href="../images/spouliqu/LCD.jpg">
-	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="500px" width="500px">
+	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="500px" width="800px">
       </a>
 </p>
 
@@ -310,12 +310,12 @@ This time was also used to finish up I2C communication between the microcontroll
 
 <br><br>
 <a href="../images/spouliqu/Audio.jpg">
-	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="500px" width="500px">
+	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="500px" width="800px">
       </a>
 
 <br><br>
 <a href="../images/spouliqu/AudioCircuit.jpg">
-	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="500px" width="500px">
+	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="500px" width="800px">
       </a>
 
 
@@ -336,7 +336,7 @@ This time was also used to finish up I2C communication between the microcontroll
 
 <br><br>
 <a href="../images/spouliqu/LEDDriverSetup1.jpg">
-	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="500px">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="800px">
       </a>
 
 </p>
@@ -349,7 +349,7 @@ We then discussed with Joe about using a PLD when it wasn't currently on the PCB
 
 <br><br>
 <a href="../images/spouliqu/MotorDriverSetup.jpg">
-	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="500px">
+	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="800px">
       </a>
 <br><br>
 <video width="320" height="240" controls>
@@ -371,10 +371,59 @@ We then discussed with Joe about using a PLD when it wasn't currently on the PCB
 
 After the pushbutton sample code was complete, I began working on setting up the communication peripherals between the microcontroller and the Raspberry Pi. The Raspberry Pi will be sending song metadata to the microcontroller via SPI. This means that the micrcontroller needs to be interrupt driven and collect the correct metadata into the correct variables. This way, the song name, artist, album and year will be updated correctly and can be displayed on the LCD.</p>
 
+    <p class="entry"><b>April 14, 2014 (6 hours)</b>:<br>The microcontroller, RJ11 connector, heart beat LED were all populated on the version 1 PCB so the microcontroller could be tested without the explorer board. Flywiring needed to be done to correct the port assignments on the microcontroller. On the current PCB, ground and power were swapped. The fly wiring corrected this mistake. Another pin was not connected when it should have been grounded, which was again corrected by flywiring. All bypass capacitors were also soldered onto the board. After all soldering and fly wiring was complete, power was added to the board and the ICD3 was connected to begin programming. <br>
+
+MPLABX kept asserting an error about not being able to connect to the microcontroller. This led to continuity checking each connection from the RJ11 connector to the micro. The conntinuity check was verified against the explorer board. A discovery that the RJ11 connector on the PCB was wired backwards was confirmed. After fly wiring the RJ11 connector, MPLABX showed a new error, stating that the expected ID does not match the actual ID. Further debugging will resume tomorrow. 
+
+//ADD PIC OF RJ11 CONNECTOR!!
+
+</p>
+
+    <p class="entry"><b>April 15, 2014 (7 hours)</b>:<br>Used oscilloscope to capture the MCLR, Data and CLK signals from the ICD3. Saw data being sent while the MCLR was high. Checked to make sure this data was the same as the explorer board, which it was not. After this, the explorer board was scoped unplugged from the voltage source, with just the RJ11 connector connected to 3.3V. It showed that data was still being sent even if the micro was powered off. This lead to assuming that the micro on the PCB was malfunctioning. A new microcontroller will be brought onto a breakout board and tested tomorrow. </p>
+
+    <p class="entry"><b>April 16, 2014 (3 hours)</b>:<br>A new microcontroller was soldered to a breakout board and a heart beat LED was connected to pin 1. Once the connection to ICD3 was made, the software was loaded and ran with no issues. This lead to the conclusion that the microcontroller on the PCB is dead. Version 2 of the PCB should be arriving today, and the microcontroller will be populated onto it after the power is tested over night.
+
+//PIC OF HEARBEAT LED
+</p>
+
+    <p class="entry"><b>April 18, 2014 (4 hours)</b>:<br>The power was tested with no issues on the new PCB, and the microcontroller was soldered on. A few pins seemed to not be connected, but continuity checking verified that the were. A new LED was soldered on, with a 1K series resitor. The RJ11 on the breakout board from the previous PCB was used, and the connections were soldered onto the new PCB. Connected the new PCB to power and loaded the software onto it. Everything worked correctly and the heart beat LED lights up! <br>
+
+The LED driver was then soldered on and tested. Still no luck getting the LED driver to turn on any of the LEDs.</p>
+
+
+    <p class="entry"><b>April 19, 2014 (4 hours)</b>:<br>Worked on the poster for the poster session next week. Soldered a new header onto the PCB for the LCD connections and verified that the LCD responded correctly. Below is a photo of the LCD working by displaying the title and artist, and then when a push button is pressed, the album and year is displayed. 
+
+<br><br>
+<a href="../images/spouliqu/LCDSetup.jpg">
+	<img src="../images/spouliqu/LCDSetup.jpg" alt="LCD" height="600px" width="800px">
+      </a>
+
+<br><br>
+<a href="../images/spouliqu/LCDWorking.jpg">
+	<img src="../images/spouliqu/LCDWorking.jpg" alt="LCD" height="600px" width="800px">
+      </a>
+
+</p>
+
+    <p class="entry"><b>April 20, 2014 (3 hours)</b>:<br>Completed soldering of the LDO and the motor driver. Also removed the current male headers and soldered on new female headers for easier debugging. After soldering was complete, the motor was tested. The motor was not moving so the output voltage of the motor driver was tested and only around 1.4V was being driven. This is much too low to drive the motor. After carefully looking at the datasheet for the LDO, it seemd that it was never driving the logic from the microcontroller to the driver with 5V. The datasheet explains that the output enable pin must be set high (3.3V) with a series resitor for startup, but then also tied to a pin on the microcontroller to be set low while running. The PCB trace is only tied high, and therefore the OE pin is always high. This could be the cause of the motor issue. A consultation with the team tomorrow will verify the next steps. 
+
+//PIC OF LDO AND MOTOR DRIVER
+
+</p>
+
     <p class="summary"><b>WEEK 14 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>: <br>
-                       <u>Project Work Total</u>: 128</p>
+                       <u>Accomplishments</u>: After a lot of debugging and a new PCB, the microcontroller is finally able to connect with the ICD3 and software is able to load onto the PCB. The heart beat LED was tested, as well as the LCD on the new PCB. Almost all parts, except the audio circuitry has been soldered and (mostly) tested. <br>
+                       <u>Weekly Work Total</u>: 31<br>
+                       <u>Project Work Total</u>: 159</p>
+
+  <h3 id="week15">Week 15</h3>
+
+    <p class="entry"><b>April 21, 2014 (4 hours)</b>:<br> Began the debugging process for the motor control. The OE pin on the LDO wasfly wired to an output pin on the microcontroller so that it can be set low after startup. After scoping the output voltage of the LDO, the correct 5V output was being sent to the motor driver. The motor was producing some strange behavior including switching directions and not being able to spin with much torque. All four connections were tested in different configurations. The fourth header pin (on the right) for the motor did not respond to any inputs after scoping. The pin from the driver was scoped and it seemed that the pin was not soldered down completly. After re-soldering the pin to the pad, the motor worked correctly with no direction switches.<br>
+
+    <p class="summary"><b>WEEK 15 SUMMARY</b><br>
+                       <u>Accomplishments</u>: .<br>
+                       <u>Weekly Work Total</u>: 28<br>
+                       <u>Project Work Total</u>: 156</p>
 
 
 
