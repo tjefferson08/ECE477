@@ -20,10 +20,13 @@ body {
     font-size:50px;
     font-family:Georgia;
 }
-#vote {
-   font-size:30px;
+#voteCount {
+   font-size:50px;
    font-family:Georgia;
    color:white;
+}
+#voteButton {
+
 }
 #button {
 /*    float:right;*/
@@ -39,8 +42,10 @@ body {
     float:left;
     width: 590px;
     height:50px;
+
 }
 #searchButton {
-    width:100px;
+    width:200px;
     height:50px;
+    font-size:40px;
 }

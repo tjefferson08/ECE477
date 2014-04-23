@@ -242,6 +242,7 @@ def downloadSong(songID):
         print "Marking song as completed"
         markSongDownloadedEx(stream["ip"], songID, stream["streamKey"]) #This is the important part, hopefully this will stop grooveshark from banning us.
 
+# runs in its own process and periodically DL's top 5
 def downloader():
 
     # init an empty BAG so we don't re-download anything
@@ -260,7 +261,6 @@ def downloader():
         print songIdList
         for currId in songIdList:
             if currId in downloads: # skip, don't redownload
-#                print "skipping ", currId
                 continue
             downloadSong(currId)
 
@@ -304,7 +304,8 @@ def getMetadata(playback_process):
     	temp = playback_process.stdout.readline()
 
 
-    # append spaces to strings
+    # append spaces to strings so all strings are padded out to 
+    # width of LCD line
     title += spaceString[:(SPI_SIZE-len(title))]
     print title + "end"
     artist += spaceString[:(SPI_SIZE-len(artist))]
@@ -318,13 +319,13 @@ def getMetadata(playback_process):
     
     print "\ngot metadata"
     
-    # 'silent' output
+    # 'silent' output from mpg123 (culls constant heartbeat messages)
     playback_process.stdin.write("silence\n")
-    print playback_process.stdout.readline()
+    playback_process.stdout.readline()
 
     # PLAY!
     playback_process.stdin.write("p\n")
-    print playback_process.stdout.readline()
+    playback_process.stdout.readline()
 
     return title, artist, album, year, genre
 
@@ -340,15 +341,18 @@ if __name__ == "__main__":
     # start up playback process
     playback = Popen(['mpg123', '-R'], shell=False, stdin=PIPE, stdout=PIPE, stderr=None)
 
+    # init playback flag to 0
     songPlaying = 0
 
     # main loop to check both SPI and playback (song may have ended naturally)
     while True:
+
+        # check to see if spi_comm exec exists
         if not os.path.isfile("spi_comm"):
             print "Cannot call spi_comm"
         if songPlaying:
 
-            # natural end of a song
+            # natural end of a song will put '@P#' on stdout
             songEnd = playback.stdout.read(1)
             if songEnd[0] == '@':
                 
@@ -376,11 +380,11 @@ if __name__ == "__main__":
             sleep(0.5)
             print "Return code ", cpe.returncode
 
-            # Heartbeat
+            # returncode of 1 means heartbeat from micro
             if cpe.returncode == 1:
                 pass
 
-            # next song
+            # returncode of 2 means next song
             elif cpe.returncode == 2:
                 
                 # get top song and DL it if need be
@@ -403,11 +407,12 @@ if __name__ == "__main__":
             # play/pause
             elif cpe.returncode == 3:
                 playback.stdin.write("p\n")
+
+                # toggle playback flag, read the stdout that results
                 songPlaying ^= 1
-                print "songplaying: ", songPlaying
                 playback.stdout.readline()
             else:
-                print "Successful Call"
+                print "Successful Call to spi_comm"
                 sleep(0.5)
         time.sleep(1)
 
