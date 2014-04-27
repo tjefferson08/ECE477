@@ -13,6 +13,7 @@ import gzip
 import threading
 import requests
 import re
+import fcntl
 from time import sleep
 from array import array
 from multiprocessing import Process
@@ -274,17 +275,14 @@ def getMetadata(playback_process):
 
     # load top song in paused state and get metadata
     playback_process.stdin.write("lp " + topFive[0] + ".mp3\n")
-    if (playback_process.stdout.readline().split()[0] == "@R"):
-        print("lp success\n")
-    else:
-        print "lp failed\n"
-    
+    consumeStdOut(playback_process, 1)
+    print("lp success\n")
     
     # get title, artist, album, year
     # only take first 20 chars of each
     title, artist, album, year, genre = "", "", "", "", ""
     spaceString = "                    "
-    temp = playback_process.stdout.readline()
+    temp = consumeStdOut(playback_process, 1)
     while (not re.match('@P 1', temp)):
     	if (re.search('ID3v2.title', temp)):
     		splitTemp = temp.split(':')[1].strip()
@@ -316,20 +314,28 @@ def getMetadata(playback_process):
     print year + "end"
     genre += spaceString[:(SPI_SIZE-len(genre))]
     print genre + "end"
-    
     print "\ngot metadata"
     
     # 'silent' output from mpg123 (culls constant heartbeat messages)
     playback_process.stdin.write("silence\n")
-    playback_process.stdout.readline()
+    consumeStdOut(playback_process, 1)
 
     # PLAY!
     playback_process.stdin.write("p\n")
-    playback_process.stdout.readline()
-
+    consumeStdOut(playback_process, 2)
     return title, artist, album, year, genre
 
-    
+def consumeStdOut(proc, numLines):
+    stdoutCount = 0
+    outputString = ""
+    while (stdoutCount != numLines):
+        try:
+            outputString += proc.stdout.readline()
+        except IOError:
+            pass
+        else:
+            stdoutCount += 1
+    return outputString
 
 # MAIN ******************************************************************
 if __name__ == "__main__":
@@ -340,6 +346,7 @@ if __name__ == "__main__":
 
     # start up playback process
     playback = Popen(['mpg123', '-R'], shell=False, stdin=PIPE, stdout=PIPE, stderr=None)
+    fcntl.fcntl(playback.stdout.fileno(), fcntl.F_SETFL, os.O_NONBLOCK)
 
     # init playback flag to 0
     songPlaying = 0
@@ -352,10 +359,16 @@ if __name__ == "__main__":
             print "Cannot call spi_comm"
         if songPlaying:
 
-            # natural end of a song will put '@P#' on stdout
-            songEnd = playback.stdout.read(1)
-            if songEnd[0] == '@':
-                
+            # natural end of a song will put '@P#' on stdou
+            print "playing" 
+            songEnd = ''
+            try:
+                songEnd = playback.stdout.read(2)
+            except IOError: 
+                pass
+
+            if songEnd == '@P':
+                print "\nEND SONG!!!!!!!!!!!!!!!!!!!!!!!!\n"
                 # get top song and DL it if need be
                 topFive = getTopFive()
                 downloads = {}
@@ -398,7 +411,7 @@ if __name__ == "__main__":
                     
                 # get top song metadata
                 title, artist, album, year, genre = getMetadata(playback)
-
+                print "got out of getmeta"
                 sleep(0.1) # sleep a tiny bit just in case micro needs
                 check_call(["./spi_comm", title, artist, album, year])
                 getTopFive(True) # reset top song's votes (race condition)
@@ -410,9 +423,9 @@ if __name__ == "__main__":
 
                 # toggle playback flag, read the stdout that results
                 songPlaying ^= 1
-                playback.stdout.readline()
+                consumeStdOut(playback, 1)
             else:
-                print "Successful Call to spi_comm"
+                print "Successful Call to spi_mm"
                 sleep(0.5)
         time.sleep(1)
 

@@ -69,8 +69,7 @@ int transferData(int fd, char *data) {
 	}
 	printf("rx: %d\n", rx[0]);
 	// check rx packets for diffent commands
-	if (rx[0] == 1) return 1;
-	else return 0;
+	return rx[0];
 }
 
 int transferCmd(int fd, char *data) {
@@ -162,7 +161,7 @@ int main(int argc, char **argv)
       uint8_t mData[1];
       hbData[0] = 0xAA;
       mData[0] = 0xBB;
-      int temp;
+      int temp = 0;
       int count = 0;
 	  int nextSong = 0;
       if (hb) {
@@ -182,6 +181,7 @@ int main(int argc, char **argv)
 		//Send year
 		temp = transferData(fd, argv[4]);
         printf("\nfinished year!\n");
+		nextSong = 0;
       }
       /*       	while (1) { 
 		count++;
