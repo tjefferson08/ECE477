@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <getopt.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
@@ -60,13 +61,6 @@ int transferData(int fd, char *data) {
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
 	if (ret < 1)
 		pabort("can't send spi message");
-
-	printf("\nTX BUF******************** \n");
-	for (ret = 0; ret < ARRAY_SIZE(txData); ret++) {
-		if (!(ret % 6))
-			puts("");
-		printf("tx: %.2X \n", txData[ret]);
-	}
 	printf("rx: %d\n", rx[0]);
 	// check rx packets for diffent commands
 	return rx[0];
@@ -91,12 +85,6 @@ int transferCmd(int fd, char *data) {
 	if (ret < 1)
 		pabort("can't send spi message");
 
-	printf("\nTX BUF******************** \n");
-	for (ret = 0; ret < ARRAY_SIZE(txData); ret++) {
-		if (!(ret % 6))
-			puts("");
-		printf("tx: %.2X \n", txData[ret]);
-	}
 	printf("rx: %d\n", rx[0]);
 	
 	// return codes: 1 is HB, 2 is nextSong, 3 is play/pause, 4 is micro wakeup
@@ -163,25 +151,34 @@ int main(int argc, char **argv)
       mData[0] = 0xBB;
       int temp = 0;
       int count = 0;
-	  int nextSong = 0;
+      int nextSong = 0;
+      int retTime = 0;
+      struct timespec t;
+      t.tv_sec = 0;      
+      t.tv_nsec = 500000000; // .05 or 1/20 sec
       if (hb) {
-		nextSong = transferCmd(fd, hbData);		
+	nextSong = transferCmd(fd, hbData);		
       }
       else {
        	temp = transferCmd(fd, mData);
-		//Send song title
-		temp = transferData(fd, argv[1]);
-		//Send artist
+	nanosleep(&t, NULL);
+
+	//Send song title
+	temp = transferData(fd, argv[1]);
         printf("\nfinished song!\n");
-		temp = transferData(fd, argv[2]);
+
+	//Send artist
+	temp = transferData(fd, argv[2]);
         printf("\nfinished artist!\n");
-		//Send album
-		temp = transferData(fd, argv[3]);
+
+	//Send album
+	temp = transferData(fd, argv[3]);
         printf("\nfinished album!\n");
-		//Send year
-		temp = transferData(fd, argv[4]);
+
+	//Send year
+	temp = transferData(fd, argv[4]);
         printf("\nfinished year!\n");
-		nextSong = 0;
+	nextSong = 0;
       }
       /*       	while (1) { 
 		count++;

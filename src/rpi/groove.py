@@ -144,7 +144,12 @@ def addSongsToQueue(songId, songQueueID, source = "user"):
     p["method"] = "addSongsToQueue"
     conn = httplib.HTTPConnection(URL)
     conn.request("POST", "/more.php?" + p["method"], json.JSONEncoder().encode(p), jsqueue[3])
-    return json.JSONDecoder().decode(gzip.GzipFile(fileobj=(StringIO.StringIO(conn.getresponse().read()))).read())["result"]
+    result = "addition to queue failed"
+    try: 
+        result = json.JSONDecoder().decode(gzip.GzipFile(fileobj=(StringIO.StringIO(conn.getresponse().read()))).read())["result"]
+    except KeyError:
+        print "failed to add song to queue"
+    return result
 
 #Remove a song from the browser queue, used to imitate a browser, in conjunction with the one above.
 def removeSongsFromQueue(songQueueID, userRemoved = True):
@@ -285,21 +290,21 @@ def getMetadata(playback_process):
     temp = consumeStdOut(playback_process, 1)
     while (not re.match('@P 1', temp)):
     	if (re.search('ID3v2.title', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		title += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+            splitTemp = temp.split(':')[1].strip()
+            title += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
     	if (re.search('ID3v2.artist', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		artist += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+            splitTemp = temp.split(':')[1].strip()
+            artist += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
     	if (re.search('ID3v2.album', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		album += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+            splitTemp = temp.split(':')[1].strip()
+            album += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
     	if (re.search('ID3v2.year', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		year += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+            splitTemp = temp.split(':')[1].strip()
+            year += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
     	if (re.search('ID3v2.genre', temp)):
-    		splitTemp = temp.split(':')[1].strip()
-    		genre += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
-    	temp = playback_process.stdout.readline()
+            splitTemp = temp.split(':')[1].strip()
+            genre += splitTemp[:(20,len(splitTemp))[len(splitTemp) < 20]]
+        temp = consumeStdOut(playback_process, 1)
 
 
     # append spaces to strings so all strings are padded out to 
@@ -376,12 +381,13 @@ if __name__ == "__main__":
                     if mp3.endswith(".mp3"):
                         downloads[mp3.split('.')[0]] = True
                 if topFive[0] not in downloads:
+                    print topFive[0], " not in dl: ", downloads
                     downloadSong(topFive[0])
                     
                 # get top song metadata
                 title, artist, album, year, genre = getMetadata(playback)
 
-                sleep(0.1) # sleep a tiny bit just in case micro needs
+                sleep(0.2) # sleep a tiny bit just in case micro needs
                 check_call(["./spi_comm", title, artist, album, year])
                 getTopFive(True) # reset top song's vote (small race condition here)
                 songPlaying = 1
@@ -425,7 +431,7 @@ if __name__ == "__main__":
                 songPlaying ^= 1
                 consumeStdOut(playback, 1)
             else:
-                print "Successful Call to spi_mm"
+                print "spi_comm returned unrecognized code"
                 sleep(0.5)
         time.sleep(1)
 

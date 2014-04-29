@@ -48,8 +48,9 @@ def vote(request,song_id):
         
     if (vote_up == "True"):
         song.votes += 1;
-    elif (song.votes > 0): # if voting down, ensure vote # will remain nonnegative
-        song.votes -= 1;
+#    elif (song.votes > 0): # if voting down, ensure vote # will remain nonnegative
+    else: 
+       song.votes -= 1;
 
     # else, do nothing (don't vote down)
     song.save()
