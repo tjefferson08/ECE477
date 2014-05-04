@@ -439,8 +439,11 @@
                        I2C initialization and test code written<br>
                        <u>Weekly Work Total</u>: 22.5 hours<br>
                        <u>Project Work Total</u>:118.5 hours</p>
+ 
+       
+    <h3 id="week12">Week 12</h3>
                        
-    <p class="entry"><b>March 30, 2014 (3 hours)</b>:<br>
+    <p class="entry"><b>March 30, 2014 (4 hours)</b>:<br>
       After yesterday's disappointing testing today was more productive. The reason for the LCD not working
       as expected was discovered to be 'noise' from the Raspberry Pi connections. Since all SPI share a clock
       this is a serious issue. Once the Raspberry Pi connector was unplugged the LCD was once again turing on and
@@ -455,9 +458,29 @@
         <a href="../images/mmcmunig/3_30_ADC.png">
 		<img src="../images/mmcmunig/3_30_ADC.png" alt="block" height="200px" width="200px">
 		</a> <br>
- 	</p>      
+ 	</p> 
+ 	
+ 	<p class="entry"><b>April 2, 2014 (4 hours)</b>:<br> During mandatory lab it was decided that a new board would be design in order to fix 
+ 	issues with I2C connections and to recreate the audio circuit after testing. The audio circuit was tested and many issues were discovered with 	the gain and envelope detection. After deciding the LCD would now be controlled via I2C on the new PCB board layout, the LCD was successfully tested
+ 	using the I2C peripheral: 
+ 	
+ 	<br>
+<a href="../images/spouliqu/LCD.jpg">
+	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="200px" width="200px">
+	</a>
+</p>
+
+    
+	
+	<p class="entry"><b>April 3, 2014 (2 hours)</b>:<br>  After working with the course staff the audio circuit was producing meaningful output.
+	However, instead of using the envelop detection it was determined that the audio would simply be tested after the op-amp. The sensitivity of
+	the beat detection can be modified through a potentiometer. The result can be viewed below.<br>
+<a href="../images/spouliqu/Audio.jpg">
+	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="200px" width="200px">
+      </a>
+
+<br>
       
-    <h3 id="week12">Week 12</h3>
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
@@ -466,6 +489,63 @@
                        
     
     <h3 id="week13">Week 13</h3>
+    
+    <p class="entry"><b>April 6, 2014 (3 hours)</b>:<br> A goal for this week is to prototype the LED driver. A basic test program was designed
+    and coded to light up a single light. In order to successfully do this multiple control registers on the LED driver needed to be initialized 
+    and the individual LED PWM register needed to be greater than 0. It was discussed that the group blinking and dimming registers would be used
+    in the future once more LEDs were connected. 
+    </p>
+
+  
+    
+    <p class="entry"><b>April 7, 2014 (2 hours)</b>:<br> LED driver was soldered to a breakout board in order to begin prototyping. The soldered
+    pin connections were not correct the first or second time and were corrected. After brief testing there was no noticeable light on the LED.
+    </p>
+
+    
+    
+    
+    <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br> Prototyping of the LED driver was resumed. After modifying the initialization of the 
+    LED driver and still having no success, the I2C data and clock signals were scoped. The address signal was being ACK'd by the LED driver 
+    but the other control signals were being NACK'd.
+    
+    <p class="entry"><b>April 9, 2014 (3.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the i2c protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. It was found after digging into the datasheet and online examples that the reset sequence being implemented was not correct. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
+
+<br><br>
+<a href="../images/spouliqu/LEDDriverSetup1.jpg">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="800px">
+      </a>
+
+</p>
+
+<p class="entry">
+      
+      <b>April 9, 2014 (3 hours)</b>:<br> Worked on debugging of I2C on the LED's. It seemed that instead of receiving acks, the driver was nacking. This was changed by making sure all grounds were connected from the microcontroller to the LED driver. Still no changes seen in the output of the LED driver. Perhaps there are problems with the soldering job. This testing will continue when the LED driver is soldered to the PCB, to ensure all connections are correct.</p>
+
+<p class="entry">
+      
+      <b>April 10, 2014 (4 hours)</b>:<br> Worked on wiring the motor driver. The origional design for motor control did not include a PLD, which the team now thinks is necessary. A PLD was obtained from the parts room, and a programmer. The PLD code was completed using a truth table to toggle the four outputs to make the motor spin. This worked correctly, as the motor spun at variable speens depending on how quickly the toggles occured. <br>
+
+We then discussed with Joe about using a PLD when it wasn't currently on the PCB. He suggested that instead of a PLD, an interrupt triggered truth table could be used. This way, no fly wiring would need to be done to attach a PLD and all code could sit on the microcontroller. This was completed and the motor spins at variable speeds depending on how quickly the truth table gets set. Below is a video of the motor spinning with enough torque to spin the disco ball. 
+
+<br><br>
+<a href="../images/spouliqu/MotorDriverSetup.jpg">
+	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="800px">
+      </a>
+<br><br>
+<video width="320" height="240" controls>
+  <source src="../images/spouliqu/MotorSpinning.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</p>
+
+<p class="entry">
+      
+      <b>April 11, 2014 (4 hours)</b>:<br> The Reliability and Safety Analysis homework was completed. In order to complete this homework
+      successfully the <a https://engineering.purdue.edu/ece477/Course/Assignments/Reference/Mil_Hdbk_217F.pdf">Military Handbook</a> was utilized
+      as well as the individual component data sheets.   </p>
+
+      
 
     <p class="summary"><b>WEEK 13 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
