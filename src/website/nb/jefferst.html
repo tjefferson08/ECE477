@@ -794,9 +794,12 @@
     <p class="entry"><b>April 22, 2014 (4 hours)</b>:<br>
       The webapp CSS was modified to make for a more mobile-friendly produce
       (larger fonts, narrower widths, etc.). See the current product below:<br>
-      <a href="../images/jefferst/2014-03-30-i2c.jpg">
-	<img src="../images/jefferst/2014-03-30-i2c.jpg" alt="block" height="200px" width="200px">
-      </a><br/>
+      <a href="../images/jefferst/homepage_styled.png">
+	<img src="../images/jefferst/homepage_styled.png" alt="block" height="500px" width="300px">
+      </a>
+      <a href="../images/jefferst/search_results_styled.png">
+	<img src="../images/jefferst/search_results_styled.png" alt="block" height="500px" width="300px">
+      </a> <br>
       Top-level url redirection was corrected: there is no longer a need to manually type xx.xx.xx:8000/songs/,
       a user only needs IP and port.
       Some code was added in groove.py to continue playback after a song
@@ -810,15 +813,31 @@
       PWM reg (it follows both).
       Updates were made to webapp fonts at group members' requests.
     </p>
+    <p class="entry"><b>April 23, 2014 (3 hours)</b> 
+      After some success with the LED driver, the ADC sapmling was
+      investigates. The output of the Raspberry Pi was sent through the audio
+      circuitry and tied to an ADC input channel of the microcontroller. A beat
+      threshold was set in software to allow for easy modification to acheive
+      aesthetically pleaseing results. This will incur a small delay, but this
+      seems rather unavoidable at this juncture, as buffering or pre-sampling
+      both seem rather difficult. 
 
     <p class="summary"><b>WEEK 15 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      <u>Weekly Work Total</u>: 15 hours<br>
+      <u>Project Work Total</u>: 196 hours<br>
+    </p>
+
+    <p class="entry"><b>April 27, 2014 (5 hours)</b> SPI interactions between
+      The microcontroller and Raspberry Pi were modified to seek and relay input
+      from the webapp. The Raspberry Pi communicates  and undertakes the
+      next-song action, which prepares the micro for metadata consumption. The
+      Raspberry Pi then sends 4 20-char strings with meaningful metadata, which
+      the microcontroller stores for subsequent transmission to the LCD via I2C.
     </p>
 
     <h3 id="week16">Week 16</h3>    
-    <p class="summary"><b>WEEK 16 SUMMARY</b><br/>
+    <p class="summary"><b>WEEK 16 SUMMARY</b><br/>o
       <u>Accomplishments</u>: <br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
