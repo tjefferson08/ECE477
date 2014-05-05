@@ -603,36 +603,64 @@
       to collect meaningful data.
     </p>
 
-    <p class="entry"><b>March 31, 2014 ( hours)</b>:<br>
-      prototype I2C, got up to data sending correctly and in correct order, fixed reset at the end
+    <p class="entry"><b>March 31, 2014 (4 hours)</b>:<br>
+      It was decided to pursue I2C communication as a potential fix for the SPI
+      electrical issues on the Raspberry Pi. The I2C peripheral was set up and
+      some meaningful data was displayed on the oscilloscope. Blaine's advice
+      was taken and start and end conditions were carefully monitored to ensure
+      that transfers were fully exited prior to initialization of a subsequent
+      packet.
     </p> 
 
-    <p class="entry"><b>April 1, 2014 ( hours)</b>:<br>
-      layout and schematic updated with i2c fixed and vcc/vss
-      went ant talked to george?
+    <p class="entry"><b>April 1, 2014 (3.5 hours)</b>:<br>
+      The PCB layout (and schematic) was updated to resolve large issues: namely, the Vcc and
+      Vss swap on one of the microcontroller decoupling capacitors and the
+      unfortunate misplacement of the I2C peripheral pins. At this point, the
+      plan is to submit a second PCB iteration while concurrently physically 
+      modifying the existing board as needed. 
     </p>
 
-    <p class="entry"><b>April 2, 2014 ( hours)</b>:<br>
-      MAN LAB
-      Got i2c and lcd working, cleaned up code and got write function going gud
-      Audio - meyer came and shit was still real broke
+    <p class="entry"><b>April 2, 2014 (6 hours)</b>:<br>
+      MAN LAB session was held. Previously prototyped I2C software was developed
+      further with the specific needs of the LCD in mind. LCD data display was
+      acheived, and the software was modularized to allow for flexible usage in
+      its target environment.
+      The audio circuit was prototyped fully - this is the critical path which
+      must be remedied prior to the finalization of the revised PCB
+      submission. All points of interest in the audio circuit were scoped and
+      inspected for proper function. The breakdown is localized to the current
+      amplifier, but a single part failure was ruled out by testing a clean
+      part. This issue was left unresolved at the end of MAN LAB. 
     </p>
 
     <p class="entry"><b>April 3, 2014 ( hours)</b>:<br>
-      more audio, got meyer's OK to use a header on the final product
-      courtney pulled the envelope detector, signal looks a lot better
+      Due to difficulties with the audio circuitry, a second entry point to the
+      micro ADC channel wsa included in the second revision of the PCB to allow
+      for last-minute addition of corrected audio circuitry via an external
+      protoboard. The op-amp issue was resolved by correcting bias voltages, and
+      the audio output signal was improved significantly by scoping behind the
+      envelope detector. The decision to exclude the envelope detector was made,
+      due to the apparent workability of the existing waveform. 
     </p>
 
-    <p class="entry"><b>April 4, 2014 ( hours)</b>:<br>
-      finalized pcb changes and submitted board to be ordered with the 402 board order, hopefully it's free!
+    <p class="entry"><b>April 4, 2014 (3 hours)</b>:<br>
+      The revised PCB was finalized and the order was submitted with the bulk
+      order for ECE402 boards. 
     </p>
 
     <p class="entry"><b>April 5, 2014 ( hours)</b>:<br>
-      unsoldered header, cleaned up station, started setting up rpi for external ip access
+      The problematic LCD protoboard was unsoldered after determining that the
+      trace widths were incorrectly matched. Some investigation was performed
+      with respect to accessing the Raspberry Pi's local webserver from an
+      external IP, whih will be the desired functionality for the final
+      product. 
     </p>
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
+      PCB revised and submitted<br>
+      I2C prototyped and verified as alternative LCD protocol<br>
+      Audio circuitry significantly improved<br>
       <u>Weekly Work Total</u>: 21 hours<br>
       <u>Project Work Total</u>: 56 hours<br>
     </p>
