@@ -51,7 +51,7 @@
       <br> Finished Django tutorial
       <a href="https://docs.djangoproject.com/en/1.4/intro/tutorial02/">step 2</a>
       and committed to repo. Step 2 focused on the Django-generated admin pages for each specific application
-      runing on a site. So far, it will likely be sufficient to run a single app to power the project's needs.
+      running on a site. So far, it will likely be sufficient to run a single app to power the project's needs.
       At the end, the step 2 tutorial previewed the template with which the user can modify the way in which the 
       python-powered content is displayed in HTML/CSS. This feature is the focus of step 3.
     </p>
@@ -73,7 +73,7 @@
     </p>
 
     <p class="entry"><b>January 26, 2014 (1 hour)</b>:<br>
-      Worked with Courney to finish the final proposal and do a rough schedule estimate. As the project progresses,
+      Worked with Courtney to finish the final proposal and do a rough schedule estimate. As the project progresses,
       it will be important to ensure that derivation from the previous year's DJ project remains at a minimum.
     </p>
 
@@ -115,13 +115,13 @@
 
     <p class="entry"><b>January 29, 2014 (2.5 hours)</b>:<br>
       Attended lab with teammates. Refactoring of PSSC criteria was accomplished, and the PSSC's were
-      informallly accepted. A Raspberry Pi was ordered and should arrive by Friday. Homework 2 (PCB tutorial)
-      was completed, although singoff by the TA was not.
+      informally accepted. A Raspberry Pi was ordered and should arrive by Friday. Homework 2 (PCB tutorial)
+      was completed, although signoff by the TA was not.
     </p>
 
     <p class="entry"><b>January 31, 2014 (1 hour)</b>:<br>
-      Raspberry pi and accessories were delivered. Some time was spend assembling Rpi and collecting documentation. 
-      The team will need an SD reader/writer in order to boot an OS on the Rpi.
+      Raspberry pi and accessories were delivered. Some time was spend assembling Raspberry Pi and collecting documentation. 
+      The team will need an SD reader/writer in order to boot an OS on the Raspberry Pi.
     </p>
 
     <p class="summary"><b>WEEK 03 SUMMARY</b><br/>
@@ -155,7 +155,7 @@
       regulators would be included for both the Raspberry Pi and digital circuitry supplies. Another discussion
       centered around options for LED driving devices. A FET device and a constant current driver were the
       two discussed options, and a working FET-controlled LED design was supplied by George.
-      Last, the workload for HW 4 was divided, with tha majority falling to Courtney, our resident packaging
+      Last, the workload for HW 4 was divided, with the majority falling to Courtney, our resident packaging
       and mechanical design specialist. 
     </p>
 
@@ -191,7 +191,7 @@
     </p>
 
     <p class="entry"><b>February 19, 2014 (2.5 hours)</b>:<br>
-      Labratory attendance, as usual, was mandatory, and the focus was on schematic progress and/or issues. The
+      Laboratory attendance, as usual, was mandatory, and the focus was on schematic progress and/or issues. The
       discussion was led primarily by Courtney, who then assembled a list of outstanding concerns for later 
       resolution with course staff. The hardware narrative components were largely decided, and some division
       of labor was devised. Clarification on some peripheral responsibilities for the design was an additional 
@@ -202,7 +202,7 @@
       A team meeting was held to aid Sophie in completion of the hardware narrative report. An individual contribution 
       of the block diagram and design decisions was made. Microcontroller port assignments were the largest set of
       decisions to be made. Some physical/connection topics were discussed with respect to schematic completion. It 
-      was tentativel decided that all necessary Raspberry Pi pins, control panel (pushbutton) pins, LCD pins, and motor
+      was tentatively decided that all necessary Raspberry Pi pins, control panel (pushbutton) pins, LCD pins, and motor
       pins would probably go to connectors on the PCB, since all aforementioned components will reside at specific
       location in the package (external to PCB, internal to packaging).
     </p>
@@ -214,7 +214,7 @@
       A preliminary visual inspection of the waveforms from the Raspberry Pi was promising, although a more scientific
       inspection will take place once it is more apparent how to operate some features on the MSO-X 4024A mixed-signal
       oscilloscope. <br>
-      One unfortunate discovery came in the knowledge that the Raspberry Pi SPI harware does not support slave mode.
+      One unfortunate discovery came in the knowledge that the Raspberry Pi SPI hardware does not support slave mode.
       See page 8 of the Raspberry PI CPU 
       <a href="http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf">datasheet</a>.
       This factor will play a part in refactoring the communication design and could potentially require a slight
@@ -224,13 +224,13 @@
       master to SPI2 as a slave was undertaken.
       Unfortunately, somewhere in the inclusion of the SPI.h lib file and building, an error occurred in the build
       settings. At the moment, building and programming the micro is not functional. Instead, a good goal might be 
-      one of the following: strive for some meaningul progress on the Django webapp or seek to modify the clock
-      rate of Rpi SPI transmission. The next entry will likely detail efforts in one of those two categories.
+      one of the following: strive for some meaningful progress on the Django webapp or seek to modify the clock
+      rate of Raspberry Pi SPI transmission. The next entry will likely detail efforts in one of those two categories.
     </p>
     
     <p class="summary"><b>WEEK 06 SUMMARY</b><br/>
       <u>Accomplishments</u>: Homework 5 - Hardware Narrative
-      First inspection of Rpi serial waveforms<br>
+      First inspection of Raspberry Pi serial waveforms<br>
       <u>Weekly Work Total</u>: 10 hours<br>
       <u>Project Work Total</u>: 35 hours<br>
     </p>
@@ -240,45 +240,45 @@
       Matt successfully navigated the maze of drivers and compilers to get the MPLab IDE up and running again. 
       A small plastic header was sacrificed and leads were soldered on to allow for scoping and interconnection
       of Raspberry Pi SPI signals. The ambitious experiment 
-      of micro -> Rpi transmission was set up, whcih looked something like this:<br>
+      of micro -> Raspberry Pi transmission was set up, which looked something like this:<br>
       <a href="../images/jefferst/2014-02-25-serial-comm-ckt.jpg">
 	<img src="../images/jefferst/2014-02-25-serial-comm-ckt.jpg" alt="serial comm" height="200px" width="200px">
       </a> <br>
       Before scoping anything, some software debugging was necessary. The MPLab spi library partially worked, but the 
-      ReadSPI() function was loopinf infinitely. Replacing this function call with a regular IFG (interrupt flag) poll
-      solved this looping issue. Although library dodumentation was unsurprisingly nonexistent, it is
+      ReadSPI() function was looping infinitely. Replacing this function call with a regular IFG (interrupt flag) poll
+      solved this looping issue. Although library documentation was unsurprisingly nonexistent, it is
       assumed that the library must have been for a slightly different device family.
       Logic analyzer probes were placed on SCLK, SIMO, and MOSI, but the only observable results were noisy, meaningless signals.
       Scoping each device's output separately determined that the Raspberry Pi clock and SPI lines were the culprits.
     </p>
 
     <p class="entry"><b>February 25, 2014 (3 hours)</b>:<br>
-      Since the Rpi SPI was not operating correctly, a quick search was performed for alternatives for SPI
+      Since the Raspberry Pi SPI was not operating correctly, a quick search was performed for alternatives for SPI
       driving code. The python example was abandoned, and a C programming example was discovered (linked within) from the following
       blog <a href="http://www.brianhensley.net/2012/07/getting-spi-working-on-raspberry-pi.html">tutorial</a>.<br>
-      At this point, Rpi SPI was scoped alone; SUCCESS! See the code and initial results here:<br>
+      At this point, Raspberry Pi SPI was scoped alone; SUCCESS! See the code and initial results here:<br>
       <a href="../images/jefferst/2014-02-25-serial-rpi.jpg">
 	<img src="../images/jefferst/2014-02-25-serial-rpi.jpg" alt="rpi" height="200px" width="200px">
       </a> 
       <a href="../images/jefferst/2014-02-25-rpi-serial-code.jpg">
 	<img src="../images/jefferst/2014-02-25-rpi-serial-code.jpg" alt="code" height="200px" width="200px">
       </a> <br>
-      Some additional code was authored to display (on the microcontroller) multi-byte transmissions from the Rpi.
+      Some additional code was authored to display (on the microcontroller) multi-byte transmissions from the Raspberry Pi.
       In addition, clock frequencies were matched to facilitate what will eventually be bidirectional communication.
       See evidence of frequency (62.5KHz) matching here:<br>
       <a href="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg">
 	<img src="../images/jefferst/2014-02-25-rpi-adjusted-freq.jpg" alt="code" height="200px" width="200px">
       </a> <br>
-      This experiment was successful! (Multiple transmissions, one way: Rpi -> micro)
-      It was briefly noted that since Rpi SPI peripherals are all master-mode hardware, a switching
+      This experiment was successful! (Multiple transmissions, one way: Raspberry Pi -> micro)
+      It was briefly noted that since Raspberry Pi SPI peripherals are all master-mode hardware, a switching
       protocol must be developed in software on the micro side so that it may
-      operate in Master or Slave mode as appropriate to each SPI peripheral (Rpi, LCD).
+      operate in Master or Slave mode as appropriate to each SPI peripheral (Raspberry Pi, LCD).
     </p>
 
     <p class="entry"><b>February 26, 2014 (4 hours)</b>:<br>
-      Mandatory Lab was held. Descussion centered around streaming API selection and different options. Tinysong
+      Mandatory Lab was held. Discussion centered around streaming API selection and different options. Tinysong
       (the current metadata API) returns a link to Grooveshark flash music player, but that will not suffice for 
-      Rpi streaming due to system incompatibilites. Grooveshark's streaming API would be the best option, but
+      Raspberry Pi streaming due to system incompatibilities. Grooveshark's streaming API would be the best option, but
       it is unclear whether API key access will be granted. Should the Grooveshark API prove inaccessible, 
       two main alternatives methods were selected, in order of team preference:<br>
       - Anonymizing Grooveshark API calls with TOR to allow for previously issued keys to be reused<br>
@@ -291,7 +291,7 @@
       - Switching from BJT motor control circuitry to the <a href="http://www.ti.com/lit/ds/symlink/l293d.pdf">L239D Motor Driver</a> IC<br>
       - Reassigning several incorrect pin assignments from the microcontroller to the LED driver<br>
       - Changing to a 6-pin RJ-11 connector and routing programming pins correctly<br>
-      - Routing power and ground to microcontoller bypass capacitors<br>
+      - Routing power and ground to microcontroller bypass capacitors<br>
       - Creating all power and ground planes<br>
       The report for homework #6 was completed in parallel to the PCB layout activities.
       See a first-revision PCB layout here:<br>
@@ -325,12 +325,12 @@
     </p>
 
     <p class="entry"><b>March 3, 2014 (3 hours)</b>:<br>
-      Further development of SPI communication between the Rapsberry Pi and the microcontroller was undertaken. 
-      After modifying the spi code module on the Rasperry pi to adjust clock frequency, successful receipt on 
+      Further development of SPI communication between the Raspberry Pi and the microcontroller was undertaken. 
+      After modifying the spi code module on the Raspberry pi to adjust clock frequency, successful receipt on 
       the micro side was observed. However, it was not immediately transparent when each device would
       be receiving or transmitting, due to the granularity of control on the Raspberry Pi being limited
       to a single function call which performs both reading and writing on the SPI bus. Adding a few 
-      more SPI interactions on the microcrontroller side with different TX data yielded more obvious 
+      more SPI interactions on the microcontroller side with different TX data yielded more obvious 
       insight as to the timing between the two components. <br/><br/>
       A brief session of practice and presentation outlining was held.<br/><br/>
 
@@ -348,7 +348,7 @@
 
     <p class="entry"><b>March 5, 2014 (6 hours)</b>:<br>
       A modification to the webapp was made in order to connect the text in the search box
-      to the actualy search terms of the API call. This was accomplished by adding POST
+      to the actually search terms of the API call. This was accomplished by adding POST
       data to the form with an input tag, then using Django's POST dictionary object to
       retrieve it on the button press event: <br>
       <a href="../images/jefferst/2014-03-31-search-term.png">
@@ -363,7 +363,7 @@
       
       Prototyping with the LEDs was begun in order to get an idea of the current and
       voltage characteristics. The power supply was used with 3.3V supply and 
-      100mA current limit, since this is the espected characteristic of the power
+      100mA current limit, since this is the expected characteristic of the power
       delivery circuitry on the PCB. Thankfully, the LEDs were extremely bright 
       even on the relatively low current setting. See the setup and results here:<br/>
       <a href="../images/spouliqu/RedLED.jpg">
@@ -378,7 +378,7 @@
     </p>
 
     <p class="entry"><b>March 8, 2014 (3 hours)</b>:<br>
-      Results display wasy modified to meaningully display the search results. This
+      Results display was modified to meaningfully display the search results. This
       was accomplished by adding a context variable to the Results View, which 
       passed along the Song object to be rendered by the results.html template.
       See the formatted results display here: <br/>
@@ -395,7 +395,7 @@
       artist, etc.
       Some research shows two popular ways of passing extra data on a single button press. One is the use of 
       Django 'session variables'. The second, simpler way is to add 'hidden' input fields to the form. 
-      This was successfully acheived once a bug was worked out. It is important to notice that when testing,
+      This was successfully achieved once a bug was worked out. It is important to notice that when testing,
       using the same song ID with different metadata will NOT overwrite the current DB entry, which is
       actually correct functionality. See the hidden input fields here:<br/>
       <a href="../images/jefferst/2014-03-09-hidden-fields.png">
@@ -428,17 +428,17 @@
       </a> <br/><br/>
       Voting down functionality was connected to -1 button with another hidden POST element. Voting was
       ensured to never push votes below 0. <br/><br/>
-      Basic API functionality was acheived by implementing a 'headless' view which serves only to handle
+      Basic API functionality was achieved by implementing a 'headless' view which serves only to handle
       requests, not render any page. The response is currently the song title in ISO string form, 
       but it will likely move to the song ID code in string form. <br/><br/>
-      Research for webapp deployment on the Rpi was carried out, the following candidates were discovered
+      Research for webapp deployment on the Raspberry Pi was carried out, the following candidates were discovered
       <a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?t=7208&p=403771">here</a> and
       <a href="http://blog.mattwoodward.com/2013/01/setting-up-django-on-raspberry-pi.html">here</a>
       <br/><br/>
       LCD development was undertaken. A checkerboard function was tested from an online source. It performed
       as expected, although the interface forces the user to interact on a pixel level, which creates
       a more tedious task than initially expected.
-      An 8x8 pixel characted format was selected and a LCDWrite function was written which takes a string
+      An 8x8 pixel character format was selected and a LCDWrite function was written which takes a string
       argument. The string is then looped over, and each char is decoded in a 26-case switch statement:<br/>
       <a href="../images/mmcmunig/3_9_LCD_AHH.JPG">
 	<img src="../images/mmcmunig/3_9_LCD_AHH.JPG" alt="block" height="200px" width="200px">
@@ -492,14 +492,14 @@
       Groove.py was significantly modified to periodically request and download songs.
       The Django webapp API was modified to allow for resetting of #1 song to zero votes (once its playback begins).
       In any case, the API provides the top 5 song IDs, comma delimited, as before.
-      Playback with mpg123 utility on Rpi command line was tested, and worked very well. This will be called from
+      Playback with mpg123 utility on Raspberry Pi command line was tested, and worked very well. This will be called from
       a python subprocess object to allow for simultaneous downloading and playback.
     </p>
 
     <p class="entry"><b>March 21, 2014 (2 hours)</b>:<br>
       LCD letters A-P were added for LCDWrite function.
       Groove.py was modified again to perform hardcoded playback concurrently with webapp requests and song downloading.
-      No performance issues were onbserved.
+      No performance issues were observed.
     </p>
 
     <p class="summary"><b>WEEK 10 SUMMARY</b><br/>
@@ -512,22 +512,22 @@
     <p class="entry"><b>March 23, 2014 (2 hours)</b>:<br>
       The entire team met to be updated on spring break progress. An agenda was created to 
       prioritize remaining work. Some discussion of SPI command/response protocol showed 
-      that Rpi will need to be able to pause SPI pulses to allow the micro to control the clock
+      that Raspberry Pi will need to be able to pause SPI pulses to allow the micro to control the clock
       for LCD communication. Peer evaluations were completed.
     </p>
 
     <p class="entry"><b>March 23, 2014 (4 hours)</b>:<br>
-      Spi bidirectional communication with Rpi was re-verified and tied to the SPI ISR.
+      Spi bidirectional communication with Raspberry Pi was re-verified and tied to the SPI ISR.
       Groove.py was modified again to allow for subprocess communication. The mpg123
       utility is now opened in -R remote mode to allow for commands like play, load,
-      and many more. This will allow all the playback funcitonality the project will need.
-      After installind django on the Rpi and running groove.py in tandem, no performance
+      and many more. This will allow all the playback functionality the project will need.
+      After installing django on the Raspberry Pi and running groove.py in tandem, no performance
       issues were observed, so the decision was made to pursue deploying the webapp locally
-      on the Rpi rather than Google App engine.
+      on the Raspberry Pi rather than Google App engine.
     </p>
 
     <p class="entry"><b>March 25, 2014 (4 hours)</b>:<br>
-      A dummy c file was written and compiled on the Rpi. The a.out file was then called
+      A dummy c file was written and compiled on the Raspberry Pi. The a.out file was then called
       from groove.py to prove the concept of calling the C-compiled spi handler and 
       monitoring its stdout. This works as expected, via either the subprocess.check_output call
       or the subprocess.stdout.readline() call. 
@@ -544,7 +544,7 @@
 	<img src="../images/jefferst/sw_diagram.png" alt="block" height="200px" width="200px">
       </a><br/>
       Mandatory lab session #11 was held. Two parts were determined to have been ordered in the
-      wrong package, wo the correct devices were ordered promptly. <br/>
+      wrong package, so the correct devices were ordered promptly. <br/>
 
       Two glaring errors in the PCB routing were discovered while working on homework 9 - software 
       narrative. The I2C pins were routed to the incorrect ports and there is a Vdd/Vss mix-up on 
@@ -573,7 +573,7 @@
       The actual downloading code portion was put into its own function in order that it
       can be called from either process. This was done to allow for the case that a song
       shoots up into the top 5 before the periodic downloader can download it. This would cause
-      a delay in playback, but it would be minimial and is necessary to ensure that the 
+      a delay in playback, but it would be minimal and is necessary to ensure that the 
       device functions correctly.
     </p>
 
@@ -594,7 +594,7 @@
       <a href="../images/jefferst/2014-03-30-i2c.jpg">
 	<img src="../images/jefferst/2014-03-30-i2c.jpg" alt="block" height="200px" width="200px">
       </a><br/>
-      A very strange issue occurs when the SPI pins are connected both to the Rpi and to the LCD 
+      A very strange issue occurs when the SPI pins are connected both to the Raspberry Pi and to the LCD 
       (with the micro in between). The waveforms of the SPI outputs pulse in the right order and
       with the right timing characteristics, but the waves fail to be held high for any significant
       period. The results appears to be a correctly-timed glitch sequence. Additional input will be 
@@ -623,7 +623,7 @@
     <p class="entry"><b>April 2, 2014 (6 hours)</b>:<br>
       MAN LAB session was held. Previously prototyped I2C software was developed
       further with the specific needs of the LCD in mind. LCD data display was
-      acheived, and the software was modularized to allow for flexible usage in
+      achieved, and the software was modularized to allow for flexible usage in
       its target environment (and for later use with the LED Driver).
       The audio circuit was prototyped fully - this is the critical path which
       must be remedied prior to the finalization of the revised PCB
@@ -635,7 +635,7 @@
 
     <p class="entry"><b>April 3, 2014 (5 hours)</b>:<br>
       Due to difficulties with the audio circuitry, a second entry point to the
-      micro ADC channel wsa included in the second revision of the PCB to allow
+      micro ADC channel was included in the second revision of the PCB to allow
       for last-minute addition of corrected audio circuitry via an external
       protoboard. The op-amp issue was resolved by correcting bias voltages, and
       the audio output signal was improved significantly by scoping behind the
@@ -652,7 +652,7 @@
       The LCD protoboard was unsoldered and a clean header was included to
       replace the dangling wires. Some investigation was performed
       with respect to accessing the Raspberry Pi's local webserver from an
-      external IP, whih will be the desired functionality for the final
+      external IP, which will be the desired functionality for the final
       product. 
     </p>
 
@@ -670,9 +670,9 @@
       Now that I2C functionality has been wrapped nicely into SW functions, some
       design was undertaken with respect to the I2C LED driver/controller. 
       Group dimming and frequency control, turning off the auto-increment
-      feature, and ignoreing all pattern control and and I2C subaddresses were
-      all design dcisions made today. The first test will be with OE LED state
-      regsiter set to be entirely on, ignoreing all dimming, frequency, etc.
+      feature, and ignoring all pattern control and and I2C subaddresses were
+      all design decisions made today. The first test will be with OE LED state
+      register set to be entirely on, ignoring all dimming, frequency, etc.
       Unfortunately, the LED driver will not be testable until a protoboard can
       be obtained and populated. <br>
 
@@ -687,17 +687,17 @@
 
     <p class="entry"><b>April 8, 2014 (4.5 hours)</b>:<br>
       The current LED driver assembly was built incorrectly (wrong pad spacing), 
-      so an attempt was made to reassemble it. A motor protobard was also
+      so an attempt was made to reassemble it. A motor protoboard was also
       assembled at this time. After doing so, I2C communication
       with the driver was prototyped with minimal success. Meaningful data was
       observed on the scope, but output on the LED driver pins did not follow
-      any meaninfgul pattern. The I2C communication was slowed to ensure that it
+      any meaningful pattern. The I2C communication was slowed to ensure that it
       met the driver's specified speed constraints. 
     </p>
 
     <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br>
       Further I2C inspection revealed that the driver failed to nack the requests from
-      the microcrontroller. Some small changes to the software yielded
+      the microcontroller. Some small changes to the software yielded
       successful mitigation of the nacking problems. Unfortunately, the output
       remained unchanged. The I2C resistors and supply voltage were modified a
       bit to ensure that an I2C 'high' signal was indeed being delivered, but
@@ -719,7 +719,7 @@
       module was, upon inspection, deemed to be be unfit with respect to the
       motor's specifications. Instead, a GAL device was obtained and a step
       sequence was programmed into it, with a simple clock signal originating
-      from a micro pin. This worked nicely, but a further imporovement was made
+      from a micro pin. This worked nicely, but a further improvement was made
       by ignoring the GAL device altogether and simple toggling the sequence on
       GPIO's, initiated by a timer interrupt. This solution uses the existing
       micro traces and does not require the addition of a GAL device, which is
@@ -748,7 +748,7 @@
       the Raspberry Pi python code). 
       Groove.py was modified to extract the metadata expected by the SPI
       controller (and microcontroller), and development will continue by
-      incorporating c-program calls to initiate Rpi-micro communication. 
+      incorporating c-program calls to initiate Raspberry Pi-micro communication. 
     </p>
 
     <p class="entry"><b>April 16, 2014 (4 hours)</b>:<br>
@@ -756,17 +756,17 @@
       so on the PCB, so it is expected that the PCB micro is damaged. A fresh
       microcontroller will be tested shortly. 
       SPI calls were successfully incorporated into groove.py, and return codes
-      were decoded and handled to give play/payse and next-song
+      were decoded and handled to give play/pause and next-song
       functionality. Then, SPI communication was linked to the microcontroller
       pushbuttons, as was the metadata transmission. 
     </p>
 
     <p class="entry"><b>April 18, 2014 (4 hours)</b>:<br>
-      The previous microconrtoller was indeed damaged, and a fresh micro
+      The previous microcontroller was indeed damaged, and a fresh micro
       programs successfully on the PCB. The LED driver was assembled on the PCB
       as well, and more attempts were made (unsuccessfully) to get meaningful output from the
       driver via I2C.
-      More time was invested in redirecting http requests inbound to the Rpi
+      More time was invested in redirecting HTTP requests inbound to the Raspberry Pi
       with limited success. SSH to the device is open, so it should be a simple
       matter of adding the server port to the list of allowed ports. 
     </p>
@@ -780,9 +780,9 @@
     <h3 id="week15">Week 15</h3>    
     <p class="entry"><b>April 21, 2014 (4 hours)</b>:<br>
       Moving the motor circuitry to the PCB was successful, with a small
-      caveat. The output-enable of the level translator was inadvertantly tied
+      caveat. The output-enable of the level translator was inadvertently tied
       high, so it was corrected by fly-wiring to a microcontroller GPIO. 
-      Additionaly, one motor pin was floating to do a soldering error, which was
+      Additionally, one motor pin was floating to do a soldering error, which was
       quickly corrected. At this point, the motor works as expected and speed is
       easily adjustable by changing the timer interrupt interval.
       Also, IP redirection was resolved by running the python dev server
@@ -803,22 +803,22 @@
       Top-level url redirection was corrected: there is no longer a need to manually type xx.xx.xx:8000/songs/,
       a user only needs IP and port.
       Some code was added in groove.py to continue playback after a song
-      'naturally' completes (no next-song buttonpress).
+      'naturally' completes (no next-song button press).
     </p>
 
     <p class="entry"><b>April 23, 2014 (4 hours)</b>:<br>
-      The LED driver's output was corrected with some small sofware updates.
-      Ouput was further improved once it was understood that setting LEDs to
+      The LED driver's output was corrected with some small software updates.
+      Output was further improved once it was understood that setting LEDs to
       follow GRPPWM and GRPFREQ still necessitates setting the LED's individual
       PWM reg (it follows both).
       Updates were made to webapp fonts at group members' requests.
     </p>
     <p class="entry"><b>April 23, 2014 (3 hours)</b> 
-      After some success with the LED driver, the ADC sapmling was
+      After some success with the LED driver, the ADC sampling was
       investigates. The output of the Raspberry Pi was sent through the audio
       circuitry and tied to an ADC input channel of the microcontroller. A beat
-      threshold was set in software to allow for easy modification to acheive
-      aesthetically pleaseing results. This will incur a small delay, but this
+      threshold was set in software to allow for easy modification to achieve
+      aesthetically pleasing results. This will incur a small delay, but this
       seems rather unavoidable at this juncture, as buffering or pre-sampling
       both seem rather difficult. 
 
@@ -837,10 +837,49 @@
     </p>
 
     <h3 id="week16">Week 16</h3>    
+    <p class="entry"><b>April 28, 2014 (6 hours)</b>
+      Attempting to start pulling sub-components together an run them
+      simultaneously were undertaken. Specifically, incorporating LED driver
+      updates and ADC sampling with the SPI/webapp/LCD portion was the main
+      integration effort. Unfortunately, a malfunction between the micro and
+      Raspberry Pi resulted in an inoperable Raspberry Pi. A replacement was
+      promptly ordered. 
+    </p>
+
+    <p class="entry"><b>April 29, 2014 (12 hours)</b>
+      The motor circuitry was re-worked; some de-soldering had loosened a
+      connection on a level-translator pin. Pushbuttons were momentarily
+      inoperable, but the electrical issue was resolved once all had been
+      packages (floating pins). A buffer chip: 74HC244N was included to isolate
+      the microcontroller and Raspberry Pi. Packaging and integration efforts
+      continued with mixed success. All the PSSCs were demonstrable, but the
+      simultaneous powering of more than 3-4 individual LEDs created
+      inexplicable noise on the SPI line, which broke the rest of the
+      functionality. 
+    </p>
+
+    <p class="entry"><b>May 1, 2014 (3.5 hours)</b>
+      The root cause of the integration issue was discovered: the current draw
+      on the 5V supply created some instability in the buffer chip, which had
+      been incorrectly biased with 5V (rather than the SPI logic level
+      3.3V). Once 3.3V was brought to the buffer chip, the device operated
+      correctly. 
+    </p>
+
+    <p class="entry"><b>May 2, 2014 (6 hours)</b>
+      The IP configuration was modified heavily to allow for maximum interaction
+      at the Design showcase. A bridge to a laptop LAN port was made for
+      hosting; unfortunately, this does not allow users to access the webapp via
+      Wi-Fi. This was an unfortunate restriction of the MSEE Atrium demo space
+      (no network drops were available). <br>
+
+      The device was later demo'ed at the Design Showcase.
+    </p>
+
     <p class="summary"><b>WEEK 16 SUMMARY</b><br/>o
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      <u>Weekly Work Total</u>: 32.5<br>
+      <u>Project Work Total</u>: 228.5 hours<br>
     </p>
 
 
