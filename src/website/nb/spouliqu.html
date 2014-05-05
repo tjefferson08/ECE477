@@ -302,19 +302,19 @@ This time was also used to finish up I2C communication between the microcontroll
 
 <br><br>
 <a href="../images/spouliqu/LCD.jpg">
-	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="500px" width="800px">
+	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="300px" width="400px">
       </a>
 </p>
 
     <p class="entry"><b>April 3, 2014 (4 hours)</b>:<br> After a lot of work with Professor Meyer and a few other TA's, the amplification of the sound was working correctly. The envelope detector was still showing a very choopy signal on its output. While testing, the envelope detector was pulled. With no envelope detector, the audio signal had large peaks where the music beat was. When the potentiometer was turned, the sensitivity of the beats was higher or lower depending on the direction turned. Once a good sensitivity was determined, the circuit was created on the schematic and the PCB layout was completed. An additional header was added to the PCB for the audio circuit incase any other changes to the audio circuit needed to be done after the board was sent out for manufacturing. The current audio circuit that will be represented on the new PCB is shown below. 
 <br><br>
 <a href="../images/spouliqu/Audio.jpg">
-	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="500px" width="800px">
+	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="300px" width="400px">
       </a>
 
 <br><br>
 <a href="../images/spouliqu/AudioCircuit.jpg">
-	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="500px" width="800px">
+	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="300px" width="400px">
       </a>
 </p>
 
@@ -337,7 +337,7 @@ Another issue with the LED driver that was discovered today, was the period of t
     <p class="entry"><b>April 9, 2014 (4.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the I2C protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. After reviewing the datasheet and a few online examples, it was discovered that the reset sequence being implemented was not correct. All LED port connections were not previously being reset in the correct order. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
 <br><br>
 <a href="../images/spouliqu/LEDDriverSetup1.jpg">
-	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="800px">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="300px" width="400px">
       </a>
 </p>
 
@@ -350,7 +350,7 @@ We then discussed with Joe the use of a PLD in the design, even though it was no
 
 <br><br>
 <a href="../images/spouliqu/MotorDriverSetup.jpg">
-	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="800px">
+	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="300px" width="400px">
       </a>
 <br><br>
 <video width="320" height="240" controls>
@@ -390,12 +390,12 @@ MPLABX kept asserting an error about not being able to connect to the microcontr
 
 <br><br>
 <a href="../images/spouliqu/LCDSetup.jpg">
-	<img src="../images/spouliqu/LCDSetup.jpg" alt="LCD" height="600px" width="800px">
+	<img src="../images/spouliqu/LCDSetup.jpg" alt="LCD" height="300px" width="400px">
       </a>
 
 <br><br>
 <a href="../images/spouliqu/LCDWorking.jpg">
-	<img src="../images/spouliqu/LCDWorking.jpg" alt="LCD" height="600px" width="800px">
+	<img src="../images/spouliqu/LCDWorking.jpg" alt="LCD" height="300px" width="400px">
       </a>
 </p>
 
@@ -447,12 +447,26 @@ I began mounting the LCD with superglue and electrical tape. The hole in the box
 The I/O chip given to the team yesterday was soldered onto a protoboard and mounted inside the box. This was wired from the Raspberry Pi, to the Raspberry Pi connector on the PCB. 
 <br>
 Once all packaging was complete, the final product was tested. When all the LED's were connected to the PCB, garbage values were continually being sent across the SPI communication between the Raspberry Pi and the microcontoller. This was a huge issue, because without that communication, no song metadata could be received. This ended up being a very long night of debugging, and the only solution found was that only two LED's with one color each could be connected to run properly. This lead us to believe that there was a major power issue that for some reason was causing our LED's to not have enough current to fully run. 
+<br> 
+    <a href="../images/spouliqu/MountedFront.jpg">
+	    <img src="../images/spouliqu/MountedFront.jpg" alt="LCD" height="300px" width="400px">
+    </a>
+<br> 
+    <a href="../images/spouliqu/FinalPackagingInside.jpg">
+	    <img src="../images/spouliqu/FinalPackagingInside.jpg" alt="LCD" height="400px" width="300px">
+    </a>
+<br> 
+    <a href="../images/spouliqu/FinalPackagingOutside.jpg">
+	    <img src="../images/spouliqu/FinalPackagingOutside.jpg" alt="LCD" height="300px" width="400px">
+    </a>
+<br> 
+    <a href="../images/spouliqu/Working.jpg">
+	    <img src="../images/spouliqu/Working.jpg" alt="LCD" height="400px" width="300px">
+    </a>
 </p>
 
     <p class="entry"><b>April 30, 2014 (5 hours)</b>: After a long night of debugging the SPI and LED issues, no progress was gained. With only two LED's utilizing one color connected to the PCB, the final PSSC video was shot. The night finally came to an end at 3:30 AM. The next morning all teams came together to view the PSSC demo videos. Team 2's video can been seen below. <br> 
-<iframe width="420" height="345"
-src="https://www.youtube.com/watch?v=yey6Bm6KuSc">
-</iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yey6Bm6KuSc" frameborder="0" allowfullscreen></iframe>
 </p>
 
     <p class="entry"><b>May 1, 2014 (3 hours)</b>:<br> We still needed to get our final PSSC's checked off, so we hooked everything excluding the LED's to get four out of our five PSSC's checked off. After discussing the LED power issue with George Toh, he asked us what else was being powered with the LED driver 5V. The only other part that was connected to 5V is the I/O chip between the Raspberry Pi and the microcontoller. Instead of powering this chip with 5V, we fly-wired it to 3.3V and connected all the LED's back up. All LED's were powered and working correctly with no issues in the SPI communication!
