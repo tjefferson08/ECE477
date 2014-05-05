@@ -472,20 +472,22 @@
 
     
 	
-	<p class="entry"><b>April 3, 2014 (2 hours)</b>:<br>  After working with the course staff the audio circuit was producing meaningful output.
+	<p class="entry"><b>April 3, 2014 (6 hours)</b>:<br>  After working with the course staff the audio circuit was producing meaningful output.
 	However, instead of using the envelop detection it was determined that the audio would simply be tested after the op-amp. The sensitivity of
 	the beat detection can be modified through a potentiometer. The result can be viewed below.<br>
 <a href="../images/spouliqu/Audio.jpg">
-	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="200px" width="200px">
+	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="200px" width="200px"> 
       </a>
 
-<br>
+<br> <br> Once the audio circuit was finalized the schematic and PCB were updated. The changes include the new audio circuit, changing
+      LCD to I2C pins and fixing a ground power issue with a bypass capacitor. 
       
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:10  hours<br>
-                       <u>Project Work Total</u>:128.5  hours</p>
+                       <u>Accomplishments</u>: ADC initialization and sampling code was written. The audio circuit was finalized
+                       with meaningful output. A new schematic and board were created to fix multiple errors  <br>
+                       <u>Weekly Work Total</u>:14  hours<br>
+                       <u>Project Work Total</u>:132.5  hours</p>
                        
     
     <h3 id="week13">Week 13</h3>
@@ -523,9 +525,7 @@
 
 
       
-      <p class="entry"><b>April 10, 2014 (5 hours)</b>:<br> The LED driver was put on hold until we could test it on the actual PCB board. 
-      Next the group moved on to prototyping the motor driver. The motor driver was first wired up to a breadboard between the microcontroller 
-      and the motor wires. 
+      <p class="entry"><b>April 10, 2014 (5 hours)</b>:<br>  The motor driver was wired up to a breadboard between the microcontroller and the motor wires. 
       A PLD was deemed necessary by the group and was programmed with a state machine corresponding to the coil combinations necessary to driver
       the motor. The output of the PLD was correct but after talking with Joe, our PCB layout did not allow for a PLD to be added after the driver. 
       In order to emulate the function of the PLD a state machine was added to the motor code. This state machine is updated based on a certain
@@ -556,9 +556,10 @@
       
 
     <p class="summary"><b>WEEK 13 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: LED commands are being ACKd by the LED driver. The motor driver was successfully rotating through
+                       the use of a state machine on the microcontroller. The motor speed can be changed easily in software.  <br>
                        <u>Weekly Work Total</u>: 22 hours<br>
-                       <u>Project Work Total</u>: 150.5 hours</p>
+                       <u>Project Work Total</u>: 154.5 hours</p>
 
 
     <h3 id="week14">Week 14</h3>
@@ -594,10 +595,15 @@
 		RPI - Song Data - 0xBB <br>
 		Micro - Heartbeat  - 0x01 <br>
 		Micro - Next Song  - 0x02 <br>
-		Micro - Play/Pause - 0x03 <br> </p>
+		Micro - Play/Pause - 0x03 <br> <br>
+		
+		This can be seen in the following code sample: <br>
+		<br>
+<a href="../images/mmcmunig/SPI_Commands.PNG">
+		<img src="../images/mmcmunig/SPI_Commands.PNG" alt="RPI" height="200px" width="200px">
+      </a>
 
-
-    
+<br></p>   
 		
 		<p class="entry"><b>April 18, 2014 (3 hours)</b>:<br>
       A new microcontroller was added to the PCB which validated the theory that the previous microcontroller was damaged.
@@ -607,9 +613,10 @@
 		  
 
     <p class="summary"><b>WEEK 14 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: Microcontroller and other components soldered to PCB board. SPI commands were programmed and successfully
+                       tested. New microcontroller was successfully programmed. <br>
                        <u>Weekly Work Total</u>: 18 hours<br>
-                       <u>Project Work Total</u>: 168.5  hours</p>
+                       <u>Project Work Total</u>: 172.5  hours</p>
                        
     
     <h3 id="week15">Week 15</h3>
@@ -652,9 +659,11 @@
 	</p>
 
     <p class="summary"><b>WEEK 15 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: Motor driver and motor are working on PCB board. LED driver was finally successfully written to 
+                       and a single LED can blink. The SPI commands between the microcontroller and Raspberry Pi were integrated with the web
+                       application. <br>
                        <u>Weekly Work Total</u>: 18 hours<br>
-                       <u>Project Work Total</u>: 186.5 hours</p>
+                       <u>Project Work Total</u>: 190.5 hours</p>
 
 
     <h3 id="week16">Week 16</h3>
@@ -696,12 +705,17 @@
 
 <br>
 	</p>
-
+	
+	<p class="entry"><b>May 2, 2014 (4 hours)</b>
+      The IP configuration of the microcontroller was modified in an attempt to establish a local connection by connecting directly to a laptop. 
+      This was done because no ethernet ports were available in the display area. The server was run on the laptop but was not accessible to anyone
+      else on the network during the Design Showcase.<br>
+    </p>
 
     <p class="summary"><b>WEEK 16 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>: 18 hours<br>
-                       <u>Project Work Total</u>: 202.5 hours</p>                           
+                       <u>Accomplishments</u>: All peripherals were tested successfully together. Final packaging was completed. Every1 DJ is complete!<br>
+                       <u>Weekly Work Total</u>: 22 hours<br>
+                       <u>Project Work Total</u>: 210.5 hours</p>                           
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
