@@ -603,146 +603,212 @@
       to collect meaningful data.
     </p>
 
-    <p class="entry"><b>March 31, 2014 ( hours)</b>:<br>
-      prototype I2C, got up to data sending correctly and in correct order, fixed reset at the end
+    <p class="entry"><b>March 31, 2014 (4 hours)</b>:<br>
+      It was decided to pursue I2C communication as a potential fix for the SPI
+      electrical issues on the Raspberry Pi. The I2C peripheral was set up and
+      some meaningful data was displayed on the oscilloscope. Blaine's advice
+      was taken and start and end conditions were carefully monitored to ensure
+      that transfers were fully exited prior to initialization of a subsequent
+      packet.
     </p> 
 
-    <p class="entry"><b>April 1, 2014 ( hours)</b>:<br>
-      layout and schematic updated with i2c fixed and vcc/vss
-      went ant talked to george?
+    <p class="entry"><b>April 1, 2014 (3.5 hours)</b>:<br>
+      The PCB layout (and schematic) was updated to resolve large issues: namely, the Vcc and
+      Vss swap on one of the microcontroller decoupling capacitors and the
+      unfortunate misplacement of the I2C peripheral pins. At this point, the
+      plan is to submit a second PCB iteration while concurrently physically 
+      modifying the existing board as needed. 
     </p>
 
-    <p class="entry"><b>April 2, 2014 ( hours)</b>:<br>
-      MAN LAB
-      Got i2c and lcd working, cleaned up code and got write function going gud
-      Audio - meyer came and shit was still real broke
+    <p class="entry"><b>April 2, 2014 (6 hours)</b>:<br>
+      MAN LAB session was held. Previously prototyped I2C software was developed
+      further with the specific needs of the LCD in mind. LCD data display was
+      acheived, and the software was modularized to allow for flexible usage in
+      its target environment (and for later use with the LED Driver).
+      The audio circuit was prototyped fully - this is the critical path which
+      must be remedied prior to the finalization of the revised PCB
+      submission. All points of interest in the audio circuit were scoped and
+      inspected for proper function. The breakdown is localized to the current
+      amplifier, but a single part failure was ruled out by testing a clean
+      part. This issue was left unresolved at the end of MAN LAB. 
     </p>
 
-    <p class="entry"><b>April 3, 2014 ( hours)</b>:<br>
-      more audio, got meyer's OK to use a header on the final product
-      courtney pulled the envelope detector, signal looks a lot better
+    <p class="entry"><b>April 3, 2014 (5 hours)</b>:<br>
+      Due to difficulties with the audio circuitry, a second entry point to the
+      micro ADC channel wsa included in the second revision of the PCB to allow
+      for last-minute addition of corrected audio circuitry via an external
+      protoboard. The op-amp issue was resolved by correcting bias voltages, and
+      the audio output signal was improved significantly by scoping behind the
+      envelope detector. The decision to exclude the envelope detector was made,
+      due to the apparent workability of the existing waveform. 
     </p>
 
-    <p class="entry"><b>April 4, 2014 ( hours)</b>:<br>
-      finalized pcb changes and submitted board to be ordered with the 402 board order, hopefully it's free!
+    <p class="entry"><b>April 4, 2014 (3 hours)</b>:<br>
+      The revised PCB was finalized and the order was submitted with the bulk
+      order for ECE402 boards. 
     </p>
 
-    <p class="entry"><b>April 5, 2014 ( hours)</b>:<br>
-      unsoldered header, cleaned up station, started setting up rpi for external ip access
+    <p class="entry"><b>April 5, 2014 (4 hours)</b>:<br>
+      The LCD protoboard was unsoldered and a clean header was included to
+      replace the dangling wires. Some investigation was performed
+      with respect to accessing the Raspberry Pi's local webserver from an
+      external IP, whih will be the desired functionality for the final
+      product. 
     </p>
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      PCB revised and submitted<br>
+      I2C prototyped and verified as alternative LCD protocol<br>
+      Audio circuitry significantly improved<br>
+      <u>Weekly Work Total</u>: 31.5 hours<br>
+      <u>Project Work Total</u>: 143.5 hours<br>
     </p>
 
     <h3 id="week13">Week 13</h3>    
-    <p class="entry"><b>April 7, 2014 ( hours)</b>:<br>
-      setting registers for I2C LED controller
-      Group dimming and frequency control, no auto-inc, no pattern control, yet
-      Output enable registers, ignoring subaddresses
-      can't test LED driver
+    <p class="entry"><b>April 7, 2014 (5.5 hours)</b>:<br>
+      Now that I2C functionality has been wrapped nicely into SW functions, some
+      design was undertaken with respect to the I2C LED driver/controller. 
+      Group dimming and frequency control, turning off the auto-increment
+      feature, and ignoreing all pattern control and and I2C subaddresses were
+      all design dcisions made today. The first test will be with OE LED state
+      regsiter set to be entirely on, ignoreing all dimming, frequency, etc.
+      Unfortunately, the LED driver will not be testable until a protoboard can
+      be obtained and populated. <br>
 
-      motor registers - enhanced PWM mode, full bridge output
-      can't use PWM full bridge mode because we have a random collection of ECCP pins pulled out
-      We have: ECCP2 B, ECCP3 C, ECCP3 B, ECCP1C, which is horrible
-      we will flywire to ECCP3 A and ECCP3 D
-
-      soldered the crap out of the LED protoboard and LED package itself
+      Further investigation into the motor settings was made. The hope was to
+      use the built in Enhanced PWM's full-bridge mode, but it was noted that
+      the pins in the current design do not make up a full peripheral
+      pinout. There are also some doubts as to whether the full-bridge mode is
+      the correct output for full stepper motor functionality. The current
+      solution is to flywire the rest of the PWM peripheral to the existing
+      micro traces.
     </p>
 
-    <p class="entry"><b>April 8, 2014 ( hours)</b>:<br>
-      fixed LED driver protoboard, soldered motor protoboard
-      prototyping I2C - getting data on scope but no response from driver chip
-      period of I2C is 2 us (500 MHz), slowed down to 10KHz to be in range of Driver
-      LED is on, but super super dim, weird
+    <p class="entry"><b>April 8, 2014 (4.5 hours)</b>:<br>
+      The current LED driver assembly was built incorrectly (wrong pad spacing), 
+      so an attempt was made to reassemble it. A motor protobard was also
+      assembled at this time. After doing so, I2C communication
+      with the driver was prototyped with minimal success. Meaningful data was
+      observed on the scope, but output on the LED driver pins did not follow
+      any meaninfgul pattern. The I2C communication was slowed to ensure that it
+      met the driver's specified speed constraints. 
     </p>
 
-    <p class="entry"><b>April 8, 2014 ( hours)</b>:<br>
-      we had nacking problems from Driver chip, but now everything gets acked
-      no changes in output
-      pull up resistors were modified (and supply voltage, temporarily) to get a fully high
-      I2c logic signal - I actually think that won't work
-      There appears to be a potential problem with failure to meet voltage minimums for high state,
-      except address bytes are read correctly, so it can't be a threshold issue
+    <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br>
+      Further I2C inspection revealed that the driver failed to nack the requests from
+      the microcrontroller. Some small changes to the software yielded
+      successful mitigation of the nacking problems. Unfortunately, the output
+      remained unchanged. The I2C resistors and supply voltage were modified a
+      bit to ensure that an I2C 'high' signal was indeed being delivered, but
+      the successful acking of the address byte implies that this threshold
+      issue is not the underlying problem here.
     </p>
 
-    <p class="entry"><b>April 9, 2014 ( hours)</b>:<br>
-      man lab - debugged I2C and got acks from chip, no results ended up assuming
-      that we have a connection issue, so we might just put it on the board
+    <p class="entry"><b>April 9, 2014 (5 hours)</b>:<br>
+      MAN LAB session was held. LED driver I2C was (still) debugged. The driver
+      continued to ack requests from the microcontroller, but output continued
+      to fail to follow any meaningful request pattern. At this point, it is
+      assumed that the issue is likely a problem with the protoboard connections
+      or a bridged pin. The decision was made to assemble the part on the board 
+      and retest it in the near future.
     </p>
 
-    <p class="entry"><b>April 10, 2014 ( hours)</b>:<br>
-      motor work
-      programmed gal device
-      switched to eeprom table, just toggling inputs on TIM interrupt
+    <p class="entry"><b>April 10, 2014 (4.5 hours)</b>:<br>
+      A switch in focus was made to the motor. The output of the full-bridge PWM
+      module was, upon inspection, deemed to be be unfit with respect to the
+      motor's specifications. Instead, a GAL device was obtained and a step
+      sequence was programmed into it, with a simple clock signal originating
+      from a micro pin. This worked nicely, but a further imporovement was made
+      by ignoring the GAL device altogether and simple toggling the sequence on
+      GPIO's, initiated by a timer interrupt. This solution uses the existing
+      micro traces and does not require the addition of a GAL device, which is
+      ideal. 
     </p>
 
     <p class="summary"><b>WEEK 13 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      <u>Weekly Work Total</u>: 22.5 hours<br>
+      <u>Project Work Total</u>: 166 hours<br>
     </p>
 
     <h3 id="week14">Week 14</h3>    
     <p class="entry"><b>April 13, 2014 (3 hours)</b>:<br>
-      pushbuttons are being weird, but the problem ight be in the mplab debugger.
-      code does not appear to be executing correctly in the debugger. I'm very confused
-      it was doing the right thing all along, just jumping to a weird location, thinking
-      that it should be servicing the ISR. lame
+      A pushbutton was set up with a 1K pull-up resistor and connected to an EXT
+      INT on the microcontroller. Observed behavior was strange, with unexpected
+      code executing after a pushbutton press. After further inspection, the
+      general interrupt enable was erroneously set, causing the ISR routine to
+      be called, which was not expected (although it is correct behavior).  
     </p>
 
     <p class="entry"><b>April 13, 2014 (4 hours)</b>:<br>
-      debugged an SPI issue, data type mismatch (stupid)
-      cleaned up groove.py, added functionality that was lost at a different commit
-      metadata is stripped from groove, now we will start integrating with SPI exec
+      An SPI issue was debugged (Raspberry Pi) and remedied with a simple data
+      type swap. The song metadata components were neatly packaged into 20-char
+      arrays in the SPI module (they have not yet been delivered correctly by
+      the Raspberry Pi python code). 
+      Groove.py was modified to extract the metadata expected by the SPI
+      controller (and microcontroller), and development will continue by
+      incorporating c-program calls to initiate Rpi-micro communication. 
     </p>
 
     <p class="entry"><b>April 16, 2014 (4 hours)</b>:<br>
-      micro programs, but not on PCB, so we thin the current micro is dead, we'll try another
-      one soon
-
-      spi communication incorporated into groove.py
-      play/pause and nextsong buttons both work as intended
-      playback modified to respond to pushbuttons and strip AND send metadata
-      secondary method to grab metadata if mp3 doesn't have it?
-      wrote a makefile
+      A microcontroller successfully programs on a protoboard, but fails to do
+      so on the PCB, so it is expected that the PCB micro is damaged. A fresh
+      microcontroller will be tested shortly. 
+      SPI calls were successfully incorporated into groove.py, and return codes
+      were decoded and handled to give play/payse and next-song
+      functionality. Then, SPI communication was linked to the microcontroller
+      pushbuttons, as was the metadata transmission. 
     </p>
 
     <p class="entry"><b>April 18, 2014 (4 hours)</b>:<br>
-      micro programs on new PCB!!
-      soldered a couple resistors onto the PCB, debugged LED, trying to scope LED driver output
-      worked for another three hours to get ips redirected correctly
+      The previous microconrtoller was indeed damaged, and a fresh micro
+      programs successfully on the PCB. The LED driver was assembled on the PCB
+      as well, and more attempts were made (unsuccessfully) to get meaningful output from the
+      driver via I2C.
+      More time was invested in redirecting http requests inbound to the Rpi
+      with limited success. SSH to the device is open, so it should be a simple
+      matter of adding the server port to the list of allowed ports. 
     </p>
 
     <p class="summary"><b>WEEK 14 SUMMARY</b><br/>
       <u>Accomplishments</u>: <br>
-      <u>Weekly Work Total</u>: 21 hours<br>
-      <u>Project Work Total</u>: 56 hours<br>
+      <u>Weekly Work Total</u>: 15 hours<br>
+      <u>Project Work Total</u>: 181 hours<br>
     </p>
 
     <h3 id="week15">Week 15</h3>    
     <p class="entry"><b>April 21, 2014 (4 hours)</b>:<br>
-      debugging motor operations
-      pull up resistor on OE on level translator, fly wire to micro
-      pin on motor driver was floating
-      motor is solid
-      fixed ip redirection, webapp lives and runs like it should
+      Moving the motor circuitry to the PCB was successful, with a small
+      caveat. The output-enable of the level translator was inadvertantly tied
+      high, so it was corrected by fly-wiring to a microcontroller GPIO. 
+      Additionaly, one motor pin was floating to do a soldering error, which was
+      quickly corrected. At this point, the motor works as expected and speed is
+      easily adjustable by changing the timer interrupt interval.
+      Also, IP redirection was resolved by running the python dev server
+      explicitly on the Raspberry Pi's external IP, so requests made are now
+      handled appropriately. This even allows for access on mobile devices via
+      Wi-Fi. 
     </p>
 
     <p class="entry"><b>April 22, 2014 (4 hours)</b>:<br>
-      styled webapp, it now looks a decent amount better (screenshots in dropbox)
-      top-level url redirection is fixed: no need to manually type xx.xx.xx:8000/songs/,
-      only need IP and port
-      added code in groove.py to continue playback after a song completes
+      The webapp CSS was modified to make for a more mobile-friendly produce
+      (larger fonts, narrower widths, etc.). See the current product below:<br>
+      <a href="../images/jefferst/2014-03-30-i2c.jpg">
+	<img src="../images/jefferst/2014-03-30-i2c.jpg" alt="block" height="200px" width="200px">
+      </a><br/>
+      Top-level url redirection was corrected: there is no longer a need to manually type xx.xx.xx:8000/songs/,
+      a user only needs IP and port.
+      Some code was added in groove.py to continue playback after a song
+      'naturally' completes (no next-song buttonpress).
     </p>
 
     <p class="entry"><b>April 23, 2014 (4 hours)</b>:<br>
-      setting LEDs to follow GRPPWM and GRPFREQ is great, but you still have to set the LED's
-      individual PWM reg (it follows both)
-      Matt fixed SW so LED driver actually works
-      webapp fonts
+      The LED driver's output was corrected with some small sofware updates.
+      Ouput was further improved once it was understood that setting LEDs to
+      follow GRPPWM and GRPFREQ still necessitates setting the LED's individual
+      PWM reg (it follows both).
+      Updates were made to webapp fonts at group members' requests.
     </p>
 
     <p class="summary"><b>WEEK 15 SUMMARY</b><br/>
