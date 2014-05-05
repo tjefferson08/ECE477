@@ -294,62 +294,67 @@ The audio circuit was also built and tested. Due to the fact that most of the pa
 
     <p class="entry"><b>March 30, 2014 (3 hours)</b>:<br> Began research on possible patent infringement for the Every1 DJ product. Found two patents that could be considered within infringement rights. Delved into the claim language and abstracts for multiple patents to decide whether licenses would need to be obtained if the Every1 DJ product went into manufacturing.</p>
 
-    <p class="entry"><b>March 31, 2014 (2 hours)</b>:<br> Completed Homework 10: Legal Analysis. This homework focused on patent liability. It was found that the Every1 DJ product could possible infringe on multiple patents. But luckily, our product will not be manufactured and sold so no licenses need to be purchased from the patent holders at this time. </p>
+    <p class="entry"><b>March 31, 2014 (2 hours)</b>:<br> Completed Homework 10: Legal Analysis. This homework focused on patent liability. It was surprisingly easy to find proudcts that performed the same functions as the Every1 DJ product. This could lead to possible infringment on others work. Luckily, the Every1 DJ product will not be manufactured and sold so no further steps to elimante infringement need to be taken at this time. </p>
 
-    <p class="entry"><b>April 2, 2014 (4 hours)</b>:<br> Met for mandatory lab this morning, and spoke with the TA's about getting a new PCB because the current PCB has a few misconnected ports and there are a lot of issues with the audio circuit. It was decided that continuation on fly-wiring the current board would be done while an updated board was processed. After this decision was made, the new audio circuit was physically tested. There were a lot of issues with the amplification, and the envelope detector was outputting a very choppy signal that would be hard for beat detection to work with. More audio circuit testing will resume tomorrow. 
+    <p class="entry"><b>April 2, 2014 (4 hours)</b>:<br> Met for mandatory lab this morning, and spoke with the TA's about getting a new PCB because the current PCB has a few misconnected ports and there are a lot of issues with the audio circuit. It was decided that the team would continue to fly-wire the current board while the updated board is being manufactured. After this decision was made, the new audio circuit was physically tested. There were a lot of issues with the amplification, and the envelope detector was outputting a very choppy signal that would be hard to determine beats. Further testing and changes will be made to the audio circuit tomorrow. 
 <br>
 This time was also used to finish up I2C communication between the microcontroller and the LCD. Testing was finished on the LCD and below is a final look at some of the letters being displayed. 
 
 <br><br>
 <a href="../images/spouliqu/LCD.jpg">
-	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="500px" width="800px">
+	<img src="../images/spouliqu/LCD.jpg" alt="LCD" height="300px" width="400px">
       </a>
 </p>
 
-    <p class="entry"><b>April 3, 2014 (2 hours)</b>:<br> After a lot of work with Professor Meyer and a few other TA's, the amplification of the sound was working correctly. The envelope detector was still showing a very choopy signal. When testing the circuit, we looked at the signal after the op-amp and it looked like below. These spikes in the graph show all the beats and depending on the resistor value, a more or less sensitive detection can be used. As a team, it was decided that we would use this circuit along with a header on the PCB in case the circuit needs to be changed off board. 
-
+    <p class="entry"><b>April 3, 2014 (4 hours)</b>:<br> After a lot of work with Professor Meyer and a few other TA's, the amplification of the sound was working correctly. The envelope detector was still showing a very choopy signal on its output. While testing, the envelope detector was pulled. With no envelope detector, the audio signal had large peaks where the music beat was. When the potentiometer was turned, the sensitivity of the beats was higher or lower depending on the direction turned. Once a good sensitivity was determined, the circuit was created on the schematic and the PCB layout was completed. An additional header was added to the PCB for the audio circuit incase any other changes to the audio circuit needed to be done after the board was sent out for manufacturing. The current audio circuit that will be represented on the new PCB is shown below. 
 <br><br>
 <a href="../images/spouliqu/Audio.jpg">
-	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="500px" width="800px">
+	<img src="../images/spouliqu/Audio.jpg" alt="Audio" height="300px" width="400px">
       </a>
 
 <br><br>
 <a href="../images/spouliqu/AudioCircuit.jpg">
-	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="500px" width="800px">
+	<img src="../images/spouliqu/AudioCircuit.jpg" alt="Audio" height="300px" width="400px">
       </a>
+</p>
 
-
+    <p class="entry"><b>April 4, 2014 (1 hour)</b>:<br> Final changes to the PCB were made and sent to get verified. Once verification was complete, the board was submitted for manufacturing. <br>
+<a href="../images/spouliqu/PCB_final.jpg">
+	<img src="../images/spouliqu/PCB_final.jpg" alt="PCB" height="300px" width="400px">
+</a>
 </p>
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
-                       <u>Accomplishments</u>: Completed communication between the microcontroller and LCD. Also completed the new PCB design and sent it off for manufacturing.<br>
-                       <u>Weekly Work Total</u>: 11<br>
-                       <u>Project Work Total</u>: 109.5</p>
+                       <u>Accomplishments</u>: Completed communication between the microcontroller and LCD. The completed audio circuit was tested and verified by the team that the sensitivity of the beat detection will work for the LEDs. Finally, the new PCB design was completed and sent off for manufacturing.<br>
+                       <u>Weekly Work Total</u>: 14<br>
+                       <u>Project Work Total</u>: 112.5</p>
 
     <h3 id="week13">Week 13</h3>
 
     <p class="entry"><b>April 7, 2014 (2 hours)</b>:<br> Worked on soldering the LED driver and the LED's for testing purposes. Also had to order a new LDO because a 2.5V LDO was ordered instead of a 3.3V. Found a 3.3V LDO on eBay, which hopefully will arrive this week. </p>
 
-    <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br> Began prototyping with the LED driver. There was no response from the LED at first, so each individual I2C signal was scoped at the input of the LED driver. Once all correction were made to these signals, the LED dimly lit up. It was barely visible that the LED was turning on. The other issue that needed to be addressed was the period of the I2C signal. The period was 500MHz but needed to be slowed down to around 10KHz so that the LED driver could respond to the signals.</p>
+    <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br> Began prototyping with the LED driver. There was no response from the LED at first, so each individual I2C signal was scoped at the input of the LED driver. Once all correction were made to these signals, the LED dimly lit up. It was barely visible that the LED was turning on. This was debugged for a while, but no solution was made. The LED's turn on very brightly when just a power source is connected to it. <br>
 
-    <p class="entry"><b>April 9, 2014 (3.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the i2c protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. It was found after digging into the datasheet and online examples that the reset sequence being implemented was not correct. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
-
-<br><br>
-<a href="../images/spouliqu/LEDDriverSetup1.jpg">
-	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="800px">
-      </a>
-
+Another issue with the LED driver that was discovered today, was the period of the I2C signal. The LED driver had an origional period of 500 MHz, but this was much to fast to drive any LEDs. The period was slowed down to around 10KHz so that the driver could respond to the signals it was being sent. This appeared to fix the timing issues, but there still seem to be issues with the power. 
 </p>
 
-<p class="entry"><b>April 9, 2014 (3 hours)</b>:<br> Worked on debugging of I2C on the LED's. It seemed that instead of receiving acks, the driver was nacking. This was changed by making sure all grounds were connected from the microcontroller to the LED driver. Still no changes seen in the output of the LED driver. Perhaps there are problems with the soldering job. This testing will continue when the LED driver is soldered to the PCB, to ensure all connections are correct.</p>
+    <p class="entry"><b>April 9, 2014 (4.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the I2C protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. After reviewing the datasheet and a few online examples, it was discovered that the reset sequence being implemented was not correct. All LED port connections were not previously being reset in the correct order. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
+<br><br>
+<a href="../images/spouliqu/LEDDriverSetup1.jpg">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="300px" width="400px">
+      </a>
+</p>
 
-<p class="entry"><b>April 10, 2014 (4 hours)</b>:<br> Worked on wiring the motor driver. The origional design for motor control did not include a PLD, which the team now thinks is necessary. A PLD was obtained from the parts room, and a programmer. The PLD code was completed using a truth table to toggle the four outputs to make the motor spin. This worked correctly, as the motor spun at variable speens depending on how quickly the toggles occured. <br>
+<p class="entry"><b>April 9, 2014 (3 hours)</b>:<br> Worked on debugging of I2C on the LED's. From the signals being seen on the oscilloscope, it seemed that the driver was constantly receiving nacks and no acknowledgments were ever received. This was debugged by first making sure all grounds were connected from the microcontroller to the LED driver. Once this waws verified, there was still no changes seen in the output of the LED driver. Perhaps there are problems with the soldering job. It was decided as a team to continue this testing once the new board arrives and a new solder job is done.
+</p>
 
-We then discussed with Joe about using a PLD when it wasn't currently on the PCB. He suggested that instead of a PLD, an interrupt triggered truth table could be used. This way, no fly wiring would need to be done to attach a PLD and all code could sit on the microcontroller. This was completed and the motor spins at variable speeds depending on how quickly the truth table gets set. Below is a video of the motor spinning with enough torque to spin the disco ball. 
+<p class="entry"><b>April 10, 2014 (4 hours)</b>:<br> Worked on wiring the motor driver. The origional design for motor control did not include a PLD, which the team now thinks is necessary. A PLD was obtained from the parts room as well as a PLD programmer. The PLD code was completed using a truth table to toggle the four outputs to make the motor spin. This worked correctly, as the motor spun at variable speeds depending on how quickly the toggles occured. Fly-wiring will need to occur to implement the PLD solution since the PLD was not part of the origional PCB design. Before fly-wiring, we wanted to discuss other options that the course staff might have.<br>
+
+We then discussed with Joe the use of a PLD in the design, even though it was not currently on the PCB. He suggested that instead of a PLD, an interrupt triggered truth table could be used. This way, no fly wiring would need to be done to attach a PLD and all code could sit on the microcontroller. The interrupt driven truth table was written, almost identical to the PLD truth table, and was tested. The motor will spin at variable speeds depending on how quickly the truth table gets set. Below is a video of the motor spinning with the use of an interrupt driven truth table. It shows that there will be enough torque to spin the disco ball in the final design. 
 
 <br><br>
 <a href="../images/spouliqu/MotorDriverSetup.jpg">
-	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="800px">
+	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="300px" width="400px">
       </a>
 <br><br>
 <video width="320" height="240" controls>
@@ -358,72 +363,126 @@ We then discussed with Joe about using a PLD when it wasn't currently on the PCB
 </video>
 </p>
 
-<p class="entry"><b>April 11, 2014 (3 hours)</b>:<br> Began working on interrupt driven push buttons. All signals were set for the INTCON, INTCON2 registers. The pushbutton was going low when pressed, as seen on the oscillocscope, but the interrupts did not seem to be registering in software. All signals seemd to be set correctly. More debugging will begin on Sunday.</p>
+<p class="entry"><b>April 11, 2014 (4 hours)</b>:<br> Began testing the interrupt driven push buttons. All signals were set for the INTCON and INTCON2 registers according to the PIC18 datasheet. The pushbutton was wired with a pull down resitor and the power supply connected. When scoped, the pushbutton signal was going low when pressed and seemed to be functioning correctly. When breakpoints were added to the pushbutton interrupts, the breakpoints were never reached. The breakpoints are not registering in software, even though all signals appear to be set correctly. More debugging will begin on Sunday.</p>
 
     <p class="summary"><b>WEEK 13 SUMMARY</b><br>
                        <u>Accomplishments</u>: Completed design for the motor control and push buttons. It seems that allour parts are working, except the LED driver, and just need to be connected together. <br>
-                       <u>Weekly Work Total</u>: 18.5<br>
-                       <u>Project Work Total</u>: 128</p>
+                       <u>Weekly Work Total</u>: 20.5<br>
+                       <u>Project Work Total</u>: 133</p>
 
   <h3 id="week14">Week 14</h3>
 
-    <p class="entry"><b>April 13, 2014 (4 hours)</b>:<br> Continued working on the interrupt driven push buttons. The code written would increment a counter every time the push button was pressed. Because this counter wasn't being used anywhere else in the program, the compiler optimized the counter value out. This is why it 'seemed' like the interrupt was not working correctly, but in actuality it was! <br>
+    <p class="entry"><b>April 13, 2014 (4 hours)</b>:<br> Continued working on the interrupt driven push buttons. The code that was written for debugging purposes would increment a counter every time the push button was pressed. Because the counter wasn't being used anywhere else in the program, the compiler optimized the counter value out. This is why while in debug mode during pushbutton testing, it 'seemed' like the interrupts were not working correctly, but in reality they were! <br>
 
-After the pushbutton sample code was complete, I began working on setting up the communication peripherals between the microcontroller and the Raspberry Pi. The Raspberry Pi will be sending song metadata to the microcontroller via SPI. This means that the micrcontroller needs to be interrupt driven and collect the correct metadata into the correct variables. This way, the song name, artist, album and year will be updated correctly and can be displayed on the LCD.</p>
+After the pushbutton sample code was complete, I began working on setting up the communication peripherals between the microcontroller and the Raspberry Pi. The Raspberry Pi will be sending song metadata to the microcontroller via SPI. This means that the micrcontroller needs to be interrupt driven and collect the correct metadata into the correct variables. This way, the song name, artist, album and year will be updated correctly and can be displayed on the LCD. Global variable for the song name, artist, album and year were created and a loop was created to initialize the correct data from the Raspberry Pi.</p>
 
     <p class="entry"><b>April 14, 2014 (6 hours)</b>:<br>The microcontroller, RJ11 connector, heart beat LED were all populated on the version 1 PCB so the microcontroller could be tested without the explorer board. Flywiring needed to be done to correct the port assignments on the microcontroller. On the current PCB, ground and power were swapped. The fly wiring corrected this mistake. Another pin was not connected when it should have been grounded, which was again corrected by flywiring. All bypass capacitors were also soldered onto the board. After all soldering and fly wiring was complete, power was added to the board and the ICD3 was connected to begin programming. <br>
 
-MPLABX kept asserting an error about not being able to connect to the microcontroller. This led to continuity checking each connection from the RJ11 connector to the micro. The conntinuity check was verified against the explorer board. A discovery that the RJ11 connector on the PCB was wired backwards was confirmed. After fly wiring the RJ11 connector, MPLABX showed a new error, stating that the expected ID does not match the actual ID. Further debugging will resume tomorrow. 
-
-//ADD PIC OF RJ11 CONNECTOR!!
-
+MPLABX kept asserting an error about not being able to connect to the microcontroller. This led to continuity checking each connection from the RJ11 connector to the micro to verify that all soldering was done correctly. The conntinuity check was also verified against the explorer board. From the continuity check, a discovery that the RJ11 connector on the PCB was wired backwards was confirmed. After fly wiring the RJ11 connector, MPLABX showed a new error, stating that the expected ID does not match the actual ID. Further debugging will resume tomorrow. 
 </p>
 
-    <p class="entry"><b>April 15, 2014 (7 hours)</b>:<br>Used oscilloscope to capture the MCLR, Data and CLK signals from the ICD3. Saw data being sent while the MCLR was high. Checked to make sure this data was the same as the explorer board, which it was not. After this, the explorer board was scoped unplugged from the voltage source, with just the RJ11 connector connected to 3.3V. It showed that data was still being sent even if the micro was powered off. This lead to assuming that the micro on the PCB was malfunctioning. A new microcontroller will be brought onto a breakout board and tested tomorrow. </p>
+    <p class="entry"><b>April 15, 2014 (7 hours)</b>:<br>Used oscilloscope to capture the MCLR, Data and CLK signals from the ICD3. Saw data being sent while the MCLR was high. Checked to make sure this data was the same as the explorer board, which it was not. After this, the explorer board was scoped while unplugged from the voltage source, with just the RJ11 connector connected to 3.3V. It showed that data was still being sent even if the micro was powered off. This lead to assuming that the micro on the PCB was malfunctioning. A new microcontroller will be soldered onto a breakout board and tested tomorrow. 
+</p>
 
     <p class="entry"><b>April 16, 2014 (3 hours)</b>:<br>A new microcontroller was soldered to a breakout board and a heart beat LED was connected to pin 1. Once the connection to ICD3 was made, the software was loaded and ran with no issues. This lead to the conclusion that the microcontroller on the PCB is dead. Version 2 of the PCB should be arriving today, and the microcontroller will be populated onto it after the power is tested over night.
-
-//PIC OF HEARBEAT LED
 </p>
 
-    <p class="entry"><b>April 18, 2014 (4 hours)</b>:<br>The power was tested with no issues on the new PCB, and the microcontroller was soldered on. A few pins seemed to not be connected, but continuity checking verified that the were. A new LED was soldered on, with a 1K series resitor. The RJ11 on the breakout board from the previous PCB was used, and the connections were soldered onto the new PCB. Connected the new PCB to power and loaded the software onto it. Everything worked correctly and the heart beat LED lights up! <br>
+    <p class="entry"><b>April 18, 2014 (4 hours)</b>:<br>The power was tested overnight with no issues on the new PCB. The microcontroller was soldered on. A few pins seemed to not be connected, but continuity checking verified that the were. A new LED was soldered on, with a 1K series resitor. The RJ11 on the breakout board from the previous PCB was used, and the connections were soldered onto the new PCB. Connected the new PCB to power and loaded the software onto it. Everything worked correctly and the heart beat LED lights up! <br>
+</p>
 
-The LED driver was then soldered on and tested. Still no luck getting the LED driver to turn on any of the LEDs.</p>
-
-
-    <p class="entry"><b>April 19, 2014 (4 hours)</b>:<br>Worked on the poster for the poster session next week. Soldered a new header onto the PCB for the LCD connections and verified that the LCD responded correctly. Below is a photo of the LCD working by displaying the title and artist, and then when a push button is pressed, the album and year is displayed. 
+    <p class="entry"><b>April 19, 2014 (4 hours)</b>:<br>Worked on the poster for the poster session next week. I also soldered a new header onto the PCB for the LCD connections and verified that the LCD responded correctly. One push button was also connected to test if a new page would be displayed when pressed. Below is a photo of the LCD working by displaying dummy data for the title and artist, and then when a push button is pressed, the album and year is displayed. 
 
 <br><br>
 <a href="../images/spouliqu/LCDSetup.jpg">
-	<img src="../images/spouliqu/LCDSetup.jpg" alt="LCD" height="600px" width="800px">
+	<img src="../images/spouliqu/LCDSetup.jpg" alt="LCD" height="300px" width="400px">
       </a>
 
 <br><br>
 <a href="../images/spouliqu/LCDWorking.jpg">
-	<img src="../images/spouliqu/LCDWorking.jpg" alt="LCD" height="600px" width="800px">
+	<img src="../images/spouliqu/LCDWorking.jpg" alt="LCD" height="300px" width="400px">
       </a>
-
-</p>
-
-    <p class="entry"><b>April 20, 2014 (3 hours)</b>:<br>Completed soldering of the LDO and the motor driver. Also removed the current male headers and soldered on new female headers for easier debugging. After soldering was complete, the motor was tested. The motor was not moving so the output voltage of the motor driver was tested and only around 1.4V was being driven. This is much too low to drive the motor. After carefully looking at the datasheet for the LDO, it seemd that it was never driving the logic from the microcontroller to the driver with 5V. The datasheet explains that the output enable pin must be set high (3.3V) with a series resitor for startup, but then also tied to a pin on the microcontroller to be set low while running. The PCB trace is only tied high, and therefore the OE pin is always high. This could be the cause of the motor issue. A consultation with the team tomorrow will verify the next steps. 
-
-//PIC OF LDO AND MOTOR DRIVER
-
 </p>
 
     <p class="summary"><b>WEEK 14 SUMMARY</b><br>
                        <u>Accomplishments</u>: After a lot of debugging and a new PCB, the microcontroller is finally able to connect with the ICD3 and software is able to load onto the PCB. The heart beat LED was tested, as well as the LCD on the new PCB. Almost all parts, except the audio circuitry has been soldered and (mostly) tested. <br>
-                       <u>Weekly Work Total</u>: 31<br>
-                       <u>Project Work Total</u>: 159</p>
+                       <u>Weekly Work Total</u>: 28<br>
+                       <u>Project Work Total</u>: 161</p>
 
   <h3 id="week15">Week 15</h3>
 
-    <p class="entry"><b>April 21, 2014 (4 hours)</b>:<br> Began the debugging process for the motor control. The OE pin on the LDO wasfly wired to an output pin on the microcontroller so that it can be set low after startup. After scoping the output voltage of the LDO, the correct 5V output was being sent to the motor driver. The motor was producing some strange behavior including switching directions and not being able to spin with much torque. All four connections were tested in different configurations. The fourth header pin (on the right) for the motor did not respond to any inputs after scoping. The pin from the driver was scoped and it seemed that the pin was not soldered down completly. After re-soldering the pin to the pad, the motor worked correctly with no direction switches.<br>
+    <p class="entry"><b>April 20, 2014 (3 hours)</b>:<br>Completed soldering of the LDO and the motor driver. Also removed the current male headers and soldered on new female headers to help with ease during debugging. After soldering was complete, the motor was tested. The motor was not moving, and debugging began. The output voltage of the motor driver was scoped and only around 1.4V was being driven. This is much too low to drive the motor, the motor driver should be driven at 5V. After carefully looking at the datasheet for the LDO, it seemed that it was never driving the logic from the microcontroller to the driver with 5V. The datasheet explains that the output enable pin must be set high (3.3V) with a series resitor for startup, and then also tied to a pin on the microcontroller to be set low while running. The PCB trace is currently only tied high, and therefore the OE pin will always be set high. This could be the cause of the motor issue. A consultation with the team tomorrow will verify the next steps. 
+</p>
+
+    <p class="entry"><b>April 21, 2014 (4 hours)</b>:<br> Discussed the debugging process taken yesterday with the team. It was confirmed that a the OE pin should also be tied to a pin on the microcontroller. Fly-wiring from the OE pin to the microcontroller was done so the OE signal can be set low after startup. After scoping the output voltage of the LDO, the correct 5V output was being sent to the motor driver. 
+<br>
+The motor was producing some strange behavior including switching directions and not being able to spin with much torque. All four connections were tested in different configurations. The fourth header pin (on the right) for the motor did not respond to any inputs after scoping. The pin from the driver was scoped and it seemed that the pin was not soldered down completly. After re-soldering the pin to the pad, the motor worked correctly with no direction switches.<br>
+</p>
+
+    <p class="entry"><b>April 22, 2014 (5 hours)</b> After testing was verified for the motor, work on the LED driver continued. The LED driver was soldered onto the new PCB, as well as twelve 10 ohm resistors connected to the outputs of the LED driver. After soldering was complete, a single LED was connected for testing. A few fixes in the initialization process were made, and the correct group brightness was set. All input signals to the LED driver were scoped and verified. The LED finally turned on and blinked once the correct group period was set. The blinking LEDs can be seen below. 
+<br><br>
+<video width="300" height="200" controls>
+  <source src="../images/mmcmunig/LED_BLINKING.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</p>
+
+    <p class="entry"><b>April 25, 2014 (2 hours)</b>:<br> Populated the PCB with 10 ohm resitors on all outputs of the LED driver. Each colored LED had a different resistor value, but they were all under 15 ohms. These values were all rounded to 10 ohms. 
+</p>
 
     <p class="summary"><b>WEEK 15 SUMMARY</b><br>
-                       <u>Accomplishments</u>: .<br>
-                       <u>Weekly Work Total</u>: 28<br>
-                       <u>Project Work Total</u>: 156</p>
+                       <u>Accomplishments</u>: Populated the PCB with the motor control circuitry. This was debugged and tested to implement full functionality of motor control. The LED's and LED driver were populated onto the new PCB and tested. After a few register configuration changes, the LED's turned on and blinked!<br>
+                       <u>Weekly Work Total</u>: 14<br>
+                       <u>Project Work Total</u>: 175</p>
+
+
+ <h3 id="week15">Week 16</h3>
+
+    <p class="entry"><b>April 28, 2014 (6 hours)</b>:<br> The LCD was soldered to a protoboard with long wires so that it can be mounted and connect directly to the LCD header on the PCB. The LCD was tested before mounting it to the box. Dummy data was sent to the LCD and it was displayed correctly. The heat gun was also used to attach heat shrink onto the base of the wires. This ensures that none of the wires will touch and perhaps mess up the signals on the line.
+<br>
+Later tonight, it was mentioned that because the LCD has multiple ground and power pins, a new protoboard would need to be added to tie these LCD connections together. I worked on soldering this new board and cuttin the origional LCD wires short so the boards could lie side by side. 
+<br>
+The Raspberry Pi stopped working today, and a new one was ordered. Luckily a friend was able to let the team borrow his for the time being. He also suggested we use a chip on our I/O ports from the Raspberry Pi. This chip ensures that if any part of our PCB or Raspberry Pi fails, it will not disrupt any other connecting parts. 
+</p>
+
+    <p class="entry"><b>April 29, 2014 (11 hours)</b>:<br> All four LED's were soldered with very long wires so that they can be fed through the PVC pipes and connect to the header on the PCB. Two protoboards were also soldered with power rails for the LEDs. These will be mounted to the top of the box, so all LED's can be connected to the same power coming from the PCB header. 
+<br>
+I began mounting the LCD with superglue and electrical tape. The hole in the box was too small to fit the LCD, so the box needed to be sanded quite a bit to increase the size of the hole. The pushbuttons were also mounted on the side of the box. Once these were all mounted to the side of the box, wiring of all parts began. All the LED, LCD and pushbutton wires were cut to the minimum length so that there would be no extra wires dangling inside the box. 
+<br>
+The I/O chip given to the team yesterday was soldered onto a protoboard and mounted inside the box. This was wired from the Raspberry Pi, to the Raspberry Pi connector on the PCB. 
+<br>
+Once all packaging was complete, the final product was tested. When all the LED's were connected to the PCB, garbage values were continually being sent across the SPI communication between the Raspberry Pi and the microcontoller. This was a huge issue, because without that communication, no song metadata could be received. This ended up being a very long night of debugging, and the only solution found was that only two LED's with one color each could be connected to run properly. This lead us to believe that there was a major power issue that for some reason was causing our LED's to not have enough current to fully run. 
+<br> 
+    <a href="../images/spouliqu/MountedFront.jpg">
+	    <img src="../images/spouliqu/MountedFront.jpg" alt="LCD" height="300px" width="400px">
+    </a>
+<br> 
+    <a href="../images/spouliqu/FinalPackagingInside.jpg">
+	    <img src="../images/spouliqu/FinalPackagingInside.jpg" alt="LCD" height="400px" width="300px">
+    </a>
+<br> 
+    <a href="../images/spouliqu/FinalPackagingOutside.jpg">
+	    <img src="../images/spouliqu/FinalPackagingOutside.jpg" alt="LCD" height="300px" width="400px">
+    </a>
+<br> 
+    <a href="../images/spouliqu/Working.jpg">
+	    <img src="../images/spouliqu/Working.jpg" alt="LCD" height="400px" width="300px">
+    </a>
+</p>
+
+    <p class="entry"><b>April 30, 2014 (5 hours)</b>: After a long night of debugging the SPI and LED issues, no progress was gained. With only two LED's utilizing one color connected to the PCB, the final PSSC video was shot. The night finally came to an end at 3:30 AM. The next morning all teams came together to view the PSSC demo videos. Team 2's video can been seen below. <br> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yey6Bm6KuSc" frameborder="0" allowfullscreen></iframe>
+</p>
+
+    <p class="entry"><b>May 1, 2014 (3 hours)</b>:<br> We still needed to get our final PSSC's checked off, so we hooked everything excluding the LED's to get four out of our five PSSC's checked off. After discussing the LED power issue with George Toh, he asked us what else was being powered with the LED driver 5V. The only other part that was connected to 5V is the I/O chip between the Raspberry Pi and the microcontoller. Instead of powering this chip with 5V, we fly-wired it to 3.3V and connected all the LED's back up. All LED's were powered and working correctly with no issues in the SPI communication!
+</p>
+
+    <p class="entry"><b>May 2, 2014 (5 hours)</b>: The LED PSSC was checked off and the project was officially completed! The project was brought to the design showcase to display to students and faculty. <br> 
+</p>
+
+    <p class="summary"><b>WEEK 16 SUMMARY</b><br>
+                       <u>Accomplishments</u>: The final packaging was completed and all components were tested in their final state. All PSSC's were completed and checked off! The project was officially completed with success!<br>
+                       <u>Weekly Work Total</u>: 30<br>
+                       <u>Project Work Total</u>: 205</p>
 
 
 
