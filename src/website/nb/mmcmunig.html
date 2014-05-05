@@ -507,30 +507,35 @@
     
     <p class="entry"><b>April 8, 2014 (3 hours)</b>:<br> Prototyping of the LED driver was resumed. After modifying the initialization of the 
     LED driver and still having no success, the I2C data and clock signals were scoped. The address signal was being ACK'd by the LED driver 
-    but the other control signals were being NACK'd.
+    but the other control signals were being NACK'd. </p>
     
-    <p class="entry"><b>April 9, 2014 (3.5 hours)</b>:<br>Worked on trying to get the LED driver to control an LED. At first, there were no acknoledgments from the i2c protocol. This was debugged by making sure all values being sent from the microcontroller to the LED driver were correct. It was found after digging into the datasheet and online examples that the reset sequence being implemented was not correct. Once this was fixed, acknoledgements were visible on the oscilloscope. While all the correct data seems to be sent correctly, the output of the LED is never set high and the LED never turns on. After a few hours of debugging by changing resistor values, supply voltage, etc., no luck was sought. 
+    <p class="entry"><b>April 9, 2014 (5 hours)</b>:<br> The datasheet was further examined for the LED driver and a reset sequence was found and
+    added to our initialization code. After the reset had been added, the microcontroller was now receiving ACKs for all commands sent to the 
+    driver. However, even with the reset sequence the LED was still not turning on. The setup used to test the driver can be seen below:
+    
 
 <br><br>
 <a href="../images/spouliqu/LEDDriverSetup1.jpg">
-	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="500px" width="800px">
+	<img src="../images/spouliqu/LEDDriverSetup1.jpg" alt="LEDDriver" height="200px" width="200px">
       </a>
 
-</p>
+ </p>
 
-<p class="entry">
+
       
-      <b>April 9, 2014 (3 hours)</b>:<br> Worked on debugging of I2C on the LED's. It seemed that instead of receiving acks, the driver was nacking. This was changed by making sure all grounds were connected from the microcontroller to the LED driver. Still no changes seen in the output of the LED driver. Perhaps there are problems with the soldering job. This testing will continue when the LED driver is soldered to the PCB, to ensure all connections are correct.</p>
+      <p class="entry"><b>April 10, 2014 (5 hours)</b>:<br> The LED driver was put on hold until we could test it on the actual PCB board. 
+      Next the group moved on to prototyping the motor driver. The motor driver was first wired up to a breadboard between the microcontroller 
+      and the motor wires. 
+      A PLD was deemed necessary by the group and was programmed with a state machine corresponding to the coil combinations necessary to driver
+      the motor. The output of the PLD was correct but after talking with Joe, our PCB layout did not allow for a PLD to be added after the driver. 
+      In order to emulate the function of the PLD a state machine was added to the motor code. This state machine is updated based on a certain
+      number of timer 2 interrupts. By varying the number of timer interrupts required before the state machine advanced to the next state allows
+      the motor to spin at variable speeds. A video of the motor spinning can be seen below. 
 
-<p class="entry">
-      
-      <b>April 10, 2014 (4 hours)</b>:<br> Worked on wiring the motor driver. The origional design for motor control did not include a PLD, which the team now thinks is necessary. A PLD was obtained from the parts room, and a programmer. The PLD code was completed using a truth table to toggle the four outputs to make the motor spin. This worked correctly, as the motor spun at variable speens depending on how quickly the toggles occured. <br>
-
-We then discussed with Joe about using a PLD when it wasn't currently on the PCB. He suggested that instead of a PLD, an interrupt triggered truth table could be used. This way, no fly wiring would need to be done to attach a PLD and all code could sit on the microcontroller. This was completed and the motor spins at variable speeds depending on how quickly the truth table gets set. Below is a video of the motor spinning with enough torque to spin the disco ball. 
-
-<br><br>
+<br>
+      <br>
 <a href="../images/spouliqu/MotorDriverSetup.jpg">
-	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="500px" width="800px">
+	<img src="../images/spouliqu/MotorDriverSetup.jpg" alt="LEDDriver" height="200px" width="200px">
       </a>
 <br><br>
 <video width="320" height="240" controls>
@@ -539,10 +544,13 @@ We then discussed with Joe about using a PLD when it wasn't currently on the PCB
 </video>
 </p>
 
-<p class="entry">
+
       
+      
+      <p class="entry">
       <b>April 11, 2014 (4 hours)</b>:<br> The Reliability and Safety Analysis homework was completed. In order to complete this homework
-      successfully the <a https://engineering.purdue.edu/ece477/Course/Assignments/Reference/Mil_Hdbk_217F.pdf">Military Handbook</a> was utilized
+      successfully the <a href = "https://engineering.purdue.edu/ece477/Course/Assignments/Reference/Mil_Hdbk_217F.pdf">Military Handbook</a> 
+      was utilized
       as well as the individual component data sheets.   </p>
 
       
@@ -555,6 +563,64 @@ We then discussed with Joe about using a PLD when it wasn't currently on the PCB
 
     <h3 id="week14">Week 14</h3>
 
+		  
+		<p class="entry"><b>April 14, 2014 (6 hours)</b>:<br> The heartbeat LED, RJ11 connector, bypass capacitors and microcontroller 
+		were populated on the PCB. Once the ground and power were swapped on the incorrect bypass capacitor, the microcontroller was finally 
+		tested. The result was an error stating a target device could not be found. After much testing, it was determined that the RJ11
+		connector was designed backwards on the schematic/board. The connections were fly wired for testing purposes. The ICD3 could not
+		find the device but was not able to get a valid device ID from the microcontroller. <br>
+		The correct orientation of the RJ11 connector:
+		<br><br>
+<a href="../images/mmcmunig/RJ11_connector.jpg">
+	<img src="../images/mmcmunig/RJ11_connector.jpg" alt="RJ11" height="200px" width="200px">
+      </a>
+
+ </p>
+
+
+		 
+		
+		<p class="entry"><b>April 15, 2014 (5 hours)</b>:<br> Testing of the microcontroller continued today. The clock and data lines
+		were scoped on the explorer board and compared to the same output from the microcontroller. The results appeared the same and did
+		not provide much help in debugging. </p>
+
+    
+		  
+		
+		<p class="entry"><b>April 18, 2014 (5 hours)</b>:<br>The structure of SPI commands between the Raspberry Pi and microcontroller had 
+		been established earlier time. Today these commands were implemented in both modules. The Raspberry Pi and microcontroller were
+		successfully programmed and tested corresponding to each other's messages. The message structure is as follows: <br>
+		RPI - Heartbeat - 0xAA <br>
+		RPI - Song Data - 0xBB <br>
+		Micro - Heartbeat  - 0x01 <br>
+		Micro - Next Song  - 0x02 <br>
+		Micro - Play/Pause - 0x03 <br> </p>
+
+
+    
+		
+		
+		NEEDS UPDATED
+			
+		<p class="entry"><b>April 19, 2014 (4 hours)</b>:<br>Worked on the poster for the poster session next week. Soldered a new header onto the PCB for the LCD connections and verified that the LCD responded correctly. Below is a photo of the LCD working by displaying the title and artist, and then when a push button is pressed, the album and year is displayed. 
+
+<br><br>
+<a href="../images/spouliqu/LCDSetup.jpg">
+	<img src="../images/spouliqu/LCDSetup.jpg" alt="LCD" height="600px" width="800px">
+      </a>
+
+<br><br>
+<a href="../images/spouliqu/LCDWorking.jpg">
+	<img src="../images/spouliqu/LCDWorking.jpg" alt="LCD" height="600px" width="800px">
+      </a>
+
+</p>
+
+    
+
+
+		NEEDS UPDATED
+
     <p class="summary"><b>WEEK 14 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
                        <u>Weekly Work Total</u>:  hours<br>
@@ -563,9 +629,39 @@ We then discussed with Joe about using a PLD when it wasn't currently on the PCB
     
     <h3 id="week15">Week 15</h3>
 
+	<p class="entry"><b>April 21, 2014 (4 hours)</b> The motor driver and logic level translator have been soldered to the new PCB. After scoping
+	each of the pins it was determined the OE pin on the level translator was tied high even though the datasheet specifies it as active low. 
+	Now the output to the motor driver is correct but the motor is not rotating as expected. The motor header was re-soldered which fixed the issue. 
+	The motor now spins smoothly in one direction. </p>
+
+	<p class="entry"><b>April 22, 2014 (5 hours)</b> Now that the motor was working the focus was returned to the LED driver. The driver and pull-up
+	resistors were soldered to the new PCB and a single LED was connected for testing. The oscilloscope was used to debug the signals being 
+	sent to the LED driver. After fixing the initialization sequence, setting the PWM register for the correct LED, and setting the group
+	brightness and period the LED finally was working! A video of the blinking LED can be seen below. <br>
+      </a>
+<br><br>
+<video width="300" height="200" controls>
+  <source src="../images/mmcmunig/LED_BLINKING.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</p>
+
+
+
+	<p class="entry"><b>April 23, 2014 (4 hours)</b> The main goal for today is to get the LEDs to change blinking speed based on the ADC
+	calculation from sampling the Raspberry Pi audio out. This would be accomplished by setting a threshold and counting the number of times
+	the ADC was below this value during the sampling period. After playing around with the threshold and sampling period the blinking rate did
+	respond to the number of beats but unfortunately it will be delayed due to the time it takes between samples. </p>
+	
+	<p class="entry"><b>April 27, 2014 (5 hours)</b> Today the SPI commands between the Raspberry Pi and microcontroller were modified to 
+	interact with the web application. When the Raspberry Pi receives a new song request from the micro it sends a unique return code to the 
+	web application. The web application then calls the SPI module with the top song title, artist, album, and year. The Raspberry Pi then sends
+	this information to the microcontroller one byte at a time. Once the whole message has been received the update LCD function is called to show
+	the new song information. 
+
     <p class="summary"><b>WEEK 15 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>:  hours<br>
+                       <u>Weekly Work Total</u>: 18 hours<br>
                        <u>Project Work Total</u>:  hours</p>
 
 
