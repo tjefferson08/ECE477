@@ -242,81 +242,79 @@ On rollers. The rollers, could have a motor attached and the lights could go in 
     <p class="entry"><b>March 31, 2014 (4.5 hours)</b>: Still debugging audio circuit. The double amplifier and the diode is not working. The diode is not working due to such a small amplitude gain of .135 V so we are trying to get a higher gain. Also, the 3D part was picked up and cleaned off and installed on the motor. <br><img src="../images/claubach/3Dpart_installed.jpg" alt="screenshot1" height="500px" width="500px"><br> Finally got the audio circuit to work. The initial resistor had to be tied to ground and the envelope detector the resistor needed to be in parallel with the capacitor. This gave a voltage range from 0 to about 1.2V of the signal from the audio. The new circuit and the output signal is depicted below. <br>
     	<img src="../images/claubach/newaudiocircuit.jpg" alt="screenshot1" height="500px" width="500px"><br><img src="../images/claubach/audiosignal.jpg" alt="screenshot1" height="500px" width="500px"><br>
     	
-    <p class="entry"><b>April 1, 2014 (2 hours)</b>: <br> </p>
+    <p class="entry"><b>April 1, 2014 (2 hours)</b>: Met as a team to brainstorm what was still needed to do in order to finish the project. Came up with that we needed to do a lot of testing before the board comes in to make sure that we built our circuit properly. <br> </p>
     
-    <p class="entry"><b>April 2, 2014 (6 hours)</b>: <br> </p>
+    <p class="entry"><b>April 2, 2014 (6 hours)</b>: Soldered the LED driver to a protoboard. The LED driver was tested and was still not working. Assumptions are due to the wires not being placed correctly, so we are going to wait until the board comes in. Did some more debugging into the audio circuit and what was figured out was that the op amp needed both + and - power in order to operate so a voltage divider with a resistor was installed to get power coming from the - power and the + power.  <br> </p>
     
-    <p class="entry"><b>April 3, 2014 (4 hours)</b>: <br> </p>
+    <p class="entry"><b>April 3, 2014 (4 hours)</b>: Even though the op amp started to work, the signal was still not something that the software lead said he could work with to get beat detection. From there, I decided to take out the envelope detector since I was not getting a good sine wave and incorporated a potentiometer. This enabled the output of the audio to only drop frequencies of a certain threshold depending on the potentiometer. This was a detection that the software lead could deal with by depending on how low the frequency dropped determined how fast the lights were going to blink.<br> </p>
 
 
     <p class="summary"><b>WEEK 12 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: This week was primarly focused on the audio circuit. The audio circuit finally works in a manner that the software leads could deal with. To get it to this point, the envelope detector was eliminated and a potentiometer was installed. <br>
                        <u>Weekly Work Total</u>: 16.5 hours<br>
                        <u>Project Work Total</u>: 127 hours</p>
                        
     
     <h3 id="week13">Week 13</h3>
     
-    <p class="entry"><b>April 7, 2014 (3 hours)</b>: <br> </p>
+    <p class="entry"><b>April 7, 2014 (4 hours)</b>: Soldered motor driver to proto board. Also soldered the LM1117 to the board. When doing so and checking to making sure I got the correct ouput, I realized we had ordered the wrong part. We were getting an ouput of 2.5V rather than our 3.3 V. So a new LM1117 was ordered. While debugging the motor driver, it was realized that there was something wrong with our PWM channel on the software side.  <br> </p>
     
-    <p class="entry"><b>April 8, 2014 (1 hours)</b>: <br> </p>
+    <p class="entry"><b>April 9, 2014 (0.5 hours)</b>: With the motor driver, something was still not working. So after checking the motor circuitry, I realized that it was bad soldering in which we did not have continuity. Therefore, I resoldered the motor driver in which it worked.  <br> </p>
     
-    <p class="entry"><b>April 9, 2014 (0.5 hours)</b>: <br> </p>
-    
-    <p class="entry"><b>April 11, 2014 (0.5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 11, 2014 (.5 hours)</b>: Our new 3.3V output LM1117 came in and therefore I soldered the circuitry that dropped our 5V down to 3.3V. That circuitry was tested for 24 hours and there was still a 3.3V output.  <br> </p>
     
 
     <p class="summary"><b>WEEK 13 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: This weeks accomplishments were a lot of soldering in order to test the LED driver as well as the motor driver. We got to motor driver to work, however we did not get the LED driver to work. The LED driver was not working due to wrong initializations on the software side. Finally, the 5v - 3.3V supply was tested overnight and it still worked. <br>
                        <u>Weekly Work Total</u>: 5 hours<br>
                        <u>Project Work Total</u>: 132 hours</p>
 
 
     <h3 id="week14">Week 14</h3>
     
-    <p class="entry"><b>April 13, 2014 (4 hours)</b>: <br> </p>
+    <p class="entry"><b>April 13, 2014 (4 hours)</b>: With the 3.3V working, I soldered on the micro as well as all the bypass capacitors. With this board, our VDD and VSS were wired wrong which would have caused a short in the circuit. This means that I had to break a trace and fly wire the two micro output correctly so a short would not be created. While doing this, I realized that the VDD and VSS are internally connected within the micro. <br> </p>
     
-    <p class="entry"><b>April 14, 2014 (5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 14, 2014 (5 hours)</b>: Once we connected the RJ11 connector to the board, we realized that we still could not program the micro. After investing and looking at the other RJ11 connector we had, we realized that our RJ11 connector was connected backwards. Therefore, I had to fly wire it onto a proto board in order for the connections to work properly. I also visited the afl lab to start working on the packaging. In order to work in the afl lab, you must get registered online first and take a quiz on the machines. <br> </p>
     
-    <p class="entry"><b>April 15, 2014 (7 hours)</b>: <br> </p>
+    <p class="entry"><b>April 15, 2014 (7 hours)</b>: Multiple hours were spent debugging why our micro cannot connect to target device. After trying multiple different things including grounding a pin that was not grounded, checking our bypass capacitors, we ended up soldering up a micro on a protoboard.  <br> </p>
     
-    <p class="entry"><b>April 16, 2014 (1.5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 16, 2014 (1.5 hours)</b>: Once the micro was on the protoboard, we tested it again. This time we had communication with the micro. Therefore, when i broke the trace between VDD and VSS, it was not broken fully when we first went to power it up which caused a short and fried our microcontroller. <br> </p>
     
-    <p class="entry"><b>April 17, 2014 (3 hours)</b>: <br> </p>
+    <p class="entry"><b>April 17, 2014 (3 hours)</b>: Submitted CAD drawings to afl lab for the drilling of our box. The new board came in. Therefore, I soldered the 12 - 5V supply circuit and tested it for 7 hours and it worked. Then I soldered on the 5v - 3.3V circuit and ran the power overnight and worked outputted 3.3V we expected. <br> </p>
     
-    <p class="entry"><b>April 18, 2014 (2.5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 18, 2014 (2.5 hours)</b>: Once we got both the power supplys working, I soldered on the micro. Soldering on the micro is very difficult since you have to line up the traces under a microscope since they are so small.  <br> </p>
 
     <p class="summary"><b>WEEK 14 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
-                       <u>Weekly Work Total</u>: 23 hours<br>
+                       <u>Accomplishments</u>: This week we got our new board in and got both our 5V and 3.3V supply working. We also got communication with our microcontroller. <br>
+                       <u>Weekly Work Total</u>: 23 hours<br> 
                        <u>Project Work Total</u>: 155 hours</p>
                        
     
     <h3 id="week15">Week 15</h3>
     
-    <p class="entry"><b>April 20, 2014 (3 hours)</b>: <br> </p>
+    <p class="entry"><b>April 20, 2014 (3 hours)</b>: Soldered motor driver and the voltage translator. Also a value was calculated for R23 which was 10Kohms to make sure the LEDs would all light up and take the least amount of current.  <br> </p>
     
-    <p class="entry"><b>April 21, 2014 (1 hour)</b>: <br> </p>
+    <p class="entry"><b>April 21, 2014 (1 hour)</b>: After soldering on the motor, we got the motor to start spinning at variable speeds through software.  <br> </p>
     
-    <p class="entry"><b>April 22, 2014 (2.5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 22, 2014 (2.5 hours)</b>: Redesigned the CAD drawings because I was going to be working on a machine that forced me to insert numbers to drill the part. <br> </p>
     
-    <p class="entry"><b>April 23, 2014 (1 hours)</b>: <br> </p>
+    <p class="entry"><b>April 23, 2014 (1 hours)</b>: Mad a couple of CAD drawing changes to make sure I was in the correct units. <br> </p>
     
-    <p class="entry"><b>April 24, 2014 (8.5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 24, 2014 (8.5 hours)</b>: Drilling the box. Had to insert all the dimensions in order to get the part drilled exactly. I also had to put the wood inside the box in order for the box to be drilled.  <br> </p>
 
     <p class="summary"><b>WEEK 15 SUMMARY</b><br>
-                       <u>Accomplishments</u>: <br>
+                       <u>Accomplishments</u>: Got the motor working as well as got the box drilled for packaging. <br>
                        <u>Weekly Work Total</u>:  16 hours<br>
                        <u>Project Work Total</u>:  171 hours</p>
 
 
     <h3 id="week16">Week 16</h3>
     
-    <p class="entry"><b>April 27, 2014 (2 hours)</b>: <br> </p>
+    <p class="entry"><b>April 27, 2014 (2 hours)</b>: Worked on packaging such as getting the LCD and buttons soldered on protobaords. <br> </p>
     
-    <p class="entry"><b>April 28, 2014 (5 hours)</b>: <br> </p>
+    <p class="entry"><b>April 28, 2014 (5 hours)</b>: Worked with the pushbuttons some more and organzing all the wires within the box. Today our raspberry pi died in which fried our microcontroller as well. Therefore, a chip was placed in between our micro and our raspberry pi for this to not happen again. <br> </p>
     
-    <p class="entry"><b>April 29, 2014 (16 hours)</b>: <br> </p>
+    <p class="entry"><b>April 29, 2014 (16 hours)</b>: Re-soldered on the micro, got all the packaging working together. One issue we had was that the  <br> </p>
 
     <p class="summary"><b>WEEK 16 SUMMARY</b><br>
                        <u>Accomplishments</u>: <br>
